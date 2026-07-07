@@ -94,6 +94,10 @@ footer b{color:#fff}
 @media(max-width:820px){.grid{grid-template-columns:1fr}.res{grid-template-columns:1fr}.hero h1{font-size:38px}.top nav{display:none}}
 .mapwrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
 .mapwrap svg{width:100%;height:auto}
+.mapnode{cursor:pointer;transition:transform .15s ease;transform-box:fill-box;transform-origin:center}
+.mapnode:hover{transform:translateY(-4px)}
+.mapnode:hover rect{stroke:#1F5C99;stroke-width:2.5}
+.maphint{font-size:12.5px;color:var(--mut);margin:10px 0 0;text-align:center}
 </style>
 </head>
 <body>
@@ -203,47 +207,59 @@ function home(){
 <path d="M 500 318 Q 675.0 347.0 850 320" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
 <path d="M 500 318 Q 355.0 445.0 210 516" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
 <path d="M 500 318 Q 645.0 445.0 790 516" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
+<g class="mapnode" onclick="openM(1)" role="link" tabindex="0" aria-label="Módulo 1: Por qué la Medicina de Continuidad">
 <rect x="45.0" y="77.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="71.0" cy="103.0" r="15" fill="#EAF1F9"/>
 <text x="71.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">1</text>
 <text x="97.0" y="103.0" font-size="15.5" font-weight="700" fill="#17324D">Por qué la Medicina</text>
 <text x="97.0" y="122.0" font-size="15.5" font-weight="700" fill="#17324D">de Continuidad</text>
 <text x="97.0" y="143.0" font-size="12" font-style="italic" fill="#63707f">El paciente cambió</text>
+</g>
+<g class="mapnode" onclick="openM(2)" role="link" tabindex="0" aria-label="Módulo 2: La persona y la situación basal">
 <rect x="705.0" y="77.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="731.0" cy="103.0" r="15" fill="#EAF1F9"/>
 <text x="731.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">2</text>
 <text x="757.0" y="103.0" font-size="15.5" font-weight="700" fill="#17324D">La persona y la</text>
 <text x="757.0" y="122.0" font-size="15.5" font-weight="700" fill="#17324D">situación basal</text>
 <text x="757.0" y="143.0" font-size="12" font-style="italic" fill="#63707f">El cero clínico</text>
+</g>
+<g class="mapnode" onclick="openM(3)" role="link" tabindex="0" aria-label="Módulo 3: Observar: los microcambios">
 <rect x="25.0" y="277.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="51.0" cy="303.0" r="15" fill="#EAF1F9"/>
 <text x="51.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">3</text>
 <text x="77.0" y="303.0" font-size="15.5" font-weight="700" fill="#17324D">Observar: los</text>
 <text x="77.0" y="322.0" font-size="15.5" font-weight="700" fill="#17324D">microcambios</text>
 <text x="77.0" y="343.0" font-size="12" font-style="italic" fill="#63707f">Ver antes de la crisis</text>
+</g>
+<g class="mapnode" onclick="openM(4)" role="link" tabindex="0" aria-label="Módulo 4: La pirámide del conocimiento">
 <rect x="725.0" y="277.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="751.0" cy="303.0" r="15" fill="#EAF1F9"/>
 <text x="751.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">4</text>
 <text x="777.0" y="303.0" font-size="15.5" font-weight="700" fill="#17324D">La pirámide del</text>
 <text x="777.0" y="322.0" font-size="15.5" font-weight="700" fill="#17324D">conocimiento</text>
 <text x="777.0" y="343.0" font-size="12" font-style="italic" fill="#63707f">Razonar por capas</text>
+</g>
+<g class="mapnode" onclick="openM(5)" role="link" tabindex="0" aria-label="Módulo 5: La historia clínica es de todos">
 <rect x="85.0" y="473.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="111.0" cy="499.0" r="15" fill="#EAF1F9"/>
 <text x="111.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">5</text>
 <text x="137.0" y="499.0" font-size="15.5" font-weight="700" fill="#17324D">La historia clínica</text>
 <text x="137.0" y="518.0" font-size="15.5" font-weight="700" fill="#17324D">es de todos</text>
 <text x="137.0" y="539.0" font-size="12" font-style="italic" fill="#63707f">Conocimiento distribuido</text>
+</g>
+<g class="mapnode" onclick="openM(6)" role="link" tabindex="0" aria-label="Módulo 6: La Unidad de Continuidad">
 <rect x="665.0" y="473.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
 <circle cx="691.0" cy="499.0" r="15" fill="#EAF1F9"/>
 <text x="691.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">6</text>
 <text x="717.0" y="499.0" font-size="15.5" font-weight="700" fill="#17324D">La Unidad de</text>
 <text x="717.0" y="518.0" font-size="15.5" font-weight="700" fill="#17324D">Continuidad</text>
 <text x="717.0" y="539.0" font-size="12" font-style="italic" fill="#63707f">Gestiona la incertidumbre</text>
+</g>
 <rect x="365" y="266" width="270" height="104" rx="20" fill="url(#g)" filter="url(#sh)"/>
 <text x="500" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#9ec3ea" letter-spacing="2">HUMANA ACADEMY</text>
 <text x="500" y="330" text-anchor="middle" font-size="23" font-weight="800" fill="#ffffff">Medicina de</text>
 <text x="500" y="358" text-anchor="middle" font-size="23" font-weight="800" fill="#ffffff">Continuidad</text>
-</svg></div></div></section>`;
+</svg><p class="maphint">Tocá un módulo para entrar.</p></div></div></section>`;
  window.scrollTo(0,0);
 }
 function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else home();}
