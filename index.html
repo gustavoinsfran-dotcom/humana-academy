@@ -4,130 +4,162 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Humana Academy · Formación en Medicina de Continuidad</title>
+<meta name="description" content="Humana Academy — programa de formación en Medicina de Continuidad. Humana Health & Care · Argentina.">
+<meta name="theme-color" content="#0C0713">
+<meta property="og:title" content="Humana Academy">
+<meta property="og:description" content="Formación en Medicina de Continuidad · Humana Health & Care Argentina">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script data-goatcounter="https://REEMPLAZAR.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#12283F;--blue:#1F5C99;--ice:#EAF1F9;--bg:#F4F7FB;--card:#fff;--line:#e5ebf2;--tx:#1d2733;--mut:#63707f;--ok:#1c7a4d;--bad:#b23b3b;--gold:#b8862f}
+:root{--bg:#0C0713;--bg2:#140C1F;--card:#191024;--card2:#1E1430;--line:#2C1F42;--tx:#EDE6F5;--mut:#9E90B5;--g1:#4733A6;--g2:#EC2E8E;--pink:#F0328C;--purple:#8E2E9E;--ok:#39d98a;--grad:linear-gradient(135deg,#4733A6 0%,#8E2E9E 50%,#EC2E8E 100%)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
 a{color:inherit}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
-header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);cursor:pointer;font-size:18px}
-.brand span{color:var(--blue)}
-.top nav{font-size:13px;color:var(--mut);display:flex;gap:20px}
-.top nav a{cursor:pointer;text-decoration:none}
-.top nav a:hover{color:var(--blue)}
-.hero{background:linear-gradient(135deg,#12283F 0%,#1F5C99 100%);color:#fff;padding:76px 0 84px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06)}
-.hero::before{content:"";position:absolute;right:120px;bottom:-160px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
-.hero .k{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#9ec3ea;font-weight:600}
-.hero h1{font-size:52px;line-height:1.05;margin:12px 0 14px;font-weight:800;max-width:14ch}
-.hero p{font-size:18px;color:#d6e4f3;max-width:56ch;line-height:1.6;margin:0 0 28px}
-.cta{display:inline-block;background:#fff;color:var(--navy);font-weight:700;padding:13px 26px;border-radius:10px;text-decoration:none;font-size:15px;cursor:pointer;transition:.15s}
-.cta:hover{transform:translateY(-2px)}
-section.blk{padding:56px 0}
-.eyebrow{color:var(--blue);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
-h2.sec{font-size:30px;color:var(--navy);margin:8px 0 6px;font-weight:800}
-.sub{color:var(--mut);font-size:15.5px;max-width:60ch;line-height:1.6;margin:0 0 30px}
-.prog{display:flex;align-items:center;gap:12px;margin:0 0 26px;font-size:13px;color:var(--mut)}
-.bar{flex:1;height:8px;background:var(--ice);border-radius:8px;overflow:hidden;max-width:280px}
-.bar>i{display:block;height:100%;background:var(--blue);width:0;transition:.4s}
-.certcta{background:linear-gradient(135deg,#1F5C99,#12283F);color:#fff;border-radius:16px;padding:22px 26px;margin:0 0 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.certcta b{font-size:17px}
-.certcta small{color:#cfe0f3;font-size:13px}
-.certcta button{background:#fff;color:var(--navy);border:none;font-weight:700;padding:11px 22px;border-radius:9px;cursor:pointer}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(12,7,19,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
+.brand .mk{width:38px;height:24px;flex-shrink:0}
+.brand .wm{font-weight:800;font-size:18px;letter-spacing:.2px}
+.brand .wm b{font-weight:800}
+nav.desk{display:flex;gap:26px;font-size:14px;color:var(--mut)}
+nav.desk a{cursor:pointer;text-decoration:none;transition:.15s}
+nav.desk a:hover{color:var(--pink)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--tx);border-radius:2px;transition:.25s}
+.burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.drawer{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line)}
+.drawer.open{display:flex}
+.drawer a{padding:15px 22px;border-top:1px solid var(--line);color:var(--tx);text-decoration:none;font-weight:600;font-size:15px}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:92px 0 96px;text-align:center}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0}
+.b1{width:460px;height:460px;background:radial-gradient(circle,#5A2FB0,transparent 70%);top:-120px;left:-80px;animation:float1 14s ease-in-out infinite}
+.b2{width:420px;height:420px;background:radial-gradient(circle,#EC2E8E,transparent 70%);bottom:-140px;right:-60px;animation:float2 16s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-30px)}}
+.hero .in{position:relative;z-index:1}
+.hero .bigmk{width:96px;height:60px;margin:0 auto 8px;display:block;filter:drop-shadow(0 10px 30px rgba(236,46,142,.35))}
+.hero .k{font-size:12.5px;letter-spacing:4px;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:60px;line-height:1.02;margin:10px 0 16px;font-weight:900;letter-spacing:-1px}
+.hero p{font-size:18px;color:#cfc3e0;max-width:56ch;line-height:1.6;margin:0 auto 30px}
+.cta{display:inline-block;background:var(--grad);color:#fff;font-weight:700;padding:15px 32px;border-radius:12px;text-decoration:none;font-size:15.5px;cursor:pointer;box-shadow:0 10px 30px rgba(236,46,142,.28);transition:.18s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(236,46,142,.4)}
+/* sections */
+section.blk{padding:60px 0}
+.eyebrow{font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
+h2.sec{font-size:32px;margin:8px 0 8px;font-weight:800;letter-spacing:-.5px}
+.sub{color:var(--mut);font-size:15.5px;max-width:62ch;line-height:1.6;margin:0 0 30px}
+.reveal{opacity:0;transform:translateY(22px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.prog{display:flex;align-items:center;gap:12px;margin:0 0 24px;font-size:13px;color:var(--mut)}
+.bar{flex:1;height:8px;background:#241834;border-radius:8px;overflow:hidden;max-width:300px}
+.bar>i{display:block;height:100%;background:var(--grad);width:0;transition:.5s}
+.certcta{background:var(--grad);border-radius:18px;padding:24px 28px;margin:0 0 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 14px 40px rgba(236,46,142,.25)}
+.certcta b{font-size:18px}.certcta small{color:#f3dcec;font-size:13px}
+.certcta button{background:#fff;color:#3a1a52;border:none;font-weight:700;padding:12px 24px;border-radius:10px;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;cursor:pointer;transition:.18s;position:relative}
-.mcard:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(18,40,63,.10);border-color:#cfe0f0}
-.mcard .num{width:42px;height:42px;border-radius:12px;background:var(--ice);color:var(--blue);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px}
-.mcard h3{font-size:17.5px;color:var(--navy);margin:16px 0 8px;line-height:1.25;font-weight:700}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.mcard:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:.2s;z-index:0}
+.mcard:hover{transform:translateY(-5px);border-color:transparent;box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.mcard:hover:before{opacity:.10}
+.mcard>*{position:relative;z-index:1}
+.mcard .num{width:46px;height:46px;border-radius:13px;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 8px 20px rgba(236,46,142,.3)}
+.mcard h3{font-size:18px;margin:16px 0 8px;line-height:1.25;font-weight:700}
 .mcard p{font-size:13.5px;color:var(--mut);line-height:1.55;margin:0 0 12px}
-.mcard .go{font-size:13px;font-weight:700;color:var(--blue)}
+.mcard .go{font-size:13px;font-weight:700}
 .mcard .best{font-size:12px;color:var(--ok);font-weight:700;margin-bottom:10px}
-.mcard .done{position:absolute;top:20px;right:20px;color:var(--ok);font-size:18px;display:none}
+.mcard .done{position:absolute;top:22px;right:22px;color:var(--ok);font-size:18px;display:none;z-index:2}
 .mcard.v .done{display:block}
-.mcard.cap{border-style:dashed;border-color:#cfe0f0;background:#fbfdff}
-.mcard.cap .num{background:#fff5e6;color:var(--gold)}
-.mhero{background:linear-gradient(135deg,#12283F,#1F5C99);color:#fff;padding:44px 0 40px}
-.back{color:#cfe0f3;font-size:13px;text-decoration:none;cursor:pointer;display:inline-block;margin-bottom:14px}
-.mhero .k{color:#9ec3ea;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
-.mhero h1{font-size:34px;margin:8px 0 8px;font-weight:800}
-.mhero p{color:#d6e4f3;font-size:16px;max-width:62ch;line-height:1.55;margin:0}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:22px 0}
-.panel h3.t{margin:0 0 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--blue);font-weight:700}
+.mcard.cap{border-style:dashed}
+.mcard.cap .num{background:linear-gradient(135deg,#8E2E9E,#EC2E8E)}
+/* module view */
+.mhero{position:relative;overflow:hidden;padding:52px 0 46px;border-bottom:1px solid var(--line)}
+.mhero .blob{opacity:.4}
+.back{color:var(--pink);font-size:13px;text-decoration:none;cursor:pointer;display:inline-block;margin-bottom:14px;font-weight:600}
+.mhero .k{color:var(--mut);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
+.mhero h1{font-size:36px;margin:8px 0;font-weight:800;position:relative;z-index:1}
+.mhero p{color:#cfc3e0;font-size:16px;max-width:62ch;line-height:1.55;margin:0;position:relative;z-index:1}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin:22px 0}
+.panel h3.t{margin:0 0 16px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--pink);font-weight:700}
 .res{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.rc{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;background:#fbfdff}
-.rc .ico{font-size:26px}
-.rc h4{margin:8px 0 10px;color:var(--navy);font-size:15px}
+.rc{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;background:var(--card2)}
+.rc .ico{font-size:26px}.rc h4{margin:8px 0 10px;font-size:15px}
 .rc audio,.rc video{width:100%;margin-top:4px}
 .rc .fallback{display:none;font-size:12.5px;color:var(--mut);font-style:italic}
-.rc .dl{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:9px 18px;border-radius:9px;text-decoration:none}
-.content h2{color:var(--navy);font-size:20px;margin:24px 0 8px}
-.content p{line-height:1.75;font-size:15.5px;color:#28323f;margin:0 0 14px}
-.content strong{color:var(--navy)}
-.quote{border-left:4px solid var(--blue);background:var(--ice);padding:14px 20px;border-radius:0 10px 10px 0;font-style:italic;color:var(--navy);margin:18px 0;font-size:16px}
-.q{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-.q:last-child{border-bottom:none}
+.rc .dl{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--grad);padding:10px 20px;border-radius:9px;text-decoration:none}
+.content h2{font-size:20px;margin:24px 0 8px}
+.content p{line-height:1.75;font-size:15.5px;color:#d8cee8;margin:0 0 14px}
+.content strong{color:#fff}
+.quote{border-left:3px solid var(--pink);background:var(--card2);padding:14px 20px;border-radius:0 12px 12px 0;font-style:italic;color:#efe3f7;margin:18px 0;font-size:16px}
+.q{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:none}
 .qt{font-weight:600;margin-bottom:10px}
-.opt{display:block;padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:9px;cursor:pointer;font-size:14.5px;transition:.12s}
-.opt:hover{border-color:#bcd0e6}
-.opt.sel{border-color:var(--blue);background:#eff5fc}
-.opt.correct{border-color:var(--ok);background:#e9f6ef}
-.opt.wrong{border-color:var(--bad);background:#fbeeee}
-.exp{font-size:13.5px;color:var(--mut);margin-top:6px;display:none}
-.exp.show{display:block}
-.btn{background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}
-.btn:hover{background:#1a4f85}
-.btn.ghost{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
-.score{display:none;margin-top:16px;padding:16px 20px;border-radius:12px;background:var(--ice);font-size:16px}
-.score.show{display:block}.score b{color:var(--blue)}
+.opt{display:block;padding:12px 15px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:9px;cursor:pointer;font-size:14.5px;transition:.12s;background:var(--card2)}
+.opt:hover{border-color:var(--purple)}
+.opt.sel{border-color:var(--pink);background:rgba(236,46,142,.10)}
+.opt.correct{border-color:var(--ok);background:rgba(57,217,138,.12)}
+.opt.wrong{border-color:#e0466b;background:rgba(224,70,107,.12)}
+.exp{font-size:13.5px;color:var(--mut);margin-top:6px;display:none}.exp.show{display:block}
+.btn{background:var(--grad);color:#fff;border:none;padding:12px 26px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--pink);border:1.5px solid var(--pink)}
+.score{display:none;margin-top:16px;padding:16px 20px;border-radius:12px;background:var(--card2);font-size:16px}
+.score.show{display:block}.score b{color:var(--pink)}
 .pager{display:flex;justify-content:space-between;margin:26px 0 60px;gap:12px}
-.pager a{cursor:pointer;font-weight:600;color:var(--blue);font-size:14px;text-decoration:none;padding:12px 18px;border:1.5px solid var(--line);border-radius:10px}
-.pager a:hover{border-color:var(--blue)}
-.pager a.disabled{opacity:.35;pointer-events:none}
-.mapwrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.pager a{cursor:pointer;font-weight:600;color:var(--tx);font-size:14px;text-decoration:none;padding:12px 18px;border:1.5px solid var(--line);border-radius:11px}
+.pager a:hover{border-color:var(--pink)}.pager a.disabled{opacity:.35;pointer-events:none}
+.mapwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
 .mapwrap svg{width:100%;height:auto}
-.mapnode{cursor:pointer;transition:transform .15s ease;transform-box:fill-box;transform-origin:center}
-.mapnode:hover{transform:translateY(-4px)}
-.mapnode:hover rect{stroke:#1F5C99;stroke-width:2.5}
-.mapnode:focus{outline:none}
-.mapnode:focus rect{stroke:#1F5C99;stroke-width:3}
+.mapnode{cursor:pointer;transition:transform .15s;transform-box:fill-box;transform-origin:center}
+.mapnode:hover{transform:translateY(-4px)}.mapnode:hover rect{stroke:var(--pink);stroke-width:2.5}
+.mapnode:focus{outline:none}.mapnode:focus rect{stroke:var(--pink);stroke-width:3}
 .maphint{font-size:12.5px;color:var(--mut);margin:10px 0 0;text-align:center}
-footer{background:var(--navy);color:#9fb3c9;padding:26px 0;font-size:13px;text-align:center}
-footer b{color:#fff}
-footer a{color:#cfe0f3;text-decoration:none;margin:0 8px}
-/* Certificate */
-#cert .certcard{background:#fff;border:2px solid var(--blue);border-radius:16px;max-width:820px;margin:0 auto;padding:48px 54px;text-align:center;position:relative}
-#cert .cinner{border:1px solid var(--ice);border-radius:10px;padding:36px 30px}
-#cert .clabel{letter-spacing:4px;text-transform:uppercase;color:var(--blue);font-weight:700;font-size:14px}
-#cert h2{font-size:30px;color:var(--navy);margin:14px 0 6px}
-#cert .cname{font-size:34px;font-weight:800;color:var(--navy);border-bottom:2px solid var(--ice);display:inline-block;padding:6px 30px;margin:14px 0}
-#cert p{color:#28323f;font-size:15.5px;line-height:1.6;max-width:60ch;margin:8px auto}
-#cert .cmods{color:var(--mut);font-size:13px;margin-top:14px}
-#cert .csign{margin-top:26px;color:var(--mut);font-size:13px}
-.nameinput{padding:11px 14px;border:1.5px solid var(--line);border-radius:9px;font-size:15px;width:320px;max-width:100%}
-@media print{header.top,footer,.noprint{display:none!important}body{background:#fff}#cert .certcard{border-color:var(--blue)}}
-@media(max-width:820px){.grid{grid-template-columns:1fr}.res{grid-template-columns:1fr}.hero h1{font-size:38px}.top nav{display:none}}
+footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;text-align:center;color:var(--mut)}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
+footer .fb .mk{width:30px;height:19px}
+footer a{color:var(--pink);text-decoration:none;margin:0 8px}
+/* cert */
+#cert .certcard{background:#fff;color:#221030;border-radius:16px;max-width:820px;margin:0 auto;padding:8px}
+#cert .cinner{border:2px solid #EC2E8E;border-radius:12px;padding:40px 34px;text-align:center}
+#cert .cmk{width:70px;height:44px;margin:0 auto 8px;display:block}
+#cert .clabel{letter-spacing:4px;text-transform:uppercase;font-weight:700;font-size:13px}
+#cert h2{font-size:30px;margin:10px 0 4px;color:#2a1240}
+#cert .cname{font-size:34px;font-weight:800;color:#2a1240;border-bottom:2px solid #f3d6e8;display:inline-block;padding:6px 30px;margin:14px 0}
+#cert p{font-size:15px;line-height:1.6;max-width:60ch;margin:8px auto;color:#4a3560}
+#cert .cmods{color:#7a6690;font-size:12.5px;margin-top:14px}
+.nameinput{padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;width:340px;max-width:100%;background:var(--card2);color:var(--tx)}
+@media print{header.top,footer,.noprint{display:none!important}body{background:#fff}}
+@media(max-width:860px){.grid,.res{grid-template-columns:1fr}nav.desk{display:none}.burger{display:flex}.hero h1{font-size:40px}.hero{padding:64px 0 68px}h2.sec{font-size:26px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand" onclick="home()"><svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#12283F"/><path d="M7 22 h6 l2.5 -8 l4 15 l3 -9 h10" fill="none" stroke="#7fb0e6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> HUMANA <span>Academy</span></div>
-<nav><a onclick="home()">Inicio</a><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav></div></header>
+<header class="top"><div class="wrap">
+<div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><span class="wm">Humana <b class="grad">Academy</b></span></div>
+<nav class="desk"><a onclick="home()">Inicio</a><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
+<button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
+</div>
+<div class="drawer" id="drawer">
+<a onclick="closeMenu();home()">Inicio</a><a onclick="closeMenu();scrollMods()">Módulos</a><a onclick="closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a>
+</div>
+</header>
 <main id="app"></main>
-<footer><div class="wrap">Humana Health &amp; Care · <b>Humana Academy</b> — Formación en Medicina de Continuidad<br>
-<a href="Humana_Documento_Madre.pdf" download>Documento base (PDF)</a> · <a onclick="openCert()" style="cursor:pointer">Certificado</a> · <a href="estratificador.html">Estratificador comercial</a></div></footer>
+<footer><div class="wrap"><div class="fb"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><b style="color:var(--tx)">Humana Academy</b></div>
+Humana Health &amp; Care · Argentina<br>
+<a href="Humana_Documento_Madre.pdf" download>Documento base</a> · <a onclick="openCert()" style="cursor:pointer">Certificado</a> · <a href="estratificador.html">Estratificador comercial</a></div></footer>
 <script>
-const LOGO=`<svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#12283F"/><path d="M7 22 h6 l2.5 -8 l4 15 l3 -9 h10" fill="none" stroke="#7fb0e6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const PPTX={1:"Modulo1_Por_qu_la_Medicina_de_Continuidad.pptx",2:"Modulo2_La_persona_y_la_situaci_n_basal.pptx",3:"Modulo3_Observar_los_microcambios.pptx",4:"Modulo4_La_pir_mide_del_conocimiento.pptx",5:"Modulo5_La_historia_cl_nica_es_de_todos.pptx",6:"Modulo6_La_Unidad_de_Continuidad_Domiciliaria.pptx"};
 const AUDIO=n=>"mod"+n+"_audio.mp3", VIDEO=n=>"mod"+n+"_video.mp4";
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let scores=STORE.get('ha_s',{}), uname=STORE.get('ha_name','');
-const done=n=>scores[n]!=null&&scores[n]>=60;
-const allDone=()=>[1,2,3,4,5,6].every(done);
+const done=n=>scores[n]!=null&&scores[n]>=60, allDone=()=>[1,2,3,4,5,6].every(done);
 const MODULES=[
 {n:1,t:"Por qué la Medicina de Continuidad",lead:"El punto de partida: el paciente cambió, y la forma de acompañarlo también.",
  body:`<h2>Antes de empezar</h2><p>Este módulo tiene un único propósito: entender por qué necesitamos otra forma de hacer medicina. No hablamos todavía de técnicas ni de protocolos, sino de una idea, la que da origen a todo lo demás en Humana: el paciente cambió, y la forma de acompañarlo también tiene que cambiar.</p>
@@ -201,134 +233,126 @@ const MODULES=[
 ];
 const CAP={t:"Caso integrador: Doña Elena",lead:"Un caso real para aplicar juntos los seis principios del programa.",body:`<p>Doña Elena, 82 años, vive con su hija. Convive con diabetes, insuficiencia cardíaca y artrosis. Desde hace meses está estable: camina hasta el patio, cocina, se acuesta tarde y conversa en los almuerzos del domingo.</p><p>Esta semana su hija nota tres cosas: come la mitad de lo habitual, duerme durante el día y en el último almuerzo habló muy poco. No hay fiebre, no hay dolor, no hay una queja concreta. La hija duda si llamar a la guardia o esperar.</p><p>Con lo aprendido en los seis módulos, resolvé el caso.</p>`,quiz:[{q:"¿Cuál es el primer paso antes de decidir nada?",o:["Enviarla a la guardia","Compararla con su situación basal: cómo es cuando está estable","Pedir estudios urgentes","Cambiar su medicación"],c:1,e:"Sin la basal no se puede interpretar el cambio: la referencia es cómo era Elena cuando estaba estable."},{q:"Comer la mitad, dormir de día y hablar poco son…",o:["Síntomas de una emergencia clara","Microcambios que, juntos, forman un patrón","Datos irrelevantes","Efectos normales de la edad"],c:1,e:"Por separado parecen nada; juntos cuentan una historia y merecen valoración."},{q:"¿Quién aportó la observación clave?",o:["El médico de guardia","La hija, que convive y conoce su normalidad","El laboratorio","La farmacia"],c:1,e:"Conocimiento distribuido: la familia detecta el cambio porque conoce a la persona."},{q:"Ante la duda de la hija, la pregunta correcta es…",o:["«¿Está bien?»","«¿Está igual que cuando estaba estable?»","«¿Tiene fiebre?»","«¿Le duele algo?»"],c:1,e:"Comparamos a Elena consigo misma, no con un ideal."},{q:"La conducta más alineada con la Medicina de Continuidad es…",o:["Esperar a que aparezca un síntoma grave","Mandarla directo a urgencias","Valorarla precozmente para actuar antes de la descompensación","No hacer nada, es la edad"],c:2,e:"La continuidad transforma la incertidumbre en una decisión precoz, evitando la urgencia evitable."}]};
 const app=document.getElementById('app');
-function track(p){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:p,event:false})}catch(e){}}
+function toggleMenu(){document.getElementById('drawer').classList.toggle('open');document.getElementById('burger').classList.toggle('x');}
+function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('burger').classList.remove('x');}
+function observeReveal(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
 function home(){
  const compl=[1,2,3,4,5,6].filter(done).length, pct=Math.round(compl/6*100);
- let cards=MODULES.map(m=>`<div class="mcard ${done(m.n)?'v':''}" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go">Abrir módulo →</span></div>`).join('');
- cards+=`<div class="mcard cap" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${CAP.t}</h3><p>${CAP.lead}</p><span class="go">Abrir caso →</span></div>`;
- const certban=allDone()?`<div class="certcta"><div><b>¡Completaste los 6 módulos!</b><br><small>Descargá tu certificado de finalización.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
+ let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
+ cards+=`<div class="mcard cap reveal" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${CAP.t}</h3><p>${CAP.lead}</p><span class="go grad">Abrir caso →</span></div>`;
+ const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los 6 módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
  app.innerHTML=`
- <section class="hero"><div class="wrap"><div class="k">Humana Health &amp; Care</div><h1>Humana Academy</h1>
- <p>Un programa de formación en Medicina de Continuidad: una forma distinta de observar, comprender y acompañar al paciente a lo largo de toda su trayectoria.</p>
- <a class="cta" onclick="scrollMods()">Comenzar la formación</a></div></section>
- <section class="blk" id="mods"><div class="wrap"><div class="eyebrow">El programa</div><h2 class="sec">Seis módulos, una idea por módulo</h2>
- <p class="sub">Cada módulo combina una lectura breve, un audio tipo podcast, un video y una autoevaluación. Un módulo se marca como completado al aprobar su autoevaluación.</p>
- ${certban}
- <div class="prog"><span>${compl}/6 módulos completados</span><div class="bar"><i style="width:${pct}%"></i></div></div>
- <div class="grid">${cards}</div></div></section>
- <section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow">Vista general</div><h2 class="sec">El mapa del programa</h2>
- <p class="sub">Toda la Medicina de Continuidad en un vistazo: seis módulos alrededor de una misma idea.</p>
- <div class="mapwrap"><svg style="width:100%;height:auto;display:block" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img" aria-label="Mapa del programa">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5C99"/><stop offset="1" stop-color="#17324D"/></linearGradient><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#12283F" flood-opacity="0.14"/></filter></defs>
-<path d="M 500 318 Q 335.0 247.0 170 120" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<path d="M 500 318 Q 665.0 247.0 830 120" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<path d="M 500 318 Q 325.0 347.0 150 320" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<path d="M 500 318 Q 675.0 347.0 850 320" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<path d="M 500 318 Q 355.0 445.0 210 516" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<path d="M 500 318 Q 645.0 445.0 790 516" fill="none" stroke="#c7d7e8" stroke-width="2.5"/>
-<g class="mapnode" onclick="openM(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(1)}" role="link" tabindex="0" aria-label="Módulo 1: Por qué la Medicina de Continuidad">
-<rect x="45.0" y="77.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="71.0" cy="103.0" r="15" fill="#EAF1F9"/>
-<text x="71.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">1</text>
-<text x="97.0" y="103.0" font-size="15.5" font-weight="700" fill="#17324D">Por qué la Medicina</text>
-<text x="97.0" y="122.0" font-size="15.5" font-weight="700" fill="#17324D">de Continuidad</text>
-<text x="97.0" y="143.0" font-size="12" font-style="italic" fill="#63707f">El paciente cambió</text></g>
-<g class="mapnode" onclick="openM(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(2)}" role="link" tabindex="0" aria-label="Módulo 2: La persona y la situación basal">
-<rect x="705.0" y="77.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="731.0" cy="103.0" r="15" fill="#EAF1F9"/>
-<text x="731.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">2</text>
-<text x="757.0" y="103.0" font-size="15.5" font-weight="700" fill="#17324D">La persona y la</text>
-<text x="757.0" y="122.0" font-size="15.5" font-weight="700" fill="#17324D">situación basal</text>
-<text x="757.0" y="143.0" font-size="12" font-style="italic" fill="#63707f">El cero clínico</text></g>
-<g class="mapnode" onclick="openM(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(3)}" role="link" tabindex="0" aria-label="Módulo 3: Observar: los microcambios">
-<rect x="25.0" y="277.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="51.0" cy="303.0" r="15" fill="#EAF1F9"/>
-<text x="51.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">3</text>
-<text x="77.0" y="303.0" font-size="15.5" font-weight="700" fill="#17324D">Observar: los</text>
-<text x="77.0" y="322.0" font-size="15.5" font-weight="700" fill="#17324D">microcambios</text>
-<text x="77.0" y="343.0" font-size="12" font-style="italic" fill="#63707f">Ver antes de la crisis</text></g>
-<g class="mapnode" onclick="openM(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(4)}" role="link" tabindex="0" aria-label="Módulo 4: La pirámide del conocimiento">
-<rect x="725.0" y="277.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="751.0" cy="303.0" r="15" fill="#EAF1F9"/>
-<text x="751.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">4</text>
-<text x="777.0" y="303.0" font-size="15.5" font-weight="700" fill="#17324D">La pirámide del</text>
-<text x="777.0" y="322.0" font-size="15.5" font-weight="700" fill="#17324D">conocimiento</text>
-<text x="777.0" y="343.0" font-size="12" font-style="italic" fill="#63707f">Razonar por capas</text></g>
-<g class="mapnode" onclick="openM(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(5)}" role="link" tabindex="0" aria-label="Módulo 5: La historia clínica es de todos">
-<rect x="85.0" y="473.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="111.0" cy="499.0" r="15" fill="#EAF1F9"/>
-<text x="111.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">5</text>
-<text x="137.0" y="499.0" font-size="15.5" font-weight="700" fill="#17324D">La historia clínica</text>
-<text x="137.0" y="518.0" font-size="15.5" font-weight="700" fill="#17324D">es de todos</text>
-<text x="137.0" y="539.0" font-size="12" font-style="italic" fill="#63707f">Conocimiento distribuido</text></g>
-<g class="mapnode" onclick="openM(6)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(6)}" role="link" tabindex="0" aria-label="Módulo 6: La Unidad de Continuidad">
-<rect x="665.0" y="473.0" width="250" height="86" rx="16" fill="#ffffff" stroke="#c7d7e8" stroke-width="1.5" filter="url(#sh)"/>
-<circle cx="691.0" cy="499.0" r="15" fill="#EAF1F9"/>
-<text x="691.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#1F5C99">6</text>
-<text x="717.0" y="499.0" font-size="15.5" font-weight="700" fill="#17324D">La Unidad de</text>
-<text x="717.0" y="518.0" font-size="15.5" font-weight="700" fill="#17324D">Continuidad</text>
-<text x="717.0" y="539.0" font-size="12" font-style="italic" fill="#63707f">Gestiona la incertidumbre</text></g>
-<rect x="365" y="266" width="270" height="104" rx="20" fill="url(#g)" filter="url(#sh)"/>
-<text x="500" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#9ec3ea" letter-spacing="2">HUMANA ACADEMY</text>
-<text x="500" y="330" text-anchor="middle" font-size="23" font-weight="800" fill="#ffffff">Medicina de</text>
-<text x="500" y="358" text-anchor="middle" font-size="23" font-weight="800" fill="#ffffff">Continuidad</text></svg><p class="maphint">Tocá un módulo para entrar.</p></div></div></section>`;
- window.scrollTo(0,0); track('/');
+ <section class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap in">
+  <span class="bigmk">${MARK}</span>
+  <div class="k">Humana Health &amp; Care · Argentina</div>
+  <h1>Humana <span class="grad">Academy</span></h1>
+  <p>Un programa de formación en Medicina de Continuidad: una forma distinta de observar, comprender y acompañar al paciente a lo largo de toda su trayectoria.</p>
+  <a class="cta" onclick="scrollMods()">Comenzar la formación</a>
+ </div></section>
+ <section class="blk" id="mods"><div class="wrap">
+  <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">Seis módulos, una idea por módulo</h2>
+  <p class="sub reveal">Cada módulo combina una lectura breve, un audio, un video y una autoevaluación. Un módulo se completa al aprobar su autoevaluación.</p>
+  ${cert}
+  <div class="prog reveal"><span>${compl}/6 completados</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="grid">${cards}</div></div></section>
+ <section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow grad reveal">Vista general</div><h2 class="sec reveal">El mapa del programa</h2>
+  <p class="sub reveal">Toda la Medicina de Continuidad en un vistazo.</p>
+  <div class="mapwrap reveal"><svg style="width:100%;height:auto;display:block" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img" aria-label="Mapa del programa">
+<defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.5" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs>
+<path d="M 500 318 Q 335.0 247.0 170 120" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<path d="M 500 318 Q 665.0 247.0 830 120" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<path d="M 500 318 Q 325.0 347.0 150 320" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<path d="M 500 318 Q 675.0 347.0 850 320" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<path d="M 500 318 Q 355.0 445.0 210 516" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<path d="M 500 318 Q 645.0 445.0 790 516" fill="none" stroke="#3A2A52" stroke-width="2.5"/>
+<g class="mapnode" onclick="openM(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(1)}" role="link" tabindex="0" aria-label="Módulo 1">
+<rect x="45.0" y="77.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="71.0" cy="103.0" r="15" fill="url(#mg)"/>
+<text x="71.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+<text x="97.0" y="103.0" font-size="15.5" font-weight="700" fill="#EDE6F5">Por qué la Medicina</text>
+<text x="97.0" y="122.0" font-size="15.5" font-weight="700" fill="#EDE6F5">de Continuidad</text>
+<text x="97.0" y="143.0" font-size="12" font-style="italic" fill="#9E90B5">El paciente cambió</text></g>
+<g class="mapnode" onclick="openM(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(2)}" role="link" tabindex="0" aria-label="Módulo 2">
+<rect x="705.0" y="77.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="731.0" cy="103.0" r="15" fill="url(#mg)"/>
+<text x="731.0" y="108.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+<text x="757.0" y="103.0" font-size="15.5" font-weight="700" fill="#EDE6F5">La persona y la</text>
+<text x="757.0" y="122.0" font-size="15.5" font-weight="700" fill="#EDE6F5">situación basal</text>
+<text x="757.0" y="143.0" font-size="12" font-style="italic" fill="#9E90B5">El cero clínico</text></g>
+<g class="mapnode" onclick="openM(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(3)}" role="link" tabindex="0" aria-label="Módulo 3">
+<rect x="25.0" y="277.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="51.0" cy="303.0" r="15" fill="url(#mg)"/>
+<text x="51.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+<text x="77.0" y="303.0" font-size="15.5" font-weight="700" fill="#EDE6F5">Observar: los</text>
+<text x="77.0" y="322.0" font-size="15.5" font-weight="700" fill="#EDE6F5">microcambios</text>
+<text x="77.0" y="343.0" font-size="12" font-style="italic" fill="#9E90B5">Ver antes de la crisis</text></g>
+<g class="mapnode" onclick="openM(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(4)}" role="link" tabindex="0" aria-label="Módulo 4">
+<rect x="725.0" y="277.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="751.0" cy="303.0" r="15" fill="url(#mg)"/>
+<text x="751.0" y="308.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+<text x="777.0" y="303.0" font-size="15.5" font-weight="700" fill="#EDE6F5">La pirámide del</text>
+<text x="777.0" y="322.0" font-size="15.5" font-weight="700" fill="#EDE6F5">conocimiento</text>
+<text x="777.0" y="343.0" font-size="12" font-style="italic" fill="#9E90B5">Razonar por capas</text></g>
+<g class="mapnode" onclick="openM(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(5)}" role="link" tabindex="0" aria-label="Módulo 5">
+<rect x="85.0" y="473.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="111.0" cy="499.0" r="15" fill="url(#mg)"/>
+<text x="111.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text>
+<text x="137.0" y="499.0" font-size="15.5" font-weight="700" fill="#EDE6F5">La historia clínica</text>
+<text x="137.0" y="518.0" font-size="15.5" font-weight="700" fill="#EDE6F5">es de todos</text>
+<text x="137.0" y="539.0" font-size="12" font-style="italic" fill="#9E90B5">Conocimiento distribuido</text></g>
+<g class="mapnode" onclick="openM(6)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(6)}" role="link" tabindex="0" aria-label="Módulo 6">
+<rect x="665.0" y="473.0" width="250" height="86" rx="16" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/>
+<circle cx="691.0" cy="499.0" r="15" fill="url(#mg)"/>
+<text x="691.0" y="504.0" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text>
+<text x="717.0" y="499.0" font-size="15.5" font-weight="700" fill="#EDE6F5">La Unidad de</text>
+<text x="717.0" y="518.0" font-size="15.5" font-weight="700" fill="#EDE6F5">Continuidad</text>
+<text x="717.0" y="539.0" font-size="12" font-style="italic" fill="#9E90B5">Gestiona la incertidumbre</text></g>
+<rect x="365" y="266" width="270" height="104" rx="20" fill="url(#mg)"/>
+<text x="500" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#f3dcec" letter-spacing="2">HUMANA ACADEMY</text>
+<text x="500" y="330" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Medicina de</text>
+<text x="500" y="358" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Continuidad</text></svg><p class="maphint">Tocá un módulo para entrar.</p></div></div></section>`;
+ window.scrollTo(0,0);observeReveal();
 }
 function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else home();}
 function renderModule(m,isCap){
  const prev=isCap?null:MODULES.find(x=>x.n===m.n-1), next=isCap?null:MODULES.find(x=>x.n===m.n+1);
  const res=isCap?'':`<div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">
-   <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
-   <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
-   <div class="rc"><div class="ico">📊</div><h4>Presentación</h4><div style="margin:10px 0 4px"><a class="dl" href="${PPTX[m.n]}" download>Descargar</a></div></div></div></div>`;
- const pager=isCap?`<div class="pager"><a onclick="home()">← Volver al inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager">
-   <a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a>
-   <a onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Volver al inicio'} →</a></div>`;
- app.innerHTML=`<section class="mhero"><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
-   <div class="k">${isCap?'Caso integrador':'Módulo '+m.n}</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
-   <div class="wrap">${res}
-   <div class="panel content"><h3 class="t">${isCap?'El caso':'Contenido'}</h3>${m.body}</div>
-   <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
-   <div style="margin-top:8px"><button class="btn" onclick="grade('${isCap?'cap':m.n}')">Corregir</button> <button class="btn ghost" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reiniciar</button></div>
-   <div class="score" id="score"></div></div>${pager}</div>`;
- renderQuiz(m); window.scrollTo(0,0);
+  <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
+  <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
+  <div class="rc"><div class="ico">📊</div><h4>Presentación</h4><div style="margin:10px 0 4px"><a class="dl" href="${PPTX[m.n]}" download>Descargar</a></div></div></div></div>`;
+ const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Volver'} →</a></div>`;
+ app.innerHTML=`<section class="mhero"><div class="blob b2"></div><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
+  <div class="k">${isCap?'Caso integrador':'Módulo '+m.n}</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
+  <div class="wrap">${res}
+  <div class="panel content"><h3 class="t">${isCap?'El caso':'Contenido'}</h3>${m.body}</div>
+  <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
+  <div style="margin-top:8px"><button class="btn" onclick="grade('${isCap?'cap':m.n}')">Corregir</button> <button class="btn ghost" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reiniciar</button></div>
+  <div class="score" id="score"></div></div>${pager}</div>`;
+ renderQuiz(m);window.scrollTo(0,0);
 }
-function openM(n){const m=MODULES.find(x=>x.n===n);renderModule(m,false);track('/modulo-'+n);}
-function openCap(){renderModule(CAP,true);track('/caso-integrador');}
+function openM(n){renderModule(MODULES.find(x=>x.n===n),false);}
+function openCap(){renderModule(CAP,true);}
 function mfail(el){el.style.display='none';const fb=el.parentElement.querySelector('.fallback');if(fb)fb.style.display='block';}
 let answers={},curQuiz=null;
 function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
 function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
-function grade(id){const m=curQuiz;let ok=0;
- m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
- const pct=Math.round(ok/m.quiz.length*100);
- if(id!=='cap'){const n=+id;if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}}
+function grade(id){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
+ const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}}
  const s=document.getElementById('score');s.classList.add('show');
- const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá lo marcado y volvé a intentar.';
- s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;
-}
-function openCert(){
- const list=MODULES.map(m=>m.t).join(' · ');
+ const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;}
+function openCert(){closeMenu();const list=MODULES.map(m=>m.t).join(' · ');
  app.innerHTML=`<section class="blk"><div class="wrap">
- <div class="noprint" style="text-align:center;margin-bottom:20px">
-   <p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Nota:</b> podés generarlo cuando completes los 6 módulos.'}</p>
-   <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${uname.replace(/"/g,'')}" oninput="setName(this.value)">
-   <div style="margin-top:16px"><button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div>
- </div>
- <div id="cert"><div class="certcard"><div class="cinner">
-   <div style="display:flex;justify-content:center;margin-bottom:10px">${LOGO}</div>
-   <div class="clabel">Certificado de finalización</div>
-   <h2>Humana Academy</h2>
-   <p style="margin-top:0">Formación en Medicina de Continuidad</p>
-   <p>Se otorga el presente certificado a</p>
-   <div class="cname" id="certname">${uname||'Nombre y Apellido'}</div>
-   <p>por haber completado el programa de formación, recorriendo sus seis módulos y aprobando las autoevaluaciones correspondientes.</p>
-   <div class="cmods">${list}</div>
-   <div class="csign">Humana Health &amp; Care · Buenos Aires · <span id="certdate"></span></div>
+ <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Nota:</b> se habilita al completar los 6 módulos.'}</p>
+  <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${uname.replace(/"/g,'')}" oninput="setName(this.value)">
+  <div style="margin-top:16px"><button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div></div>
+ <div id="cert"><div class="certcard"><div class="cinner"><span class="cmk">${MARK}</span>
+  <div class="clabel grad">Certificado de finalización</div><h2>Humana Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
+  <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${uname||'Nombre y Apellido'}</div>
+  <p>por haber completado el programa, recorriendo sus seis módulos y aprobando las autoevaluaciones.</p>
+  <div class="cmods">${list}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
  </div></div></div></div></section>`;
- document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});
- window.scrollTo(0,0);
-}
+ document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});window.scrollTo(0,0);}
 function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';}
 home();
 </script>
