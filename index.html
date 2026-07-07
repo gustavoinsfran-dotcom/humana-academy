@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humana Academy · Formación en Medicina de Continuidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12283F;--blue:#1F5C99;--blue2:#2E6FB0;--ice:#EAF1F9;--bg:#F4F7FB;--card:#ffffff;--line:#e5ebf2;--tx:#1d2733;--mut:#63707f;--ok:#1c7a4d;--bad:#b23b3b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+/* Topbar */
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-weight:800;letter-spacing:.3px;color:var(--navy);cursor:pointer;font-size:18px}
+.brand span{color:var(--blue)}
+.top nav{font-size:13px;color:var(--mut);display:flex;gap:20px}
+.top nav a{cursor:pointer;text-decoration:none}
+.top nav a:hover{color:var(--blue)}
+/* Hero */
+.hero{background:linear-gradient(135deg,#12283F 0%,#1F5C99 100%);color:#fff;padding:76px 0 84px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06)}
+.hero::before{content:"";position:absolute;right:120px;bottom:-160px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hero .k{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#9ec3ea;font-weight:600}
+.hero h1{font-size:52px;line-height:1.05;margin:12px 0 14px;font-weight:800;max-width:14ch}
+.hero p{font-size:18px;color:#d6e4f3;max-width:56ch;line-height:1.6;margin:0 0 28px}
+.cta{display:inline-block;background:#fff;color:var(--navy);font-weight:700;padding:13px 26px;border-radius:10px;text-decoration:none;font-size:15px;cursor:pointer;transition:.15s}
+.cta:hover{transform:translateY(-2px)}
+/* Sections */
+section.blk{padding:56px 0}
+.eyebrow{color:var(--blue);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+h2.sec{font-size:30px;color:var(--navy);margin:8px 0 6px;font-weight:800}
+.sub{color:var(--mut);font-size:15.5px;max-width:60ch;line-height:1.6;margin:0 0 30px}
+/* Progress */
+.prog{display:flex;align-items:center;gap:12px;margin:0 0 26px;font-size:13px;color:var(--mut)}
+.bar{flex:1;height:8px;background:var(--ice);border-radius:8px;overflow:hidden;max-width:280px}
+.bar>i{display:block;height:100%;background:var(--blue);width:0;transition:.4s}
+/* Module grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;cursor:pointer;transition:.18s;position:relative}
+.mcard:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(18,40,63,.10);border-color:#cfe0f0}
+.mcard .num{width:42px;height:42px;border-radius:12px;background:var(--ice);color:var(--blue);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px}
+.mcard h3{font-size:17.5px;color:var(--navy);margin:16px 0 8px;line-height:1.25;font-weight:700}
+.mcard p{font-size:13.5px;color:var(--mut);line-height:1.55;margin:0 0 16px}
+.mcard .go{font-size:13px;font-weight:700;color:var(--blue)}
+.mcard .done{position:absolute;top:20px;right:20px;color:var(--ok);font-size:18px;display:none}
+.mcard.v .done{display:block}
+/* Module view */
+.mhero{background:linear-gradient(135deg,#12283F,#1F5C99);color:#fff;padding:44px 0 40px}
+.back{color:#cfe0f3;font-size:13px;text-decoration:none;cursor:pointer;display:inline-block;margin-bottom:14px}
+.mhero .k{color:#9ec3ea;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.mhero h1{font-size:34px;margin:8px 0 8px;font-weight:800}
+.mhero p{color:#d6e4f3;font-size:16px;max-width:62ch;line-height:1.55;margin:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:22px 0}
+.panel h3.t{margin:0 0 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--blue);font-weight:700}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rc{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;background:#fbfdff}
+.rc .ico{font-size:26px}
+.rc h4{margin:8px 0 10px;color:var(--navy);font-size:15px}
+.rc audio,.rc video{width:100%;margin-top:4px}
+.rc .fallback{display:none;font-size:12.5px;color:var(--mut);font-style:italic}
+.rc .dl{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--blue);padding:9px 18px;border-radius:9px;text-decoration:none}
+.rc .dl:hover{background:#1a4f85}
+.content h2{color:var(--navy);font-size:20px;margin:24px 0 8px}
+.content p{line-height:1.75;font-size:15.5px;color:#28323f;margin:0 0 14px}
+.content strong{color:var(--navy)}
+.quote{border-left:4px solid var(--blue);background:var(--ice);padding:14px 20px;border-radius:0 10px 10px 0;font-style:italic;color:var(--navy);margin:18px 0;font-size:16px}
+/* Quiz */
+.q{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.qt{font-weight:600;margin-bottom:10px}
+.opt{display:block;padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:9px;cursor:pointer;font-size:14.5px;transition:.12s}
+.opt:hover{border-color:#bcd0e6}
+.opt.sel{border-color:var(--blue);background:#eff5fc}
+.opt.correct{border-color:var(--ok);background:#e9f6ef}
+.opt.wrong{border-color:var(--bad);background:#fbeeee}
+.exp{font-size:13.5px;color:var(--mut);margin-top:6px;display:none}
+.exp.show{display:block}
+.btn{background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}
+.btn:hover{background:#1a4f85}
+.btn.ghost{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.score{display:none;margin-top:16px;padding:16px 20px;border-radius:12px;background:var(--ice);font-size:16px}
+.score.show{display:block}.score b{color:var(--blue)}
+.pager{display:flex;justify-content:space-between;margin:26px 0 60px;gap:12px}
+.pager a{cursor:pointer;font-weight:600;color:var(--blue);font-size:14px;text-decoration:none;padding:12px 18px;border:1.5px solid var(--line);border-radius:10px}
+.pager a:hover{border-color:var(--blue)}
+.pager a.disabled{opacity:.35;pointer-events:none}
+footer{background:var(--navy);color:#9fb3c9;padding:30px 0;font-size:13px;text-align:center}
+footer b{color:#fff}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.res{grid-template-columns:1fr}.hero h1{font-size:38px}.top nav{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand" onclick="home()">HUMANA <span>Academy</span></div>
+<nav><a onclick="home()">Inicio</a><a onclick="scrollMods()">Módulos</a></nav></div></header>
+<main id="app"></main>
+<footer><div class="wrap">Humana Health &amp; Care · <b>Humana Academy</b> — Formación en Medicina de Continuidad</div></footer>
+
+<script>
+const PPTX={1:"Modulo1_Por_qu_la_Medicina_de_Continuidad.pptx",2:"Modulo2_La_persona_y_la_situaci_n_basal.pptx",3:"Modulo3_Observar_los_microcambios.pptx",4:"Modulo4_La_pir_mide_del_conocimiento.pptx",5:"Modulo5_La_historia_cl_nica_es_de_todos.pptx",6:"Modulo6_La_Unidad_de_Continuidad_Domiciliaria.pptx"};
+const AUDIO=n=>"mod"+n+"_audio.mp3", VIDEO=n=>"mod"+n+"_video.mp4";
+const visited=new Set();
+const MODULES=[
+{n:1,t:"Por qué la Medicina de Continuidad",lead:"El punto de partida: el paciente cambió, y la forma de acompañarlo también.",
+ body:`<h2>Antes de empezar</h2><p>Este módulo tiene un único propósito: entender por qué necesitamos otra forma de hacer medicina. No hablamos todavía de técnicas ni de protocolos, sino de una idea, la que da origen a todo lo demás en Humana: el paciente cambió, y la forma de acompañarlo también tiene que cambiar.</p>
+ <h2>La pregunta de arranque</h2><p>Nunca tuvimos mejores tratamientos ni más conocimiento. Y sin embargo los hospitales están saturados, las urgencias se llenan y muchos pacientes reingresan por descompensaciones que parecían inevitables. Si la medicina es tan buena, ¿por qué pasa esto? Quizás porque el problema ya no es la calidad de la medicina, sino que el paciente cambió.</p>
+ <h2>Del episodio a la trayectoria</h2><p>La medicina del siglo XX resolvía episodios agudos: el paciente enfermaba, iba al hospital y volvía a su vida. Hoy, el paciente que más recursos consume convive con varias enfermedades durante años. El sistema sigue organizado para episodios, pero nuestros pacientes viven trayectorias.</p>
+ <div class="quote">La medicina del episodio pregunta: «¿Qué le ocurre hoy?». La medicina de continuidad pregunta: «¿Qué cambió desde la última vez que estaba bien?».</div>
+ <h2>Un ejemplo</h2><p>Un paciente con insuficiencia cardíaca pasa la mayor parte de su vida en su casa. Si su cuidador dice «hoy dejó el café por la mitad», suena irrelevante; pero si además durmió peor, habla menos y camina menos, ya hay un patrón. Todavía no hay diagnóstico, pero sí un cambio objetivo. Los grandes eventos empiezan con microcambios.</p>`,
+ quiz:[
+  {q:"¿Cuál es la diferencia central entre la medicina del episodio y la de continuidad?",o:["Usa mejor tecnología","La del episodio pregunta qué ocurre hoy; la de continuidad, qué cambió desde que estaba bien","Solo atiende en el domicilio","Es más barata"],c:1,e:"La clave es la pregunta: del hecho puntual a la comparación con la situación basal."},
+  {q:"¿Por qué se saturan los hospitales pese a la buena medicina?",o:["Faltan tratamientos","Porque el paciente cambió: hoy vive trayectorias crónicas","Hay pocos hospitales","Los médicos no se forman"],c:1,e:"El problema no es la calidad de la medicina, sino que el perfil del paciente cambió."},
+  {q:"¿Qué es un microcambio?",o:["Un síntoma grave","Una pequeña desviación de la basal que precede a una descompensación","Un error de medicación","Un cambio de tratamiento"],c:1,e:"Aparece antes del diagnóstico: es un cambio objetivo aunque aún no tenga nombre."},
+  {q:"¿Qué convierte una observación aislada en algo relevante?",o:["Que la diga un médico","Que se registre","Que forme un patrón junto con otros cambios","Que salga en un análisis"],c:2,e:"Varios cambios unidos en el tiempo forman un patrón que merece valoración."},
+  {q:"¿Qué significa «acompañar trayectorias»?",o:["Atender más veces","Que cada contacto tenga memoria del anterior y prepare el siguiente","Derivar al especialista","Reducir costos"],c:1,e:"La continuidad es que el conocimiento del paciente no se pierda entre contactos."}]},
+{n:2,t:"La persona y la situación basal",lead:"El «cero clínico»: conocer al paciente estable para reconocer el deterioro.",
+ body:`<h2>Primero la persona</h2><p>Antes de buscar un diagnóstico, comprendemos a la persona. Toda enfermedad ocurre dentro de una biografía, una familia, un domicilio, unos valores y un proyecto de vida. Si olvidamos a la persona, el diagnóstico pierde contexto: la persona siempre precede a la enfermedad.</p>
+ <h2>Qué es la situación basal</h2><p>Es cómo es el paciente cuando está estable: cómo camina, duerme, piensa, se relaciona, se alimenta. Es el punto de referencia que permite reconocer cuándo algo cambió. Sin basal conocida no hay deterioro que detectar, ni prevención, ni estratificación. Es el verdadero cero clínico.</p>
+ <div class="quote">La pregunta nunca es «¿está bien?». La pregunta es «¿está igual que cuando estaba estable?».</div>
+ <h2>Comparar consigo mismo</h2><p>No comparamos al paciente con un ideal ni con un valor de manual: lo comparamos consigo mismo. Dos personas con los mismos números pueden estar en situaciones opuestas, porque cada una parte de una basal distinta.</p>`,
+ quiz:[
+  {q:"¿Qué es la situación basal?",o:["El diagnóstico principal","Cómo es el paciente cuando está estable; su punto de referencia","La última analítica","El motivo de consulta de hoy"],c:1,e:"La basal es la normalidad del paciente estable, referencia para detectar cambios."},
+  {q:"¿Cuál es la pregunta correcta?",o:["«¿Está bien?»","«¿Está igual que cuando estaba estable?»","«¿Qué enfermedad tiene?»","«¿Necesita ingresar?»"],c:1,e:"Comparamos al paciente consigo mismo, no con un ideal."},
+  {q:"¿Por qué es imprescindible conocer la basal?",o:["Para completar la historia","Porque sin ella no se puede reconocer el deterioro ni prevenir","Porque lo exige el protocolo","Para calcular la medicación"],c:1,e:"Sin basal no hay deterioro detectable ni prevención. Es el cero clínico."},
+  {q:"El primer principio dice que…",o:["La enfermedad precede a la persona","La persona siempre precede a la enfermedad","El diagnóstico es lo primero","La basal no importa"],c:1,e:"Comprendemos a la persona antes de buscar un diagnóstico."},
+  {q:"¿Con qué comparamos al paciente?",o:["Con un valor ideal","Consigo mismo","Con otros pacientes","Con la media de su edad"],c:1,e:"Cada paciente se compara con su propia basal."}]},
+{n:3,t:"Observar: los microcambios",lead:"Observar como acto clínico: método, disciplina y lenguaje para ver lo que otros no ven.",
+ body:`<h2>Observar es un acto clínico</h2><p>La observación no es pasiva ni menor: es una competencia profesional. Exige método, disciplina y lenguaje, y exige distinguir lo habitual de lo excepcional.</p>
+ <h2>Describir antes de interpretar</h2><p>Un gran error es interpretar demasiado rápido. La familia dice «hoy está raro» y buscamos un diagnóstico. Nosotros hacemos lo contrario: primero describimos, después interpretamos y solo al final diagnosticamos.</p>
+ <div class="quote">Primero describimos. Después interpretamos. Y solo al final diagnosticamos.</div>
+ <h2>Los microcambios</h2><p>Ningún paciente pasa de estable a una descompensación grave en un instante. Entre ambos hay una secuencia: come menos, habla menos, camina menos, descansa peor. Cada cambio parece pequeño; juntos cuentan una historia.</p>
+ <h2>Observar para decidir</h2><p>Observar por observar no sirve. La información solo tiene valor cuando cambia una decisión. Ante cada dato: «¿qué haremos distinto gracias a esto?». Si la respuesta es «nada», probablemente no era necesario.</p>`,
+ quiz:[
+  {q:"¿Cuál es el orden correcto del razonamiento clínico?",o:["Diagnosticar, describir, interpretar","Describir, interpretar, diagnosticar","Interpretar, diagnosticar, describir","Tratar, observar, describir"],c:1,e:"Primero describir, después interpretar y solo al final diagnosticar."},
+  {q:"¿Qué es observar según el modelo?",o:["Una tarea administrativa","Una actividad pasiva","Un acto clínico con método, disciplina y lenguaje","Algo solo de enfermería"],c:2,e:"La observación es una competencia profesional."},
+  {q:"¿Cómo empiezan los grandes eventos clínicos?",o:["De forma brusca","Con microcambios en secuencia","Siempre con dolor","Con un valor alterado"],c:1,e:"Hay una secuencia de pequeños cambios antes de la descompensación."},
+  {q:"¿Cuándo tiene valor la información?",o:["Siempre que sea mucha","Cuando cambia una decisión","Cuando la pide el médico","Cuando se registra"],c:1,e:"Si un dato no cambia una decisión, probablemente no era necesario."},
+  {q:"¿Cuál es un error frecuente al observar?",o:["Describir demasiado","Interpretar demasiado rápido","Preguntar a la familia","Comparar con la basal"],c:1,e:"Interpretar antes de describir bien hace perder información."}]},
+{n:4,t:"La pirámide del conocimiento",lead:"Cómo se construye el razonamiento clínico, capa sobre capa, de la persona al aprendizaje.",
+ body:`<h2>El conocimiento se construye por capas</h2><p>El conocimiento clínico no aparece de golpe: se construye capa sobre capa. Esta pirámide ordena toda nuestra forma de razonar.</p>
+ <h2>Las capas, de abajo hacia arriba</h2><p>En la base, <strong>la persona</strong>: quién es, cómo vive, qué le importa. Sobre ella, <strong>la situación basal</strong>. Encima, <strong>la observación</strong>: qué pasa hoy, sin interpretar. Cuando algo se aparta de la basal aparece <strong>el microcambio</strong>, y con él la sospecha. Recién ahí <strong>la interpretación</strong>, luego <strong>la decisión</strong> y, por encima de todo, <strong>el aprendizaje</strong>: qué nos enseñó este paciente para cuidar mejor al siguiente.</p>
+ <div class="quote">Cada dato debe responder: «¿qué vamos a hacer distinto gracias a esta información?».</div>
+ <h2>Por qué cambia la formación</h2><p>Formar deja de ser memorizar enfermedades y pasa a ser aprender cómo se construye el conocimiento. Y la continuidad deja de depender de que atienda siempre el mismo médico: depende de que el conocimiento del paciente no se pierda nunca.</p>`,
+ quiz:[
+  {q:"¿Qué está en la base de la pirámide?",o:["El diagnóstico","La persona","El tratamiento","La observación"],c:1,e:"Todo empieza por la persona."},
+  {q:"¿Dónde nace la sospecha clínica?",o:["En la interpretación","En el microcambio","En la decisión","En la basal"],c:1,e:"El microcambio es la desviación de la basal, y ahí nace la sospecha."},
+  {q:"¿Cuál es la cima de la pirámide?",o:["La decisión","El diagnóstico","El aprendizaje","La observación"],c:2,e:"Por encima de todo está el aprendizaje."},
+  {q:"¿Qué pregunta debe responder cada dato?",o:["¿Es normal o anormal?","¿Qué haremos distinto gracias a esta información?","¿Quién lo registró?","¿Cuánto cuesta?"],c:1,e:"El conocimiento vale cuando se traduce en una acción distinta."},
+  {q:"La continuidad depende de…",o:["Que atienda siempre el mismo médico","Que el conocimiento del paciente no se pierda","Que haya más visitas","Que se registren todos los datos"],c:1,e:"Lo que sostiene la continuidad es que el conocimiento permanezca."}]},
+{n:5,t:"La historia clínica es de todos",lead:"Conocimiento distribuido: unir todas las miradas en un solo relato del paciente.",
+ body:`<h2>Nadie ve la historia completa</h2><p>Ningún profesional está con el paciente las veinticuatro horas. Quien vive la enfermedad es el paciente; quien convive con ella, su familia; quien la observa cada día, el cuidador; quien la interpreta, el equipo. Cada uno ve una parte.</p>
+ <h2>Cada rol aporta un capítulo</h2><p>El médico aporta la interpretación; la enfermería, la evolución; el auxiliar, la observación cotidiana; la familia, el conocimiento de la persona; el cuidador, la convivencia; y el paciente, cómo vive su enfermedad. Nuestro trabajo es integrarlo en un único relato coherente.</p>
+ <div class="quote">La Historia de Vida genera la Historia Clínica, y la Historia Clínica solo vale si sigue acompañando la Historia de Vida.</div>
+ <h2>Conocimiento distribuido</h2><p>El conocimiento no reside en una sola persona: está distribuido. Nadie posee toda la historia, pero todos poseen una parte. La verdadera continuidad no es que nunca cambie el profesional, sino que nunca se pierda el conocimiento.</p>`,
+ quiz:[
+  {q:"¿A quién pertenece la historia clínica?",o:["Al hospital","Al médico","Al paciente","A la aseguradora"],c:2,e:"La historia clínica pertenece al paciente; la construimos con él."},
+  {q:"¿Qué aporta la familia?",o:["La interpretación clínica","El conocimiento de la persona","La evolución de enfermería","El diagnóstico"],c:1,e:"La familia aporta el conocimiento de quién es la persona."},
+  {q:"¿Qué es «conocimiento distribuido»?",o:["Que el médico sabe todo","Que nadie tiene la historia completa; cada actor una parte","Que está en muchos sistemas","Que se reparte por turnos"],c:1,e:"La inteligencia está en integrar las partes."},
+  {q:"¿De qué depende la verdadera continuidad?",o:["De que atienda siempre el mismo médico","De que nunca se pierda el conocimiento","De registrar más datos","De más visitas"],c:1,e:"Si cambia el profesional pero el conocimiento permanece, hay continuidad."},
+  {q:"«La Historia de Vida genera la Historia Clínica» significa que…",o:["La biografía da origen y sentido a la historia clínica","La historia clínica es solo un documento","La vida del paciente no importa","La historia clínica reemplaza a la persona"],c:0,e:"La historia clínica vale si sigue acompañando la vida del paciente."}]},
+{n:6,t:"La Unidad de Continuidad Domiciliaria",lead:"Gestionar la incertidumbre y mantener unida la historia del paciente entre niveles.",
+ body:`<h2>El hilo conductor de la historia</h2><p>El paciente crónico transita entre domicilio, primaria, especialistas, urgencias, hospital, rehabilitación y residencias, y casi nadie mantiene la continuidad entre todos. La Unidad de Continuidad Domiciliaria existe para cubrir ese espacio: su misión no es hacer visitas, sino preservar la continuidad clínica, funcional y humana del paciente.</p>
+ <div class="quote">El paciente vive una película. El sistema sanitario vive fotografías. Nuestra responsabilidad es preservar la coherencia de toda la película.</div>
+ <h2>Gestionar la incertidumbre</h2><p>Buena parte de las consultas a urgencias no nacen de una emergencia real, sino de que el paciente o su familia no saben interpretar un cambio. La continuidad transforma esa incertidumbre en conocimiento, y el conocimiento permite decidir mejor.</p>
+ <div class="quote">La Unidad de Continuidad Domiciliaria no gestiona episodios. Gestiona la incertidumbre.</div>
+ <h2>Confianza, educación y observación</h2><p>Tres pilares sostienen la continuidad. La confianza, que es una intervención clínica. La educación, porque una familia formada observa mejor. Y la observación distribuida, que convierte los microcambios en decisiones precoces. Así, no todo termina en urgencias ni en un ingreso.</p>`,
+ quiz:[
+  {q:"«El paciente vive una película; el sistema sanitario vive…»",o:["episodios","fotografías","trayectorias","diagnósticos"],c:1,e:"El único que vive la película entera es el paciente."},
+  {q:"¿Qué gestiona, sobre todo, la Unidad de Continuidad?",o:["Los episodios","La incertidumbre","Las visitas","Los costos"],c:1,e:"Gestiona la incertidumbre, transformándola en conocimiento."},
+  {q:"En este modelo, la confianza es…",o:["Un valor sin efecto clínico","Una intervención clínica que reduce decisiones impulsivas","Un tema secundario","Solo del médico"],c:1,e:"La confianza baja la incertidumbre y las decisiones impulsivas."},
+  {q:"¿Por qué muchas consultas a urgencias podrían evitarse?",o:["Los pacientes exageran","Nacen de no saber interpretar un cambio","Falta personal","El hospital está lejos"],c:1,e:"Suelen ser incertidumbre ante un cambio que nadie supo leer."},
+  {q:"¿Cuál es la misión de la Unidad de Continuidad?",o:["Hacer visitas","Sustituir al hospital","Preservar la continuidad clínica, funcional y humana","Reducir el gasto"],c:2,e:"La eficiencia es consecuencia; la misión es preservar la continuidad."}]}
+];
+const app=document.getElementById('app');
+function home(){
+ let cards=MODULES.map(m=>`<div class="mcard ${visited.has(m.n)?'v':''}" onclick="openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p><span class="go">Abrir módulo →</span></div>`).join('');
+ const pct=Math.round(visited.size/MODULES.length*100);
+ app.innerHTML=`
+ <section class="hero"><div class="wrap">
+   <div class="k">Humana Health &amp; Care</div>
+   <h1>Humana Academy</h1>
+   <p>Un programa de formación en Medicina de Continuidad: una forma distinta de observar, comprender y acompañar al paciente a lo largo de toda su trayectoria.</p>
+   <a class="cta" onclick="scrollMods()">Comenzar la formación</a>
+ </div></section>
+ <section class="blk" id="mods"><div class="wrap">
+   <div class="eyebrow">El programa</div>
+   <h2 class="sec">Seis módulos, una idea por módulo</h2>
+   <p class="sub">Cada módulo combina una lectura breve, un audio tipo podcast, un video y una autoevaluación. Están pensados para hacerse en orden, aunque podés recorrerlos como prefieras.</p>
+   <div class="prog"><span>${visited.size}/${MODULES.length} módulos abiertos</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+   <div class="grid">${cards}</div>
+ </div></section>`;
+ window.scrollTo(0,0);
+}
+function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else home();}
+function openM(n){
+ visited.add(n);
+ const m=MODULES.find(x=>x.n===n);
+ const prev=MODULES.find(x=>x.n===n-1), next=MODULES.find(x=>x.n===n+1);
+ app.innerHTML=`
+ <section class="mhero"><div class="wrap">
+   <a class="back" onclick="home()">← Volver a los módulos</a>
+   <div class="k">Módulo ${m.n}</div><h1>${m.t}</h1><p>${m.lead}</p>
+ </div></section>
+ <div class="wrap">
+   <div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">
+     <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
+     <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
+     <div class="rc"><div class="ico">📊</div><h4>Presentación</h4><div style="margin:10px 0 4px"><a class="dl" href="${PPTX[m.n]}" download>Descargar</a></div></div>
+   </div></div>
+   <div class="panel content"><h3 class="t">Contenido</h3>${m.body}</div>
+   <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
+     <div style="margin-top:8px"><button class="btn" onclick="grade(${m.n})">Corregir</button> <button class="btn ghost" onclick="openM(${m.n})">Reiniciar</button></div>
+     <div class="score" id="score"></div></div>
+   <div class="pager">
+     <a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a>
+     <a class="${next?'':'disabled'}" onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Fin'} →</a>
+   </div>
+ </div>`;
+ renderQuiz(m); window.scrollTo(0,0);
+}
+function mfail(el){el.style.display='none';const fb=el.parentElement.querySelector('.fallback');if(fb)fb.style.display='block';}
+let answers={};
+function renderQuiz(m){answers={};document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
+function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
+function grade(n){const m=MODULES.find(x=>x.n===n);let ok=0;
+ m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
+ const s=document.getElementById('score');s.classList.add('show');const pct=Math.round(ok/m.quiz.length*100);
+ const msg=pct===100?"Excelente, dominás la idea del módulo.":pct>=60?"Bien encaminado. Repasá lo marcado y volvé a intentar.":"Vale la pena volver a leer y escuchar el audio antes de seguir.";
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;}
+home();
+</script>
+</body>
+</html>
