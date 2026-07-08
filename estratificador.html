@@ -14,7 +14,9 @@
 body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
-header{background:linear-gradient(180deg,#160D22,#0C0713);border-bottom:1px solid var(--line);padding:18px 0 0}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160D22,#0C0713);border-bottom:1px solid var(--line);padding:16px 0 0}
+.backbtn{color:var(--pink);border:1.5px solid var(--pink);padding:9px 16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0}
+.backbtn:hover{background:var(--pink);color:#fff}
 .htop{display:flex;align-items:center;gap:12px;padding-bottom:16px}
 .htop .mk{width:40px;height:26px;flex-shrink:0}
 .htop h1{font-size:19px;margin:0;font-weight:800}.htop p{margin:2px 0 0;font-size:12.5px;color:var(--mut)}
@@ -63,12 +65,12 @@ textarea{min-height:56px;resize:vertical}
 footer{border-top:1px solid var(--line);text-align:center;padding:22px;font-size:12px;color:var(--mut)}
 footer a{color:var(--pink);text-decoration:none}
 @media(max-width:900px){.layout,.bcgrid{grid-template-columns:1fr}.result{position:static}.checks{grid-template-columns:1fr}}
-@media print{header,footer,.btns,.noprint{display:none!important}.section{display:block!important}.layout{grid-template-columns:1fr}body{background:#fff;color:#000}}
+@media print{header,footer,.btns,.noprint,.backbtn{display:none!important}.section{display:block!important}.layout{grid-template-columns:1fr}body{background:#fff;color:#000}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
-<div class="htop"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div><h1>Humana · Estratificador comercial</h1><p>Herramienta interna del equipo comercial — instituciones de salud (B2B)</p></div></div>
+<div class="htop"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div style="flex:1"><h1>Humana · Estratificador comercial</h1><p>Herramienta interna del equipo comercial — instituciones de salud (B2B)</p></div><a href="./" class="backbtn">← Academy</a></div>
 <div class="tabs"><div class="tab on" onclick="showTab(0)">Diagnóstico</div><div class="tab" onclick="showTab(1)">Business case</div><div class="tab" onclick="showTab(2)">Playbook & Guion</div></div>
 </div></header>
 <div class="wrap">
