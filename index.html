@@ -11,6 +11,10 @@
 <meta property="og:image" content="og.png">
 <meta property="og:type" content="website">
 <link rel="icon" href="mark.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -137,6 +141,21 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 .nameinput{padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;width:340px;max-width:100%;background:var(--card2);color:var(--tx)}
 @media print{header.top,footer,.noprint{display:none!important}body{background:#fff}}
 @media(max-width:860px){.grid,.res{grid-template-columns:1fr}nav.desk{display:none}.burger{display:flex}.hero h1{font-size:40px}.hero{padding:64px 0 68px}h2.sec{font-size:26px}}
+.resume{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 20px;flex-wrap:wrap}
+.resume b{color:var(--tx)} .resume .rb{background:var(--grad);color:#fff;border:none;padding:10px 20px;border-radius:9px;font-weight:700;cursor:pointer}
+.resume a{color:var(--mut);font-size:12px;cursor:pointer;text-decoration:underline;margin-left:10px}
+.onb{position:fixed;inset:0;background:rgba(6,3,10,.78);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+.onb.show{display:flex}
+.onb .box{background:var(--card);border:1px solid var(--line);border-radius:22px;max-width:460px;padding:34px 32px;text-align:center;animation:pop .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+.onb .mk{width:74px;height:46px;margin:0 auto 12px;display:block}
+.onb h3{font-size:23px;margin:0 0 8px;font-weight:800}
+.onb p{color:var(--mut);font-size:14.5px;line-height:1.6;margin:0 0 18px}
+.onb .li{text-align:left;font-size:14px;color:#d8cee8;margin:9px 0;padding-left:26px;position:relative}
+.onb .li:before{content:"\2713";position:absolute;left:0;color:var(--pink);font-weight:800}
+.onb button{background:var(--grad);color:#fff;border:none;padding:13px 32px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;margin-top:16px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,70px);background:var(--card);border:1px solid var(--line);color:var(--tx);padding:13px 22px;border-radius:12px;font-weight:600;font-size:14px;z-index:120;opacity:0;transition:.35s cubic-bezier(.2,.8,.2,1);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0);opacity:1}
 </style>
 </head>
 <body>
@@ -150,6 +169,8 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 </div>
 </header>
 <main id="app"></main>
+<div class="onb" id="onb"><div class="box"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><h3>Bienvenido a <span class="grad">Humana Academy</span></h3><p>Un recorrido breve para incorporar la Medicina de Continuidad. Así funciona:</p><div class="li">6 módulos, una idea por módulo: lectura, audio, video y autoevaluación.</div><div class="li">Cada módulo se completa al aprobar su autoevaluación (60%).</div><div class="li">Al terminar los 6, descargás tu certificado.</div><button onclick="closeOnb()">Empezar</button></div></div>
+<div class="toast" id="toast"></div>
 <footer><div class="wrap"><div class="fb"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><b style="color:var(--tx)">Humana Academy</b></div>
 Humana Health &amp; Care · Argentina<br>
 <a href="Humana_Documento_Madre.pdf" download>Documento base</a> · <a onclick="openCert()" style="cursor:pointer">Certificado</a> · <a href="estratificador.html">Estratificador comercial</a></div></footer>
@@ -228,6 +249,8 @@ function home(){
  const compl=[1,2,3,4,5,6].filter(done).length, pct=Math.round(compl/6*100);
  let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
  cards+=`<div class="mcard cap reveal" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${CAP.t}</h3><p>${CAP.lead}</p><span class="go grad">Abrir caso →</span></div>`;
+ const nextInc=[1,2,3,4,5,6].find(n=>!done(n));
+ const resume=(compl>0&&nextInc)?`<div class="resume reveal"><div>Continuá donde quedaste — <b>Módulo ${nextInc}: ${MODULES.find(x=>x.n===nextInc).t}</b></div><div><button class="rb" onclick="openM(${nextInc})">Continuar</button><a onclick="if(confirm('¿Reiniciar tu progreso?')){scores={};STORE.set('ha_s',{});home()}">Reiniciar progreso</a></div></div>`:'';
  const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los 6 módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
  app.innerHTML=`
  <section class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap in">
@@ -240,8 +263,8 @@ function home(){
  <section class="blk" id="mods"><div class="wrap">
   <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">Seis módulos, una idea por módulo</h2>
   <p class="sub reveal">Cada módulo combina una lectura breve, un audio, un video y una autoevaluación. Un módulo se completa al aprobar su autoevaluación.</p>
-  ${cert}
-  <div class="prog reveal"><span>${compl}/6 completados</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  ${resume}${cert}
+  <div class="prog reveal"><span>${compl}/6 completados ${compl>=6?'🥇':compl>=3?'🥉':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
   <div class="grid">${cards}</div></div></section>
  <section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow grad reveal">Vista general</div><h2 class="sec reveal">El mapa del programa</h2>
   <p class="sub reveal">Toda la Medicina de Continuidad en un vistazo.</p>
@@ -318,14 +341,14 @@ function renderModule(m,isCap){
   <div class="score" id="score"></div></div>${pager}</div>`;
  renderQuiz(m);window.scrollTo(0,0);
 }
-function openM(n){renderModule(MODULES.find(x=>x.n===n),false);}
+function openM(n){STORE.set('ha_last',n);renderModule(MODULES.find(x=>x.n===n),false);}
 function openCap(){renderModule(CAP,true);}
 function mfail(el){el.style.display='none';const fb=el.parentElement.querySelector('.fallback');if(fb)fb.style.display='block';}
 let answers={},curQuiz=null;
 function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
 function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
 function grade(id){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
- const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}}
+ const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){toast('¡Módulo completado! ✓');}}
  const s=document.getElementById('score');s.classList.add('show');
  const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
  s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;}
@@ -340,9 +363,14 @@ function openCert(){closeMenu();const list=MODULES.map(m=>m.t).join(' · ');
   <p>por haber completado el programa, recorriendo sus seis módulos y aprobando las autoevaluaciones.</p>
   <div class="cmods">${list}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
  </div></div></div></div></section>`;
- document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});window.scrollTo(0,0);}
+ document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});if(allDone())setTimeout(confetti,300);window.scrollTo(0,0);}
 function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';}
+function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
+function closeOnb(){document.getElementById('onb').classList.remove('show');STORE.set('ha_seen',true);}
+function confetti(){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:130';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d');const cols=['#4733A6','#8E2E9E','#EC2E8E','#F0328C','#ffffff'];let P=[];for(let i=0;i<150;i++)P.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,r:4+Math.random()*5,c:cols[i%cols.length],vy:2+Math.random()*3.5,vx:-1.2+Math.random()*2.4,a:Math.random()*6});let f=0;(function loop(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.a+=.12;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore();});f++;if(f<150)requestAnimationFrame(loop);else c.remove();})();}
 home();
+if(!STORE.get('ha_seen',false))setTimeout(()=>document.getElementById('onb').classList.add('show'),600);
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script>
 </body>
 </html>
