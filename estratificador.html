@@ -4,239 +4,186 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Humana · Estratificador comercial</title>
+<meta name="theme-color" content="#0C0713">
+<link rel="icon" href="mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#12283F;--blue:#1F5C99;--ice:#EAF1F9;--bg:#F4F7FB;--line:#e5ebf2;--tx:#1d2733;--mut:#63707f;--ok:#1c7a4d;--med:#b8862f}
+:root{--bg:#0C0713;--bg2:#140C1F;--card:#191024;--card2:#1E1430;--line:#2C1F42;--tx:#EDE6F5;--mut:#9E90B5;--g1:#4733A6;--g2:#EC2E8E;--pink:#F0328C;--purple:#8E2E9E;--ok:#39d98a;--grad:linear-gradient(135deg,#4733A6 0%,#8E2E9E 50%,#EC2E8E 100%)}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
-header{background:linear-gradient(135deg,#12283F,#1F5C99);color:#fff;padding:20px 0 0}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+header{background:linear-gradient(180deg,#160D22,#0C0713);border-bottom:1px solid var(--line);padding:18px 0 0}
 .htop{display:flex;align-items:center;gap:12px;padding-bottom:16px}
-.htop svg{width:34px;height:34px}
-.htop h1{font-size:19px;margin:0;font-weight:800}.htop p{margin:2px 0 0;font-size:12.5px;color:#cfe0f3}
-.tabs{display:flex;gap:4px}
-.tab{padding:12px 20px;font-size:13.5px;font-weight:700;color:#cfe0f3;cursor:pointer;border-radius:10px 10px 0 0;background:rgba(255,255,255,.06)}
-.tab.on{background:var(--bg);color:var(--navy)}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px}
-.card h2{font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);margin:0 0 4px;font-weight:700}
+.htop .mk{width:40px;height:26px;flex-shrink:0}
+.htop h1{font-size:19px;margin:0;font-weight:800}.htop p{margin:2px 0 0;font-size:12.5px;color:var(--mut)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tab{padding:12px 20px;font-size:13.5px;font-weight:700;color:var(--mut);cursor:pointer;border-radius:12px 12px 0 0}
+.tab.on{background:var(--bg);color:var(--tx);box-shadow:inset 0 -2px 0 var(--pink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.card h2{font-size:13px;letter-spacing:.5px;text-transform:uppercase;margin:0 0 4px;font-weight:700}
 .card .ph{font-size:11px;color:var(--mut);margin:0 0 14px}
-label{display:block;font-size:12.5px;font-weight:600;color:var(--navy);margin:12px 0 5px}
-input[type=text],input[type=number],select,textarea{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;font-family:inherit;color:var(--tx)}
+label{display:block;font-size:12.5px;font-weight:600;margin:12px 0 5px}
+input[type=text],input[type=number],select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;color:var(--tx);background:var(--card2)}
 textarea{min-height:56px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:8px}
 .chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;padding:3px 0}
-.chk input{width:16px;height:16px;accent-color:var(--blue)}
+.chk input{width:16px;height:16px;accent-color:var(--pink)}
 .hint{font-size:11.5px;color:var(--mut);margin:6px 0 0}
 .layout{display:grid;grid-template-columns:1fr 400px;gap:24px;padding:26px 0 60px}
 .result{position:sticky;top:20px;align-self:start}
-.rcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px}
-.rcard h3{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--blue);margin:0 0 8px;font-weight:700}
-.level{border-radius:12px;padding:18px 20px;color:#fff;text-align:center;margin-bottom:16px}
-.level.alto{background:linear-gradient(135deg,#1c7a4d,#155e3b)}.level.medio{background:linear-gradient(135deg,#b8862f,#8f6820)}.level.bajo{background:linear-gradient(135deg,#6b7480,#525a64)}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+.rcard h3{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--pink);margin:0 0 8px;font-weight:700}
+.level{border-radius:14px;padding:18px 20px;color:#fff;text-align:center;margin-bottom:16px}
+.level.alto{background:linear-gradient(135deg,#1c7a4d,#0f5133)}.level.medio{background:linear-gradient(135deg,#8E2E9E,#5a1c66)}.level.bajo{background:linear-gradient(135deg,#3a2f52,#241834)}
 .level .lb{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.9}.level .lv{font-size:30px;font-weight:800;margin:2px 0}.level .sc{font-size:12px;opacity:.9}
-.prop{font-size:15px;font-weight:700;color:var(--navy);margin:0 0 6px}
-.rcard p{font-size:13.5px;line-height:1.6;color:#28323f;margin:0 0 10px}
+.prop{font-size:15px;font-weight:700;margin:0 0 6px}
+.rcard p{font-size:13.5px;line-height:1.6;color:#d8cee8;margin:0 0 10px}
 .rcard ul{margin:6px 0 0;padding-left:18px}.rcard li{font-size:13px;line-height:1.55;margin-bottom:5px}
-.tag{display:inline-block;background:var(--ice);color:var(--blue);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin:0 4px 4px 0}
-.section{display:none}.section.on{display:block}
-.pad{padding:26px 0 60px}
-/* business case */
+.tag{display:inline-block;background:rgba(236,46,142,.14);color:#f7a8d0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin:0 4px 4px 0}
+.section{display:none}.section.on{display:block}.pad{padding:26px 0 60px}
 .bcgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.stat{background:var(--ice);border-radius:12px;padding:16px 18px;margin-bottom:12px}
-.stat .n{font-size:26px;font-weight:800;color:var(--blue)}.stat .l{font-size:12.5px;color:var(--mut)}
-.big{background:linear-gradient(135deg,#1F5C99,#12283F);color:#fff}.big .n{color:#fff}.big .l{color:#cfe0f3}
-/* playbook */
-.pb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px}
-.pb h3{color:var(--navy);font-size:16px;margin:0 0 10px}
-.pb .q{font-size:14px;line-height:1.6;margin-bottom:8px;padding-left:18px;position:relative}
-.pb .q:before{content:"›";position:absolute;left:0;color:var(--blue);font-weight:800}
-.obj{border-left:3px solid var(--blue);padding:8px 14px;background:#f7fafd;border-radius:0 8px 8px 0;margin-bottom:10px}
-.obj b{color:var(--navy)}
-.emailbox{white-space:pre-wrap;background:#f7fafd;border:1px solid var(--line);border-radius:10px;padding:16px;font-size:13.5px;line-height:1.6}
-.guion .g{margin-bottom:16px}.guion .g .t{font-weight:700;color:var(--blue);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
-.guion .g p{font-size:14.5px;line-height:1.7;margin:6px 0 0}
-.btn{background:var(--blue);color:#fff;border:none;padding:11px 18px;border-radius:9px;font-weight:700;font-size:13.5px;cursor:pointer}
-.btn.ghost{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.stat .n{font-size:26px;font-weight:800}.stat .l{font-size:12.5px;color:var(--mut)}
+.big{background:var(--grad);border:none}.big .n{color:#fff}.big .l{color:#f3dcec}
+.pb{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.pb h3{font-size:16px;margin:0 0 10px}
+.pb .q{font-size:14px;line-height:1.6;margin-bottom:8px;padding-left:18px;position:relative;color:#d8cee8}
+.pb .q:before{content:"›";position:absolute;left:0;color:var(--pink);font-weight:800}
+.obj{border-left:3px solid var(--pink);padding:8px 14px;background:var(--card2);border-radius:0 8px 8px 0;margin-bottom:10px;font-size:13.5px;color:#d8cee8}
+.obj b{color:var(--tx)}
+.emailbox{white-space:pre-wrap;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:13.5px;line-height:1.6;color:#d8cee8}
+.guion .g{margin-bottom:16px}.guion .g .t{font-weight:700;color:var(--pink);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.guion .g p{font-size:14.5px;line-height:1.7;margin:6px 0 0;color:#e2d9ef}
+.btn{background:var(--grad);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:700;font-size:13.5px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--pink);border:1.5px solid var(--pink)}
 .btns{display:flex;gap:10px}
-footer{background:var(--navy);color:#9fb3c9;text-align:center;padding:20px;font-size:12px}
+footer{border-top:1px solid var(--line);text-align:center;padding:22px;font-size:12px;color:var(--mut)}
+footer a{color:var(--pink);text-decoration:none}
 @media(max-width:900px){.layout,.bcgrid{grid-template-columns:1fr}.result{position:static}.checks{grid-template-columns:1fr}}
-@media print{header,footer,.btns,.noprint{display:none!important}.section{display:block!important}.layout{grid-template-columns:1fr}body{background:#fff}}
+@media print{header,footer,.btns,.noprint{display:none!important}.section{display:block!important}.layout{grid-template-columns:1fr}body{background:#fff;color:#000}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
-<div class="htop">
-<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#ffffff" opacity="0.14"/><path d="M7 22 h6 l2.5 -8 l4 15 l3 -9 h10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-<div><h1>Estratificador comercial de instituciones</h1><p>Humana · Herramienta interna del equipo comercial (B2B)</p></div>
-</div>
-<div class="tabs">
-<div class="tab on" onclick="showTab(0)">Diagnóstico</div>
-<div class="tab" onclick="showTab(1)">Business case</div>
-<div class="tab" onclick="showTab(2)">Playbook & Guion</div>
-</div>
+<div class="htop"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div><h1>Humana · Estratificador comercial</h1><p>Herramienta interna del equipo comercial — instituciones de salud (B2B)</p></div></div>
+<div class="tabs"><div class="tab on" onclick="showTab(0)">Diagnóstico</div><div class="tab" onclick="showTab(1)">Business case</div><div class="tab" onclick="showTab(2)">Playbook & Guion</div></div>
 </div></header>
-
 <div class="wrap">
-
-<!-- TAB 0 DIAGNOSTICO -->
 <div class="section on" id="s0"><div class="layout">
 <div class="form">
- <div class="card"><h2>Fase 1 · Identificación</h2><p class="ph">Datos básicos.</p>
-  <div class="row2"><div><label>Nombre del hospital</label><input type="text" id="f_nombre"></div><div><label>Grupo empresarial</label><input type="text" id="f_grupo"></div></div>
+ <div class="card"><h2 class="grad">Fase 1 · Identificación</h2><p class="ph">Datos básicos.</p>
+  <div class="row2"><div><label>Nombre de la institución</label><input type="text" id="f_nombre"></div><div><label>Grupo o red</label><input type="text" id="f_grupo"></div></div>
   <div class="row2"><div><label>Ubicación</label><input type="text" id="f_ubic"></div><div><label>Área de influencia</label><input type="text" id="f_area"></div></div>
-  <div class="row2"><div><label>Nº aproximado de camas</label><input type="number" id="f_camas" min="0"></div><div><label>Tamaño</label><select id="f_tam"><option value="">—</option><option>Pequeño</option><option>Mediano</option><option>Grande</option></select></div></div>
+  <div class="row2"><div><label>Nº aproximado de camas</label><input type="number" id="f_camas" min="0"></div><div><label>Tamaño</label><select id="f_tam"><option value="">—</option><option>Chico</option><option>Mediano</option><option>Grande</option></select></div></div>
  </div>
- <div class="card"><h2>Fase 2 · Perfil asistencial</h2><p class="ph">Qué tipo de hospital es.</p>
-  <label>Especialidades en las que destaca</label><input type="text" id="f_esp">
+ <div class="card"><h2 class="grad">Fase 2 · Perfil asistencial</h2><p class="ph">Qué tipo de institución es.</p>
+  <label>Especialidades en las que se destaca</label><input type="text" id="f_esp">
   <label>Tipo de pacientes que atiende principalmente</label><input type="text" id="f_pac">
-  <div class="checks">
-   <label class="chk"><input type="checkbox" id="p_intl">Actividad internacional</label>
-   <label class="chk"><input type="checkbox" id="p_quir">Gran actividad quirúrgica</label>
-   <label class="chk"><input type="checkbox" id="p_complejos">Orientado a pacientes complejos</label>
-   <label class="chk"><input type="checkbox" id="p_envej">Población envejecida</label>
-  </div>
+  <div class="checks"><label class="chk"><input type="checkbox" id="p_intl">Actividad internacional</label><label class="chk"><input type="checkbox" id="p_quir">Gran actividad quirúrgica</label><label class="chk"><input type="checkbox" id="p_complejos">Orientada a pacientes complejos</label><label class="chk"><input type="checkbox" id="p_envej">Población envejecida</label></div>
  </div>
- <div class="card"><h2>Fase 3 · Capacidades</h2><p class="ph">Marcá los servicios que dispone.</p><div class="checks" id="caps"></div></div>
- <div class="card"><h2>Fase 4 · Posibles necesidades</h2><p class="ph">Hipótesis, no afirmaciones.</p><div class="checks" id="needs"></div><label>Otros aspectos</label><input type="text" id="f_otros"></div>
- <div class="card"><h2>Fase 5 · Oportunidades para Humana</h2><p class="ph">¿Dónde aportar valor?</p><div class="checks" id="oport"></div></div>
- <div class="card"><h2>Fase 6 · Personas clave</h2><p class="ph">Solo cargos estratégicos.</p><div class="row2" id="people"></div></div>
- <div class="card"><h2>Fase 7 · Valoración estratégica</h2><p class="ph">La lógica de la propuesta.</p>
+ <div class="card"><h2 class="grad">Fase 3 · Capacidades</h2><p class="ph">Marcá los servicios que tiene.</p><div class="checks" id="caps"></div></div>
+ <div class="card"><h2 class="grad">Fase 4 · Posibles necesidades</h2><p class="ph">Hipótesis, no afirmaciones.</p><div class="checks" id="needs"></div><label>Otros aspectos</label><input type="text" id="f_otros"></div>
+ <div class="card"><h2 class="grad">Fase 5 · Oportunidades para Humana</h2><p class="ph">¿Dónde aportar valor?</p><div class="checks" id="oport"></div></div>
+ <div class="card"><h2 class="grad">Fase 6 · Personas clave</h2><p class="ph">Solo cargos estratégicos.</p><div class="row2" id="people"></div></div>
+ <div class="card"><h2 class="grad">Fase 7 · Valoración estratégica</h2><p class="ph">La lógica de la propuesta.</p>
   <label>Problema principal</label>
-  <select id="f_problema"><option value="">—</option><option value="A">A · Falta de camas / presión de ocupación</option><option value="B">B · Estancias prolongadas de crónicos/frágiles</option><option value="C">C · Urgencias saturadas por repetidores</option><option value="D">D · Aseguradoras presionando costo o calidad</option><option value="E">E · Hospital pequeño sin músculo domiciliario</option></select>
-  <div class="row2"><div><label>¿Quién paga?</label><select id="f_paga"><option value="">—</option><option value="hospital">Hospital</option><option value="aseguradora">Aseguradora</option><option value="paciente">Paciente / familia</option><option value="admin">Administración pública</option></select></div>
-  <div><label>Tipo (posicionamiento)</label><select id="f_tipo"><option value="">—</option><option value="grande">Hospital grande</option><option value="mediano">Hospital mediano</option><option value="pequeno">Hospital pequeño</option><option value="privado">Privado con aseguradoras</option></select></div></div>
-  <label>Fortalezas</label><textarea id="f_str"></textarea>
-  <label>Áreas de mejora (donde Humana colabora)</label><textarea id="f_gap"></textarea>
+  <select id="f_problema"><option value="">—</option><option value="A">A · Falta de camas / presión de ocupación</option><option value="B">B · Estadías prolongadas de crónicos/frágiles</option><option value="C">C · Guardia saturada por pacientes repetidores</option><option value="D">D · Financiadores presionando costo o calidad</option><option value="E">E · Institución chica sin músculo domiciliario propio</option></select>
+  <div class="row2"><div><label>¿Quién paga?</label><select id="f_paga"><option value="">—</option><option value="hospital">La institución</option><option value="financiador">Financiador (obra social / prepaga)</option><option value="paciente">Paciente / familia</option><option value="estado">Estado / sistema público</option></select></div>
+  <div><label>Tipo (posicionamiento)</label><select id="f_tipo"><option value="">—</option><option value="grande">Institución grande</option><option value="mediano">Institución mediana</option><option value="chico">Institución chica</option><option value="privado">Privada con financiadores</option></select></div></div>
+  <label>Fortalezas</label><textarea id="f_str"></textarea><label>Áreas de mejora (donde Humana colabora)</label><textarea id="f_gap"></textarea>
  </div>
 </div>
 <div class="result">
- <div class="rcard">
-  <div id="level" class="level bajo"><div class="lb">Nivel de oportunidad</div><div class="lv" id="lvtxt">—</div><div class="sc" id="lvsc"></div></div>
-  <h3>Propuesta de valor sugerida</h3><div id="propbox"><p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p></div>
- </div>
+ <div class="rcard"><div id="level" class="level bajo"><div class="lb">Nivel de oportunidad</div><div class="lv" id="lvtxt">—</div><div class="sc" id="lvsc"></div></div>
+  <h3>Propuesta de valor sugerida</h3><div id="propbox"><p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p></div></div>
  <div class="rcard"><h3>Próximos pasos</h3><ul id="steps"><li style="color:var(--mut)">Completá la ficha.</li></ul></div>
  <div class="rcard noprint"><div class="btns"><button class="btn" onclick="window.print()">Imprimir ficha</button><button class="btn ghost" onclick="reset()">Reiniciar</button></div><p class="hint" style="text-align:center;margin-top:10px">Se guarda en este navegador para retomar entre reuniones.</p></div>
 </div>
 </div></div>
-
-<!-- TAB 1 BUSINESS CASE -->
-<div class="section" id="s1"><div class="pad">
-<div class="bcgrid">
- <div class="card"><h2>Calculadora de valor</h2><p class="ph">Cargá los datos operativos. Los supuestos son editables; es una estimación, no una promesa contractual.</p>
+<div class="section" id="s1"><div class="pad"><div class="bcgrid">
+ <div class="card"><h2 class="grad">Calculadora de valor</h2><p class="ph">Cargá los datos operativos. Los supuestos son editables; es una estimación, no una promesa.</p>
   <div class="row2"><div><label>Altas complejas por mes</label><input type="number" id="b_altas" min="0" placeholder="ej. 60"></div><div><label>Días de alta que se pueden adelantar</label><input type="number" id="b_dias" min="0" value="4"></div></div>
-  <div class="row2"><div><label>Reingresos a 30 días por mes</label><input type="number" id="b_reing" min="0" placeholder="ej. 40"></div><div><label>Reducción estimada de reingresos (%)</label><input type="number" id="b_red" min="0" max="100" value="25"></div></div>
-  <div class="row2"><div><label>Estancia media (días)</label><input type="number" id="b_est" min="0" value="7"></div><div><label>Costo por día de cama ($)</label><input type="number" id="b_costo" min="0" value="400"></div></div>
-  <p class="hint">Los valores por defecto son referenciales; ajustalos con los datos reales de la institución.</p>
- </div>
+  <div class="row2"><div><label>Reinternaciones a 30 días por mes</label><input type="number" id="b_reing" min="0" placeholder="ej. 40"></div><div><label>Reducción estimada de reinternaciones (%)</label><input type="number" id="b_red" min="0" max="100" value="25"></div></div>
+  <div class="row2"><div><label>Estadía media (días)</label><input type="number" id="b_est" min="0" value="7"></div><div><label>Costo por día de cama ($)</label><input type="number" id="b_coste" min="0" placeholder="ej. 250000"></div></div>
+  <p class="hint">Ajustá los valores con los datos reales de la institución.</p></div>
  <div>
   <div class="stat big"><div class="n" id="b_total">$ 0</div><div class="l">Ahorro anual estimado</div></div>
   <div class="stat"><div class="n" id="b_camas">0</div><div class="l">Camas equivalentes liberadas / mes</div></div>
-  <div class="stat"><div class="n" id="b_diaslib">0</div><div class="l">Días de estancia liberados / mes</div></div>
-  <div class="stat"><div class="n" id="b_revit">0</div><div class="l">Reingresos evitados / mes</div></div>
-  <p class="hint" id="b_break"></p>
- </div>
-</div>
-</div></div>
-
-<!-- TAB 2 PLAYBOOK -->
+  <div class="stat"><div class="n" id="b_diaslib">0</div><div class="l">Días de internación liberados / mes</div></div>
+  <div class="stat"><div class="n" id="b_revit">0</div><div class="l">Reinternaciones evitadas / mes</div></div>
+  <p class="hint" id="b_break"></p></div>
+</div></div></div>
 <div class="section" id="s2"><div class="pad">
  <div class="pb guion"><h3>Guion de presentación del servicio</h3>
-  <div class="g"><div class="t">En una frase (20 seg)</div><p>Humana ayuda a hospitales y aseguradoras a gestionar mejor a sus pacientes más complejos: diseñamos y operamos la continuidad asistencial que evita reingresos, libera camas y reduce urgencias evitables — sin que tengan que construir esa capacidad desde cero.</p></div>
-  <div class="g"><div class="t">El problema (30 seg)</div><p>El paciente crónico complejo transita entre el hospital, el domicilio, urgencias y los especialistas, y casi nadie es responsable de mantener la continuidad. Ese vacío se traduce en reingresos, urgencias evitables y camas ocupadas por pacientes que ya podrían estar en casa.</p></div>
-  <div class="g"><div class="t">Qué hace Humana (1 min)</div><p>Operamos una Unidad de Continuidad: dirección médica domiciliaria, seguimiento médico-enfermero, observación distribuida (paciente, familia y equipo detectando los cambios a tiempo), la plataforma Humana Core que preserva la memoria clínica, y medición de resultados desde el día uno. No sustituimos al hospital ni a la primaria: los integramos alrededor del paciente.</p></div>
-  <div class="g"><div class="t">El resultado</div><p>Menos reingresos y urgencias evitables, camas liberadas, mejor experiencia del paciente y de la familia, y un modelo más sostenible. La eficiencia económica aparece como consecuencia de una mejor organización clínica, nunca como el objetivo.</p></div>
-  <div class="g"><div class="t">El cierre</div><p>«No proponemos que gasten más, sino que cada recurso que ya invierten genere más valor clínico. ¿Le parece si lo vemos con un caso concreto de su hospital?»</p></div>
- </div>
+  <div class="g"><div class="t">En una frase (20 seg)</div><p>Humana ayuda a instituciones de salud y financiadores (obras sociales y prepagas) a gestionar mejor a sus pacientes más complejos: diseñamos y operamos la continuidad asistencial que evita reinternaciones, libera camas y reduce consultas evitables a la guardia — sin que tengan que construir esa capacidad desde cero.</p></div>
+  <div class="g"><div class="t">El problema (30 seg)</div><p>El paciente crónico complejo transita entre la institución, el domicilio, la guardia y los especialistas, y casi nadie es responsable de mantener la continuidad. Ese vacío se traduce en reinternaciones, consultas evitables a la guardia y camas ocupadas por pacientes que ya podrían estar en su casa.</p></div>
+  <div class="g"><div class="t">Qué hace Humana (1 min)</div><p>Operamos una Unidad de Continuidad: dirección médica domiciliaria, seguimiento médico-enfermero, observación distribuida (paciente, familia y equipo detectando los cambios a tiempo), la plataforma Humana Core que preserva la memoria clínica, y medición de resultados desde el día uno. No sustituimos a la institución ni a la atención primaria: los integramos alrededor del paciente.</p></div>
+  <div class="g"><div class="t">El resultado</div><p>Menos reinternaciones y consultas evitables a la guardia, camas liberadas, mejor experiencia del paciente y de la familia, y un modelo más sostenible. La eficiencia económica aparece como consecuencia de una mejor organización clínica, nunca como el objetivo.</p></div>
+  <div class="g"><div class="t">El cierre</div><p>«No proponemos que gasten más, sino que cada recurso que ya invierten genere más valor clínico. ¿Le parece si lo vemos con un caso concreto de su institución?»</p></div></div>
  <div class="pb"><h3>Discovery — preguntas para la primera reunión</h3><div id="pb_disc"><p style="color:var(--mut)">Elegí el problema principal en la pestaña Diagnóstico.</p></div></div>
  <div class="pb"><h3>Objeciones frecuentes y respuesta</h3><div id="pb_obj"></div></div>
  <div class="pb"><h3>Email de apertura (personalizado)</h3><div class="emailbox" id="pb_email">Completá el nombre de la institución y el problema principal.</div><div class="btns noprint" style="margin-top:12px"><button class="btn" onclick="copyEmail()">Copiar email</button></div></div>
 </div></div>
-
 </div>
-<footer>Humana · Estratificador comercial — herramienta interna del equipo comercial<br><a href="./" style="color:#cfe0f3;text-decoration:none">← Volver a Humana Academy</a></footer>
-
+<footer>Humana Health &amp; Care · Argentina — Estratificador comercial (interno)<br><a href="./">← Volver a Humana Academy</a></footer>
 <script>
-const CAPS=["Hospitalización a Domicilio","Hospital de Día","UCI","Medicina Interna","Geriatría","Oncología","Cardiología","Neumología","Neurología","Traumatología","Rehabilitación","Cuidados paliativos","Continuidad asistencial"];
-const NEEDS=[["n_presion","Presión de camas",2],["n_altas","Dificultad para dar altas complejas",2],["n_cont","Necesidad de continuidad asistencial",2],["n_cronicos","Pacientes crónicos complejos",2],["n_frag","Fragilidad",1],["n_coord","Coordinación con domicilio",1],["n_hadlim","Recursos limitados de Hosp. a Domicilio",2]];
-const OPORT=["Programas de post-alta","Dirección médica domiciliaria","Hospitalización domiciliaria complementaria","Seguimiento del paciente crónico","Prevención de reingresos","Liberación de camas","Programas para aseguradoras","Seguimiento de alta complejidad"];
-const PEOPLE=["Gerente","Director Médico","Director Asistencial","Responsable de Hosp. a Domicilio","Responsable de Medicina Interna","Dirección de Enfermería","Innovación","Continuidad asistencial"];
-const PROP={A:{t:"Liberación de capacidad hospitalaria",m:"Hospitalización domiciliaria, post-alta compleja y continuidad 30-60-90."},B:{t:"Unidad de continuidad para el paciente complejo",m:"Seguimiento domiciliario médico-enfermero, reducción de reingresos y trazabilidad."},C:{t:"Gestión de hiperfrecuentadores",m:"Estratificación, seguimiento anticipatorio y respuesta domiciliaria."},D:{t:"Solución para cartera aseguradora",m:"Continuidad, medición, informes y reducción de eventos evitables."},E:{t:"Unidad domiciliaria externalizada",m:"Humana como capacidad clínica flexible, sin inversión estructural."}};
-const PAGA={hospital:"Argumento económico: reducción de estancia media, liberación de camas y continuidad post-alta.",aseguradora:"Argumento económico: menos ingresos y urgencias evitables, menos días hospitalarios y mayor satisfacción.",paciente:"Argumento de valor: dirección médica en casa, seguridad clínica y continuidad.",admin:"Argumento de sistema: descarga asistencial, cronicidad, ruralidad y continuidad sociosanitaria."};
-const TIPO={grande:"Posicionar a Humana como complemento especializado: paciente complejo, post-alta y crónico frágil.",mediano:"Posicionar a Humana como extensión asistencial externalizada.",pequeno:"Posicionar a Humana como una capacidad que el hospital no puede construir solo.",privado:"Posicionar a Humana orientada a eficiencia, cartera y permanencia del paciente."};
-const DISC={A:["¿Cuál es su estancia media y cuántas altas se retrasan por falta de soporte domiciliario?","¿Qué porcentaje de camas está ocupado por pacientes que ya podrían estar en casa con seguimiento?","¿Cómo miden hoy la presión de camas y su impacto?"],B:["¿Qué grupo de pacientes crónicos complejos concentra la mayor parte de los reingresos?","¿Tienen hoy una unidad que siga a esos pacientes tras el alta?","¿Cómo trazan la evolución del paciente entre un ingreso y el siguiente?"],C:["¿Qué porcentaje de sus urgencias son pacientes repetidores?","¿Identifican a los hiperfrecuentadores y hacen seguimiento anticipatorio?","¿Qué ocurre con esos pacientes entre una visita y otra?"],D:["¿Qué les está pidiendo la aseguradora: costo, calidad o ambos?","¿Cómo miden hoy los eventos evitables de esa cartera?","¿Disponen de informes de continuidad para la aseguradora?"],E:["¿Qué capacidades domiciliarias tienen hoy propias?","¿Cuánto les costaría montar una unidad de HaD desde cero?","¿Valorarían una capacidad flexible sin inversión estructural?"]};
-const OBJ=[["Ya tenemos hospitalización a domicilio.","Perfecto: Humana no la reemplaza, la potencia con dirección médica y continuidad medible donde hoy no llega."],["Esto es un costo adicional.","No proponemos gastar más: proponemos que cada recurso que ya financian rinda más. La eficiencia aparece como consecuencia."],["No tenemos presupuesto ahora.","Empecemos por un programa acotado (post-alta o una cartera aseguradora) y medimos el impacto antes de escalar."],["¿Cómo sé que funciona?","Medimos todo desde el día uno: reingresos, urgencias evitables, estancia y funcionalidad. Los indicadores van en la propuesta."],["Ya trabajamos con otro proveedor.","No competimos como un proveedor más: aportamos una capacidad de gobierno clínico que coordina lo que ya tienen."]];
-
-document.getElementById('caps').innerHTML=CAPS.map((c,i)=>`<label class="chk"><input type="checkbox" id="cap_${i}">${c}</label>`).join('');
-document.getElementById('needs').innerHTML=NEEDS.map(([id,l])=>`<label class="chk"><input type="checkbox" id="${id}">${l}</label>`).join('');
-document.getElementById('oport').innerHTML=OPORT.map((o,i)=>`<label class="chk"><input type="checkbox" id="op_${i}">${o}</label>`).join('');
-document.getElementById('people').innerHTML=PEOPLE.map((p,i)=>`<div><label>${p}</label><input type="text" id="pe_${i}" placeholder="Nombre"></div>`).join('');
-document.getElementById('pb_obj').innerHTML=OBJ.map(([o,r])=>`<div class="obj"><b>«${o}»</b><br>${r}</div>`).join('');
-
+const CAPS=["Internación Domiciliaria","Hospital de Día","UTI","Clínica Médica","Geriatría","Oncología","Cardiología","Neumonología","Neurología","Traumatología","Rehabilitación","Cuidados Paliativos","Continuidad asistencial"];
+const NEEDS=[["n_presion","Presión de camas",2],["n_altas","Dificultad para dar altas complejas",2],["n_cont","Necesidad de continuidad asistencial",2],["n_cronicos","Pacientes crónicos complejos",2],["n_frag","Fragilidad",1],["n_coord","Coordinación con el domicilio",1],["n_hadlim","Recursos limitados de internación domiciliaria",2]];
+const OPORT=["Programas de post-alta","Dirección médica domiciliaria","Internación domiciliaria complementaria","Seguimiento del paciente crónico","Prevención de reinternaciones","Liberación de camas","Programas para financiadores","Seguimiento de alta complejidad"];
+const PEOPLE=["Gerente / Director","Director Médico","Director Asistencial","Responsable de Internación Domiciliaria","Jefe de Clínica Médica","Jefatura de Enfermería","Innovación","Continuidad asistencial"];
+const PROP={A:{t:"Liberación de capacidad hospitalaria",m:"Internación domiciliaria, post-alta compleja y continuidad 30-60-90."},B:{t:"Unidad de continuidad para el paciente complejo",m:"Seguimiento domiciliario médico-enfermero, reducción de reinternaciones y trazabilidad."},C:{t:"Gestión de hiperfrecuentadores",m:"Estratificación, seguimiento anticipatorio y respuesta domiciliaria."},D:{t:"Solución para cartera de financiador",m:"Continuidad, medición, informes y reducción de eventos evitables."},E:{t:"Unidad domiciliaria tercerizada",m:"Humana como capacidad clínica flexible, sin inversión estructural."}};
+const PAGA={hospital:"Argumento económico: reducción de la estadía media, liberación de camas y continuidad post-alta.",financiador:"Argumento económico: menos internaciones y consultas evitables a la guardia, menos días de internación y mayor satisfacción del afiliado.",paciente:"Argumento de valor: dirección médica en casa, seguridad clínica y continuidad.",estado:"Argumento de sistema: descarga asistencial, cronicidad, ruralidad y continuidad sociosanitaria."};
+const TIPO={grande:"Posicionar a Humana como complemento especializado: paciente complejo, post-alta y crónico frágil.",mediano:"Posicionar a Humana como extensión asistencial tercerizada.",chico:"Posicionar a Humana como una capacidad que la institución no puede construir sola.",privado:"Posicionar a Humana orientada a eficiencia, cartera y permanencia del paciente."};
+const DISC={A:["¿Cuál es su estadía media y cuántas altas se retrasan por falta de soporte domiciliario?","¿Qué porcentaje de camas está ocupado por pacientes que ya podrían estar en su casa con seguimiento?","¿Cómo miden hoy la presión de camas?"],B:["¿Qué grupo de pacientes crónicos complejos concentra la mayor parte de las reinternaciones?","¿Tienen hoy una unidad que siga a esos pacientes tras el alta?","¿Cómo trazan la evolución del paciente entre una internación y la siguiente?"],C:["¿Qué porcentaje de las consultas a la guardia son pacientes repetidores?","¿Identifican a los hiperfrecuentadores y hacen seguimiento anticipatorio?","¿Qué pasa con esos pacientes entre una consulta y otra?"],D:["¿Qué les está pidiendo el financiador: costo, calidad o ambos?","¿Cómo miden hoy los eventos evitables de esa cartera?","¿Tienen informes de continuidad para la obra social o prepaga?"],E:["¿Qué capacidades domiciliarias tienen hoy propias?","¿Cuánto les costaría montar una unidad de internación domiciliaria desde cero?","¿Valorarían una capacidad flexible sin inversión estructural?"]};
+const OBJ=[["Ya tenemos internación domiciliaria.","Perfecto: Humana no la reemplaza, la potencia con dirección médica y continuidad medible donde hoy no llega."],["Esto es un costo adicional.","No proponemos gastar más: proponemos que cada recurso que ya financian rinda más. La eficiencia aparece como consecuencia."],["No tenemos presupuesto ahora.","Empecemos por un programa acotado (post-alta o una cartera de financiador) y medimos el impacto antes de escalar."],["¿Cómo sé que funciona?","Medimos todo desde el día uno: reinternaciones, consultas a guardia evitables, estadía y funcionalidad. Los indicadores van en la propuesta."],["Ya trabajamos con otro proveedor.","No competimos como un proveedor más: aportamos una capacidad de gobierno clínico que coordina lo que ya tienen."]];
 const STORE={get(){try{return JSON.parse(localStorage.getItem('ha_estrat')||'{}')}catch(e){return{}}},set(o){try{localStorage.setItem('ha_estrat',JSON.stringify(o))}catch(e){}}};
 const allInputs=()=>document.querySelectorAll('input[id],select[id],textarea[id]');
 function save(){const o={};allInputs().forEach(el=>o[el.id]=el.type==='checkbox'?el.checked:el.value);STORE.set(o);}
 function load(){const o=STORE.get();allInputs().forEach(el=>{if(o[el.id]!=null){if(el.type==='checkbox')el.checked=o[el.id];else el.value=o[el.id];}});}
 const val=id=>{const el=document.getElementById(id);return el?(el.type==='checkbox'?el.checked:el.value):'';}
-const num=id=>parseFloat(val(id))||0;
-const eur=n=>'$ '+Math.round(n).toLocaleString('es-AR');
+const numv=id=>parseFloat(val(id))||0;
+const money=n=>'$ '+Math.round(n).toLocaleString('es-AR');
+document.getElementById('caps').innerHTML=CAPS.map((c,i)=>`<label class="chk"><input type="checkbox" id="cap_${i}">${c}</label>`).join('');
+document.getElementById('needs').innerHTML=NEEDS.map(([id,l])=>`<label class="chk"><input type="checkbox" id="${id}">${l}</label>`).join('');
+document.getElementById('oport').innerHTML=OPORT.map((o,i)=>`<label class="chk"><input type="checkbox" id="op_${i}">${o}</label>`).join('');
+document.getElementById('people').innerHTML=PEOPLE.map((p,i)=>`<div><label>${p}</label><input type="text" id="pe_${i}" placeholder="Nombre"></div>`).join('');
+document.getElementById('pb_obj').innerHTML=OBJ.map(([o,r])=>`<div class="obj"><b>«${o}»</b><br>${r}</div>`).join('');
 function showTab(i){[0,1,2].forEach(k=>{document.getElementById('s'+k).classList.toggle('on',k===i);document.querySelectorAll('.tab')[k].classList.toggle('on',k===i);});window.scrollTo(0,0);}
-
 function compute(){
  let sc=0; NEEDS.forEach(([id,l,w])=>{if(val(id))sc+=w;});
  if(val('p_complejos'))sc+=2; if(val('p_envej'))sc+=2;
- const hasHaD=val('cap_0'),hasCont=val('cap_12');
- if(!hasHaD)sc+=2; if(!hasCont)sc+=2; if(hasHaD)sc-=1;
- if(val('f_tipo')==='pequeno'||val('f_problema')==='E')sc+=1;
+ const hasID=val('cap_0'),hasCont=val('cap_12');
+ if(!hasID)sc+=2; if(!hasCont)sc+=2; if(hasID)sc-=1;
+ if(val('f_tipo')==='chico'||val('f_problema')==='E')sc+=1;
  let lvl='bajo',lt='BAJO'; if(sc>=9){lvl='alto';lt='ALTO';}else if(sc>=5){lvl='medio';lt='MEDIO';}
- document.getElementById('level').className='level '+lvl;
- document.getElementById('lvtxt').textContent=lt;
+ document.getElementById('level').className='level '+lvl;document.getElementById('lvtxt').textContent=lt;
  document.getElementById('lvsc').textContent='Puntaje '+sc+' · '+(lvl==='alto'?'cuenta prioritaria':lvl==='medio'?'cuenta a desarrollar':'mantener en radar');
  const pr=val('f_problema'),pg=val('f_paga'),tp=val('f_tipo'),nom=val('f_nombre')||'la institución';
  const box=document.getElementById('propbox');
- if(pr&&PROP[pr]){let h=`<div class="prop">${PROP[pr].t}</div><p><b>Modelo:</b> ${PROP[pr].m}</p>`;if(pg&&PAGA[pg])h+=`<p>${PAGA[pg]}</p>`;if(tp&&TIPO[tp])h+=`<p>${TIPO[tp]}</p>`;const ops=OPORT.filter((o,i)=>val('op_'+i));if(ops.length)h+=`<div style="margin-top:6px">${ops.map(o=>`<span class="tag">${o}</span>`).join('')}</div>`;box.innerHTML=h;}else box.innerHTML='<p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p>';
+ if(pr&&PROP[pr]){let h=`<div class="prop grad">${PROP[pr].t}</div><p><b>Modelo:</b> ${PROP[pr].m}</p>`;if(pg&&PAGA[pg])h+=`<p>${PAGA[pg]}</p>`;if(tp&&TIPO[tp])h+=`<p>${TIPO[tp]}</p>`;const ops=OPORT.filter((o,i)=>val('op_'+i));if(ops.length)h+=`<div style="margin-top:6px">${ops.map(o=>`<span class="tag">${o}</span>`).join('')}</div>`;box.innerHTML=h;}else box.innerHTML='<p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p>';
  const people=PEOPLE.map((p,i)=>({p,n:val('pe_'+i)})).filter(x=>x.n);
  const steps=['Validar las hipótesis de necesidad (Fase 4) en la primera reunión.'];
  if(pr&&PROP[pr])steps.push('Preparar propuesta enfocada en: <b>'+PROP[pr].t+'</b>.');
  steps.push(people.length?('Contactar a: '+people.map(x=>x.n+' ('+x.p+')').join('; ')+'.'):'Identificar y contactar al Director Médico y/o Gerente.');
  steps.push(lvl==='alto'?'Priorizar esta cuenta y agendar reunión de propuesta.':lvl==='medio'?'Desarrollar la cuenta antes de la propuesta formal.':'Mantener en radar y reevaluar.');
  document.getElementById('steps').innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
- // playbook
  document.getElementById('pb_disc').innerHTML=(pr&&DISC[pr])?DISC[pr].map(q=>`<div class="q">${q}</div>`).join(''):'<p style="color:var(--mut)">Elegí el problema principal en la pestaña Diagnóstico.</p>';
- // email
- const dest=people.find(x=>x.p==='Director Médico')||people.find(x=>x.p==='Gerente')||people[0];
+ const dest=people.find(x=>x.p==='Director Médico')||people.find(x=>x.p.startsWith('Gerente'))||people[0];
  const saludo=dest?('Estimado/a '+dest.n):'Estimado/a Director/a Médico/a';
- if(pr&&PROP[pr]){
-  document.getElementById('pb_email').textContent=
-`Asunto: ${nom} — ${PROP[pr].t}
-
-${saludo}:
-
-En Humana ayudamos a hospitales como ${nom} a ${PROP[pr].t.toLowerCase()}, mediante ${PROP[pr].m.toLowerCase()}
-
-No proponemos sumar un proveedor más ni aumentar el gasto, sino coordinar lo que ya tienen para que cada recurso genere más valor clínico: menos reingresos y urgencias evitables, camas liberadas y mejor experiencia del paciente.
-
-¿Tendría 30 minutos esta o la próxima semana para explorar si tiene sentido para ${nom}? Puedo llevar un caso concreto aplicado a su realidad.
-
-Quedo a su disposición.
-Saludos cordiales,
-[Tu nombre] · Humana Health & Care`;
- } else document.getElementById('pb_email').textContent='Completá el nombre de la institución y el problema principal.';
+ if(pr&&PROP[pr]){document.getElementById('pb_email').textContent=`Asunto: ${nom} — ${PROP[pr].t}\n\n${saludo}:\n\nEn Humana ayudamos a instituciones como ${nom} a ${PROP[pr].t.toLowerCase()}, mediante ${PROP[pr].m.toLowerCase()}\n\nNo proponemos sumar un proveedor más ni aumentar el gasto, sino coordinar lo que ya tienen para que cada recurso genere más valor clínico: menos reinternaciones y consultas evitables a la guardia, camas liberadas y mejor experiencia del paciente.\n\n¿Tendría 30 minutos esta o la próxima semana para verlo? Puedo llevar un caso concreto aplicado a ${nom}.\n\nQuedo a su disposición.\nSaludos cordiales,\n[Tu nombre] · Humana Health & Care Argentina`;}else document.getElementById('pb_email').textContent='Completá el nombre de la institución y el problema principal.';
  bc(); save();
 }
-function bc(){
- const altas=num('b_altas'),dias=num('b_dias'),reing=num('b_reing'),red=num('b_red')/100,est=num('b_est'),costo=num('b_costo');
- const diaslib=altas*dias; const camas=diaslib/30; const revit=reing*red;
- const ahEst=diaslib*12*costo; const ahReing=revit*12*est*costo; const total=ahEst+ahReing;
+function bc(){const altas=numv('b_altas'),dias=numv('b_dias'),reing=numv('b_reing'),red=numv('b_red')/100,est=numv('b_est'),costo=numv('b_coste');
+ const diaslib=altas*dias,camas=diaslib/30,revit=reing*red,ahEst=diaslib*12*costo,ahRe=revit*12*est*costo,total=ahEst+ahRe;
  document.getElementById('b_diaslib').textContent=Math.round(diaslib).toLocaleString('es-AR');
- document.getElementById('b_camas').textContent=camas.toFixed(1);
- document.getElementById('b_revit').textContent=revit.toFixed(0);
- document.getElementById('b_total').textContent=eur(total);
- document.getElementById('b_break').textContent=total>0?`Desglose anual: por estancia liberada ${eur(ahEst)} + por reingresos evitados ${eur(ahReing)}. Estimación con supuestos editables.`:'Cargá los datos operativos para estimar el impacto.';
-}
+ document.getElementById('b_camas').textContent=camas.toFixed(1);document.getElementById('b_revit').textContent=revit.toFixed(0);
+ document.getElementById('b_total').textContent=money(total);
+ document.getElementById('b_break').textContent=total>0?`Desglose anual: por estadía liberada ${money(ahEst)} + por reinternaciones evitadas ${money(ahRe)}. Estimación con supuestos editables.`:'Cargá los datos operativos para estimar el impacto.';}
 function copyEmail(){const t=document.getElementById('pb_email').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);}
-function reset(){if(confirm('¿Vaciar la ficha?')){try{localStorage.removeItem('ha_estrat')}catch(e){}allInputs().forEach(el=>{if(el.type==='checkbox')el.checked=false;else if(['b_dias','b_red','b_est','b_costo'].includes(el.id))return;else el.value='';});compute();}}
+function reset(){if(confirm('¿Vaciar la ficha?')){try{localStorage.removeItem('ha_estrat')}catch(e){}allInputs().forEach(el=>{if(el.type==='checkbox')el.checked=false;else if(['b_dias','b_red','b_est'].includes(el.id))return;else el.value='';});compute();}}
 document.addEventListener('input',compute);document.addEventListener('change',compute);
 load();compute();
 </script>
