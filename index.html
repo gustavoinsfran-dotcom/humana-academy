@@ -177,6 +177,7 @@ Humana Health &amp; Care · Argentina<br>
 <script>
 const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const PPTX={1:"Modulo1_Por_qu_la_Medicina_de_Continuidad.pptx",2:"Modulo2_La_persona_y_la_situaci_n_basal.pptx",3:"Modulo3_Observar_los_microcambios.pptx",4:"Modulo4_La_pir_mide_del_conocimiento.pptx",5:"Modulo5_La_historia_cl_nica_es_de_todos.pptx",6:"Modulo6_La_Unidad_de_Continuidad_Domiciliaria.pptx"};
+const CUAD={1:"Cuadernillo_Modulo_1.pdf",2:"Cuadernillo_Modulo_2.pdf",3:"Cuadernillo_Modulo_3.pdf",4:"Cuadernillo_Modulo_4.pdf",5:"Cuadernillo_Modulo_5.pdf",6:"Cuadernillo_Modulo_6.pdf"};
 const AUDIO=n=>"mod"+n+"_audio.mp3", VIDEO=n=>"mod"+n+"_video.mp4";
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let scores=STORE.get('ha_s',{}), uname=STORE.get('ha_name','');
@@ -330,7 +331,7 @@ function renderModule(m,isCap){
  const res=isCap?'':`<div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">
   <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
   <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
-  <div class="rc"><div class="ico">📊</div><h4>Presentación</h4><div style="margin:10px 0 4px"><a class="dl" href="${PPTX[m.n]}" download>Descargar</a></div></div></div></div>`;
+  <div class="rc"><div class="ico">📖</div><h4>Cuadernillo</h4><div style="margin:10px 0 4px"><a class="dl" href="${CUAD[m.n]}" download>Descargar PDF</a></div></div></div></div>`;
  const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Volver'} →</a></div>`;
  app.innerHTML=`<section class="mhero"><div class="blob b2"></div><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
   <div class="k">${isCap?'Caso integrador':'Módulo '+m.n}</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
