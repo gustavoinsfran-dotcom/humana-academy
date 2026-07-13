@@ -172,12 +172,12 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 <body>
 <header class="top"><div class="wrap">
 <div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><span class="wm">Humana <b class="grad">Academy</b></span></div>
-<nav class="desk"><a onclick="home()">Inicio</a><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a><a id="installBtn" onclick="installApp()" style="display:none;cursor:pointer">⬇ Instalar app</a></nav>
+<nav class="desk"><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
 <div class="userbox" id="userbox"></div>
 <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
 </div>
 <div class="drawer" id="drawer">
-<a onclick="closeMenu();home()">Inicio</a><a onclick="closeMenu();scrollMods()">Módulos</a><a onclick="closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a>
+<a onclick="closeMenu();scrollMods()">Módulos</a><a onclick="closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a><a id="installBtn" onclick="closeMenu();installApp()" style="display:none;cursor:pointer">⬇ Instalar app</a>
 </div>
 </header>
 <main id="app"></main>
