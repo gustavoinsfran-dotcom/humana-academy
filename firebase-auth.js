@@ -109,7 +109,7 @@
     if(typeof home==='function')home();
     if(typeof renderUserbox==='function')renderUserbox();
     addAdminUI(user);
-    if(window.motivWelcome)setTimeout(window.motivWelcome,600);
+    setTimeout(function(){ if(window.motivWelcome) window.motivWelcome(); },900);
   }
 
   auth.onAuthStateChanged(function(user){
