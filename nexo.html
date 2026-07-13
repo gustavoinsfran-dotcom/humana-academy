@@ -291,6 +291,26 @@ function openCert(){const list=LES.map(m=>m.t).join(' · ');
  const d=document.getElementById('certdate');if(d)d.textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});window.scrollTo(0,0);}
 function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';if(curUser)saveProgress();}
 function renderUserbox(){const b=document.getElementById('userbox');if(!b)return;const compl=IDS.filter(done).length,pct=Math.round(compl/5*100);const hi=uname?`<span class="hi">Hola, ${uname.split(' ')[0].replace(/[<>&]/g,'')}</span>`:'';b.innerHTML=hi+`<span class="mbar" title="Tu avance en Nexo"><i style="width:${pct}%"></i></span><span>${compl}/5</span>`;}
+
+  // ---- Onboarding: carrusel + coach-marks ----
+  var _obcss=false;
+  function _obcssInject(){ if(_obcss)return; _obcss=true; var s2=document.createElement("style"); s2.textContent=".tourdots{display:flex;gap:6px;justify-content:center;margin:18px 0 2px}.tourdots i{width:7px;height:7px;border-radius:50%;background:#2C1F42;transition:.2s;display:inline-block}.tourdots i.on{background:#14B8A6;width:20px;border-radius:4px}"+".tourbtns{display:flex;gap:10px;margin-top:16px}.tourbtns button{flex:1;border:none;cursor:pointer;font-weight:800;font-size:15px;padding:13px;border-radius:11px;font-family:inherit;color:#04140f;background:linear-gradient(135deg,#0F766E,#14B8A6 52%,#2DD4BF)}.tourbtns button.tsec{background:transparent;border:1.5px solid #2C1F42;color:#E6F5F0}"+".coach{position:fixed;inset:0;z-index:360;display:none}.coach.on{display:block}.coach-block{position:absolute;inset:0}"+".coach-ring{position:fixed;border-radius:12px;border:2px solid #14B8A6;box-shadow:0 0 0 9999px rgba(8,5,15,.72);transition:all .3s;z-index:361;pointer-events:none}"+".coach-tip{position:fixed;max-width:262px;background:#0F1F1B;border:1px solid #2C1F42;border-radius:12px;padding:14px 16px;z-index:362;box-shadow:0 12px 30px rgba(0,0,0,.55)}"+".coach-tip p{margin:0 0 10px;color:#E6F5F0;font-size:14px;line-height:1.5}.coach-nav{display:flex;align-items:center;justify-content:space-between}.coach-nav span{color:#9E90B5;font-size:12px}"+".coach-nav button{color:#04140f;border:none;font-weight:800;font-size:13px;padding:8px 16px;border-radius:9px;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#0F766E,#14B8A6 52%,#2DD4BF)}"; document.head.appendChild(s2); }
+  var _TOUR=[{ic:"🎓",t:"Bienvenido a Humana Nexo",d:"La formación del Programa de Asistencia al Paciente. La hacés a tu ritmo, desde donde quieras."},{ic:"📚",t:"Cómo funciona",d:"Son 5 lecciones cortas y claras. Cada una cierra con una autoevaluación para fijar lo aprendido."},{ic:"💾",t:"Tu progreso se guarda solo",d:"Entrás con tu correo y seguís donde dejaste, desde la compu o el celular."},{ic:"🏆",t:"Tu certificado",d:"Al completar las 5 lecciones obtenés tu certificado de Humana Nexo, para descargar y compartir."}], _ts=0;
+  function _renderTour(){ _obcssInject(); var s=_TOUR[_ts]; var d=_TOUR.map(function(_,i){return "<i class=\""+(i===_ts?"on":"")+"\"></i>";}).join("");
+    var back=_ts>0?"<button class=\"tsec\" onclick=\"__tourPrev()\">Atrás</button>":"";
+    pop.innerHTML="<div class=\"box\"><div style=\"font-size:46px;line-height:1;margin-bottom:6px\">"+s.ic+"</div><h3>"+s.t+"</h3><p class=\"sub\" style=\"margin-top:6px\">"+s.d+"</p><div class=\"tourdots\">"+d+"</div><div class=\"tourbtns\">"+back+"<button onclick=\"__tourNext()\">"+(_ts<_TOUR.length-1?"Siguiente":"Empezar")+"</button></div></div>";
+    pop.classList.add("on"); }
+  window.__tourNext=function(){ if(_ts<_TOUR.length-1){_ts++;_renderTour();}else{pop.classList.remove("on");_startCoach();} };
+  window.__tourPrev=function(){ if(_ts>0){_ts--;_renderTour();} };
+  function _coachTargets(){ var a=[]; var ub=document.getElementById("userbox"); if(ub)a.push({el:ub,t:"Acá ves tu avance en todo momento."}); var cd=document.querySelector(".lcard"); if(cd)a.push({el:cd,t:"Tocá acá para empezar a aprender."}); var ce=document.querySelector("nav.desk a[onclick*='openCert']"); if(ce)a.push({el:ce,t:"Tu certificado aparece acá al terminar."}); return a.filter(function(x){return x.el&&x.el.getBoundingClientRect().width>0;}); }
+  function _startCoach(){ _obcssInject(); var tg=_coachTargets(); if(!tg.length){ _finishOb(); return; } var i=0; var ov=document.getElementById("coach"); if(!ov){ov=document.createElement("div");ov.id="coach";ov.className="coach";document.body.appendChild(ov);}
+    function show(){ var el=tg[i].el; el.scrollIntoView({block:"center"}); setTimeout(function(){ var r=el.getBoundingClientRect(); var p=8; var below=r.bottom<window.innerHeight-150; var ty=below?(r.bottom+12):(r.top-12); var tx=Math.max(12,Math.min(window.innerWidth-274,r.left));
+      ov.innerHTML="<div class=\"coach-block\"></div><div class=\"coach-ring\" style=\"left:"+(r.left-p)+"px;top:"+(r.top-p)+"px;width:"+(r.width+p*2)+"px;height:"+(r.height+p*2)+"px\"></div><div class=\"coach-tip\" style=\"left:"+tx+"px;top:"+ty+"px;"+(below?"":"transform:translateY(-100%)")+"\"><p>"+tg[i].t+"</p><div class=\"coach-nav\"><span>"+(i+1)+"/"+tg.length+"</span><button onclick=\"__coachNext()\">"+(i<tg.length-1?"Siguiente":"Listo")+"</button></div></div>";
+      ov.classList.add("on"); },320); }
+    window.__coachNext=function(){ i++; if(i>=tg.length){ ov.classList.remove("on"); _finishOb(); } else show(); }; show(); }
+  function _finishOb(){ try{STORE.set("hn_onboarded",true);}catch(e){} }
+  function startNexoOnboarding(){ _ts=0; _renderTour(); }
+
 function closePop(){var p=document.getElementById('mpop');if(p)p.classList.remove('on');}
 function showLessonResult(n,pct){var pop=document.getElementById('mpop');if(!pop)return;var passed=pct>=60;var compl=IDS.filter(done).length,pp=Math.round(compl/5*100);var title,sub,primL,primA,sec;
  if(passed){var next=LES.find(function(x){return x.n===n+1;});title='¡Felicitaciones!';sub='Completaste la Lección '+n+' con '+pct+'%.';if(allDone()){primL='Ver mi certificado 🎓';primA='openCert()';}else if(next){primL='Continuar: Lección '+next.n+' →';primA='openL('+next.n+')';}else{primL='Volver al inicio';primA='home()';}sec=true;}
@@ -315,10 +335,11 @@ try{
  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
- auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();});}else{renderLogin();}});
+ auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();if(!STORE.get("hn_onboarded",false))setTimeout(startNexoOnboarding,600);});}else{renderLogin();}});
  renderLoading();
  if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo para completar el acceso:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();const mm=document.getElementById('fbMsg');if(mm){mm.className='msg';mm.textContent='El enlace expiró o no es válido. Pedí uno nuevo.';}});}}
 }catch(e){ home(); }
+if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}
 </script>
 </body>
 </html>

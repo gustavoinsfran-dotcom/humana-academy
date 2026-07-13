@@ -366,12 +366,12 @@ let _deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_deferredPrompt=e;const b=document.getElementById('installBtn');if(b)b.style.display='';});
 function installApp(){if(!_deferredPrompt){toast&&toast('La app ya está instalada o tu navegador no lo permite');return;}_deferredPrompt.prompt();_deferredPrompt.userChoice.finally(()=>{_deferredPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});}
 window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.style.display='none';});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf)return;_rf=true;location.reload();});}
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="firebase-auth.js?v=7"></script>
-<script src="extras.js?v=9"></script>
+<script src="extras.js?v=10"></script>
 </body>
 </html>

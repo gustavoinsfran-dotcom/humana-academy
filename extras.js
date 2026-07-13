@@ -47,6 +47,7 @@
   var welcomed=false;
   window.motivWelcome=function(){
     if(welcomed)return; welcomed=true;
+    var _ob=false; try{_ob=STORE.get("ha_onboarded",false);}catch(e){} if(!_ob){ startOnboarding(); return; }
     var nm=gname(), sc=gscores(), c=completed(sc), pct=Math.round(c/6*100);
     var q=QUOTES[Math.floor(Math.random()*QUOTES.length)];
     var hi = nm ? ('Hola, '+esc(nm)+' 👋') : 'Bienvenido 👋';
@@ -110,4 +111,23 @@
     if(secL){ h+='<button style="width:100%;margin-top:10px;background:transparent;border:1.5px solid #2C1F42;color:#EDE6F5" onclick="window._closeMotiv()">'+secL+'</button>'; }
     h+='</div>'; pop.innerHTML=h; pop.classList.add('on');
   };
+
+  // ---- Onboarding: carrusel + coach-marks ----
+  var _obcss=false;
+  function _obcssInject(){ if(_obcss)return; _obcss=true; var s2=document.createElement("style"); s2.textContent=".tourdots{display:flex;gap:6px;justify-content:center;margin:18px 0 2px}.tourdots i{width:7px;height:7px;border-radius:50%;background:#2C1F42;transition:.2s;display:inline-block}.tourdots i.on{background:#EC2E8E;width:20px;border-radius:4px}"+".tourbtns{display:flex;gap:10px;margin-top:16px}.tourbtns button{flex:1;border:none;cursor:pointer;font-weight:800;font-size:15px;padding:13px;border-radius:11px;font-family:inherit;color:#fff;background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}.tourbtns button.tsec{background:transparent;border:1.5px solid #2C1F42;color:#EDE6F5}"+".coach{position:fixed;inset:0;z-index:360;display:none}.coach.on{display:block}.coach-block{position:absolute;inset:0}"+".coach-ring{position:fixed;border-radius:12px;border:2px solid #EC2E8E;box-shadow:0 0 0 9999px rgba(8,5,15,.72);transition:all .3s;z-index:361;pointer-events:none}"+".coach-tip{position:fixed;max-width:262px;background:#191024;border:1px solid #2C1F42;border-radius:12px;padding:14px 16px;z-index:362;box-shadow:0 12px 30px rgba(0,0,0,.55)}"+".coach-tip p{margin:0 0 10px;color:#EDE6F5;font-size:14px;line-height:1.5}.coach-nav{display:flex;align-items:center;justify-content:space-between}.coach-nav span{color:#9E90B5;font-size:12px}"+".coach-nav button{color:#fff;border:none;font-weight:800;font-size:13px;padding:8px 16px;border-radius:9px;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}"; document.head.appendChild(s2); }
+  var _TOUR=[{ic:"🎓",t:"Bienvenido a Humana Academy",d:"Un programa de formación en Medicina de Continuidad. Lo hacés a tu ritmo, desde donde quieras."},{ic:"📚",t:"Cómo funciona",d:"Cada módulo tiene una lectura breve, audio y video, y una autoevaluación al final para fijar lo aprendido."},{ic:"💾",t:"Tu progreso se guarda solo",d:"Entrás con tu correo y seguís donde dejaste, desde la compu o el celular. No perdés nada."},{ic:"🏆",t:"Tu certificado",d:"Al completar los módulos obtenés tu certificado, que podés descargar y compartir en LinkedIn."}], _ts=0;
+  function _renderTour(){ _obcssInject(); var s=_TOUR[_ts]; var d=_TOUR.map(function(_,i){return "<i class=\""+(i===_ts?"on":"")+"\"></i>";}).join("");
+    var back=_ts>0?"<button class=\"tsec\" onclick=\"__tourPrev()\">Atrás</button>":"";
+    pop.innerHTML="<div class=\"box\"><div style=\"font-size:46px;line-height:1;margin-bottom:6px\">"+s.ic+"</div><h3>"+s.t+"</h3><p class=\"sub\" style=\"margin-top:6px\">"+s.d+"</p><div class=\"tourdots\">"+d+"</div><div class=\"tourbtns\">"+back+"<button onclick=\"__tourNext()\">"+(_ts<_TOUR.length-1?"Siguiente":"Empezar")+"</button></div></div>";
+    pop.classList.add("on"); }
+  window.__tourNext=function(){ if(_ts<_TOUR.length-1){_ts++;_renderTour();}else{pop.classList.remove("on");_startCoach();} };
+  window.__tourPrev=function(){ if(_ts>0){_ts--;_renderTour();} };
+  function _coachTargets(){ var a=[]; var ub=document.getElementById("userbox"); if(ub)a.push({el:ub,t:"Acá ves tu avance en todo momento."}); var cd=document.querySelector(".mcard"); if(cd)a.push({el:cd,t:"Tocá acá para empezar a aprender."}); var ce=document.querySelector("nav.desk a[onclick*='openCert']"); if(ce)a.push({el:ce,t:"Tu certificado aparece acá al terminar."}); return a.filter(function(x){return x.el&&x.el.getBoundingClientRect().width>0;}); }
+  function _startCoach(){ _obcssInject(); var tg=_coachTargets(); if(!tg.length){ _finishOb(); return; } var i=0; var ov=document.getElementById("coach"); if(!ov){ov=document.createElement("div");ov.id="coach";ov.className="coach";document.body.appendChild(ov);}
+    function show(){ var el=tg[i].el; el.scrollIntoView({block:"center"}); setTimeout(function(){ var r=el.getBoundingClientRect(); var p=8; var below=r.bottom<window.innerHeight-150; var ty=below?(r.bottom+12):(r.top-12); var tx=Math.max(12,Math.min(window.innerWidth-274,r.left));
+      ov.innerHTML="<div class=\"coach-block\"></div><div class=\"coach-ring\" style=\"left:"+(r.left-p)+"px;top:"+(r.top-p)+"px;width:"+(r.width+p*2)+"px;height:"+(r.height+p*2)+"px\"></div><div class=\"coach-tip\" style=\"left:"+tx+"px;top:"+ty+"px;"+(below?"":"transform:translateY(-100%)")+"\"><p>"+tg[i].t+"</p><div class=\"coach-nav\"><span>"+(i+1)+"/"+tg.length+"</span><button onclick=\"__coachNext()\">"+(i<tg.length-1?"Siguiente":"Listo")+"</button></div></div>";
+      ov.classList.add("on"); },320); }
+    window.__coachNext=function(){ i++; if(i>=tg.length){ ov.classList.remove("on"); _finishOb(); } else show(); }; show(); }
+  function _finishOb(){ try{STORE.set("ha_onboarded",true);}catch(e){} }
+  function startOnboarding(){ _ts=0; _renderTour(); }
 })();
