@@ -15,6 +15,7 @@
   if(typeof firebase==='undefined'){console.warn('Firebase SDK no cargó');return;}
   try{ firebase.initializeApp(firebaseConfig); }catch(e){}
   var auth=firebase.auth(), db=firebase.firestore(), curUser=null;
+  try{ auth.languageCode='es'; }catch(e){}
   try{ STORE.set('ha_seen', true); }catch(e){} // desactiva el modal de identificación viejo
 
   /* estilos del gate */
