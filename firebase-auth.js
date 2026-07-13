@@ -16,6 +16,7 @@
   try{ firebase.initializeApp(firebaseConfig); }catch(e){}
   var auth=firebase.auth(), db=firebase.firestore(), curUser=null;
   try{ auth.languageCode='es'; }catch(e){}
+  try{ auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL); }catch(e){}
   try{ STORE.set('ha_seen', true); }catch(e){} // desactiva el modal de identificación viejo
 
   /* estilos del gate */
@@ -45,6 +46,7 @@
   document.body.appendChild(gate);
   function esc(s){return (''+s).replace(/[<>&"]/g,function(c){return c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':'&quot;';});}
   function showGate(){gate.classList.add('on');}
+  function renderLoading(){ gate.innerHTML='<div class="box"><span class="mk">'+MK+'</span><h3>Humana <b>Academy</b></h3><p>Cargando tu sesión…</p></div>'; showGate(); }
   function hideGate(){gate.classList.remove('on');}
   function suppressOnb(){var o=document.getElementById('onb');if(o)o.classList.remove('show');}
 
@@ -126,6 +128,7 @@
   });
 
   /* completar acceso si venimos del enlace */
+  renderLoading();
   if(auth.isSignInWithEmailLink(location.href)){
     var em=window.localStorage.getItem('ha_email_link');
     if(!em){ em=window.prompt('Confirmá tu correo para completar el acceso:'); }
@@ -137,8 +140,6 @@
         renderLogin(); var m=document.getElementById('fbMsg'); if(m){ m.className='msg'; m.textContent='El enlace expiró o no es válido. Pedí uno nuevo.'; }
       });
     }
-  } else {
-    showGate(); // gate por defecto hasta resolver el estado
   }
 
   /* sync de progreso (lo llama el sitio al aprobar un módulo) */
@@ -157,7 +158,7 @@
     var nav=document.querySelector('nav.desk');
     if(nav && !document.getElementById('logoutLink')){
       var lo=document.createElement('a'); lo.id='logoutLink'; lo.textContent='Salir'; lo.style.cursor='pointer';
-      lo.onclick=function(){ auth.signOut().then(function(){ location.reload(); }); }; nav.appendChild(lo);
+      lo.onclick=function(){ if(confirm('¿Querés cerrar sesión?')){ auth.signOut().then(function(){ location.reload(); }); } }; nav.appendChild(lo);
     }
     if(isAdmin(user) && nav && !document.getElementById('adminLink')){
       var a=document.createElement('a'); a.id='adminLink'; a.textContent='Admin'; a.style.cursor='pointer'; a.onclick=showAdmin;
