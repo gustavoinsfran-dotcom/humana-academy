@@ -172,10 +172,10 @@
     window.scrollTo(0,0);
     db.collection('users').get().then(function(qs){
       var rows=[];
-      qs.forEach(function(doc){ var d=doc.data()||{}, sc=d.scores||{}; var compl=[1,2,3,4,5,6].filter(function(n){return sc[n]!=null&&sc[n]>=60;}).length; rows.push({name:d.name||'—', email:d.email||'—', compl:compl, cert:compl>=6}); });
+      qs.forEach(function(doc){ var d=doc.data()||{}, sc=d.scores||{}; var compl=[1,2,3,4,5,6].filter(function(n){return sc[n]!=null&&sc[n]>=60;}).length; var ns=(d.nexo&&d.nexo.scores)||{}; var nx=[1,2,3,4,5].filter(function(n){return ns[n]!=null&&ns[n]>=60;}).length; rows.push({name:d.name||'—', email:d.email||'—', compl:compl, cert:compl>=6, nexo:nx}); });
       rows.sort(function(a,b){ return b.compl-a.compl; });
-      var h='<table class="admt"><thead><tr><th>Nombre</th><th>Correo</th><th>Módulos</th><th>Certificado</th></tr></thead><tbody>';
-      rows.forEach(function(r){ h+='<tr><td>'+esc(r.name)+'</td><td>'+esc(r.email)+'</td><td>'+r.compl+'/6</td><td>'+(r.cert?'✓':'—')+'</td></tr>'; });
+      var h='<table class="admt"><thead><tr><th>Nombre</th><th>Correo</th><th>Módulos</th><th>Nexo</th><th>Certificado</th></tr></thead><tbody>';
+      rows.forEach(function(r){ h+='<tr><td>'+esc(r.name)+'</td><td>'+esc(r.email)+'</td><td>'+r.compl+'/6</td><td>'+r.nexo+'/5'+(r.nexo>=5?' ✓':'')+'</td><td>'+(r.cert?'✓':'—')+'</td></tr>'; });
       h+='</tbody></table>';
       document.getElementById('admtbl').innerHTML=h;
       document.getElementById('admStatus').textContent=rows.length+' usuario(s) registrado(s).';
