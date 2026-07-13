@@ -99,7 +99,7 @@ h2.sec{font-size:32px;margin:8px 0 8px;font-weight:800;letter-spacing:-.5px}
 /* module view */
 .mhero{position:relative;overflow:hidden;padding:52px 0 46px;border-bottom:1px solid var(--line)}
 .mhero .blob{opacity:.4}
-.back{color:var(--pink);font-size:13px;text-decoration:none;cursor:pointer;display:inline-block;margin-bottom:14px;font-weight:600}
+.back{color:var(--tx);font-size:13.5px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;font-weight:700;background:var(--card2);border:1px solid var(--line);padding:10px 18px;border-radius:11px;transition:.15s}.back:hover{border-color:var(--pink);color:var(--pink)}
 .mhero .k{color:var(--mut);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
 .mhero h1{font-size:36px;margin:8px 0;font-weight:800;position:relative;z-index:1}
 .mhero p{color:#cfc3e0;font-size:16px;max-width:62ch;line-height:1.55;margin:0;position:relative;z-index:1}
@@ -340,7 +340,7 @@ function grade(id){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach(
  const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('¡Módulo completado! ✓');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
  const s=document.getElementById('score');s.classList.add('show');
  const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
- s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;}
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;if(window.showQuizResult)setTimeout(function(){window.showQuizResult(id,pct);},260);}
 function openCert(){closeMenu();const list=MODULES.map(m=>m.t).join(' · ');
  app.innerHTML=`<section class="blk"><div class="wrap">
  <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Nota:</b> se habilita al completar los 6 módulos.'}</p>
@@ -372,6 +372,6 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="firebase-auth.js?v=7"></script>
-<script src="extras.js?v=8"></script>
+<script src="extras.js?v=9"></script>
 </body>
 </html>

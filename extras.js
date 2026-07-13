@@ -88,4 +88,26 @@
     var add=earned?'<button class="libtn ghost" onclick="addToLinkedIn()">'+LI+' Agregar a mi perfil</button>':'';
     return '<div class="libtns">'+share+add+'</div>';
   };
+  window.showQuizResult=function(id,pct){
+    var pop=document.getElementById('mpop'); if(!pop)return;
+    var passed=pct>=60, isCap=(id==='cap'), n=isCap?null:+id;
+    var title,sub,primL,primA,secL;
+    if(passed){
+      title='¡Felicitaciones!';
+      sub='Completaste '+(isCap?'el caso integrador':('el Módulo '+n))+' con '+pct+'%.';
+      if(isCap){ primL='Volver al inicio'; primA='home()'; secL=null; }
+      else if(typeof allDone==='function'&&allDone()){ primL='Ver mi certificado 🎓'; primA='openCert()'; secL='Seguir acá'; }
+      else { var nx=(typeof MODULES!=='undefined')?MODULES.find(function(z){return z.n===n+1;}):null; if(nx){ primL='Continuar: Módulo '+nx.n+' →'; primA='openM('+nx.n+')'; secL='Seguir acá'; } else { primL='Volver al inicio'; primA='home()'; secL=null; } }
+    } else {
+      title='¡Casi!';
+      sub='Sacaste '+pct+'%. Necesitás 60% para aprobar. Repasá y reintentá.';
+      primL='Reintentar'; primA=isCap?'openCap()':'openM('+n+')'; secL='Seguir acá';
+    }
+    var compl=[1,2,3,4,5,6].filter(function(z){return scores[z]!=null&&scores[z]>=60;}).length, pp=Math.round(compl/6*100);
+    var h='<div class="box"><div style="font-size:44px;line-height:1;margin-bottom:4px">'+(passed?'🎉':'💪')+'</div><h3>'+title+'</h3><p class="sub">'+sub+'</p>';
+    if(passed&&!isCap){ h+='<div class="pr" style="margin-top:16px">Tu avance: '+compl+'/6</div><div class="bar"><i style="width:'+pp+'%"></i></div>'; }
+    h+='<button style="width:100%;margin-top:16px" onclick="window._closeMotiv();'+primA+'">'+primL+'</button>';
+    if(secL){ h+='<button style="width:100%;margin-top:10px;background:transparent;border:1.5px solid #2C1F42;color:#EDE6F5" onclick="window._closeMotiv()">'+secL+'</button>'; }
+    h+='</div>'; pop.innerHTML=h; pop.classList.add('on');
+  };
 })();
