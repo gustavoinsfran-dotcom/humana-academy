@@ -377,7 +377,7 @@ let answers={},curQuiz=null;
 function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
 function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
 function grade(id){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
- const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){toast('¡Módulo completado! ✓');}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
+ const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('¡Módulo completado! ✓');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
  const s=document.getElementById('score');s.classList.add('show');
  const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
  s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;}
@@ -385,7 +385,7 @@ function openCert(){closeMenu();const list=MODULES.map(m=>m.t).join(' · ');
  app.innerHTML=`<section class="blk"><div class="wrap">
  <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Nota:</b> se habilita al completar los 6 módulos.'}</p>
   <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${uname.replace(/"/g,'')}" oninput="setName(this.value)">
-  <div style="margin-top:16px"><button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div></div>
+  <div style="margin-top:16px"><button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div>${allDone()&&typeof liButtonsHTML==='function'?liButtonsHTML():''}</div>
  <div id="cert"><div class="certcard"><div class="cinner"><span class="cmk">${MARK}</span>
   <div class="clabel grad">Certificado de finalización</div><h2>Humana Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
   <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${uname||'Nombre y Apellido'}</div>
@@ -412,5 +412,6 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="firebase-auth.js"></script>
+<script src="extras.js"></script>
 </body>
 </html>
