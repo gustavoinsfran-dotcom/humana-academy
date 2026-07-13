@@ -111,7 +111,7 @@
     if(typeof home==='function')home();
     if(typeof renderUserbox==='function')renderUserbox();
     addAdminUI(user);
-    setTimeout(function(){ if(window.motivWelcome) window.motivWelcome(); },900);
+    if(window.motivWelcome){ setTimeout(window.motivWelcome,600); } else { window.HA_pendingWelcome=true; }
   }
 
   auth.onAuthStateChanged(function(user){

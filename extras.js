@@ -80,6 +80,7 @@
     var txt='Completé la formación en Medicina de Continuidad de Humana Academy 🎓 Una forma distinta de observar, comprender y acompañar al paciente a lo largo de toda su trayectoria.\n\n'+ACAD;
     window.open('https://www.linkedin.com/feed/?shareActive=true&text='+encodeURIComponent(txt),'_blank','noopener');
   };
+  if(window.HA_pendingWelcome){ window.HA_pendingWelcome=false; setTimeout(function(){ if(window.motivWelcome) window.motivWelcome(); },300); }
   // botones para inyectar en el certificado
   window.liButtonsHTML=function(){
     return '<div class="libtns"><button class="libtn" onclick="addToLinkedIn()">'+LI+' Agregar a mi LinkedIn</button>'
