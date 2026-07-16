@@ -126,7 +126,7 @@ h2.sec{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px}
 <div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div><div class="wm">cutaquig<span style="font-size:11px;vertical-align:super">®</span></div><div class="tag">Capacitación de producto</div></div></div>
 <nav class="desk"><a class="lk" onclick="scrollMods()">Módulos</a><a href="nexo.html">← Nexo</a><a href="index.html">Academy</a><div class="userbox" id="userbox"></div></nav>
 </div></header>
-<div class="regbar"><div class="wrap"><b>USO INTERNO · EXCLUSIVO PARA PROFESIONALES DE LA SALUD.</b> Medicamento de venta bajo receta — no difundir a pacientes ni al público. Contenido basado en material internacional de Octapharma; <b>puede diferir del prospecto aprobado por ANMAT en Argentina</b>. Consultar siempre el prospecto vigente. <b>Requiere validación regulatoria antes de su uso formal.</b></div></div>
+<div class="regbar"><div class="wrap"><b>USO INTERNO · EXCLUSIVO PARA MÉDICOS Y ENFERMEROS.</b> Medicamento de <b>venta bajo receta</b> — no difundir a pacientes ni al público. Contenido basado en el <b>prospecto autorizado en Argentina (Cutaquig®, versión 10, 29-08-2025)</b>. Representante en Argentina: Infinity Pharma S.A. Ante cualquier duda, consultar el prospecto vigente. <b>Requiere validación regulatoria antes de su uso formal.</b></div></div>
 <main id="app"></main>
 <div class="fbgate" id="fbgate"></div>
 <div class="mpop" id="mpop"></div>
@@ -139,19 +139,22 @@ h2.sec{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px}
 const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg2)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let scores=STORE.get('cq_s',{}), uname=STORE.get('ha_name','');
-const IDS=[1,2,3,4,5,6,7,8];
+const IDS=[1,2,3,4,5,6,7,8,9];
 const done=n=>scores[n]!=null&&scores[n]>=60, allDone=()=>IDS.every(done);
-const SRC_INS='Fuente: Información abreviada para la prescripción de cutaquig® (165 mg/ml), Octapharma — material internacional. Verificar contra el prospecto ANMAT vigente.';
+const SRC_AR='Fuente: Prospecto de Cutaquig® autorizado en Argentina — Información para el usuario, versión 10 (29-08-2025). Representante: Infinity Pharma S.A.';
+const SRC_INS=SRC_AR;
 const SRC_GUIA='Fuente: cutaquig® — Guía de infusión paso a paso (Octapharma, ene-2024; basada en el prospecto de nov-2023). Puede no corresponder a las directrices locales.';
 
 const MODS=[
 {n:1,t:"Inmunoglobulinas y terapia de sustitución",lead:"Qué es la IgG, para qué se repone y en qué pacientes.",
  body:`<h2>La idea</h2><p>La terapia de sustitución con <strong>inmunoglobulina G (IgG)</strong> restaura los niveles de anticuerpos en pacientes con inmunodeficiencias, previniendo infecciones graves. Puede administrarse por vía <strong>intravenosa (IVIg)</strong> o <strong>subcutánea (SCIg)</strong>.</p>
  <h2>Qué aporta la IgG</h2><p>Cutaquig® contiene IgG, que ayuda al sistema inmune a combatir infecciones virales y bacterianas. No es un antibiótico ni trata una infección puntual: <strong>repone anticuerpos que el paciente no produce</strong>.</p>
- <h2>En qué pacientes</h2><ul>
- <li><strong>Inmunodeficiencia primaria (PID):</strong> personas que nacen con capacidad reducida o incapacidad para producir anticuerpos.</li>
- <li><strong>Inmunodeficiencia secundaria (SID):</strong> deficiencia adquirida de anticuerpos por enfermedades y/o tratamientos específicos, en personas que presentan infecciones graves o recurrentes.</li></ul>
- <div class="warn"><b>Importante:</b> las indicaciones exactas y su alcance se rigen por el <b>prospecto aprobado por ANMAT</b>. Este módulo describe el marco terapéutico, no reemplaza la ficha técnica local.</div>
+ <h2>Indicaciones autorizadas en Argentina</h2><p>Según el prospecto vigente, Cutaquig® se prescribe a <strong>adultos, niños y adolescentes (0 a 18 años)</strong> como <strong>terapia de reemplazo</strong> en:</p><ul>
+ <li><strong>Síndromes de inmunodeficiencia primaria (SIP)</strong> con alteración de la producción de anticuerpos (por ejemplo, hipogammaglobulinemia).</li>
+ <li><strong>Leucemia linfocítica crónica</strong> con infecciones recurrentes, cuando los antibióticos profilácticos fallaron o están contraindicados.</li>
+ <li><strong>Mieloma múltiple</strong> (cáncer de médula ósea) con infecciones recurrentes.</li>
+ <li><strong>Niveles bajos de anticuerpos antes y después del trasplante alogénico</strong> de células madre hematopoyéticas (HSCT).</li></ul>
+ <div class="note">Cutaquig® se usa en pacientes que no tienen suficientes anticuerpos para combatir infecciones y, por lo tanto, tienden a tener infecciones frecuentes. La administración regular de dosis suficientes eleva los niveles anormalmente bajos de inmunoglobulina a niveles normales (terapia de reemplazo).</div>
  <h2>El objetivo terapéutico</h2><p>La dosis se individualiza según la farmacocinética y la respuesta clínica, buscando un <strong>nivel sostenido de IgG de al menos 5–6 g/L</strong> y tratando de estar dentro del intervalo de referencia de IgG sérica para la edad.</p>
  <div class="note">No infundimos un producto: sostenemos un nivel de anticuerpos en el tiempo. Por eso la continuidad es parte del tratamiento.</div>
  <h2>Para llevarte</h2><p>El sentido de la terapia es mantener al paciente protegido de forma sostenida. Una infusión perdida no es un trámite postergado: es un valle en la protección.</p>
@@ -165,16 +168,19 @@ const MODS=[
  <li>Contiene <strong>90 mg de maltosa por mL</strong> (ver módulo 3 — es crítico).</li>
  <li><strong>Lista para usar:</strong> no requiere reconstitución. Baja viscosidad y alta pureza.</li>
  <li><strong>Solo para administración subcutánea.</strong></li></ul>
- <h2>Viales disponibles</h2><p>1 g / 6 mL · 2 g / 12 mL · 4 g / 24 mL · 8 g / 48 mL.</p>
+ <h2>Viales disponibles</h2><p>Según el prospecto argentino, el vial contiene <strong>6, 10, 12, 20, 24 o 48 mL</strong> de solución (vidrio Tipo I, tapón de bromobutilo). Tamaños de envase de <strong>1, 10 o 20</strong> viales. No todos los tamaños se comercializan necesariamente.</p>
+ <p><strong>Equivalencia práctica</strong> (dosis g × 6 = volumen mL): 6 mL = 1 g · 12 mL = 2 g · 24 mL = 4 g · 48 mL = 8 g.</p>
+ <h2>Excipientes</h2><p><strong>Maltosa, polisorbato 80 y agua para preparaciones inyectables.</strong> La maltosa es clave — ver módulo 3.</p>
  <h2>Conservación</h2><ul>
- <li><strong>Largo plazo:</strong> heladera entre <strong>2 °C y 8 °C</strong>.</li>
+ <li><strong>Conservar en heladera entre 2 °C y 8 °C.</strong></li>
+ <li><strong>Temperatura ambiente:</strong> dentro de su vida útil puede almacenarse a <strong>≤25 °C hasta por 6 meses</strong>, sin volver a refrigerarse en ese período, y <strong>debe desecharse si no se usa después de eso</strong>.</li>
  <li><strong>No congelar.</strong> Conservar los viales en el <strong>embalaje exterior</strong> para protegerlos de la luz.</li>
  <li>Si se pasó a temperatura ambiente, <strong>no volver a refrigerar</strong>.</li>
  <li>Antes de usar, llevar a temperatura ambiente o corporal. Si viene de heladera, <strong>sacarlo al menos 90 minutos antes</strong>.</li>
  <li><strong>No calentar ni usar microondas. No agitar</strong> (forma espuma).</li>
  <li>Tras la primera apertura, <strong>usar inmediatamente</strong>.</li>
  <li>No utilizar después de la fecha de vencimiento. Mantener fuera del alcance de los niños.</li></ul>
- <div class="warn"><b>Dato en revisión — no lo enseñes hasta confirmarlo:</b> el tiempo máximo a temperatura ambiente (≤25 °C) difiere entre las fuentes disponibles: el inserto de prescripción indica <b>6 meses</b> y la guía paso a paso 2024 indica <b>9 meses</b>. <b>Confirmar con el prospecto ANMAT vigente antes de instruir al paciente.</b></div>
+ <div class="warn"><b>Ojo con el material del paciente:</b> el prospecto autorizado en Argentina fija <b>6 meses</b> a temperatura ambiente. Algunas guías internacionales de Octapharma mencionan <b>9 meses</b>: <b>ese dato no aplica en Argentina</b>. Si un paciente muestra un folleto que dice 9 meses, corregilo: rige el prospecto local.</div>
  <h2>Monitoreo adicional</h2><p>Este medicamento está sujeto a <strong>monitoreo adicional</strong>, lo que refuerza la obligación de notificar eventos adversos (ver módulo 7).</p>
  <div class="src">${SRC_INS}<br>${SRC_GUIA}</div>`,
  quiz:[{q:"¿Cuál es la concentración de Cutaquig®?",o:["100 mg/mL","165 mg/mL (16,5 %)","200 mg/mL","50 mg/mL"],c:1,e:"165 mg/mL, es decir 16,5 %."},{q:"¿Por qué vía se administra Cutaquig®?",o:["Intravenosa","Intramuscular","Subcutánea únicamente","Oral"],c:2,e:"Es exclusivamente subcutánea."},{q:"Si el vial viene de la heladera, antes de infundir hay que…",o:["Calentarlo en microondas","Sacarlo al menos 90 minutos antes para que llegue a temperatura ambiente","Infundirlo frío","Sumergirlo en agua caliente"],c:1,e:"Al menos 90 min a temperatura ambiente. Nunca calentar ni microondas."},{q:"¿Por qué no se debe agitar el vial?",o:["Porque pierde potencia","Porque puede formar espuma","Porque se congela","Porque se contamina"],c:1,e:"Agitar forma espuma."},{q:"Un vial que estuvo a temperatura ambiente…",o:["Puede volver a la heladera","No debe volver a refrigerarse","Debe congelarse","Se puede recalentar"],c:1,e:"Si se pasó a T.A., no vuelve a la heladera."}]},
@@ -213,12 +219,22 @@ const MODS=[
  <p><strong>Factores de riesgo:</strong> obesidad, edad avanzada, hipertensión, diabetes mellitus, antecedentes de enfermedad vascular o episodios trombóticos, trastornos trombofílicos adquiridos o heredados, períodos prolongados de inmovilización, hipovolemia grave y enfermedades que aumentan la viscosidad de la sangre.</p>
  <h2>Insuficiencia renal aguda</h2><p>También existe evidencia clínica de asociación con <strong>insuficiencia renal aguda</strong>.</p>
  <p><strong>Factores de riesgo:</strong> insuficiencia renal preexistente, diabetes mellitus, hipovolemia, sobrepeso, medicamentos nefrotóxicos concomitantes, sepsis, hiperviscosidad y paraproteinemia.</p>
- <h2>Para llevarte</h2><p>Antes de cada infusión, dos preguntas: ¿este paciente tiene factores de riesgo trombótico o renal? ¿hay algo que aumente hoy el riesgo de reacción (primera vez, cambio de producto, intervalo largo)?</p>
+ <h2>Meningitis aséptica</h2><p>Puede aparecer una <strong>inflamación temporal, reversible y no infecciosa</strong> de las membranas que rodean el cerebro y la médula espinal. Señales de alarma a informar de inmediato: <strong>dolor de cabeza intenso con náuseas, vómitos, rigidez de nuca, fiebre y fotofobia</strong>.</p>
+ <h2>Anemia hemolítica</h2><p>Cutaquig® contiene <strong>anticuerpos del grupo sanguíneo</strong> que pueden causar destrucción de glóbulos rojos y, por lo tanto, <strong>anemia</strong>. Puede positivizar la <strong>prueba de Coombs directa (DAT)</strong>.</p>
+ <h2>Vacunas a virus vivos atenuados</h2>
+ <div class="warn">La administración de inmunoglobulina puede <b>afectar la respuesta a vacunas de virus vivos atenuados</b> durante <b>al menos 6 semanas y hasta 3 meses</b>. Con la <b>vacuna contra el sarampión, el deterioro puede persistir hasta un año</b>. Coordinar el calendario de vacunación con el médico tratante.</div>
+ <h2>Hidratación y otros factores</h2><ul>
+ <li>Los pacientes <strong>deben estar suficientemente hidratados</strong> antes del uso de inmunoglobulinas.</li>
+ <li>Algunos medicamentos con <strong>estrógenos</strong> (por ejemplo, anticonceptivos orales) pueden <strong>aumentar el riesgo de coágulos</strong>. Preguntar siempre por la medicación concomitante.</li></ul>
+ <h2>Seguridad viral</h2><p>Las medidas de fabricación se consideran efectivas frente a virus con envoltura (<strong>VIH, hepatitis B, hepatitis C</strong>) y de <strong>valor limitado frente a virus sin envoltura</strong> como <strong>hepatitis A y parvovirus B19</strong>. No puede excluirse totalmente la transmisión de agentes infecciosos.</p>
+ <h2>Para llevarte</h2><p>Antes de cada infusión, tres preguntas: ¿tiene factores de riesgo trombótico o renal? ¿está bien hidratado? ¿hay algo que aumente hoy el riesgo de reacción (primera vez, cambio de producto, intervalo &gt;8 semanas)?</p>
  <div class="src">${SRC_INS}</div>`,
  quiz:[{q:"¿Cutaquig® puede administrarse por vía intravenosa?",o:["Sí, si se diluye","No, está contraindicado","Solo en adultos","Solo con bomba"],c:1,e:"No. Es exclusivamente subcutáneo; hay riesgo de shock si entra en un vaso."},{q:"La anafilaxia puede aparecer especialmente en personas con…",o:["IgG elevada","IgA indetectable y anticuerpos anti-IgA","Hipertensión","Sobrepeso"],c:1,e:"Es el escenario descrito de mayor riesgo, incluso en quienes toleraron antes."},{q:"¿Cuál de estas situaciones NO aumenta el riesgo de reacciones?",o:["Velocidad de infusión elevada","Cambio de producto","Intervalo largo desde la última infusión","Usar el mismo sitio que la vez anterior"],c:3,e:"Las tres primeras sí aumentan el riesgo (rotar sitios es buena práctica, pero no es el factor descrito)."},{q:"Las inmunoglobulinas se asociaron clínicamente con…",o:["Eventos tromboembólicos e insuficiencia renal aguda","Hepatitis","Osteoporosis","Anemia ferropénica"],c:0,e:"Ambos riesgos están descritos, con sus factores de riesgo."},{q:"No se debe administrar por vía intramuscular en caso de…",o:["Diabetes","Trombocitopenia grave u otros trastornos de la hemostasia","Hipertensión","Obesidad"],c:1,e:"Por el riesgo hemorrágico."}]},
 
 {n:5,t:"Reacciones adversas: perfil y manejo",lead:"Qué esperar, qué es normal y qué hacer en el momento.",
- body:`<h2>Tu reflejo ante una reacción</h2>
+ body:`<h2>Cuánto tiempo observar al paciente</h2>
+ <div class="alert"><b>Monitoreo durante la primera infusión y la hora siguiente</b> si el paciente: recibe inmunoglobulina humana normal <b>por primera vez</b>, <b>cambió</b> de otro medicamento a Cutaquig®, o pasó un <b>intervalo largo (más de 8 semanas)</b> desde la última infusión.<br><br>Si <b>ninguna</b> de esas situaciones aplica: observar <b>al menos 20 minutos</b> después de la administración.</div>
+ <h2>Tu reflejo ante una reacción</h2>
  <div class="alert"><b>En caso de reacción adversa: disminuí la velocidad de administración o interrumpí la infusión.</b> El tratamiento adicional depende de la naturaleza y la gravedad de la reacción. Ante shock, tratamiento médico estándar.</div>
  <h2>Perfil de tolerabilidad</h2><p>En el estudio pivotal y su extensión (adultos y pediátricos):</p><ul>
  <li><strong>6.151 de 7.239 infusiones sin reacción (85 %).</strong> Severidad: 88 % leve · 10 % moderada · 2 % severa.</li>
@@ -227,6 +243,12 @@ const MODS=[
  <li>La incidencia de reacciones en el sitio <strong>disminuye con el tiempo</strong>: 39 % → 15 % (de las primeras a las últimas 4 semanas).</li>
  <li><strong>No se informaron eventos adversos sistémicos graves.</strong></li></ul>
  <h2>Las más frecuentes</h2><p>Reacciones <strong>locales, en el sitio de infusión</strong>: enrojecimiento, hinchazón y picazón.</p>
+ <p>El prospecto también menciona, entre otros: escalofríos, dolor de cabeza, mareos, fiebre, vómitos, náuseas, dolor articular, presión arterial baja y dolor moderado en la zona lumbar.</p>
+ <div class="note">Cefalea, escalofríos o dolores corporales <strong>pueden reducirse disminuyendo la velocidad de infusión</strong>.</div>
+ <h2>Señales de alarma — avisar de inmediato</h2><ul>
+ <li>Aturdimiento, mareo o debilidad; erupción y picazón, hinchazón de boca o garganta, dificultad para respirar, sibilancias (posible reacción alérgica).</li>
+ <li>Frecuencia cardíaca anormal, dolor de pecho, labios o dedos azulados, visión borrosa.</li>
+ <li>Dolor, hinchazón, calor o bulto en piernas o brazos; falta de aire inexplicable; dolor de pecho que empeora al respirar hondo; entumecimiento o debilidad de un lado del cuerpo; confusión o dificultad para hablar (<strong>posible coágulo</strong>).</li></ul>
  <div class="note">Que la mayoría de las reacciones sean locales y leves no las vuelve irrelevantes: son el principal motivo de incomodidad y de abandono si nadie las acompaña.</div>
  <h2>Qué decirle al paciente</h2><p>Que es esperable alguna reacción local al comienzo, que suele ser leve y que <strong>tiende a disminuir con las semanas</strong>. Y que todo efecto secundario debe registrarse y comunicarse al médico, aunque parezca no relacionado.</p>
  <h2>Datos en transición de IVIg a SCIg</h2><p>En un estudio prospectivo multicéntrico (200 pacientes, ~80 % &lt;18 años; 8.787 infusiones SC; seguimiento ≥12 meses), las reacciones adversas sistémicas fueron <strong>1,9 % con SCIg vs 12,4 % previo con IVIg</strong>, manteniendo los niveles de IgG (9,0 → 9,2 g/L).</p>
@@ -294,38 +316,56 @@ const MODS=[
  <h2>Tu lugar en el modelo</h2><p>Como profesional que infunde, sos el punto donde se cruzan el producto y el programa: administrás con técnica, observás, registrás el lote, notificás y educás. Cada una de esas cuatro cosas sostiene la continuidad.</p>
  <h2>Para llevarte</h2><p>El producto es excelente y la evidencia lo respalda. Pero una terapia no se completa sola: <strong>se completa porque alguien la sostiene</strong>.</p>
  <div class="src">${SRC_INS} · Humana Nexo — Unidad de Continuidad Terapéutica.</div>`,
- quiz:[{q:"Según la información de prescripción, la infusión SC domiciliaria debe ser…",o:["Autoadministrada sin supervisión","Iniciada y supervisada por un profesional sanitario con experiencia","Realizada solo en hospital","Indicada por enfermería"],c:1,e:"Y el paciente y/o tutor deben ser instruidos adecuadamente."},{q:"La capacitación del paciente es…",o:["Un valor agregado opcional","Parte de la condición de uso del producto","Responsabilidad del laboratorio","Innecesaria"],c:1,e:"La propia ficha exige que el paciente/tutor sea instruido adecuadamente."},{q:"¿Por qué una reacción local leve puede terminar en abandono?",o:["Porque es peligrosa","Porque si el paciente está solo y nadie se la explicó, abandona","Porque obliga a internar","No puede pasar"],c:1,e:"Ahí es donde el acompañamiento del programa hace la diferencia."},{q:"En esta terapia, ¿qué representa cada 'fotograma' de la película del paciente?",o:["Una consulta","Una dosis","Un análisis","Una receta"],c:1,e:"Cada dosis es un fotograma; perder una corta el hilo."},{q:"Las cuatro cosas que sostenés como profesional que infunde son…",o:["Administrar, observar, registrar y educar","Vender, entregar, cobrar y archivar","Diagnosticar, tratar, derivar y dar de alta","Ninguna"],c:0,e:"Técnica, observación, registro/notificación y educación."}]}
+ quiz:[{q:"Según la información de prescripción, la infusión SC domiciliaria debe ser…",o:["Autoadministrada sin supervisión","Iniciada y supervisada por un profesional sanitario con experiencia","Realizada solo en hospital","Indicada por enfermería"],c:1,e:"Y el paciente y/o tutor deben ser instruidos adecuadamente."},{q:"La capacitación del paciente es…",o:["Un valor agregado opcional","Parte de la condición de uso del producto","Responsabilidad del laboratorio","Innecesaria"],c:1,e:"La propia ficha exige que el paciente/tutor sea instruido adecuadamente."},{q:"¿Por qué una reacción local leve puede terminar en abandono?",o:["Porque es peligrosa","Porque si el paciente está solo y nadie se la explicó, abandona","Porque obliga a internar","No puede pasar"],c:1,e:"Ahí es donde el acompañamiento del programa hace la diferencia."},{q:"En esta terapia, ¿qué representa cada 'fotograma' de la película del paciente?",o:["Una consulta","Una dosis","Un análisis","Una receta"],c:1,e:"Cada dosis es un fotograma; perder una corta el hilo."},{q:"Las cuatro cosas que sostenés como profesional que infunde son…",o:["Administrar, observar, registrar y educar","Vender, entregar, cobrar y archivar","Diagnosticar, tratar, derivar y dar de alta","Ninguna"],c:0,e:"Técnica, observación, registro/notificación y educación."}]},
+
+{n:9,t:"Dosificación y velocidades de infusión",lead:"Las cifras del prospecto argentino: dosis, velocidades y volúmenes.",
+ body:`<div class="warn"><b>La dosis siempre la determina el médico.</b> Se individualiza según el peso, el tratamiento previo y la respuesta. Nunca se modifica la dosis ni el intervalo sin indicación médica, y <b>nunca se infunde una dosis doble</b> para compensar una olvidada.</div>
+ <h2>Dosis de carga</h2><p>El médico determina si el paciente necesita una dosis de carga (adultos y niños) de al menos <strong>0,2 a 0,5 g/kg (1,2 a 3,0 mL/kg)</strong> de peso corporal. Puede dividirse en varios días, con una <strong>dosis diaria máxima de 0,1 a 0,15 g/kg</strong>.</p>
+ <h2>Mantenimiento</h2><p>Luego se administra de forma regular —desde <strong>diariamente hasta cada 2 semanas</strong>— hasta una <strong>dosis acumulada mensual de aproximadamente 0,4 a 0,8 g/kg (2,4 a 4,8 mL/kg)</strong>.</p>
+ <h2>Conversión rápida</h2><div class="note">Dosis calculada (g) <strong>× 6 = volumen de infusión (mL)</strong>. Ejemplo: 2 g × 6 = 12 mL.</div>
+ <h2>Velocidades con bomba</h2><ul>
+ <li><strong>Inicial recomendada: 15–20 mL/hora/sitio.</strong></li>
+ <li>Si se tolera bien, aumentar gradualmente a <strong>25 mL/hora/sitio</strong>.</li>
+ <li><strong>Múltiples sitios simultáneos:</strong> no exceder <strong>30 mL/h para todos los sitios combinados durante las primeras 6 infusiones</strong>. A partir de entonces, si se tolera bien, aumentar gradualmente a <strong>50 mL/h</strong> y luego a <strong>80 mL/h</strong>.</li></ul>
+ <div class="alert"><b>No apliques velocidades de otros materiales.</b> Algunas guías internacionales de Octapharma mencionan hasta 67,5 mL/h/sitio en adultos: <b>ese esquema no corresponde al prospecto autorizado en Argentina</b>. Rige lo de arriba.</div>
+ <h2>Empuje rápido manual (jeringa, sin bomba)</h2><p>Si se administra por <strong>empuje rápido manual</strong>, empujar el émbolo <strong>suavemente</strong> e infundir a una velocidad cómoda para el paciente. La <strong>velocidad máxima recomendada es de aproximadamente 1 a 2 mL/minuto</strong>.</p>
+ <div class="note">"Tómese su tiempo: la inyección no debe ser dolorosa." Algunos sitios toleran mejor que otros.</div>
+ <h2>Volumen por sitio</h2><ul>
+ <li>En <strong>bebés y niños</strong>, el sitio de infusión puede cambiarse cada <strong>5–15 mL</strong>.</li>
+ <li>En <strong>adultos</strong>, las dosis superiores a <strong>30 mL</strong> pueden dividirse según preferencia.</li>
+ <li>Los sitios deben estar <strong>separados por al menos 5 cm</strong>. <strong>No hay límite</strong> en el número de sitios.</li></ul>
+ <h2>Para llevarte</h2><p>Tres números que no se negocian: <strong>15–20 → 25 mL/h/sitio</strong>, <strong>30 → 50 → 80 mL/h combinados</strong>, y <strong>1–2 mL/min</strong> si es empuje manual. Ante duda, más lento.</p>
+ <div class="src">${SRC_AR}</div>`,
+ quiz:[{q:"¿Cuál es la velocidad de perfusión inicial recomendada por sitio?",o:["5 mL/h","15–20 mL/h","30 mL/h","67,5 mL/h"],c:1,e:"15–20 mL/h/sitio; si se tolera bien, se aumenta gradualmente a 25 mL/h/sitio."},{q:"Con múltiples sitios simultáneos, durante las primeras 6 infusiones no se debe exceder…",o:["15 mL/h combinados","30 mL/h combinados","80 mL/h combinados","No hay límite"],c:1,e:"30 mL/h combinados las primeras 6; luego, si se tolera, 50 y después 80 mL/h."},{q:"Si la administración es por empuje rápido manual, la velocidad máxima recomendada es…",o:["Aproximadamente 1 a 2 mL/minuto","10 mL/minuto","Sin límite","5 mL/segundo"],c:0,e:"~1 a 2 mL/min, empujando el émbolo suavemente. No debe doler."},{q:"La dosis de carga en inmunodeficiencia primaria es de al menos…",o:["0,2 a 0,5 g/kg (1,2 a 3,0 mL/kg)","1 a 2 g/kg","0,05 g/kg","5 g fijos"],c:0,e:"Puede dividirse en varios días, con máximo diario de 0,1 a 0,15 g/kg."},{q:"Para convertir la dosis en volumen…",o:["Dosis (g) × 6 = volumen (mL)","Dosis (g) ÷ 6","Dosis (g) × 10","Dosis (g) × 2"],c:0,e:"g × 6 = mL. Ej.: 2 g × 6 = 12 mL."},{q:"Si el paciente olvidó una dosis…",o:["Se infunde una dosis doble","Nunca se infunde dosis doble; se avisa al médico","Se duplica la velocidad","Se saltea el mes"],c:1,e:"No se compensa con dosis doble: se informa al médico lo antes posible."}]}
 ];
 const app=document.getElementById('app');
 function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView({behavior:'smooth'});else{home();setTimeout(scrollMods,60);}}
 function home(){
- const compl=IDS.filter(done).length, pct=Math.round(compl/8*100);
+ const compl=IDS.filter(done).length, pct=Math.round(compl/9*100);
  let cards=MODS.map(m=>`<div class="mcard ${done(m.n)?'v':''} ${m.crit?'crit':''}" onclick="openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
- cards+=`<div class="mcard lock" onclick="lockMsg()"><div class="num">🔒</div><h3>Dosificación y velocidades de infusión</h3><p>Bloqueado: las fuentes disponibles se contradicen y son internacionales. Se habilita con el prospecto ANMAT vigente, validado por Regulatorio.</p><span class="go" style="color:var(--warn)">Pendiente de validación</span></div>`;
  app.innerHTML=`
  <section class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap in">
   <span class="bigmk">${MARK}</span>
-  <div class="k">Capacitación de producto · Profesionales de la salud</div>
+  <div class="k">Capacitación de producto · Médicos y enfermeros</div>
   <h1>cutaquig<span style="font-size:22px;vertical-align:super">®</span></h1>
-  <p class="sub2">Inmunoglobulina humana normal (SCIg) · 165 mg/mL. Todo lo que el equipo que infunde necesita saber: producto, seguridad, técnica y el rol del programa.</p>
+  <p class="sub2">Inmunoglobulina humana normal (SCIg) · 165 mg/mL. Capacitación para <b>médicos y enfermeros</b>: producto, seguridad, dosificación, técnica y el rol del programa.</p>
   <a class="cta" onclick="scrollMods()">Comenzar la capacitación</a>
  </div></section>
  <section class="blk" id="mods"><div class="wrap">
-  <div class="eyebrow grad">La capacitación</div><h2 class="sec">Ocho módulos, cero margen de error</h2>
-  <p class="sub">Cada módulo cierra con autoevaluación. El contenido es fiel al material de Octapharma disponible; lo que no está confirmado, está marcado o bloqueado.</p>
-  <div class="prog"><span>${compl}/8 completados ${compl>=8?'🎓':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="eyebrow grad">La capacitación</div><h2 class="sec">Nueve módulos, cero margen de error</h2>
+  <p class="sub">Para médicos y enfermeros. Cada módulo cierra con autoevaluación. El contenido es fiel al <b>prospecto autorizado en Argentina</b> (v10, 29-08-2025).</p>
+  <div class="prog"><span>${compl}/9 completados ${compl>=9?'🎓':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
   <div class="grid">${cards}</div>
-  <div class="eyebrow grad" style="margin-top:38px">Recursos</div><h2 class="sec">Material para el paciente</h2><p class="sub">Se entrega al paciente en cada visita y seguimiento.</p><div class="res"><a class="rc" href="Cutaquig_Diario_de_tratamiento.pdf" target="_blank" rel="noopener"><b>📔 Mi diario de tratamiento — cutaquig®</b><span>Registro de infusiones, cómo se siente antes/durante/después, otros medicamentos y efectos secundarios. Incluye el número de lote. · PDF (Octapharma)</span></a></div>
+  <div class="eyebrow grad" style="margin-top:38px">Recursos</div><h2 class="sec">Material para el paciente</h2><p class="sub">Se entrega al paciente en cada visita y seguimiento.</p><div class="res"><a class="rc" href="Cutaquig_Prospecto_ANMAT_AR.pdf" target="_blank" rel="noopener"><b>📄 Prospecto autorizado en Argentina — cutaquig®</b><span>Versión 10 (29-08-2025). Fuente oficial de indicaciones, dosis, velocidades, conservación y seguridad. Ante cualquier duda, manda este documento. · PDF</span></a><a class="rc" href="Cutaquig_Diario_de_tratamiento.pdf" target="_blank" rel="noopener"><b>📔 Mi diario de tratamiento — cutaquig®</b><span>Registro de infusiones, cómo se siente antes/durante/después, otros medicamentos y efectos secundarios. Incluye el número de lote. · PDF (Octapharma)</span></a></div>
  </div></section>`;
  renderUserbox();window.scrollTo(0,0);
 }
-function lockMsg(){toast('Bloqueado: falta el prospecto ANMAT vigente para confirmar dosis y velocidades.');}
 let answers={},curQuiz=null;
 function openM(n){renderMod(MODS.find(x=>x.n===n));}
 function renderMod(m){
  const prev=MODS.find(x=>x.n===m.n-1), next=MODS.find(x=>x.n===m.n+1);
  app.innerHTML=`<section class="mhero"><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
-  <div class="k">Módulo ${m.n} de 8</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
+  <div class="k">Módulo ${m.n} de 9</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
   <div class="wrap"><div class="panel content"><h3 class="t">Contenido</h3>${m.body}</div>
   <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
   <div style="margin-top:8px"><button class="btn" onclick="grade(${m.n})">Corregir</button> <button class="btn ghost" onclick="openM(${m.n})">Reiniciar</button></div>
@@ -342,11 +382,11 @@ function grade(n){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((
  s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;
  setTimeout(function(){showRes(n,pct);},260);}
 function closePop(){var p=document.getElementById('mpop');if(p)p.classList.remove('on');}
-function showRes(n,pct){var pop=document.getElementById('mpop');if(!pop)return;var passed=pct>=60;var compl=IDS.filter(done).length,pp=Math.round(compl/8*100);var title,sub,primL,primA;
+function showRes(n,pct){var pop=document.getElementById('mpop');if(!pop)return;var passed=pct>=60;var compl=IDS.filter(done).length,pp=Math.round(compl/9*100);var title,sub,primL,primA;
  if(passed){var next=MODS.find(function(x){return x.n===n+1;});title='¡Muy bien!';sub='Completaste el Módulo '+n+' con '+pct+'%.';if(allDone()){primL='Volver al inicio';primA='home()';}else if(next){primL='Continuar: Módulo '+next.n+' →';primA='openM('+next.n+')';}else{primL='Volver al inicio';primA='home()';}}
  else{title='Repasá este módulo';sub='Sacaste '+pct+'%. Es contenido clínico crítico: necesitás 60 % para aprobar.';primL='Reintentar';primA='openM('+n+')';}
- pop.innerHTML='<div class="box"><div style="font-size:42px;line-height:1;margin-bottom:4px">'+(passed?'🎉':'📖')+'</div><h3>'+title+'</h3><p class="ps">'+sub+'</p>'+(passed?'<div class="pr">Tu avance: '+compl+'/8</div><div class="pbar"><i style="width:'+pp+'%"></i></div>':'')+'<button class="pbtn" onclick="closePop();'+primA+'">'+primL+'</button><button class="pbtn ghost" onclick="closePop()">Seguir acá</button></div>';pop.classList.add('on');}
-function renderUserbox(){const b=document.getElementById('userbox');if(!b)return;const compl=IDS.filter(done).length,pct=Math.round(compl/8*100);const hi=uname?`<span class="hi">${uname.split(' ')[0].replace(/[<>&]/g,'')}</span>`:'';b.innerHTML=hi+`<span class="mbar"><i style="width:${pct}%"></i></span><span>${compl}/8</span>`;}
+ pop.innerHTML='<div class="box"><div style="font-size:42px;line-height:1;margin-bottom:4px">'+(passed?'🎉':'📖')+'</div><h3>'+title+'</h3><p class="ps">'+sub+'</p>'+(passed?'<div class="pr">Tu avance: '+compl+'/9</div><div class="pbar"><i style="width:'+pp+'%"></i></div>':'')+'<button class="pbtn" onclick="closePop();'+primA+'">'+primL+'</button><button class="pbtn ghost" onclick="closePop()">Seguir acá</button></div>';pop.classList.add('on');}
+function renderUserbox(){const b=document.getElementById('userbox');if(!b)return;const compl=IDS.filter(done).length,pct=Math.round(compl/9*100);const hi=uname?`<span class="hi">${uname.split(' ')[0].replace(/[<>&]/g,'')}</span>`:'';b.innerHTML=hi+`<span class="mbar"><i style="width:${pct}%"></i></span><span>${compl}/9</span>`;}
 function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),3200);}
 const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"};
 let auth=null,db=null,curUser=null;
