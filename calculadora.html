@@ -152,6 +152,7 @@ h1.t{font-size:34px;font-weight:800;margin:26px 0 6px;letter-spacing:-.6px}
 <footer class="footer"><div class="wrap">Humana Nexo · Uso interno. No distribuir. · <a href="cutaquig.html" style="color:var(--b3);text-decoration:none">Capacitación cutaquig®</a></div></footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg2)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const ML_POR_G=6, SEM_POR_MES=4;
@@ -209,13 +210,13 @@ document.getElementById('fecha').textContent=new Date().toLocaleDateString('es-A
 ['peso','dosis'].forEach(function(id){document.getElementById(id).addEventListener('keydown',function(ev){if(ev.key==='Enter')calcular();});});
 /* --- Acceso (mismo login del Academy) --- */
 const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"};
-let auth=null; const gate=document.getElementById('fbgate');
+let auth=null, db=null; const gate=document.getElementById('fbgate');
 function showGate(){gate.classList.add('on');}function hideGate(){gate.classList.remove('on');}
 function renderLoading(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">cutaquig®</div><p>Cargando tu sesión…</p></div>';showGate();}
 function renderLogin(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">Uso interno · Médicos y enfermeros</div><h3>Calculadora de dosis</h3><p>Ingresá tu correo y te enviamos un enlace de acceso.</p><input id="fbEmail" type="email" placeholder="tu-correo@ejemplo.com"><button id="fbBtn">Enviar enlace de acceso</button><div class="msg" id="fbMsg"></div></div>';
  const b=document.getElementById('fbBtn');b.onclick=function(){const em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();const m=document.getElementById('fbMsg');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.className='msg';m.textContent='Ingresá un correo válido.';return;}b.disabled=true;m.textContent='Enviando…';auth.sendSignInLinkToEmail(em,{url:location.origin+location.pathname,handleCodeInApp:true}).then(function(){window.localStorage.setItem('ha_email_link',em);m.className='msg ok';m.innerHTML='¡Listo! Te enviamos un enlace a <b>'+em+'</b>.';}).catch(function(e){b.disabled=false;m.className='msg';m.textContent='No se pudo enviar: '+e.message;});};showGate();}
 try{
- firebase.initializeApp(firebaseConfig);auth=firebase.auth();
+ firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
  auth.onAuthStateChanged(function(u){
