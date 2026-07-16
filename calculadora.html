@@ -128,11 +128,10 @@ h1.t{font-size:34px;font-weight:800;margin:26px 0 6px;letter-spacing:-.6px}
 
 <div class="panel" id="vialbox" style="display:none"><h3>Tamaños de vial</h3>
 <p class="lead" style="margin:-6px 0 14px">Seleccioná los tamaños de vial que se ajusten convenientemente al programa de dosificación semanal preferido por el paciente.</p>
+<div class="note" style="margin:0 0 14px"><b>En Argentina se comercializan únicamente los viales de 2 g (12 mL) y 4 g (24 mL).</b> El prospecto autoriza otros tamaños, pero no están disponibles en el país: la combinación se arma solo con estos dos.</div>
 <div class="vials">
- <div class="vc"><img src="vial_1g.png" alt="Vial de 1 g / 6 mL"><div class="nm">1 g</div><div class="sub">6 mL</div><div class="cnt noprint"><button onclick="chg(1,-1)">−</button><span class="n" id="n1">0</span><button onclick="chg(1,1)">+</button></div><div class="sub" style="display:none" id="p1"></div></div>
  <div class="vc"><img src="vial_2g.png" alt="Vial de 2 g / 12 mL"><div class="nm">2 g</div><div class="sub">12 mL</div><div class="cnt noprint"><button onclick="chg(2,-1)">−</button><span class="n" id="n2">0</span><button onclick="chg(2,1)">+</button></div><div class="sub" style="display:none" id="p2"></div></div>
  <div class="vc"><img src="vial_4g.png" alt="Vial de 4 g / 24 mL"><div class="nm">4 g</div><div class="sub">24 mL</div><div class="cnt noprint"><button onclick="chg(4,-1)">−</button><span class="n" id="n4">0</span><button onclick="chg(4,1)">+</button></div><div class="sub" style="display:none" id="p4"></div></div>
- <div class="vc"><img src="vial_8g.png" alt="Vial de 8 g / 48 mL"><div class="nm">8 g</div><div class="sub">48 mL</div><div class="cnt noprint"><button onclick="chg(8,-1)">−</button><span class="n" id="n8">0</span><button onclick="chg(8,1)">+</button></div><div class="sub" style="display:none" id="p8"></div></div>
 </div>
 <div class="tot" id="tot"><span>Seleccionado: <b id="selg">0,00 g</b> · <b id="selv">0,00 mL</b></span><span id="cmp">—</span></div>
 <div class="noprint" style="margin-top:14px"><button class="btn ghost" onclick="sugerir()">Sugerir combinación</button> <button class="btn ghost" onclick="ceroVials()">Reiniciar viales</button></div>
@@ -143,7 +142,7 @@ h1.t{font-size:34px;font-weight:800;margin:26px 0 6px;letter-spacing:-.6px}
 <div class="alert"><b>La dosis la prescribe el médico.</b> Esta herramienta solo convierte gramos a volumen y sugiere viales. No reemplaza la indicación médica ni el prospecto. Verificá siempre la etiqueta del vial contra la prescripción antes de infundir.</div>
 <div class="note">Consultá la <strong>guía de infusión de cutaquig®</strong> para el detalle de cómo infundir. Velocidades y técnica: ver el <a href="cutaquig.html" style="color:var(--b3)">módulo de capacitación</a>.</div>
 <p style="font-size:13px;color:var(--mut);margin:12px 0 0">Para información completa de seguridad, consultá el prospecto autorizado. <strong>Los eventos adversos deben notificarse</strong>: usá los formularios de notificación del país (ANMAT) y notificá también a Octapharma (www.octapharma.com). Este medicamento está sujeto a monitoreo adicional.</p>
-<div class="src">Réplica del instructivo oficial "Calculadora de dosis cutaquig®" (Octapharma). Imágenes de viales: material de Octapharma. Datos de dosificación: prospecto autorizado en Argentina, v10 (29-08-2025).</div>
+<div class="src">Basada en el instructivo oficial "Calculadora de dosis cutaquig®" (Octapharma), <b>adaptada a Argentina</b>: el cálculo de gramos y mililitros es idéntico al oficial, pero el selector de viales se limita a las presentaciones que se comercializan en el país (2 g y 4 g). Imágenes de viales: material de Octapharma. Datos de dosificación: prospecto autorizado en Argentina, v10 (29-08-2025).</div>
 </div>
 
 <div class="noprint" style="margin:0 0 30px"><button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button> <a class="btn ghost" style="text-decoration:none;display:inline-block" href="cutaquig.html">← Volver a la capacitación</a></div>
@@ -156,8 +155,8 @@ h1.t{font-size:34px;font-weight:800;margin:26px 0 6px;letter-spacing:-.6px}
 <script>
 const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg2)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const ML_POR_G=6, SEM_POR_MES=4;
-const VIAL={1:6,2:12,4:24,8:48};
-let sel={1:0,2:0,4:0,8:0}, gSem=0;
+const VIAL={2:12,4:24};
+let sel={2:0,4:0}, gSem=0;
 const fmt=n=>n.toFixed(2).replace('.',',');
 function calcular(){
  const p=parseFloat(document.getElementById('peso').value), d=parseFloat(document.getElementById('dosis').value);
@@ -183,13 +182,16 @@ function chg(v,d){sel[v]=Math.max(0,sel[v]+d);pintar();}
 function ceroVials(){sel={1:0,2:0,4:0,8:0};pintar();}
 function sugerir(){
  if(gSem<=0)return;
- let r=Math.ceil(gSem-1e-9); sel={1:0,2:0,4:0,8:0};
- [8,4,2,1].forEach(function(v){ while(r>=v){ sel[v]++; r-=v; } });
+ // Solo hay viales de 2 g y 4 g: el minimo alcanzable es el par >= dosis.
+ const objetivo=Math.ceil((gSem-1e-9)/2)*2;
+ sel={2:0,4:0};
+ sel[4]=Math.floor(objetivo/4);
+ sel[2]=(objetivo-sel[4]*4)/2;
  pintar();
 }
 function pintar(){
  let g=0,ml=0;
- [1,2,4,8].forEach(function(v){
+ [2,4].forEach(function(v){
    document.getElementById('n'+v).textContent=sel[v];
    const pe=document.getElementById('p'+v);
    pe.textContent = sel[v]>0 ? (sel[v]+' vial'+(sel[v]>1?'es':'')) : '';
