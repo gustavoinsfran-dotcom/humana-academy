@@ -71,6 +71,15 @@ h2.sec{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px}
 .warn b{color:#FFC061}
 .note{border-left:3px solid var(--b2);background:var(--card2);padding:13px 18px;border-radius:0 10px 10px 0;margin:14px 0;color:#d8e8fa;font-style:italic}
 .src{font-size:12px;color:#6E86A6;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.figs{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:16px 0;background:#0B1220;border:1px solid var(--line);border-radius:14px;padding:20px}
+.figs img{height:290px;width:auto;display:block;border-radius:8px}
+.figs figure{margin:0}.figs figcaption{text-align:center;color:var(--mut);font-size:12.5px;margin-top:8px}
+.leg{font-size:13px;color:var(--mut);text-align:center;margin:6px 0 0}
+.leg .a{color:#E3B341;font-weight:700}.leg .v{color:#2AA79B;font-weight:700}
+.res{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0}
+.rc{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:.15s}
+.rc:hover{border-color:var(--b3)}.rc b{display:block;color:var(--tx);font-size:15.5px;margin-bottom:3px}
+.rc span{color:var(--mut);font-size:13px}
 .mhero{padding:34px 0 22px;border-bottom:1px solid var(--line);margin-bottom:22px}
 .mhero .k{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800}
 .mhero h1{font-size:30px;margin:6px 0 8px;font-weight:800;letter-spacing:-.5px}
@@ -242,7 +251,7 @@ const MODS=[
  <li>Usar <strong>sitios distintos</strong> a los de la administración anterior.</li>
  <li>Si se usa más de un sitio a la vez, deben estar <strong>separados por al menos 5 cm</strong>.</li>
  <li>Limpiar con toallita antiséptica y <strong>dejar secar</strong>.</li>
- <li><strong>Insertar:</strong> apretar la piel entre pulgar e índice, retirar la cubierta e insertar la aguja; el ángulo depende del equipo utilizado. Repetir por cada sitio.</li></ul>
+ <li><strong>Insertar:</strong> apretar la piel entre pulgar e índice, retirar la cubierta e insertar la aguja; el ángulo depende del equipo utilizado. Repetir por cada sitio.</li></ul><div class="figs"><figure><img src="cq_sitios_frente.png" alt="Sitios de infusión, vista frontal"><figcaption>Vista frontal</figcaption></figure><figure><img src="cq_sitios_dorso.png" alt="Sitios de infusión, vista dorsal"><figcaption>Vista dorsal</figcaption></figure></div><p class="leg"><span class="a">Amarillo</span>: sitios de infusión preferidos · <span class="v">Verde</span>: sitios de infusión alternativos.</p><p class="leg" style="margin-top:8px;font-size:12px">Ilustraciones: cutaquig® — Guía de infusión paso a paso (Octapharma).</p>
  <h2>7 · Comprobar la inserción de la aguja</h2><ul><li>La solución <strong>no debe infundirse en un vaso sanguíneo</strong>.</li><li><strong>No debe haber sangre en el tubo</strong> cerca de la aguja.</li><li>Fijar la aguja con gasa estéril y esparadrapo o apósito transparente.</li></ul>
  <div class="alert"><b>Si refluye sangre por el tubo:</b> retirá la aguja, descartá el equipo en el contenedor para punzantes, colocá un <b>equipo nuevo</b> y elegí un <b>sitio diferente</b>, repitiendo los pasos 5, 6 y 7.</div>
  <h2>8 · Iniciar la infusión</h2><p>Si se usa bomba, seguir las instrucciones del fabricante.</p>
@@ -306,6 +315,7 @@ function home(){
   <p class="sub">Cada módulo cierra con autoevaluación. El contenido es fiel al material de Octapharma disponible; lo que no está confirmado, está marcado o bloqueado.</p>
   <div class="prog"><span>${compl}/8 completados ${compl>=8?'🎓':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
   <div class="grid">${cards}</div>
+  <div class="eyebrow grad" style="margin-top:38px">Recursos</div><h2 class="sec">Material para el paciente</h2><p class="sub">Se entrega al paciente en cada visita y seguimiento.</p><div class="res"><a class="rc" href="Cutaquig_Diario_de_tratamiento.pdf" target="_blank" rel="noopener"><b>📔 Mi diario de tratamiento — cutaquig®</b><span>Registro de infusiones, cómo se siente antes/durante/después, otros medicamentos y efectos secundarios. Incluye el número de lote. · PDF (Octapharma)</span></a></div>
  </div></section>`;
  renderUserbox();window.scrollTo(0,0);
 }
