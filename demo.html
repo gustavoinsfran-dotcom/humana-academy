@@ -95,7 +95,8 @@ function pintar(n){
   ds.forEach(function(d,k){ d.classList.toggle('on',k===n); });
   narrar(e);
   load.classList.remove('off');
-  var mismo = fr.getAttribute('data-u')===e.u;
+  // Si la escena anterior abrio el panel de admin, hay que recargar aunque sea la misma pagina.
+  var mismo = fr.getAttribute('data-u')===e.u && fr.getAttribute('data-adm')!=='1' && !e.adm;
   function listo(){
     load.classList.add('off');
     var w=null; try{ w=fr.contentWindow; }catch(err){}
@@ -113,7 +114,7 @@ function pintar(n){
     scrollSuave(w, e.y[0], e.y[1], (+E[n].dur||DUR)-1800);
   }
   if(mismo && !e.adm){ setTimeout(listo,120); }
-  else { fr.setAttribute('data-u',e.u); fr.onload=function(){ setTimeout(listo, e.adm?2200:1500); }; fr.src=e.u+'?demo=1&t='+Date.now(); }
+  else { fr.setAttribute('data-u',e.u); fr.setAttribute('data-adm', e.adm?'1':'0'); fr.onload=function(){ setTimeout(listo, e.adm?2200:1500); }; fr.src=e.u+'?demo=1&t='+Date.now(); }
 }
 function correr(ms){
   ini=Date.now(); resto=ms;
