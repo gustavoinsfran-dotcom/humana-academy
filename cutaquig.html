@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cutaquig® · Capacitación de producto — Humana Nexo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#070C14">
+<link rel="canonical" href="https://academy.humanahc.com.ar/cutaquig.html">
+<link rel="icon" href="mark.svg">
+<style>
+:root{--bg:#070C14;--card:#0E1626;--card2:#131E33;--line:#1E2E4A;--tx:#E6EEF9;--mut:#8FA3BF;--b2:#0EA5E9;--b3:#38BDF8;--ok:#39d98a;--warn:#F59E0B;--dgr:#F87171;--grad:linear-gradient(135deg,#1D4ED8 0%,#0EA5E9 55%,#38BDF8 100%)}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header.top{position:sticky;top:0;z-index:60;background:rgba(7,12,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
+.brand .mk{width:36px;height:23px;flex-shrink:0}
+.brand .wm{font-weight:800;font-size:17px}
+.brand .tag{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);font-weight:700}
+nav.desk{display:flex;gap:20px;font-size:14px;color:var(--mut);align-items:center}
+nav.desk a{cursor:pointer;text-decoration:none}nav.desk a:hover{color:var(--b3)}
+.userbox{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mut)}
+.userbox .hi{color:var(--tx);font-weight:600;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.userbox .mbar{width:60px;height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.userbox .mbar i{display:block;height:100%;background:var(--grad)}
+.regbar{background:#2A1206;border-bottom:1px solid #5A2D0C;color:#FFD9A8;font-size:12.5px;padding:10px 0;line-height:1.5}
+.regbar b{color:#FFB454}
+.hero{padding:56px 0 48px;text-align:center;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;z-index:0}
+.b1{width:400px;height:400px;background:#1D4ED8;top:-150px;left:-70px}
+.b2{width:340px;height:340px;background:#0EA5E9;bottom:-160px;right:-50px;opacity:.28}
+.hero .in{position:relative;z-index:1}
+.bigmk{width:72px;height:46px;display:inline-block;margin-bottom:14px}
+.hero .k{font-size:11.5px;letter-spacing:3px;text-transform:uppercase;color:var(--b3);font-weight:800;margin-bottom:10px}
+.hero h1{font-size:46px;line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-1px}
+.hero .sub2{color:#c9dcf2;font-size:16px;max-width:640px;margin:0 auto}
+.cta{display:inline-block;margin-top:24px;background:var(--grad);color:#04101f;font-weight:800;padding:13px 28px;border-radius:12px;cursor:pointer;text-decoration:none}
+.blk{padding:46px 0}
+.eyebrow{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:8px}
+h2.sec{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px}
+.sub{color:var(--mut);margin:0 0 20px;font-size:15px;max-width:700px}
+.prog{display:flex;align-items:center;gap:12px;margin:0 0 20px;font-size:13px;color:var(--mut)}
+.prog .bar{flex:1;max-width:260px;height:9px;border-radius:6px;background:var(--card2);overflow:hidden}
+.prog .bar i{display:block;height:100%;background:var(--grad)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;cursor:pointer;transition:.2s;position:relative}
+.mcard:hover{transform:translateY(-3px);border-color:#2C4A6E;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.mcard .num{width:40px;height:40px;border-radius:11px;background:var(--grad);color:#04101f;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+.mcard h3{font-size:17px;margin:13px 0 7px;font-weight:700;line-height:1.3}
+.mcard p{font-size:13px;color:var(--mut);margin:0 0 10px}
+.mcard .go{font-size:12.5px;font-weight:700}
+.mcard .best{font-size:11.5px;color:var(--ok);font-weight:700;margin-bottom:7px}
+.mcard .done{position:absolute;top:18px;right:18px;color:var(--ok);font-size:17px;display:none}
+.mcard.v .done{display:block}
+.mcard.crit{border-color:#7F1D1D}
+.mcard.crit .num{background:linear-gradient(135deg,#B91C1C,#F87171)}
+.mcard.lock{cursor:not-allowed;opacity:.72;border-style:dashed;border-color:#5A2D0C}
+.mcard.lock .num{background:linear-gradient(135deg,#78350F,#F59E0B)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:20px 0}
+.panel h3.t{margin:0 0 12px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800}
+.content h2{font-size:18px;margin:20px 0 8px;font-weight:700;color:var(--b3)}
+.content h2:first-child{margin-top:0}
+.content p{margin:0 0 11px;color:#dbe7f6}
+.content ul{margin:0 0 11px;padding-left:20px;color:#dbe7f6}.content li{margin:0 0 6px}
+.alert{border-left:4px solid var(--dgr);background:#2A0F0F;padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;color:#FFD9D9}
+.alert b{color:#FF9B9B}
+.warn{border-left:4px solid var(--warn);background:#2A1D06;padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;color:#FFE7BF}
+.warn b{color:#FFC061}
+.note{border-left:3px solid var(--b2);background:var(--card2);padding:13px 18px;border-radius:0 10px 10px 0;margin:14px 0;color:#d8e8fa;font-style:italic}
+.src{font-size:12px;color:#6E86A6;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.mhero{padding:34px 0 22px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.mhero .k{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800}
+.mhero h1{font-size:30px;margin:6px 0 8px;font-weight:800;letter-spacing:-.5px}
+.mhero p{color:var(--mut);margin:0;max-width:680px}
+.back{color:var(--tx);cursor:pointer;font-weight:700;font-size:13.5px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;background:var(--card2);border:1px solid var(--line);padding:10px 18px;border-radius:11px}
+.back:hover{border-color:var(--b3);color:var(--b3)}
+.q{margin:0 0 18px}.qt{font-weight:700;margin-bottom:9px}
+.opt{display:block;padding:11px 15px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:14px;background:var(--card2)}
+.opt.sel{border-color:var(--b2);background:rgba(14,165,233,.12)}
+.opt.correct{border-color:var(--ok);background:rgba(57,217,138,.14)}
+.opt.wrong{border-color:#F87171;background:rgba(248,113,113,.12)}
+.exp{display:none;font-size:13px;color:var(--mut);margin:5px 2px 2px}.exp.show{display:block}
+.btn{background:var(--grad);color:#04101f;border:none;font-weight:800;font-size:14.5px;padding:12px 22px;border-radius:11px;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--tx)}
+.score{display:none;margin-top:14px;padding:15px 18px;border-radius:11px;background:var(--card2);font-size:15px}.score.show{display:block}
+.fbgate{position:fixed;inset:0;z-index:400;background:radial-gradient(900px 460px at 50% -10%,#0d1c33,var(--bg) 60%);display:none;align-items:center;justify-content:center;padding:24px}
+.fbgate.on{display:flex}
+.fbgate .box{background:var(--card);border:1px solid var(--line);border-radius:20px;max-width:430px;width:100%;padding:32px 28px;text-align:center}
+.fbgate .mk{width:60px;height:38px;margin:0 auto 14px;display:block}
+.fbgate h3{font-size:20px;margin:0 0 4px;font-weight:800}
+.fbgate .st{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800;margin-bottom:8px}
+.fbgate p{color:var(--mut);font-size:13.5px;margin:0 0 14px}
+.fbgate input{width:100%;padding:12px 15px;border:1.5px solid var(--line);border-radius:11px;background:var(--card2);color:var(--tx);font-size:15px;font-family:inherit;margin:0 0 11px}
+.fbgate button{width:100%;border:none;cursor:pointer;color:#04101f;font-weight:800;font-size:15px;padding:13px;border-radius:11px;background:var(--grad);font-family:inherit}
+.fbgate .msg{min-height:18px;color:#F87171;font-size:13px;margin:9px 2px 0}.fbgate .msg.ok{color:var(--ok)}
+.mpop{position:fixed;inset:0;z-index:350;background:rgba(4,8,14,.8);display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
+.mpop.on{display:flex}
+.mpop .box{background:var(--card);border:1px solid var(--line);border-radius:20px;max-width:430px;width:100%;padding:28px 26px;text-align:center}
+.mpop h3{font-size:21px;margin:0;font-weight:800}
+.mpop .ps{color:var(--mut);font-size:14px;margin:6px 0 0}
+.mpop .pr{color:var(--mut);font-size:13px;margin:14px 0 6px}
+.mpop .pbar{height:8px;border-radius:5px;background:var(--card2);overflow:hidden;margin:0 0 4px}
+.mpop .pbar i{display:block;height:100%;background:var(--grad)}
+.mpop .pbtn{width:100%;border:none;cursor:pointer;color:#04101f;font-weight:800;font-size:15px;padding:13px;border-radius:11px;background:var(--grad);font-family:inherit;margin-top:14px}
+.mpop .pbtn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--tx)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,70px);background:var(--card);border:1px solid var(--line);color:var(--tx);padding:12px 20px;border-radius:11px;font-weight:600;font-size:14px;z-index:120;opacity:0;transition:.35s}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--mut);font-size:12.5px;margin-top:28px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}nav.desk .lk{display:none}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div><div class="wm">cutaquig<span style="font-size:11px;vertical-align:super">®</span></div><div class="tag">Capacitación de producto</div></div></div>
+<nav class="desk"><a class="lk" onclick="scrollMods()">Módulos</a><a href="nexo.html">← Nexo</a><a href="index.html">Academy</a><div class="userbox" id="userbox"></div></nav>
+</div></header>
+<div class="regbar"><div class="wrap"><b>USO INTERNO · EXCLUSIVO PARA PROFESIONALES DE LA SALUD.</b> Medicamento de venta bajo receta — no difundir a pacientes ni al público. Contenido basado en material internacional de Octapharma; <b>puede diferir del prospecto aprobado por ANMAT en Argentina</b>. Consultar siempre el prospecto vigente. <b>Requiere validación regulatoria antes de su uso formal.</b></div></div>
+<main id="app"></main>
+<div class="fbgate" id="fbgate"></div>
+<div class="mpop" id="mpop"></div>
+<div class="toast" id="toast"></div>
+<footer class="footer"><div class="wrap">Humana Nexo · Capacitación de producto — Uso interno. No distribuir. · <a href="nexo.html" style="color:var(--b3);text-decoration:none">Volver a Nexo</a></div></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg2)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
+const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let scores=STORE.get('cq_s',{}), uname=STORE.get('ha_name','');
+const IDS=[1,2,3,4,5,6,7,8];
+const done=n=>scores[n]!=null&&scores[n]>=60, allDone=()=>IDS.every(done);
+const SRC_INS='Fuente: Información abreviada para la prescripción de cutaquig® (165 mg/ml), Octapharma — material internacional. Verificar contra el prospecto ANMAT vigente.';
+const SRC_GUIA='Fuente: cutaquig® — Guía de infusión paso a paso (Octapharma, ene-2024; basada en el prospecto de nov-2023). Puede no corresponder a las directrices locales.';
+
+const MODS=[
+{n:1,t:"Inmunoglobulinas y terapia de sustitución",lead:"Qué es la IgG, para qué se repone y en qué pacientes.",
+ body:`<h2>La idea</h2><p>La terapia de sustitución con <strong>inmunoglobulina G (IgG)</strong> restaura los niveles de anticuerpos en pacientes con inmunodeficiencias, previniendo infecciones graves. Puede administrarse por vía <strong>intravenosa (IVIg)</strong> o <strong>subcutánea (SCIg)</strong>.</p>
+ <h2>Qué aporta la IgG</h2><p>Cutaquig® contiene IgG, que ayuda al sistema inmune a combatir infecciones virales y bacterianas. No es un antibiótico ni trata una infección puntual: <strong>repone anticuerpos que el paciente no produce</strong>.</p>
+ <h2>En qué pacientes</h2><ul>
+ <li><strong>Inmunodeficiencia primaria (PID):</strong> personas que nacen con capacidad reducida o incapacidad para producir anticuerpos.</li>
+ <li><strong>Inmunodeficiencia secundaria (SID):</strong> deficiencia adquirida de anticuerpos por enfermedades y/o tratamientos específicos, en personas que presentan infecciones graves o recurrentes.</li></ul>
+ <div class="warn"><b>Importante:</b> las indicaciones exactas y su alcance se rigen por el <b>prospecto aprobado por ANMAT</b>. Este módulo describe el marco terapéutico, no reemplaza la ficha técnica local.</div>
+ <h2>El objetivo terapéutico</h2><p>La dosis se individualiza según la farmacocinética y la respuesta clínica, buscando un <strong>nivel sostenido de IgG de al menos 5–6 g/L</strong> y tratando de estar dentro del intervalo de referencia de IgG sérica para la edad.</p>
+ <div class="note">No infundimos un producto: sostenemos un nivel de anticuerpos en el tiempo. Por eso la continuidad es parte del tratamiento.</div>
+ <h2>Para llevarte</h2><p>El sentido de la terapia es mantener al paciente protegido de forma sostenida. Una infusión perdida no es un trámite postergado: es un valle en la protección.</p>
+ <div class="src">${SRC_INS}</div>`,
+ quiz:[{q:"¿Qué hace la terapia de sustitución con IgG?",o:["Trata una infección aguda puntual","Restaura los niveles de anticuerpos para prevenir infecciones graves","Reemplaza a los antibióticos","Estimula la médula ósea"],c:1,e:"Repone anticuerpos que el paciente no produce, previniendo infecciones."},{q:"¿Cuáles son las dos vías de administración de inmunoglobulinas?",o:["Oral y subcutánea","Intramuscular e intravenosa","Intravenosa (IVIg) y subcutánea (SCIg)","Inhalatoria e intravenosa"],c:2,e:"IVIg y SCIg."},{q:"La inmunodeficiencia primaria (PID) se caracteriza por…",o:["Ser adquirida por tratamientos","Capacidad reducida o nula de producir anticuerpos desde el nacimiento","Ser transitoria","Afectar solo a adultos"],c:1,e:"Es congénita: el paciente nace con esa dificultad para producir anticuerpos."},{q:"El objetivo de nivel sostenido de IgG es de al menos…",o:["2–3 g/L","5–6 g/L","10–12 g/L","15 g/L"],c:1,e:"Al menos 5–6 g/L, buscando el rango de referencia para la edad."},{q:"¿Quién define la dosis y el intervalo?",o:["Enfermería según tolerancia","El médico, individualizando según farmacocinética y respuesta clínica","El paciente","Un protocolo fijo igual para todos"],c:1,e:"La dosis se individualiza; nunca se cambia sin indicación médica."}]},
+
+{n:2,t:"Ficha de producto y conservación",lead:"Qué es exactamente Cutaquig®, cómo viene y cómo se conserva.",
+ body:`<h2>Composición y presentación</h2><ul>
+ <li><strong>Inmunoglobulina humana normal (SCIg)</strong>, solución para infusión <strong>165 mg/mL</strong> (16,5 %).</li>
+ <li><strong>≥95 % es IgG.</strong> Contenido de <strong>IgA ≤ 0,6 mg/mL</strong>.</li>
+ <li>Contiene <strong>90 mg de maltosa por mL</strong> (ver módulo 3 — es crítico).</li>
+ <li><strong>Lista para usar:</strong> no requiere reconstitución. Baja viscosidad y alta pureza.</li>
+ <li><strong>Solo para administración subcutánea.</strong></li></ul>
+ <h2>Viales disponibles</h2><p>1 g / 6 mL · 2 g / 12 mL · 4 g / 24 mL · 8 g / 48 mL.</p>
+ <h2>Conservación</h2><ul>
+ <li><strong>Largo plazo:</strong> heladera entre <strong>2 °C y 8 °C</strong>.</li>
+ <li><strong>No congelar.</strong> Conservar los viales en el <strong>embalaje exterior</strong> para protegerlos de la luz.</li>
+ <li>Si se pasó a temperatura ambiente, <strong>no volver a refrigerar</strong>.</li>
+ <li>Antes de usar, llevar a temperatura ambiente o corporal. Si viene de heladera, <strong>sacarlo al menos 90 minutos antes</strong>.</li>
+ <li><strong>No calentar ni usar microondas. No agitar</strong> (forma espuma).</li>
+ <li>Tras la primera apertura, <strong>usar inmediatamente</strong>.</li>
+ <li>No utilizar después de la fecha de vencimiento. Mantener fuera del alcance de los niños.</li></ul>
+ <div class="warn"><b>Dato en revisión — no lo enseñes hasta confirmarlo:</b> el tiempo máximo a temperatura ambiente (≤25 °C) difiere entre las fuentes disponibles: el inserto de prescripción indica <b>6 meses</b> y la guía paso a paso 2024 indica <b>9 meses</b>. <b>Confirmar con el prospecto ANMAT vigente antes de instruir al paciente.</b></div>
+ <h2>Monitoreo adicional</h2><p>Este medicamento está sujeto a <strong>monitoreo adicional</strong>, lo que refuerza la obligación de notificar eventos adversos (ver módulo 7).</p>
+ <div class="src">${SRC_INS}<br>${SRC_GUIA}</div>`,
+ quiz:[{q:"¿Cuál es la concentración de Cutaquig®?",o:["100 mg/mL","165 mg/mL (16,5 %)","200 mg/mL","50 mg/mL"],c:1,e:"165 mg/mL, es decir 16,5 %."},{q:"¿Por qué vía se administra Cutaquig®?",o:["Intravenosa","Intramuscular","Subcutánea únicamente","Oral"],c:2,e:"Es exclusivamente subcutánea."},{q:"Si el vial viene de la heladera, antes de infundir hay que…",o:["Calentarlo en microondas","Sacarlo al menos 90 minutos antes para que llegue a temperatura ambiente","Infundirlo frío","Sumergirlo en agua caliente"],c:1,e:"Al menos 90 min a temperatura ambiente. Nunca calentar ni microondas."},{q:"¿Por qué no se debe agitar el vial?",o:["Porque pierde potencia","Porque puede formar espuma","Porque se congela","Porque se contamina"],c:1,e:"Agitar forma espuma."},{q:"Un vial que estuvo a temperatura ambiente…",o:["Puede volver a la heladera","No debe volver a refrigerarse","Debe congelarse","Se puede recalentar"],c:1,e:"Si se pasó a T.A., no vuelve a la heladera."}]},
+
+{n:3,t:"🔴 Maltosa e interferencia con glucómetros",lead:"El punto de seguridad más crítico y el más fácil de pasar por alto.",crit:true,
+ body:`<div class="alert"><b>ADVERTENCIA CRÍTICA.</b> Cutaquig® contiene <b>90 mg de maltosa por mL</b>. La interferencia de la maltosa con <b>determinados análisis de glucosa en sangre</b> puede dar lugar a <b>lecturas de glucosa falsamente elevadas</b> y, en consecuencia, a la <b>administración inadecuada de insulina</b>, con el consiguiente <b>riesgo de hipoglucemia y muerte</b>. Además, <b>los casos reales de hipoglucemia pueden no tratarse</b> por quedar enmascarados.</div>
+ <h2>Por qué pasa</h2><p>Algunos sistemas de medición de glucosa no distinguen la maltosa de la glucosa. El glucómetro "ve" azúcar que no es glucosa y <strong>muestra un valor más alto que el real</strong>.</p>
+ <h2>La secuencia del daño</h2><ul>
+ <li>El glucómetro marca una glucemia <strong>falsamente alta</strong>.</li>
+ <li>Se administra <strong>insulina que el paciente no necesitaba</strong>.</li>
+ <li>El paciente hace <strong>hipoglucemia</strong>, que puede ser grave o fatal.</li>
+ <li>Y a la inversa: una <strong>hipoglucemia real puede pasar desapercibida</strong> porque el equipo muestra un valor normal o alto.</li></ul>
+ <h2>Qué tenés que hacer</h2><ul>
+ <li><strong>Leer siempre la información del producto del sistema de medición de glucosa</strong> que usa el paciente, para verificar si es susceptible a interferencia por maltosa.</li>
+ <li>Identificar activamente a los pacientes a los que se les mide glucemia (especialmente con diabetes).</li>
+ <li><strong>Advertir al paciente, a su familia y a cualquier equipo tratante</strong> que está recibiendo un producto con maltosa.</li>
+ <li>Ante una glucemia alta inesperada en un paciente en tratamiento, <strong>sospechar interferencia antes de corregir con insulina</strong>.</li></ul>
+ <div class="note">Este es el riesgo que más fácilmente se escapa, porque no ocurre durante la infusión: ocurre después, en cualquier control de glucemia.</div>
+ <h2>Para llevarte</h2><p>Si te quedás con una sola cosa de toda la capacitación, que sea esta: <strong>maltosa + glucómetro incompatible = riesgo de muerte</strong>. Verificá el método de medición.</p>
+ <div class="src">${SRC_INS}</div>`,
+ quiz:[{q:"¿Cuánta maltosa contiene Cutaquig®?",o:["9 mg/mL","90 mg/mL","900 mg/mL","No contiene maltosa"],c:1,e:"90 mg de maltosa por mL."},{q:"¿Cuál es el riesgo de la maltosa con ciertos glucómetros?",o:["Lecturas falsamente BAJAS","Lecturas falsamente ELEVADAS","No afecta la medición","Daña el equipo"],c:1,e:"Puede dar lecturas falsamente elevadas de glucosa."},{q:"¿Cuál es la consecuencia más grave de esa lectura falsa?",o:["Molestia local","Administración inadecuada de insulina → hipoglucemia y riesgo de muerte","Fiebre","Pérdida de eficacia del producto"],c:1,e:"Se corrige una hiperglucemia que no existe y se induce hipoglucemia."},{q:"Además de la falsa hiperglucemia, ¿qué otro riesgo existe?",o:["Que una hipoglucemia real quede sin tratar por estar enmascarada","Que el vial se contamine","Que aumente la viscosidad","Ninguno"],c:0,e:"Los casos reales de hipoglucemia pueden no tratarse."},{q:"¿Qué debe verificarse siempre?",o:["La marca del vial","La información del producto del sistema de medición de glucosa del paciente","La temperatura de la sala","El color de la solución"],c:1,e:"Hay que confirmar si el método de glucemia es susceptible a interferencia por maltosa."}]},
+
+{n:4,t:"Contraindicaciones, advertencias y riesgos",lead:"Cuándo no administrar y qué vigilar siempre.",
+ body:`<h2>Contraindicaciones</h2><ul>
+ <li><strong>Hipersensibilidad</strong> al principio activo o a alguno de los excipientes.</li>
+ <li><strong>No administrar por vía intravenosa.</strong></li>
+ <li><strong>No administrar por vía intramuscular</strong> en caso de trombocitopenia grave u otros trastornos de la hemostasia.</li></ul>
+ <div class="alert"><b>Riesgo de shock</b> si se administra accidentalmente en un vaso sanguíneo. Por eso la verificación de la aguja (módulo 6) no es un formalismo.</div>
+ <h2>Hipersensibilidad y anafilaxia</h2><p>Las reacciones de hipersensibilidad son <strong>raras</strong>. Puede desarrollarse <strong>anafilaxia</strong> en personas con <strong>IgA indetectable que tienen anticuerpos anti-IgA</strong>, e incluso en personas que <strong>habían tolerado</strong> un tratamiento previo con inmunoglobulina humana normal. En caso de shock: aplicar el <strong>tratamiento médico estándar para el shock</strong>.</p>
+ <h2>Cuándo aumenta el riesgo de reacciones</h2><ul>
+ <li>Velocidad de infusión <strong>elevada</strong>.</li>
+ <li>Personas que <strong>no conocen</strong> la inmunoglobulina humana normal (primera exposición).</li>
+ <li>Personas que <strong>cambian de producto</strong>.</li>
+ <li>Cuando transcurrió un <strong>intervalo largo</strong> desde la infusión previa.</li></ul>
+ <h2>Eventos tromboembólicos</h2><p>Existe evidencia clínica de asociación entre la administración de inmunoglobulinas y eventos tromboembólicos: <strong>infarto de miocardio, ACV, embolia pulmonar y trombosis venosa profunda</strong>.</p>
+ <p><strong>Factores de riesgo:</strong> obesidad, edad avanzada, hipertensión, diabetes mellitus, antecedentes de enfermedad vascular o episodios trombóticos, trastornos trombofílicos adquiridos o heredados, períodos prolongados de inmovilización, hipovolemia grave y enfermedades que aumentan la viscosidad de la sangre.</p>
+ <h2>Insuficiencia renal aguda</h2><p>También existe evidencia clínica de asociación con <strong>insuficiencia renal aguda</strong>.</p>
+ <p><strong>Factores de riesgo:</strong> insuficiencia renal preexistente, diabetes mellitus, hipovolemia, sobrepeso, medicamentos nefrotóxicos concomitantes, sepsis, hiperviscosidad y paraproteinemia.</p>
+ <h2>Para llevarte</h2><p>Antes de cada infusión, dos preguntas: ¿este paciente tiene factores de riesgo trombótico o renal? ¿hay algo que aumente hoy el riesgo de reacción (primera vez, cambio de producto, intervalo largo)?</p>
+ <div class="src">${SRC_INS}</div>`,
+ quiz:[{q:"¿Cutaquig® puede administrarse por vía intravenosa?",o:["Sí, si se diluye","No, está contraindicado","Solo en adultos","Solo con bomba"],c:1,e:"No. Es exclusivamente subcutáneo; hay riesgo de shock si entra en un vaso."},{q:"La anafilaxia puede aparecer especialmente en personas con…",o:["IgG elevada","IgA indetectable y anticuerpos anti-IgA","Hipertensión","Sobrepeso"],c:1,e:"Es el escenario descrito de mayor riesgo, incluso en quienes toleraron antes."},{q:"¿Cuál de estas situaciones NO aumenta el riesgo de reacciones?",o:["Velocidad de infusión elevada","Cambio de producto","Intervalo largo desde la última infusión","Usar el mismo sitio que la vez anterior"],c:3,e:"Las tres primeras sí aumentan el riesgo (rotar sitios es buena práctica, pero no es el factor descrito)."},{q:"Las inmunoglobulinas se asociaron clínicamente con…",o:["Eventos tromboembólicos e insuficiencia renal aguda","Hepatitis","Osteoporosis","Anemia ferropénica"],c:0,e:"Ambos riesgos están descritos, con sus factores de riesgo."},{q:"No se debe administrar por vía intramuscular en caso de…",o:["Diabetes","Trombocitopenia grave u otros trastornos de la hemostasia","Hipertensión","Obesidad"],c:1,e:"Por el riesgo hemorrágico."}]},
+
+{n:5,t:"Reacciones adversas: perfil y manejo",lead:"Qué esperar, qué es normal y qué hacer en el momento.",
+ body:`<h2>Tu reflejo ante una reacción</h2>
+ <div class="alert"><b>En caso de reacción adversa: disminuí la velocidad de administración o interrumpí la infusión.</b> El tratamiento adicional depende de la naturaleza y la gravedad de la reacción. Ante shock, tratamiento médico estándar.</div>
+ <h2>Perfil de tolerabilidad</h2><p>En el estudio pivotal y su extensión (adultos y pediátricos):</p><ul>
+ <li><strong>6.151 de 7.239 infusiones sin reacción (85 %).</strong> Severidad: 88 % leve · 10 % moderada · 2 % severa.</li>
+ <li><strong>Población pediátrica:</strong> 2.841 de 3.283 sin reacción (86 %) — 96 % leve · 3 % moderada · &lt;1 % severa.</li>
+ <li><strong>77 %</strong> de las infusiones sin reacción en el sitio; <strong>&gt;99 %</strong> de las reacciones fueron leves o moderadas.</li>
+ <li>La incidencia de reacciones en el sitio <strong>disminuye con el tiempo</strong>: 39 % → 15 % (de las primeras a las últimas 4 semanas).</li>
+ <li><strong>No se informaron eventos adversos sistémicos graves.</strong></li></ul>
+ <h2>Las más frecuentes</h2><p>Reacciones <strong>locales, en el sitio de infusión</strong>: enrojecimiento, hinchazón y picazón.</p>
+ <div class="note">Que la mayoría de las reacciones sean locales y leves no las vuelve irrelevantes: son el principal motivo de incomodidad y de abandono si nadie las acompaña.</div>
+ <h2>Qué decirle al paciente</h2><p>Que es esperable alguna reacción local al comienzo, que suele ser leve y que <strong>tiende a disminuir con las semanas</strong>. Y que todo efecto secundario debe registrarse y comunicarse al médico, aunque parezca no relacionado.</p>
+ <h2>Datos en transición de IVIg a SCIg</h2><p>En un estudio prospectivo multicéntrico (200 pacientes, ~80 % &lt;18 años; 8.787 infusiones SC; seguimiento ≥12 meses), las reacciones adversas sistémicas fueron <strong>1,9 % con SCIg vs 12,4 % previo con IVIg</strong>, manteniendo los niveles de IgG (9,0 → 9,2 g/L).</p>
+ <div class="warn"><b>Cuidado al comunicar:</b> son resultados de estudio. <b>No se comunican como superioridad</b> frente a otros productos.</div>
+ <h2>Para llevarte</h2><p>La mayoría de las reacciones son locales, leves y decrecientes. Tu reflejo siempre es el mismo: <strong>bajar la velocidad o interrumpir</strong>, y registrar.</p>
+ <div class="src">Kobayashi RH, et al. Front Immunol. 2019;10:40. · Avedova A, et al. Front Immunol. 2025;16:1598491. · ${SRC_INS}</div>`,
+ quiz:[{q:"Ante una reacción adversa durante la infusión, ¿qué hacés primero?",o:["Aumentar la velocidad para terminar antes","Disminuir la velocidad o interrumpir la infusión","Ignorarla si es leve","Cambiar de vial"],c:1,e:"Bajar la velocidad o interrumpir; luego según naturaleza y gravedad."},{q:"Las reacciones más frecuentes con Cutaquig® son…",o:["Sistémicas graves","Locales en el sitio: enrojecimiento, hinchazón y picazón","Renales","Cardíacas"],c:1,e:"Son locales y en su gran mayoría leves."},{q:"Con el paso de las semanas, las reacciones en el sitio…",o:["Aumentan","Disminuyen (39 % → 15 %)","Se mantienen igual","Se vuelven graves"],c:1,e:"La incidencia baja de 39 % a 15 % entre las primeras y las últimas 4 semanas."},{q:"En el estudio pivotal, el porcentaje de infusiones sin reacción fue…",o:["50 %","85 %","20 %","99 %"],c:1,e:"6.151 de 7.239 infusiones (85 %), con 88 % de severidad leve."},{q:"Los datos de tolerabilidad frente a IVIg…",o:["Se comunican como superioridad","Son datos de estudio y NO se comunican como superioridad","No existen","Solo aplican a adultos"],c:1,e:"Se informan como resultados de estudio, sin claim de superioridad."}]},
+
+{n:6,t:"Técnica de infusión paso a paso",lead:"De la preparación del vial al registro final, sin saltear nada.",
+ body:`<div class="alert"><b>Cutaquig® es solo para administración subcutánea. No lo inyectes en un vaso sanguíneo.</b> Usá siempre técnica aséptica.</div>
+ <h2>1 · Preparar los viales</h2><ul><li>Si están en heladera, sacarlos <strong>al menos 90 minutos antes</strong> para que lleguen a temperatura ambiente.</li><li><strong>No calentar ni usar microondas. No agitar</strong> (espuma).</li></ul>
+ <h2>2 · Alistarse</h2><ul><li>Área de trabajo limpia (toallitas antisépticas o desinfectante).</li><li><strong>Lavado de manos</strong> con agua y jabón; dejar secar.</li><li>Equipo: vial, jeringa(s) compatible(s), aguja o púa para extraer, gasa estéril o apósito transparente y esparadrapo, bomba de infusión (opcional), equipo de infusión, alcohol/toallitas antisépticas, <strong>contenedor para punzantes</strong>, diario de tratamiento y bolígrafo.</li></ul>
+ <h2>3 · Verificar y abrir los viales</h2><ul><li>La solución debe estar a temperatura ambiente.</li><li>Verificar la dosis en la etiqueta según la prescripción.</li><li><strong>Aspecto:</strong> transparente e incolora a amarillo pálido o marrón claro.</li></ul>
+ <div class="warn"><b>NO uses el vial si:</b> la solución está turbia o con partículas · la tapa protectora fue manipulada o falta · el vial está dañado · pasó la fecha de expiración · <b>falta el número de lote</b> · el vial no está etiquetado con la dosis correcta.</div>
+ <p>Abrir el vial <strong>recién antes de usarlo</strong>. Retirar la tapa y desinfectar el tapón de goma con una toallita antiséptica; dejar secar.</p>
+ <h2>4 · Preparar y llenar la jeringa</h2><ul><li>Fijar la aguja o púa a la jeringa estéril.</li><li><strong>Con aguja:</strong> cargar aire en un volumen ≈ al de solución necesaria; introducir la aguja en el vial y ponerlo boca abajo <strong>con la punta fuera de la solución</strong> (evita espuma); inyectar el aire; recién ahí llevar la punta a la solución y cargar <strong>lentamente</strong>.</li><li><strong>Con púa ventilada:</strong> introducirla y poner el vial boca abajo.</li><li>Si se necesita más de un vial, repetir. Descartar aguja/púa en el <strong>contenedor para punzantes</strong>.</li></ul>
+ <h2>5 · Preparar la bomba y los tubos (opcional)</h2><ul><li>Bomba (p. ej. FREEDOM60® o CRONO S-PID): seguir las instrucciones del fabricante.</li><li>Conectar la jeringa al tubo y <strong>cebar las líneas</strong>, eliminando todo el aire.</li></ul>
+ <div class="warn"><b>No permitas que la solución gotee por la punta de la aguja:</b> puede causar reacciones innecesarias en el sitio. <b>La aguja debe estar seca al insertarla en la piel.</b></div>
+ <h2>6 · Elegir y limpiar el/los sitio(s)</h2><ul>
+ <li><strong>Zonas:</strong> abdomen, muslos, parte superior de los brazos y/o parte superior de las piernas/cadera.</li>
+ <li><strong>Evitar:</strong> cicatrices, tatuajes, estrías y piel lesionada, inflamada o enrojecida.</li>
+ <li>Usar <strong>sitios distintos</strong> a los de la administración anterior.</li>
+ <li>Si se usa más de un sitio a la vez, deben estar <strong>separados por al menos 5 cm</strong>.</li>
+ <li>Limpiar con toallita antiséptica y <strong>dejar secar</strong>.</li>
+ <li><strong>Insertar:</strong> apretar la piel entre pulgar e índice, retirar la cubierta e insertar la aguja; el ángulo depende del equipo utilizado. Repetir por cada sitio.</li></ul>
+ <h2>7 · Comprobar la inserción de la aguja</h2><ul><li>La solución <strong>no debe infundirse en un vaso sanguíneo</strong>.</li><li><strong>No debe haber sangre en el tubo</strong> cerca de la aguja.</li><li>Fijar la aguja con gasa estéril y esparadrapo o apósito transparente.</li></ul>
+ <div class="alert"><b>Si refluye sangre por el tubo:</b> retirá la aguja, descartá el equipo en el contenedor para punzantes, colocá un <b>equipo nuevo</b> y elegí un <b>sitio diferente</b>, repitiendo los pasos 5, 6 y 7.</div>
+ <h2>8 · Iniciar la infusión</h2><p>Si se usa bomba, seguir las instrucciones del fabricante.</p>
+ <div class="warn"><b>Velocidades de infusión:</b> ver el módulo de <b>Dosificación y velocidades</b>, actualmente <b>bloqueado</b> a la espera del prospecto ANMAT vigente. No apliques velocidades de memoria ni de material internacional sin confirmar.</div>
+ <h2>9 y 10 · Registrar y finalizar</h2><p><strong>Registrar la infusión</strong> en el diario de tratamiento (incluido el <strong>número de lote</strong>) y dar por finalizada la infusión.</p>
+ <h2>Volumen por sitio</h2><ul><li>En <strong>lactantes y niños</strong>, el sitio puede cambiarse cada <strong>5–15 mL</strong>.</li><li>En <strong>adultos</strong>, las dosis superiores a <strong>30 mL</strong> pueden dividirse.</li><li><strong>No hay límite</strong> en el número de sitios de infusión.</li></ul>
+ <div class="src">${SRC_GUIA}<br>${SRC_INS}</div>`,
+ quiz:[{q:"Antes de insertar la aguja, ésta debe estar…",o:["Húmeda con la solución","Seca — el goteo puede causar reacciones en el sitio","Refrigerada","Cubierta"],c:1,e:"No debe gotear: la aguja seca previene reacciones innecesarias."},{q:"Si al comprobar la inserción refluye sangre por el tubo…",o:["Se continúa, es normal","Se retira la aguja, se descarta el equipo y se usa un equipo nuevo en otro sitio","Se baja la velocidad","Se aspira la sangre"],c:1,e:"Equipo nuevo y sitio diferente, repitiendo pasos 5, 6 y 7."},{q:"Si se usan varios sitios a la vez, deben estar separados al menos…",o:["1 cm","5 cm","20 cm","No importa"],c:1,e:"Al menos 5 cm entre sitios."},{q:"¿Cuál de estos NO es motivo para descartar el vial?",o:["Solución turbia o con partículas","Falta el número de lote","Solución amarillo pálido","Tapa protectora manipulada"],c:2,e:"El aspecto normal va de incoloro a amarillo pálido o marrón claro."},{q:"Al cargar con aguja, la punta debe estar fuera de la solución mientras…",o:["Se inyecta el aire, para evitar espuma","Se carga el producto","Se desinfecta","Siempre"],c:0,e:"Se inyecta el aire con la punta fuera del líquido para no hacer espuma."}]},
+
+{n:7,t:"Farmacovigilancia y registro",lead:"Trazabilidad del lote y notificación de eventos adversos.",
+ body:`<h2>Monitoreo adicional</h2><p>Cutaquig® está sujeto a <strong>monitoreo adicional</strong>. Eso significa que la notificación de eventos adversos no es opcional ni burocrática: es parte del seguimiento de seguridad del producto.</p>
+ <h2>Registrá el lote — siempre</h2>
+ <div class="alert"><b>Anotá el nombre y el número de lote de cada infusión.</b> Sin lote registrado no hay trazabilidad posible: si aparece una señal de seguridad, no se puede saber qué pacientes recibieron qué.</div>
+ <h2>Notificación de eventos adversos</h2><ul>
+ <li>Los eventos adversos <strong>deben notificarse</strong>.</li>
+ <li>Utilizar los <strong>formularios de notificación del país</strong> (en Argentina, el sistema de farmacovigilancia de <strong>ANMAT</strong>).</li>
+ <li>También deben notificarse a <strong>Octapharma</strong> (www.octapharma.com).</li></ul>
+ <h2>El diario de tratamiento del paciente</h2><p>El diario es la herramienta de registro del paciente. Ahí se anotan:</p><ul>
+ <li>Los tratamientos realizados.</li>
+ <li>Cómo se siente <strong>antes, durante y después</strong> de cada infusión.</li>
+ <li>Cualquier otro medicamento que haya tomado.</li>
+ <li><strong>Todos los efectos secundarios</strong>, y comunicarlos al médico — <strong>aunque parezcan no relacionados con el tratamiento</strong>.</li></ul>
+ <h2>Para llevarte</h2><p>Sin lote registrado no hay trazabilidad. Sin notificación no hay farmacovigilancia. Las dos cosas dependen de vos, en el momento de la infusión.</p>
+ <div class="src">${SRC_INS}<br>Fuente: cutaquig® — Mi diario de tratamiento (Octapharma).</div>`,
+ quiz:[{q:"¿Qué hay que anotar en cada infusión?",o:["Solo la fecha","El nombre y el número de lote","La marca de la jeringa","Nada"],c:1,e:"Nombre y número de lote: es la base de la trazabilidad."},{q:"¿A quién se notifican los eventos adversos?",o:["A nadie, si son leves","A los formularios del país (ANMAT) y también a Octapharma","Solo al paciente","Solo a la farmacia"],c:1,e:"Ambos canales."},{q:"Que el medicamento esté bajo 'monitoreo adicional' significa que…",o:["Es experimental","Se refuerza el seguimiento de seguridad y la notificación","No se puede usar","Es más barato"],c:1,e:"Refuerza la obligación de notificar."},{q:"En el diario, el paciente debe registrar los efectos secundarios…",o:["Solo si son graves","Solo los relacionados con el tratamiento","Todos, aunque parezcan no relacionados","Ninguno"],c:2,e:"Todos, aunque crea que no se relacionan."},{q:"¿Por qué es crítico el número de lote?",o:["Para facturar","Porque sin él no se puede rastrear qué pacientes recibieron qué ante una señal de seguridad","Para el stock","Por costumbre"],c:1,e:"Es la trazabilidad del producto."}]},
+
+{n:8,t:"El rol de Humana Nexo en la terapia",lead:"Por qué el producto no se sostiene solo: el programa es parte del tratamiento.",
+ body:`<h2>Lo dice la propia información de prescripción</h2>
+ <div class="note">"La infusión subcutánea para tratamiento domiciliario <strong>debe ser iniciada y supervisada por un profesional sanitario con experiencia</strong> en la orientación de personas para tratamiento domiciliario. <strong>El paciente y/o un tutor deben ser instruidos adecuadamente.</strong>"</div>
+ <p>Es decir: la capacitación y el acompañamiento <strong>no son un valor agregado, son parte de la condición de uso del producto</strong>. Eso es exactamente lo que hace Humana Nexo.</p>
+ <h2>Cómo lo sostiene Nexo</h2><p>Nexo es la Unidad de Continuidad Terapéutica: el hilo que conecta cada dosis con la siguiente. Sobre esta terapia, aporta:</p><ul>
+ <li><strong>Incorporación y preparación:</strong> que el paciente llegue a la primera infusión con todo listo.</li>
+ <li><strong>Administración asistida:</strong> la infusión acompañada por enfermería propia de Humana.</li>
+ <li><strong>Capacitación:</strong> instruir al paciente y su familia — el requisito que exige la ficha.</li>
+ <li><strong>Continuidad:</strong> que no se pierda ninguna dosis entre una y la siguiente.</li>
+ <li><strong>Incidencias:</strong> resolver lo que aparece (reacciones locales, dudas, logística) antes de que corte la terapia.</li>
+ <li><strong>Cierre:</strong> completar el ciclo, registrado y trazable.</li></ul>
+ <h2>Dónde se juega la adherencia</h2><p>La mayoría de las reacciones de esta terapia son locales y leves, y disminuyen con el tiempo. Pero un paciente solo, con una reacción local que nadie le explicó, <strong>abandona</strong>. Ahí es donde el programa vale.</p>
+ <div class="note">El paciente vive una película; nosotros no perdemos ningún fotograma. En esta terapia, cada fotograma es una dosis.</div>
+ <h2>Tu lugar en el modelo</h2><p>Como profesional que infunde, sos el punto donde se cruzan el producto y el programa: administrás con técnica, observás, registrás el lote, notificás y educás. Cada una de esas cuatro cosas sostiene la continuidad.</p>
+ <h2>Para llevarte</h2><p>El producto es excelente y la evidencia lo respalda. Pero una terapia no se completa sola: <strong>se completa porque alguien la sostiene</strong>.</p>
+ <div class="src">${SRC_INS} · Humana Nexo — Unidad de Continuidad Terapéutica.</div>`,
+ quiz:[{q:"Según la información de prescripción, la infusión SC domiciliaria debe ser…",o:["Autoadministrada sin supervisión","Iniciada y supervisada por un profesional sanitario con experiencia","Realizada solo en hospital","Indicada por enfermería"],c:1,e:"Y el paciente y/o tutor deben ser instruidos adecuadamente."},{q:"La capacitación del paciente es…",o:["Un valor agregado opcional","Parte de la condición de uso del producto","Responsabilidad del laboratorio","Innecesaria"],c:1,e:"La propia ficha exige que el paciente/tutor sea instruido adecuadamente."},{q:"¿Por qué una reacción local leve puede terminar en abandono?",o:["Porque es peligrosa","Porque si el paciente está solo y nadie se la explicó, abandona","Porque obliga a internar","No puede pasar"],c:1,e:"Ahí es donde el acompañamiento del programa hace la diferencia."},{q:"En esta terapia, ¿qué representa cada 'fotograma' de la película del paciente?",o:["Una consulta","Una dosis","Un análisis","Una receta"],c:1,e:"Cada dosis es un fotograma; perder una corta el hilo."},{q:"Las cuatro cosas que sostenés como profesional que infunde son…",o:["Administrar, observar, registrar y educar","Vender, entregar, cobrar y archivar","Diagnosticar, tratar, derivar y dar de alta","Ninguna"],c:0,e:"Técnica, observación, registro/notificación y educación."}]}
+];
+const app=document.getElementById('app');
+function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView({behavior:'smooth'});else{home();setTimeout(scrollMods,60);}}
+function home(){
+ const compl=IDS.filter(done).length, pct=Math.round(compl/8*100);
+ let cards=MODS.map(m=>`<div class="mcard ${done(m.n)?'v':''} ${m.crit?'crit':''}" onclick="openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
+ cards+=`<div class="mcard lock" onclick="lockMsg()"><div class="num">🔒</div><h3>Dosificación y velocidades de infusión</h3><p>Bloqueado: las fuentes disponibles se contradicen y son internacionales. Se habilita con el prospecto ANMAT vigente, validado por Regulatorio.</p><span class="go" style="color:var(--warn)">Pendiente de validación</span></div>`;
+ app.innerHTML=`
+ <section class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap in">
+  <span class="bigmk">${MARK}</span>
+  <div class="k">Capacitación de producto · Profesionales de la salud</div>
+  <h1>cutaquig<span style="font-size:22px;vertical-align:super">®</span></h1>
+  <p class="sub2">Inmunoglobulina humana normal (SCIg) · 165 mg/mL. Todo lo que el equipo que infunde necesita saber: producto, seguridad, técnica y el rol del programa.</p>
+  <a class="cta" onclick="scrollMods()">Comenzar la capacitación</a>
+ </div></section>
+ <section class="blk" id="mods"><div class="wrap">
+  <div class="eyebrow grad">La capacitación</div><h2 class="sec">Ocho módulos, cero margen de error</h2>
+  <p class="sub">Cada módulo cierra con autoevaluación. El contenido es fiel al material de Octapharma disponible; lo que no está confirmado, está marcado o bloqueado.</p>
+  <div class="prog"><span>${compl}/8 completados ${compl>=8?'🎓':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="grid">${cards}</div>
+ </div></section>`;
+ renderUserbox();window.scrollTo(0,0);
+}
+function lockMsg(){toast('Bloqueado: falta el prospecto ANMAT vigente para confirmar dosis y velocidades.');}
+let answers={},curQuiz=null;
+function openM(n){renderMod(MODS.find(x=>x.n===n));}
+function renderMod(m){
+ const prev=MODS.find(x=>x.n===m.n-1), next=MODS.find(x=>x.n===m.n+1);
+ app.innerHTML=`<section class="mhero"><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
+  <div class="k">Módulo ${m.n} de 8</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
+  <div class="wrap"><div class="panel content"><h3 class="t">Contenido</h3>${m.body}</div>
+  <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
+  <div style="margin-top:8px"><button class="btn" onclick="grade(${m.n})">Corregir</button> <button class="btn ghost" onclick="openM(${m.n})">Reiniciar</button></div>
+  <div class="score" id="score"></div></div></div>`;
+ renderQuiz(m);window.scrollTo(0,0);
+}
+function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
+function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
+function grade(n){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
+ const pct=Math.round(ok/m.quiz.length*100);if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('cq_s',scores);saveProgress();}
+ renderUserbox();
+ const s=document.getElementById('score');s.classList.add('show');
+ const msg=pct>=60?(pct===100?'Excelente.':'Aprobado.'):'Aún no alcanzás el 60 %. Este contenido es crítico: repasá y volvé a intentar.';
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;
+ setTimeout(function(){showRes(n,pct);},260);}
+function closePop(){var p=document.getElementById('mpop');if(p)p.classList.remove('on');}
+function showRes(n,pct){var pop=document.getElementById('mpop');if(!pop)return;var passed=pct>=60;var compl=IDS.filter(done).length,pp=Math.round(compl/8*100);var title,sub,primL,primA;
+ if(passed){var next=MODS.find(function(x){return x.n===n+1;});title='¡Muy bien!';sub='Completaste el Módulo '+n+' con '+pct+'%.';if(allDone()){primL='Volver al inicio';primA='home()';}else if(next){primL='Continuar: Módulo '+next.n+' →';primA='openM('+next.n+')';}else{primL='Volver al inicio';primA='home()';}}
+ else{title='Repasá este módulo';sub='Sacaste '+pct+'%. Es contenido clínico crítico: necesitás 60 % para aprobar.';primL='Reintentar';primA='openM('+n+')';}
+ pop.innerHTML='<div class="box"><div style="font-size:42px;line-height:1;margin-bottom:4px">'+(passed?'🎉':'📖')+'</div><h3>'+title+'</h3><p class="ps">'+sub+'</p>'+(passed?'<div class="pr">Tu avance: '+compl+'/8</div><div class="pbar"><i style="width:'+pp+'%"></i></div>':'')+'<button class="pbtn" onclick="closePop();'+primA+'">'+primL+'</button><button class="pbtn ghost" onclick="closePop()">Seguir acá</button></div>';pop.classList.add('on');}
+function renderUserbox(){const b=document.getElementById('userbox');if(!b)return;const compl=IDS.filter(done).length,pct=Math.round(compl/8*100);const hi=uname?`<span class="hi">${uname.split(' ')[0].replace(/[<>&]/g,'')}</span>`:'';b.innerHTML=hi+`<span class="mbar"><i style="width:${pct}%"></i></span><span>${compl}/8</span>`;}
+function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),3200);}
+const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"};
+let auth=null,db=null,curUser=null;
+const gate=document.getElementById('fbgate');
+function showGate(){gate.classList.add('on');}function hideGate(){gate.classList.remove('on');}
+function renderLoading(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">cutaquig®</div><p>Cargando tu sesión…</p></div>';showGate();}
+function renderLogin(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">Uso interno · Profesionales de la salud</div><h3>Capacitación cutaquig®</h3><p>Ingresá tu correo y te enviamos un enlace de acceso.</p><input id="fbEmail" type="email" placeholder="tu-correo@ejemplo.com"><button id="fbBtn">Enviar enlace de acceso</button><div class="msg" id="fbMsg"></div></div>';
+ const btn=document.getElementById('fbBtn');btn.onclick=function(){const em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();const msg=document.getElementById('fbMsg');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg.className='msg';msg.textContent='Ingresá un correo válido.';return;}btn.disabled=true;msg.textContent='Enviando…';auth.sendSignInLinkToEmail(em,{url:location.origin+location.pathname,handleCodeInApp:true}).then(function(){window.localStorage.setItem('ha_email_link',em);msg.className='msg ok';msg.innerHTML='¡Listo! Te enviamos un enlace a <b>'+em+'</b>.';}).catch(function(e){btn.disabled=false;msg.className='msg';msg.textContent='No se pudo enviar: '+e.message;});};showGate();}
+function saveProgress(){if(!curUser||!db)return;db.collection('users').doc(curUser.uid).set({email:curUser.email,name:(uname||''),cutaquig:{scores:scores,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}
+function loadProgress(user){return db.collection('users').doc(user.uid).get().then(function(doc){const d=doc.exists?doc.data():null;const cloud=(d&&d.cutaquig&&d.cutaquig.scores)||{};let local={};try{local=STORE.get('cq_s',{})||{};}catch(e){}const merged={};IDS.forEach(function(n){const v=Math.max(local[n]==null?-1:local[n],cloud[n]==null?-1:cloud[n]);if(v>=0)merged[n]=v;});scores=merged;STORE.set('cq_s',merged);if(d&&d.name){uname=d.name;}return db.collection('users').doc(user.uid).set({email:user.email,name:(uname||''),cutaquig:{scores:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}).catch(function(){});}
+try{
+ firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+ try{auth.languageCode='es';}catch(e){}
+ try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
+ auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();});}else{renderLogin();}});
+ renderLoading();
+ if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();});}}
+}catch(e){ home(); }
+if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}
+</script>
+</body>
+</html>
