@@ -10,7 +10,7 @@
     measurementId: "G-94WNB5E0FK"
   };
   var ADMINS = ["gustavo.insfran@infinitypharma.com.ar","k.ojanguren@humanahc.com"];
-  var DOMINIOS = ["humanahc.com","infinitypharma.com.ar"];
+  var DOMINIOS = ["humanahc.com","humanahc.com.ar","infinitypharma.com.ar"];
   var ROLES = [
     {id:"clinico",  n:"Médico / Enfermero",        d:"Infundís o supervisás tratamientos"},
     {id:"asistencia", n:"Administración / Recepción", d:"Acompañás al paciente desde la gestión"},
@@ -145,7 +145,7 @@
     var btn=document.getElementById('fbBtn');
     if(nm.length<3||nm.indexOf(' ')<0){ setMsg('Escribí tu nombre y apellido.'); document.getElementById('fbName').classList.add('bad'); return; }
     if(!emailOK(em)){ setMsg('Ingresá un correo válido.'); document.getElementById('fbEmail').classList.add('bad'); return; }
-    if(!dominioOK(em)){ setMsg('Usá tu correo de trabajo (<b>@humanahc.com</b> o <b>@infinitypharma.com.ar</b>). La plataforma es para el equipo.'); document.getElementById('fbEmail').classList.add('bad'); return; }
+    if(!dominioOK(em)){ setMsg('Usá tu correo de trabajo: <b>@humanahc.com</b>, <b>@humanahc.com.ar</b> o <b>@infinitypharma.com.ar</b>. La plataforma es para el equipo.'); document.getElementById('fbEmail').classList.add('bad'); return; }
     if(pw.length<6){ setMsg('La contraseña necesita al menos 6 caracteres.'); document.getElementById('fbPass').classList.add('bad'); return; }
     btn.disabled=true; setMsg('Creando tu cuenta…',true);
     auth.createUserWithEmailAndPassword(em,pw).then(function(cred){
