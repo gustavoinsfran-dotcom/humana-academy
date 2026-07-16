@@ -77,10 +77,10 @@
 
   function traducir(e){
     var c=(e&&e.code)||'';
-    if(c==='auth/email-already-in-use') return 'Ese correo ya tiene una cuenta. Entrá con tu contraseña.';
+    if(c==='auth/email-already-in-use') return 'Ese correo ya tiene una cuenta. Entrá desde la pestaña «Entrar».<br>Si nunca creaste una contraseña, usá <b>«Olvidé mi contraseña»</b> para crearla ahora.';
     if(c==='auth/invalid-email') return 'El correo no es válido.';
     if(c==='auth/weak-password') return 'La contraseña necesita al menos 6 caracteres.';
-    if(c==='auth/user-not-found'||c==='auth/wrong-password'||c==='auth/invalid-credential'||c==='auth/invalid-login-credentials') return 'Correo o contraseña incorrectos.';
+    if(c==='auth/user-not-found'||c==='auth/wrong-password'||c==='auth/invalid-credential'||c==='auth/invalid-login-credentials') return 'Correo o contraseña incorrectos.<br><b>¿Entrabas con el enlace por correo?</b> Ahora se usa contraseña: tocá «Olvidé mi contraseña» acá abajo y creá la tuya. Tu progreso se mantiene.';
     if(c==='auth/too-many-requests') return 'Demasiados intentos. Esperá unos minutos y probá de nuevo.';
     if(c==='auth/network-request-failed') return 'Sin conexión. Revisá tu internet.';
     if(c==='auth/operation-not-allowed') return 'El acceso con contraseña todavía no está habilitado en Firebase.';
@@ -112,7 +112,7 @@
     }
     h+='<button class="pri" id="fbBtn">'+(esLogin?'Entrar':'Crear mi cuenta')+'</button>'
       +'<div class="msg" id="fbMsg"></div>';
-    if(esLogin) h+='<button class="lnk" onclick="__fbReset()">Olvidé mi contraseña</button>';
+    h+='<button class="lnk" onclick="__fbReset()">'+(esLogin?'Olvidé mi contraseña':'Ya tengo cuenta pero no tengo contraseña')+'</button>';
     h+='<div class="foot">Acceso para el equipo de Humana Health &amp; Care · Argentina</div></div>';
     gate.innerHTML=h; showGate();
 
@@ -152,7 +152,7 @@
       try{ uname=nm; STORE.set('ha_name',nm); }catch(e){}
       curRole=rol; try{ STORE.set('ha_role',rol); }catch(e){}
       return db.collection('users').doc(cred.user.uid).set({
-        name:nm, email:em, role:rol,
+        name:nm, email:em, role:rol, clinicoAprobado:false,
         createdAt:firebase.firestore.FieldValue.serverTimestamp(),
         updatedAt:firebase.firestore.FieldValue.serverTimestamp()
       },{merge:true});
@@ -178,6 +178,10 @@
       if(d&&d.name){ try{ uname=d.name; STORE.set('ha_name',d.name); }catch(e){} }
       curRole=(d&&d.role)||''; try{ if(curRole)STORE.set('ha_role',curRole); }catch(e){}
       window.HA_role=curRole; window.HA_isAdmin=isAdmin(user);
+      /* Ser clínico se OTORGA, no se declara: hace falta que un admin lo apruebe. */
+      window.HA_clinicoAprobado = !!(d && d.clinicoAprobado);
+      window.HA_clinicoOK = window.HA_isAdmin || (curRole==='clinico' && window.HA_clinicoAprobado);
+      window.HA_pendiente = (curRole==='clinico' && !window.HA_clinicoAprobado && !window.HA_isAdmin);
       /* Nexo y Cutaquig: mezclar nube + local para que el panel funcione en cualquier equipo */
       function mezcla(nube, clave, ids){ var loc={}; try{ loc=STORE.get(clave,{})||{}; }catch(e){}
         var out={}; ids.forEach(function(n){ var v=Math.max(loc[n]==null?-1:loc[n], nube[n]==null?-1:nube[n]); if(v>=0)out[n]=v; });
@@ -210,6 +214,7 @@
 
   function enter(user){
     hideGate(); suppressOnb();
+    if(window.HA_pendiente) setTimeout(avisoPendiente,900);
     if(typeof home==='function')home();
     if(typeof renderUserbox==='function')renderUserbox();
     addAdminUI(user);
@@ -238,6 +243,13 @@
     db.collection('users').doc(curUser.uid).set({name:v, updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).catch(function(){});
   };
 
+  function avisoPendiente(){
+    if(document.getElementById('pendbar'))return;
+    var b=document.createElement('div'); b.id='pendbar';
+    b.style.cssText='position:sticky;top:0;z-index:120;background:#2A1F0E;border-bottom:1px solid #5C4415;color:#F0C674;padding:11px 18px;font-size:13px;line-height:1.5;text-align:center';
+    b.innerHTML='<b>Tu acceso clínico está pendiente.</b> Marcaste que sos médico o enfermero: Gustavo tiene que confirmarlo para habilitarte la capacitación de cutaquig®. Mientras tanto podés hacer Academy y Nexo.';
+    var h=document.querySelector('header'); if(h&&h.parentNode) h.parentNode.insertBefore(b,h.nextSibling);
+  }
   function isAdmin(u){ return !!(u && ADMINS.indexOf((u.email||'').toLowerCase())>=0); }
 
   function addAdminUI(user){
@@ -253,25 +265,171 @@
   }
 
   var ROLN={clinico:'Médico / Enfermero', asistencia:'Administración', comercial:'Comercial'};
+  /* ====================== PANEL DE GESTIÓN DE ACCESOS ====================== */
+  var _U=[], _filtro='', _verOcultas=false;
+
+  var sadm=document.createElement('style');
+  sadm.textContent=".gcard{background:var(--card,#191024);border:1px solid #2C1F42;border-radius:14px;padding:16px 18px}"
+   +".gstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:0 0 18px}"
+   +".gstat{background:#1E1430;border-radius:12px;padding:13px 15px}"
+   +".gstat b{display:block;font-size:23px;font-weight:800;color:#EDE6F5;line-height:1.2}"
+   +".gstat span{font-size:11.5px;color:#9E90B5}"
+   +".gstat.al{background:#2A1F0E}.gstat.al b{color:#F0C674}.gstat.al span{color:#C9A961}"
+   +".gtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}"
+   +"#gq{flex:1;min-width:200px;padding:10px 13px;border:1.5px solid #2C1F42;border-radius:10px;background:#1E1430;color:#EDE6F5;font-size:14px;font-family:inherit}"
+   +"#gq:focus{outline:none;border-color:#EC2E8E}"
+   +".gchk{display:flex;align-items:center;gap:7px;color:#9E90B5;font-size:12.5px;cursor:pointer;white-space:nowrap}"
+   +".urow{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.5fr) auto auto;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid #2C1F42}"
+   +".urow:hover{background:#1E1430}"
+   +".urow.pend{background:#221806}"
+   +".urow.oculta{opacity:.42}"
+   +".uname{font-weight:700;color:#EDE6F5;font-size:14px;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
+   +".umail{color:#9E90B5;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
+   +".uprog{color:#8b7da3;font-size:11.5px;margin-top:3px}"
+   +".urol{padding:8px 10px;border:1.5px solid #2C1F42;border-radius:9px;background:#1E1430;color:#EDE6F5;font-size:12.5px;font-family:inherit;width:100%;cursor:pointer}"
+   +".urol:focus{outline:none;border-color:#EC2E8E}"
+   +".ubtn{border:none;border-radius:9px;padding:8px 13px;font-weight:800;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap;width:auto}"
+   +".ubtn.ok{background:#39d98a;color:#08240f}"
+   +".ubtn.off{background:transparent;color:#9E90B5;border:1px solid #3A2A52}"
+   +".ubtn.gh{background:transparent;color:#6f6288;border:1px solid #2C1F42;font-weight:700}"
+   +".ubtn:disabled{opacity:.5;cursor:default}"
+   +".ubadge{font-size:10.5px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap}"
+   +".ub-ok{background:#12281d;color:#39d98a}.ub-pend{background:#2A1F0E;color:#F0C674}.ub-na{background:#241736;color:#7d6f94}.ub-adm{background:#2B1B3D;color:#C88CE0}"
+   +"@media(max-width:760px){.urow{grid-template-columns:1fr;gap:8px}}";
+  document.head.appendChild(sadm);
+
+  function _prog(d){
+    var sc=d.scores||{}, a=[1,2,3,4,5,6].filter(function(n){return sc[n]>=60;}).length;
+    var ns=(d.nexo&&d.nexo.scores)||{}, x=[1,2,3,4,5].filter(function(n){return ns[n]>=60;}).length;
+    var cs=(d.cutaquig&&d.cutaquig.scores)||{}, c=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]>=60;}).length;
+    return {a:a,x:x,c:c};
+  }
+  function _esAdminMail(m){ return ADMINS.indexOf((m||'').toLowerCase())>=0; }
+
+  window.__setRol=function(uid, rol){
+    if(!isAdmin(curUser)) return;
+    db.collection('users').doc(uid).set({role:rol, updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})
+      .then(_recargar).catch(_errAdmin);
+  };
+  window.__setClinico=function(uid, ok){
+    if(!isAdmin(curUser)) return;
+    db.collection('users').doc(uid).set({
+      clinicoAprobado: !!ok,
+      aprobadoPor: (curUser.email||''),
+      aprobadoEl: firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true}).then(_recargar).catch(_errAdmin);
+  };
+  window.__ocultar=function(uid, ok){
+    if(!isAdmin(curUser)) return;
+    if(ok && !confirm('¿Ocultar esta cuenta del panel? No se borra nada: podés volver a mostrarla cuando quieras.')) return;
+    db.collection('users').doc(uid).set({oculto:!!ok},{merge:true}).then(_recargar).catch(_errAdmin);
+  };
+  window.__verOcultas=function(v){ _verOcultas=v; _pintar(); };
+  window.__buscar=function(v){ _filtro=(v||'').toLowerCase(); _pintar(); };
+
+  function _errAdmin(e){
+    var falta = /permission|insufficient/i.test(e.message||'');
+    var c=document.getElementById('gadm');
+    if(falta && c){
+      var b=document.getElementById('gwarn');
+      if(!b){ b=document.createElement('div'); b.id='gwarn';
+        b.style.cssText='background:#2A1F0E;border:1px solid #5C4415;border-radius:12px;padding:16px 18px;margin:0 0 16px';
+        b.innerHTML='<b style="color:#F0C674;font-size:14px">Falta un paso para que esto funcione</b>'
+         +'<p style="color:#C9A961;font-size:13px;margin:7px 0 0;line-height:1.6">Firestore no me deja guardar el cambio porque las reglas actuales solo permiten que cada uno escriba su propio registro. Para habilitar accesos desde acá hay que publicar las reglas nuevas:<br><br>'
+         +'<b>Firebase Console → Firestore Database → Reglas</b> → borrá todo, pegá las reglas que te pasó Claude y tocá <b>Publicar</b>.<br><br>'
+         +'Mientras tanto podés ver a todos, pero no cambiar roles ni habilitar Cutaquig®.</p>';
+        c.insertBefore(b, c.firstChild); window.scrollTo(0,0);
+      }
+      return;
+    }
+    alert('No se pudo guardar.\n\n'+e.message);
+  }
+  function _recargar(){ return _cargar().then(_pintar); }
+  function _cargar(){
+    return db.collection('users').get().then(function(qs){
+      _U=[]; qs.forEach(function(doc){
+        var d=doc.data()||{}; var p=_prog(d);
+        _U.push({uid:doc.id, name:d.name||'(sin nombre)', email:d.email||'—', role:d.role||'',
+          apro:!!d.clinicoAprobado, oculto:!!d.oculto || !!d.deleted,
+          esAdmin:_esAdminMail(d.email), aprobadoPor:d.aprobadoPor||'', a:p.a, x:p.x, c:p.c});
+      });
+    });
+  }
+
+  function _pintar(){
+    var cont=document.getElementById('gadm'); if(!cont)return;
+    var vis=_U.filter(function(u){ return _verOcultas || !u.oculto; });
+    var pend=vis.filter(function(u){ return u.role==='clinico' && !u.apro && !u.esAdmin; });
+    var clin=vis.filter(function(u){ return u.esAdmin || (u.role==='clinico' && u.apro); });
+    var sinRol=vis.filter(function(u){ return !u.role && !u.esAdmin; });
+
+    var h='<div class="gstats">'
+     +'<div class="gstat"><b>'+vis.length+'</b><span>usuarios</span></div>'
+     +'<div class="gstat'+(pend.length?' al':'')+'"><b>'+pend.length+'</b><span>esperando tu OK</span></div>'
+     +'<div class="gstat"><b>'+clin.length+'</b><span>con acceso clínico</span></div>'
+     +'<div class="gstat"><b>'+sinRol.length+'</b><span>sin rol cargado</span></div>'
+     +'</div>';
+
+    h+='<div class="gtools"><input id="gq" type="search" placeholder="Buscar por nombre o correo…" value="'+esc(_filtro)+'" oninput="__buscar(this.value)">'
+     +'<label class="gchk"><input type="checkbox" style="width:auto" '+(_verOcultas?'checked':'')+' onchange="__verOcultas(this.checked)"> Ver ocultas</label></div>';
+
+    var lista=vis.filter(function(u){
+      if(!_filtro) return true;
+      return (u.name+' '+u.email).toLowerCase().indexOf(_filtro)>=0;
+    });
+    lista.sort(function(a,b){
+      var pa=(a.role==='clinico'&&!a.apro&&!a.esAdmin)?0:1, pb=(b.role==='clinico'&&!b.apro&&!b.esAdmin)?0:1;
+      if(pa!==pb) return pa-pb;
+      return (a.name||'').localeCompare(b.name||'');
+    });
+
+    if(!lista.length){ h+='<div class="gcard" style="text-align:center;color:#9E90B5">Nadie coincide con la búsqueda.</div>'; cont.innerHTML=h; return; }
+
+    h+='<div class="gcard" style="padding:4px 18px">';
+    lista.forEach(function(u){
+      var esPend=(u.role==='clinico' && !u.apro && !u.esAdmin);
+      var badge = u.esAdmin ? '<span class="ubadge ub-adm">Admin · ve todo</span>'
+        : (u.role==='clinico' ? (u.apro?'<span class="ubadge ub-ok">Clínico habilitado</span>':'<span class="ubadge ub-pend">Esperando tu OK</span>')
+        : '<span class="ubadge ub-na">Sin acceso clínico</span>');
+      h+='<div class="urow'+(esPend?' pend':'')+(u.oculto?' oculta':'')+'">';
+      h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:#6f6288;font-size:11px">(oculta)</span>':'')+'</div>'
+        +'<div class="umail">'+esc(u.email)+'</div>'
+        +'<div class="uprog">Academy '+u.a+'/6 · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9'
+        +(u.aprobadoPor?' · habilitado por '+esc(u.aprobadoPor.split('@')[0]):'')+'</div></div>';
+      if(u.esAdmin){
+        h+='<div>'+badge+'</div><div></div>';
+      } else {
+        h+='<div><select class="urol" onchange="__setRol(\''+u.uid+'\',this.value)">'
+          +'<option value=""'+(u.role?'':' selected')+'>— sin rol —</option>'
+          +'<option value="clinico"'+(u.role==='clinico'?' selected':'')+'>Médico / Enfermero</option>'
+          +'<option value="asistencia"'+(u.role==='asistencia'?' selected':'')+'>Administración</option>'
+          +'<option value="comercial"'+(u.role==='comercial'?' selected':'')+'>Comercial</option>'
+          +'</select><div style="margin-top:5px">'+badge+'</div></div>';
+        h+='<div>'+(u.role==='clinico'
+            ? (u.apro ? '<button class="ubtn off" onclick="__setClinico(\''+u.uid+'\',false)">Quitar acceso</button>'
+                      : '<button class="ubtn ok" onclick="__setClinico(\''+u.uid+'\',true)">Habilitar Cutaquig</button>')
+            : '<span style="color:#6f6288;font-size:11.5px">Para habilitar Cutaquig,<br>poné el rol Médico / Enfermero</span>')+'</div>';
+      }
+      h+='<div>'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
+      h+='</div>';
+    });
+    h+='</div>';
+    h+='<p style="color:#6f6288;font-size:11.5px;margin-top:14px;line-height:1.6">Habilitar Cutaquig® le abre a esa persona la capacitación del producto y la calculadora de dosis. Es un medicamento de venta bajo receta: hacelo solo si te consta que es médico o enfermero. Queda registrado quién habilitó y cuándo.</p>';
+    cont.innerHTML=h;
+    var q=document.getElementById('gq'); if(q && _filtro){ q.focus(); q.setSelectionRange(q.value.length,q.value.length); }
+  }
+
   window.showAdmin=function(){
     if(!isAdmin(curUser)) return;
     var app=document.getElementById('app'); if(!app)return;
-    app.innerHTML='<section class="blk"><div class="wrap"><a class="back" onclick="home()" style="cursor:pointer">← Volver</a><div class="eyebrow grad" style="margin-top:10px">Panel de administración</div><h2 class="sec">Progreso del equipo</h2><p class="sub" id="admStatus">Cargando…</p><div id="admtbl"></div></div></section>';
+    app.innerHTML='<section class="blk"><div class="wrap"><a class="back" onclick="home()" style="cursor:pointer">← Volver</a>'
+      +'<div class="eyebrow grad" style="margin-top:10px">Panel de administración</div>'
+      +'<h2 class="sec">Gestión de accesos</h2>'
+      +'<p class="sub">Quién entra, con qué rol y quién puede ver la capacitación de cutaquig®.</p>'
+      +'<div id="gadm"><p class="sub">Cargando…</p></div></div></section>';
     window.scrollTo(0,0);
-    db.collection('users').get().then(function(qs){
-      var rows=[];
-      qs.forEach(function(doc){ var d=doc.data()||{}, sc=d.scores||{};
-        var compl=[1,2,3,4,5,6].filter(function(n){return sc[n]!=null&&sc[n]>=60;}).length;
-        var ns=(d.nexo&&d.nexo.scores)||{}; var nx=[1,2,3,4,5].filter(function(n){return ns[n]!=null&&ns[n]>=60;}).length;
-        var cs=(d.cutaquig&&d.cutaquig.scores)||{}; var cq=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]!=null&&cs[n]>=60;}).length;
-        rows.push({name:d.name||'—', email:d.email||'—', rol:ROLN[d.role]||'—', compl:compl, cert:compl>=6, nexo:nx, cq:cq});
-      });
-      rows.sort(function(a,b){ return (b.compl+b.nexo+b.cq)-(a.compl+a.nexo+a.cq); });
-      var h='<table class="admt"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Academy</th><th>Nexo</th><th>Cutaquig</th><th>Cert.</th></tr></thead><tbody>';
-      rows.forEach(function(r){ h+='<tr><td>'+esc(r.name)+'</td><td>'+esc(r.email)+'</td><td>'+esc(r.rol)+'</td><td>'+r.compl+'/6</td><td>'+r.nexo+'/5'+(r.nexo>=5?' ✓':'')+'</td><td>'+r.cq+'/9'+(r.cq>=9?' ✓':'')+'</td><td>'+(r.cert?'✓':'—')+'</td></tr>'; });
-      h+='</tbody></table>';
-      document.getElementById('admtbl').innerHTML=h;
-      document.getElementById('admStatus').textContent=rows.length+' usuario(s) registrado(s).';
-    }).catch(function(e){ document.getElementById('admStatus').innerHTML='No se pudo cargar. ('+esc(e.message)+')'; });
+    _cargar().then(_pintar).catch(function(e){
+      document.getElementById('gadm').innerHTML='<div class="gcard" style="border-color:#F0328C"><b style="color:#F0328C">No se pudo cargar</b><p style="color:#9E90B5;font-size:13px;margin-top:6px">'+esc(e.message)+'</p></div>';
+    });
   };
 })();

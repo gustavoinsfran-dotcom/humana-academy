@@ -218,7 +218,24 @@ try{
  firebase.initializeApp(firebaseConfig);auth=firebase.auth();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
- auth.onAuthStateChanged(function(u){ if(u){hideGate();} else {renderLogin();} });
+ auth.onAuthStateChanged(function(u){
+   if(!u){ renderLogin(); return; }
+   var esAdmin=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'].indexOf((u.email||'').toLowerCase())>=0;
+   db.collection('users').doc(u.uid).get().then(function(d){
+     var dd=d.exists?d.data():{};
+     var okClinico = esAdmin || (dd.role==='clinico' && !!dd.clinicoAprobado);
+     if(!okClinico){ sinAcceso(); return; }
+     hideGate();
+   }).catch(function(){ hideGate(); });
+ });
+ function sinAcceso(){
+   gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span>'
+    +'<div class="st">Acceso restringido</div>'
+    +'<h3>Esta herramienta es para médicos y enfermeros</h3>'
+    +'<p>La calculadora de dosis de cutaquig® es una ayuda de conversión para quien prepara e infunde el tratamiento. Cutaquig® es un medicamento de <b>venta bajo receta</b>.</p>'
+    +'<button onclick="location.href=\'index.html\'">← Volver a tu formación</button></div>';
+   gate.classList.add('on');
+ }
  renderLoading();
  if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();});}}
 }catch(e){ hideGate(); }

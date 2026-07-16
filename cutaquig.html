@@ -408,12 +408,24 @@ function renderLoading(){gate.innerHTML='<div class="box"><span class="mk">'+MAR
 function renderLogin(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">Uso interno · Profesionales de la salud</div><h3>Capacitación cutaquig®</h3><p>Ingresá tu correo y te enviamos un enlace de acceso.</p><input id="fbEmail" type="email" placeholder="tu-correo@ejemplo.com"><button id="fbBtn">Enviar enlace de acceso</button><div class="msg" id="fbMsg"></div></div>';
  const btn=document.getElementById('fbBtn');btn.onclick=function(){const em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();const msg=document.getElementById('fbMsg');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg.className='msg';msg.textContent='Ingresá un correo válido.';return;}btn.disabled=true;msg.textContent='Enviando…';auth.sendSignInLinkToEmail(em,{url:location.origin+location.pathname,handleCodeInApp:true}).then(function(){window.localStorage.setItem('ha_email_link',em);msg.className='msg ok';msg.innerHTML='¡Listo! Te enviamos un enlace a <b>'+em+'</b>.';}).catch(function(e){btn.disabled=false;msg.className='msg';msg.textContent='No se pudo enviar: '+e.message;});};showGate();}
 function saveProgress(){if(!curUser||!db)return;db.collection('users').doc(curUser.uid).set({email:curUser.email,name:(uname||''),cutaquig:{scores:scores,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}
-function loadProgress(user){return db.collection('users').doc(user.uid).get().then(function(doc){const d=doc.exists?doc.data():null;const cloud=(d&&d.cutaquig&&d.cutaquig.scores)||{};let local={};try{local=STORE.get('cq_s',{})||{};}catch(e){}const merged={};IDS.forEach(function(n){const v=Math.max(local[n]==null?-1:local[n],cloud[n]==null?-1:cloud[n]);if(v>=0)merged[n]=v;});scores=merged;STORE.set('cq_s',merged);if(d&&d.name){uname=d.name;}return db.collection('users').doc(user.uid).set({email:user.email,name:(uname||''),cutaquig:{scores:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}).catch(function(){});}
+function sinAcceso(){
+ var g=document.getElementById('fbgate'); if(!g)return;
+ g.innerHTML='<div class="box"><div class="st">Acceso restringido</div>'
+  +'<h3>'+(window.HA_pendiente?'Tu acceso está pendiente':'Esta capacitación es para médicos y enfermeros')+'</h3>'
+  +'<p>Cutaquig® es un medicamento de <b>venta bajo receta</b>. Su capacitación de producto está reservada al personal que infunde o supervisa el tratamiento.</p>'
+  +'<p style="font-size:12.5px">'+(window.HA_pendiente?'Marcaste que sos médico o enfermero. Gustavo Insfrán tiene que confirmarlo para habilitarte. Mientras tanto podés avanzar con Academy y Nexo.':'Si atendés pacientes y necesitás acceso, escribile a Gustavo Insfrán.')+'</p>'
+  +'<button onclick="location.href=\'index.html\'">← Volver a tu formación</button></div>';
+ g.classList.add('on');
+}
+function loadProgress(user){return db.collection('users').doc(user.uid).get().then(function(doc){const d=doc.exists?doc.data():null;const cloud=(d&&d.cutaquig&&d.cutaquig.scores)||{};let local={};try{local=STORE.get('cq_s',{})||{};}catch(e){}const merged={};IDS.forEach(function(n){const v=Math.max(local[n]==null?-1:local[n],cloud[n]==null?-1:cloud[n]);if(v>=0)merged[n]=v;});scores=merged;STORE.set('cq_s',merged);if(d&&d.name){uname=d.name;}window.HA_role=(d&&d.role)||'';window.HA_isAdmin=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'].indexOf((user.email||'').toLowerCase())>=0;window.HA_clinicoOK=window.HA_isAdmin||((d&&d.role)==='clinico'&&!!(d&&d.clinicoAprobado));window.HA_pendiente=((d&&d.role)==='clinico'&&!(d&&d.clinicoAprobado)&&!window.HA_isAdmin);return db.collection('users').doc(user.uid).set({email:user.email,name:(uname||''),cutaquig:{scores:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}).catch(function(){});}
 try{
  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
- auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();});}else{renderLogin();}});
+ auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){
+   if(!window.HA_clinicoOK){ sinAcceso(); return; }
+   hideGate();home();
+ });}else{renderLogin();}});
  renderLoading();
  if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();});}}
 }catch(e){ home(); }

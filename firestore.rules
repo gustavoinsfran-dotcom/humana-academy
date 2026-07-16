@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email in [
+        'gustavo.insfran@infinitypharma.com.ar',
+        'k.ojanguren@humanahc.com'
+      ];
+    }
+
+    // Campos que SOLO puede tocar un administrador.
+    // Si el usuario intenta cambiarlos, la escritura se rechaza entera.
+    function noTocaCamposDeAdmin() {
+      return request.resource.data.get('clinicoAprobado', false) == resource.data.get('clinicoAprobado', false)
+          && request.resource.data.get('aprobadoPor', '')     == resource.data.get('aprobadoPor', '');
+    }
+
+    match /users/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
+
+      // Al crearse la cuenta nadie nace aprobado.
+      allow create: if request.auth != null
+                    && request.auth.uid == uid
+                    && request.resource.data.get('clinicoAprobado', false) == false;
+
+      // El usuario actualiza lo suyo (nombre, progreso, rol declarado),
+      // pero no puede auto-aprobarse. El admin sí puede aprobar.
+      allow update: if isAdmin()
+                    || (request.auth != null && request.auth.uid == uid && noTocaCamposDeAdmin());
+
+      allow delete: if false;
+    }
+  }
+}

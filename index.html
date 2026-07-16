@@ -203,7 +203,7 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 <body>
 <header class="top"><div class="wrap">
 <div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><span class="wm">Humana <b class="grad">Academy</b></span></div>
-<nav class="desk"><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
+<nav class="desk" id="navdesk"><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a></nav>
 <div class="userbox" id="userbox"></div>
 <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
 </div>
@@ -321,14 +321,29 @@ function _rutas(){
     ic:'💉', col:'#0EA5E9', bg:'#0C2237', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
   ];
 }
-function _orden(rutas){
-  const r=window.HA_role||'';
-  const pref = r==='clinico' ? ['cutaquig','academy','nexo']
-             : r==='asistencia' ? ['nexo','academy','cutaquig']
-             : r==='comercial' ? ['academy','nexo','cutaquig']
-             : ['academy','nexo','cutaquig'];
-  return rutas.slice().sort((a,b)=>pref.indexOf(a.id)-pref.indexOf(b.id));
+/* Qué ve cada rol. El orden del array ES el orden en pantalla.
+   Cutaquig es de venta bajo receta: solo para el rol clínico. */
+const ACCESO={
+  clinico:    ['cutaquig','academy','nexo'],
+  asistencia: ['nexo','academy'],
+  comercial:  ['academy','nexo']
+};
+function _permitidas(){
+  /* Admin ve todo: el rol solo le ordena la pantalla, no le recorta el acceso. */
+  if(window.HA_isAdmin===true){
+    const base=ACCESO[window.HA_role]||[];
+    return base.concat(['cutaquig','academy','nexo'].filter(x=>base.indexOf(x)<0));
+  }
+  const base=(ACCESO[window.HA_role]||ACCESO.asistencia).slice();
+  /* Cutaquig no se muestra por declararse clínico: hace falta la aprobación del admin. */
+  if(!window.HA_clinicoOK) return base.filter(x=>x!=='cutaquig');
+  return base;
 }
+function _orden(rutas){
+  const pref=_permitidas();
+  return rutas.filter(x=>pref.indexOf(x.id)>=0).sort((a,b)=>pref.indexOf(a.id)-pref.indexOf(b.id));
+}
+function _veEstratificador(){ return window.HA_role==='comercial' || window.HA_isAdmin===true; }
 function _siguiente(){
   // primera ruta sin terminar, según el orden del rol
   const rs=_orden(_rutas());
@@ -374,7 +389,10 @@ function panelHTML(){
    <div class="eyebrow grad reveal">Tus rutas</div>
    <h2 class="sec reveal" style="margin-bottom:6px">${rs.length} recorridos, ${tot} módulos</h2>
    <p class="sub reveal">Llevás ${hec} de ${tot}. Ordenados según lo que hacés en Humana.</p>
-   <div class="rutas">${cards}</div>
+   <div class="rutas">${cards}${_veEstratificador()?`<a class="ruta reveal" href="estratificador.html" style="cursor:pointer">
+     <div class="top"><span class="ic" style="background:#2A1F0E">📊</span><span class="pill" style="background:#2A1F0E;color:#E0A82E">Herramienta</span></div>
+     <h4>Estratificador</h4><p class="d">Herramienta comercial para dimensionar oportunidades con financiadores e instituciones.</p>
+     <div class="pr"><span class="pn">Abrir →</span></div></a>`:''}</div>
    <div class="eyebrow grad reveal">Tus logros</div>
    <h2 class="sec reveal" style="margin-bottom:14px">Lo que ya conseguiste</h2>
    ${logros}
@@ -473,7 +491,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=13"></script>
+<script src="firebase-auth.js?v=14"></script>
 <script src="extras.js?v=10"></script>
 </body>
 </html>
