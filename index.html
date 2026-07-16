@@ -130,6 +130,37 @@ h2.sec{font-size:32px;margin:8px 0 8px;font-weight:800;letter-spacing:-.5px}
 .pager{display:flex;justify-content:space-between;margin:26px 0 60px;gap:12px}
 .pager a{cursor:pointer;font-weight:600;color:var(--tx);font-size:14px;text-decoration:none;padding:12px 18px;border:1.5px solid var(--line);border-radius:11px}
 .pager a:hover{border-color:var(--pink)}.pager a.disabled{opacity:.35;pointer-events:none}
+.pan{padding:34px 0 6px}
+.pan .hi{font-size:13px;color:var(--mut);font-weight:600;letter-spacing:.3px}
+.pan h1{font-size:clamp(26px,4vw,38px);margin:4px 0 6px;font-weight:800;letter-spacing:-.02em}
+.pan .role{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 11px;border-radius:99px;background:#241736;border:1px solid #3A2A52;color:#C9B8E0;margin-bottom:16px}
+.cont{background:linear-gradient(135deg,#4733A6,#8E2E9E 52%,#EC2E8E);border-radius:20px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;box-shadow:0 16px 40px rgba(142,46,158,.26);margin:0 0 26px}
+.cont .l{flex:1;min-width:230px}
+.cont .k2{font-size:11.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.cont h3{color:#fff;font-size:20px;margin:5px 0 4px;font-weight:800}
+.cont p{color:rgba(255,255,255,.86);font-size:13.5px;margin:0}
+.cont button{background:#fff;color:#3B1E5E;border:none;font-weight:800;font-size:15px;padding:14px 26px;border-radius:12px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.cont button:hover{transform:translateY(-1px)}
+.rutas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0 0 26px}
+.ruta{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:22px;text-decoration:none;display:block;transition:.18s;position:relative;overflow:hidden}
+.ruta:hover{transform:translateY(-3px);border-color:#8E2E9E}
+.ruta.done{border-color:#39d98a}
+.ruta .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ruta .ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px}
+.ruta .pill{font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:99px}
+.ruta h4{font-size:16px;margin:0 0 3px;color:var(--tx);font-weight:800}
+.ruta .d{font-size:12.5px;color:var(--mut);margin:0 0 14px;line-height:1.45;min-height:36px}
+.ruta .pr{display:flex;align-items:center;gap:9px}
+.ruta .pb{flex:1;height:7px;background:#241736;border-radius:99px;overflow:hidden}
+.ruta .pb i{display:block;height:100%;border-radius:99px;transition:width .5s}
+.ruta .pn{font-size:12px;color:var(--mut);font-weight:700;white-space:nowrap}
+.logro{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 10px}
+.logro.on{border-color:#39d98a;background:#12281d}
+.logro .e{font-size:24px;filter:grayscale(1);opacity:.4}
+.logro.on .e{filter:none;opacity:1}
+.logro b{display:block;font-size:14px;color:var(--tx)}
+.logro span{font-size:12px;color:var(--mut)}
+@media(max-width:640px){.cont{padding:22px}.cont button{width:100%}.ruta .d{min-height:0}}
 .mapwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
 .mapwrap svg{width:100%;height:auto}
 .mapnode{cursor:pointer;transition:transform .15s;transform-box:fill-box;transform-origin:center}
@@ -274,6 +305,83 @@ const app=document.getElementById('app');
 function toggleMenu(){document.getElementById('drawer').classList.toggle('open');document.getElementById('burger').classList.toggle('x');}
 function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('burger').classList.remove('x');}
 function observeReveal(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
+
+/* ---------- Entorno personal ---------- */
+const ROLNOM={clinico:'Médico / Enfermero', asistencia:'Administración', comercial:'Comercial'};
+function _sc(k){ try{ return STORE.get(k,{})||{}; }catch(e){ return {}; } }
+function _hechos(sc,ids){ return ids.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
+function _rutas(){
+  const aca=scores||{}, nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
+  return [
+   {id:'academy', t:'Humana Academy', d:'La doctrina: cómo observamos, comprendemos y acompañamos al paciente.',
+    ic:'🎓', col:'#8E2E9E', bg:'#241736', tot:6, hechos:_hechos(aca,[1,2,3,4,5,6]), ir:"scrollMods()"},
+   {id:'nexo', t:'Humana Nexo', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.',
+    ic:'🤝', col:'#14B8A6', bg:'#0F2E2A', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
+   {id:'cutaquig', t:'Cutaquig®', d:'Capacitación de producto: inmunoglobulina subcutánea, técnica y seguridad.',
+    ic:'💉', col:'#0EA5E9', bg:'#0C2237', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
+  ];
+}
+function _orden(rutas){
+  const r=window.HA_role||'';
+  const pref = r==='clinico' ? ['cutaquig','academy','nexo']
+             : r==='asistencia' ? ['nexo','academy','cutaquig']
+             : r==='comercial' ? ['academy','nexo','cutaquig']
+             : ['academy','nexo','cutaquig'];
+  return rutas.slice().sort((a,b)=>pref.indexOf(a.id)-pref.indexOf(b.id));
+}
+function _siguiente(){
+  // primera ruta sin terminar, según el orden del rol
+  const rs=_orden(_rutas());
+  const r=rs.find(x=>x.hechos<x.tot) || null;
+  if(!r) return null;
+  if(r.id==='academy'){ const n=[1,2,3,4,5,6].find(x=>!done(x)); return {r, n, t:MODULES.find(m=>m.n===n).t, ir:`openM(${n})`}; }
+  return {r, n:r.hechos+1, t:r.t, ir:r.ir};
+}
+function panelHTML(){
+  const nom=(uname||'').split(' ')[0]||'';
+  const rol=ROLNOM[window.HA_role]||'';
+  const rs=_orden(_rutas());
+  const tot=rs.reduce((a,x)=>a+x.tot,0), hec=rs.reduce((a,x)=>a+x.hechos,0);
+  const sig=_siguiente();
+  const cont = sig
+   ? `<div class="cont reveal"><div class="l"><div class="k2">${hec===0?'Empezá por acá':'Seguí donde dejaste'}</div>
+      <h3>${sig.r.id==='academy'?`Módulo ${sig.n} · ${esc2(sig.t)}`:esc2(sig.r.t)}</h3>
+      <p>${sig.r.id==='academy'?esc2(sig.r.t):`Te faltan ${sig.r.tot-sig.r.hechos} de ${sig.r.tot}`}</p></div>
+      <button onclick="${sig.ir}">${hec===0?'Empezar':'Continuar'} →</button></div>`
+   : `<div class="cont reveal"><div class="l"><div class="k2">Completaste todo</div>
+      <h3>No te queda nada pendiente</h3><p>Descargá tus certificados o repasá lo que quieras.</p></div>
+      <button onclick="openCert()">Ver certificado →</button></div>`;
+  const cards = rs.map(function(r){
+    const pct=Math.round(r.hechos/r.tot*100), fin=r.hechos>=r.tot;
+    const pill = fin ? `<span class="pill" style="background:#39d98a;color:#08240f">Completado</span>`
+      : r.hechos>0 ? `<span class="pill" style="background:${r.bg};color:${r.col}">En curso</span>`
+      : `<span class="pill" style="background:#241736;color:#9E90B5">Sin empezar</span>`;
+    return `<a class="ruta reveal ${fin?'done':''}" onclick="${r.ir}" tabindex="0" style="cursor:pointer">
+      <div class="top"><span class="ic" style="background:${r.bg}">${r.ic}</span>${pill}</div>
+      <h4>${r.t}</h4><p class="d">${r.d}</p>
+      <div class="pr"><div class="pb"><i style="width:${pct}%;background:${r.col}"></i></div><span class="pn">${r.hechos}/${r.tot}</span></div></a>`;
+  }).join('');
+  const cert=allDone();
+  const logros = `
+    <div class="logro ${hec>0?'on':''}"><span class="e">🚀</span><div><b>Arrancaste</b><span>Completaste tu primer módulo</span></div></div>
+    <div class="logro ${cert?'on':''}"><span class="e">🎓</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo':'Se habilita al aprobar los 6 módulos'}</span></div></div>
+    <div class="logro ${hec>=tot?'on':''}"><span class="e">🏆</span><div><b>Recorrido completo</b><span>${hec>=tot?'Terminaste las tres rutas':`${hec} de ${tot} módulos en total`}</span></div></div>`;
+  return `<section class="pan"><div class="wrap">
+   <div class="hi reveal">${nom?`Hola, ${esc2(nom)}`:'Hola'}</div>
+   <h1 class="reveal">Tu <span class="grad">formación</span></h1>
+   ${rol?`<div class="role reveal">${rol}</div>`:''}
+   ${cont}
+   <div class="eyebrow grad reveal">Tus rutas</div>
+   <h2 class="sec reveal" style="margin-bottom:6px">${rs.length} recorridos, ${tot} módulos</h2>
+   <p class="sub reveal">Llevás ${hec} de ${tot}. Ordenados según lo que hacés en Humana.</p>
+   <div class="rutas">${cards}</div>
+   <div class="eyebrow grad reveal">Tus logros</div>
+   <h2 class="sec reveal" style="margin-bottom:14px">Lo que ya conseguiste</h2>
+   ${logros}
+  </div></section>`;
+}
+function esc2(x){ return (''+x).replace(/[<>&]/g,c=>c==='<'?'&lt;':c==='>'?'&gt;':'&amp;'); }
+
 function home(){if(typeof renderUserbox==='function')renderUserbox();
  const compl=[1,2,3,4,5,6].filter(done).length, pct=Math.round(compl/6*100);
  let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
@@ -282,13 +390,7 @@ function home(){if(typeof renderUserbox==='function')renderUserbox();
  const resume=(compl>0&&nextInc)?`<div class="resume reveal"><div>Continuá donde quedaste — <b>Módulo ${nextInc}: ${MODULES.find(x=>x.n===nextInc).t}</b></div><div><button class="rb" onclick="openM(${nextInc})">Continuar</button><a onclick="if(confirm('¿Reiniciar tu progreso?')){scores={};STORE.set('ha_s',{});home()}">Reiniciar progreso</a></div></div>`:'';
  const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los 6 módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
  app.innerHTML=`
- <section class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap in">
-  <span class="bigmk">${MARK}</span>
-  <div class="k">Humana Health &amp; Care · Argentina</div>
-  <h1>Humana <span class="grad">Academy</span></h1>
-  <p>Un programa de formación en Medicina de Continuidad: una forma distinta de observar, comprender y acompañar al paciente a lo largo de toda su trayectoria.</p>
-  <a class="cta" onclick="scrollMods()">Comenzar la formación</a>
- </div></section>
+ ${panelHTML()}
  <section class="blk" id="mods"><div class="wrap">
   <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">Seis módulos, una idea por módulo</h2>
   <p class="sub reveal">Cada módulo combina una lectura breve, un audio, un video y una autoevaluación. Un módulo se completa al aprobar su autoevaluación.</p>
@@ -371,7 +473,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=12"></script>
+<script src="firebase-auth.js?v=13"></script>
 <script src="extras.js?v=10"></script>
 </body>
 </html>

@@ -178,6 +178,12 @@
       if(d&&d.name){ try{ uname=d.name; STORE.set('ha_name',d.name); }catch(e){} }
       curRole=(d&&d.role)||''; try{ if(curRole)STORE.set('ha_role',curRole); }catch(e){}
       window.HA_role=curRole; window.HA_isAdmin=isAdmin(user);
+      /* Nexo y Cutaquig: mezclar nube + local para que el panel funcione en cualquier equipo */
+      function mezcla(nube, clave, ids){ var loc={}; try{ loc=STORE.get(clave,{})||{}; }catch(e){}
+        var out={}; ids.forEach(function(n){ var v=Math.max(loc[n]==null?-1:loc[n], nube[n]==null?-1:nube[n]); if(v>=0)out[n]=v; });
+        try{ STORE.set(clave,out); }catch(e){} return out; }
+      window.HA_nexo     = mezcla((d&&d.nexo&&d.nexo.scores)||{}, 'hn_s', [1,2,3,4,5]);
+      window.HA_cutaquig = mezcla((d&&d.cutaquig&&d.cutaquig.scores)||{}, 'cq_s', [1,2,3,4,5,6,7,8,9]);
       try{ uemail=user.email||''; STORE.set('ha_email',uemail); }catch(e){}
       return db.collection('users').doc(user.uid).set({email:user.email, scores:merged, name:(uname||(d&&d.name)||''), updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).catch(function(){});
     }).catch(function(){});
