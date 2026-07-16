@@ -90,6 +90,14 @@ function scrollSuave(win,de,a,ms){
     if(p<1) requestAnimationFrame(paso); }
   setTimeout(function(){ requestAnimationFrame(paso); },1100);
 }
+function cerrarPops(w){
+  // El pop de bienvenida aparece con retardo: hay que taparlo durante unos segundos, no una sola vez.
+  var t0=Date.now();
+  (function limpiar(){
+    try{ w.document.querySelectorAll('#mpop.on,.pop.on,#onb.show').forEach(function(p){ p.classList.remove('on','show'); }); }catch(e){}
+    if(Date.now()-t0 < 6000) setTimeout(limpiar, 250);
+  })();
+}
 function abrirAdmin(w){
   // Pedir el panel UNA sola vez, cuando la sesion del iframe ya resolvio.
   // (Llamarlo en loop dispara una consulta a la base por intento y traba la pestania.)
@@ -117,7 +125,7 @@ function pintar(n){
     var w=null; try{ w=fr.contentWindow; }catch(err){}
     if(!w) return;
     try{
-      var p=w.document.querySelector('#mpop.on,.pop.on'); if(p)p.classList.remove('on');
+      cerrarPops(w);
       if(e.adm){ abrirAdmin(w); }
       if(e.u==='calculadora.html' && w.document.getElementById('peso')){
         w.document.getElementById('peso').value='70';
