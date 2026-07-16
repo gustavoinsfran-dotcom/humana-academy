@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de dosis · cutaquig® — Humana Nexo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#070C14">
+<link rel="canonical" href="https://academy.humanahc.com.ar/calculadora.html">
+<link rel="icon" href="mark.svg">
+<style>
+:root{--bg:#070C14;--card:#0E1626;--card2:#131E33;--line:#1E2E4A;--tx:#E6EEF9;--mut:#8FA3BF;--b2:#0EA5E9;--b3:#38BDF8;--ok:#39d98a;--warn:#F59E0B;--dgr:#F87171;--grad:linear-gradient(135deg,#1D4ED8 0%,#0EA5E9 55%,#38BDF8 100%)}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header.top{position:sticky;top:0;z-index:60;background:rgba(7,12,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer;text-decoration:none;color:inherit}
+.brand .mk{width:36px;height:23px}
+.brand .wm{font-weight:800;font-size:17px}
+.brand .tag{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);font-weight:700}
+nav.desk{display:flex;gap:18px;font-size:14px;color:var(--mut)}nav.desk a{text-decoration:none}nav.desk a:hover{color:var(--b3)}
+.regbar{background:#2A1206;border-bottom:1px solid #5A2D0C;color:#FFD9A8;font-size:12.5px;padding:10px 0;line-height:1.5}
+.regbar b{color:#FFB454}
+h1.t{font-size:34px;font-weight:800;margin:26px 0 6px;letter-spacing:-.6px}
+.lead{color:var(--mut);margin:0 0 22px;font-size:15px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:0 0 20px}
+.panel h3{margin:0 0 14px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800}
+.steps{counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:9px;color:#dbe7f6}
+.steps li:before{content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--grad);color:#04101f;font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.inrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fld label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin-bottom:7px}
+.fld .ig{display:flex;align-items:center;background:var(--card2);border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.fld input{flex:1;width:100%;background:transparent;border:none;color:var(--tx);font-size:26px;font-weight:800;padding:14px 16px;font-family:inherit;outline:none;-moz-appearance:textfield}
+.fld input::-webkit-outer-spin-button,.fld input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.fld .u{padding:0 16px;color:var(--mut);font-size:13px;font-weight:700;white-space:nowrap}
+.fld .ig:focus-within{border-color:var(--b2)}
+.btn{background:var(--grad);color:#04101f;border:none;font-weight:800;font-size:16px;padding:15px 30px;border-radius:12px;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--tx);font-size:14px;padding:12px 22px}
+.err{color:var(--dgr);font-size:13.5px;min-height:18px;margin:10px 2px 0}
+.res{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin:6px 0 0}
+.rc{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.rc .lb{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);font-weight:700;min-height:30px}
+.rc .vv{font-size:30px;font-weight:800;margin:6px 0 0;letter-spacing:-1px}
+.rc .un{font-size:13px;color:var(--mut);font-weight:700}
+.rc.hl{border-color:var(--b2);background:rgba(14,165,233,.1)}
+.vials{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.vc{background:var(--card2);border:1.5px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.vc img{width:100%;max-width:110px;height:auto;border-radius:8px;background:#fff}
+.vc .nm{font-weight:800;font-size:15px;margin-top:8px}
+.vc .sub{font-size:12px;color:var(--mut)}
+.cnt{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px}
+.cnt button{width:32px;height:32px;border-radius:9px;border:1.5px solid var(--line);background:var(--card);color:var(--tx);font-size:18px;font-weight:800;cursor:pointer;line-height:1;font-family:inherit}
+.cnt button:hover{border-color:var(--b3)}
+.cnt .n{min-width:26px;font-size:18px;font-weight:800}
+.tot{margin-top:16px;padding:14px 18px;border-radius:12px;background:var(--card2);border:1px solid var(--line);font-size:14.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tot.ok{border-color:var(--ok);background:rgba(57,217,138,.1)}
+.tot.no{border-color:var(--warn);background:rgba(245,158,11,.1)}
+.note{border-left:3px solid var(--b2);background:var(--card2);padding:13px 18px;border-radius:0 10px 10px 0;margin:14px 0;color:#d8e8fa;font-size:14px}
+.alert{border-left:4px solid var(--dgr);background:#2A0F0F;padding:14px 18px;border-radius:0 10px 10px 0;margin:14px 0;color:#FFD9D9;font-size:14px}
+.alert b{color:#FF9B9B}
+.src{font-size:12px;color:#6E86A6;margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--mut);font-size:12.5px;margin-top:28px}
+.fbgate{position:fixed;inset:0;z-index:400;background:radial-gradient(900px 460px at 50% -10%,#0d1c33,var(--bg) 60%);display:none;align-items:center;justify-content:center;padding:24px}
+.fbgate.on{display:flex}
+.fbgate .box{background:var(--card);border:1px solid var(--line);border-radius:20px;max-width:420px;width:100%;padding:32px 28px;text-align:center}
+.fbgate .mk{width:58px;height:37px;margin:0 auto 14px;display:block}
+.fbgate h3{font-size:19px;margin:0 0 4px;font-weight:800}
+.fbgate .st{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--b3);font-weight:800;margin-bottom:8px}
+.fbgate p{color:var(--mut);font-size:13.5px;margin:0 0 13px}
+.fbgate input{width:100%;padding:12px 15px;border:1.5px solid var(--line);border-radius:11px;background:var(--card2);color:var(--tx);font-size:15px;font-family:inherit;margin:0 0 11px}
+.fbgate button{width:100%;border:none;cursor:pointer;color:#04101f;font-weight:800;font-size:15px;padding:13px;border-radius:11px;background:var(--grad);font-family:inherit}
+.fbgate .msg{min-height:18px;color:#F87171;font-size:13px;margin:9px 2px 0}.fbgate .msg.ok{color:var(--ok)}
+#pr{display:none}
+@media print{
+ body{background:#fff;color:#000}
+ header.top,.regbar,.noprint,.footer,.fbgate{display:none!important}
+ #pr{display:block}
+ .panel{background:#fff;border:1px solid #ccc;color:#000}
+ .rc{background:#f4f7fb;border:1px solid #ccc}.rc .vv{color:#0B3A6F}.rc .lb,.rc .un{color:#456}
+ .note,.alert{color:#000;background:#f7f7f7;border-left-color:#888}
+ h1.t{color:#0B3A6F}
+}
+@media(max-width:860px){.inrow{grid-template-columns:1fr}.res{grid-template-columns:1fr 1fr}.vials{grid-template-columns:1fr 1fr}nav.desk{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="cutaquig.html"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div><div class="wm">Calculadora de dosis</div><div class="tag">cutaquig®</div></div></a>
+<nav class="desk"><a href="cutaquig.html">← Capacitación</a><a href="nexo.html">Nexo</a><a href="Cutaquig_Prospecto_ANMAT_AR.pdf" target="_blank">Prospecto</a></nav>
+</div></header>
+<div class="regbar"><div class="wrap"><b>USO INTERNO · EXCLUSIVO PARA MÉDICOS Y ENFERMEROS.</b> Medicamento de venta bajo receta. Esta calculadora es una <b>ayuda de conversión</b>: la dosis y el intervalo los determina el médico tratante. Ante cualquier duda, rige el <b>prospecto autorizado en Argentina</b> (v10, 29-08-2025).</div></div>
+<div class="fbgate" id="fbgate"></div>
+<main class="wrap">
+<h1 class="t">Calculadora de dosis <span class="grad">cutaquig®</span></h1>
+<p class="lead">Inmunoglobulina humana normal (SCIg) · 165 mg/mL · SCIg líquida al 16,5 % de IgG altamente purificada.</p>
+
+<div class="panel noprint"><h3>Cómo usar esta calculadora</h3>
+<ol class="steps">
+<li>Introducí el <strong>peso del paciente</strong> en kg.</li>
+<li>Introducí la <strong>dosis prescrita</strong> (g/kg/semana).</li>
+<li>Tocá el botón <strong>Calcular</strong>.</li>
+<li>Seleccioná los <strong>tamaños de vial</strong> que se ajusten convenientemente al programa de dosificación semanal preferido por el paciente.</li>
+<li>Podés <strong>imprimir o guardar el resultado como PDF</strong> con el botón Imprimir.</li>
+</ol></div>
+
+<div class="panel"><h3>Datos del paciente</h3>
+<div class="inrow">
+ <div class="fld"><label for="peso">Peso del paciente</label><div class="ig"><input id="peso" type="number" inputmode="decimal" step="0.01" min="0" placeholder="70.00" value=""><span class="u">kg</span></div></div>
+ <div class="fld"><label for="dosis">Dosis prescrita</label><div class="ig"><input id="dosis" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0.10" value=""><span class="u">g/kg/semana</span></div></div>
+</div>
+<div class="err" id="err"></div>
+<div class="noprint" style="margin-top:8px"><button class="btn" onclick="calcular()">Calcular</button> <button class="btn ghost" onclick="limpiar()">Limpiar</button></div>
+</div>
+
+<div class="panel" id="out" style="display:none"><h3>Resultado</h3>
+<div class="res">
+ <div class="rc hl"><div class="lb">Gramos por semana</div><div class="vv" id="gs">—</div><div class="un">g</div></div>
+ <div class="rc"><div class="lb">Gramos por mes</div><div class="vv" id="gm">—</div><div class="un">g</div></div>
+ <div class="rc hl"><div class="lb">Volumen por semana</div><div class="vv" id="vs">—</div><div class="un">mL</div></div>
+ <div class="rc"><div class="lb">Volumen por mes</div><div class="vv" id="vm">—</div><div class="un">mL</div></div>
+</div>
+<div class="note">Conversión aplicada: <strong>dosis (g) × 6 = volumen (mL)</strong>. El mes se calcula como <strong>4 semanas</strong>.</div>
+</div>
+
+<div class="panel" id="vialbox" style="display:none"><h3>Tamaños de vial</h3>
+<p class="lead" style="margin:-6px 0 14px">Seleccioná los tamaños de vial que se ajusten convenientemente al programa de dosificación semanal preferido por el paciente.</p>
+<div class="vials">
+ <div class="vc"><img src="vial_1g.png" alt="Vial de 1 g / 6 mL"><div class="nm">1 g</div><div class="sub">6 mL</div><div class="cnt noprint"><button onclick="chg(1,-1)">−</button><span class="n" id="n1">0</span><button onclick="chg(1,1)">+</button></div><div class="sub" style="display:none" id="p1"></div></div>
+ <div class="vc"><img src="vial_2g.png" alt="Vial de 2 g / 12 mL"><div class="nm">2 g</div><div class="sub">12 mL</div><div class="cnt noprint"><button onclick="chg(2,-1)">−</button><span class="n" id="n2">0</span><button onclick="chg(2,1)">+</button></div><div class="sub" style="display:none" id="p2"></div></div>
+ <div class="vc"><img src="vial_4g.png" alt="Vial de 4 g / 24 mL"><div class="nm">4 g</div><div class="sub">24 mL</div><div class="cnt noprint"><button onclick="chg(4,-1)">−</button><span class="n" id="n4">0</span><button onclick="chg(4,1)">+</button></div><div class="sub" style="display:none" id="p4"></div></div>
+ <div class="vc"><img src="vial_8g.png" alt="Vial de 8 g / 48 mL"><div class="nm">8 g</div><div class="sub">48 mL</div><div class="cnt noprint"><button onclick="chg(8,-1)">−</button><span class="n" id="n8">0</span><button onclick="chg(8,1)">+</button></div><div class="sub" style="display:none" id="p8"></div></div>
+</div>
+<div class="tot" id="tot"><span>Seleccionado: <b id="selg">0,00 g</b> · <b id="selv">0,00 mL</b></span><span id="cmp">—</span></div>
+<div class="noprint" style="margin-top:14px"><button class="btn ghost" onclick="sugerir()">Sugerir combinación</button> <button class="btn ghost" onclick="ceroVials()">Reiniciar viales</button></div>
+<div class="note" style="margin-top:14px">Cada vial es de <strong>un solo uso</strong>: desechar la porción no utilizada.</div>
+</div>
+
+<div class="panel">
+<div class="alert"><b>La dosis la prescribe el médico.</b> Esta herramienta solo convierte gramos a volumen y sugiere viales. No reemplaza la indicación médica ni el prospecto. Verificá siempre la etiqueta del vial contra la prescripción antes de infundir.</div>
+<div class="note">Consultá la <strong>guía de infusión de cutaquig®</strong> para el detalle de cómo infundir. Velocidades y técnica: ver el <a href="cutaquig.html" style="color:var(--b3)">módulo de capacitación</a>.</div>
+<p style="font-size:13px;color:var(--mut);margin:12px 0 0">Para información completa de seguridad, consultá el prospecto autorizado. <strong>Los eventos adversos deben notificarse</strong>: usá los formularios de notificación del país (ANMAT) y notificá también a Octapharma (www.octapharma.com). Este medicamento está sujeto a monitoreo adicional.</p>
+<div class="src">Réplica del instructivo oficial "Calculadora de dosis cutaquig®" (Octapharma). Imágenes de viales: material de Octapharma. Datos de dosificación: prospecto autorizado en Argentina, v10 (29-08-2025).</div>
+</div>
+
+<div class="noprint" style="margin:0 0 30px"><button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button> <a class="btn ghost" style="text-decoration:none;display:inline-block" href="cutaquig.html">← Volver a la capacitación</a></div>
+
+<div id="pr"><div class="src" style="border:0">Humana Nexo · Calculadora de dosis cutaquig® — Uso interno para médicos y enfermeros. La dosis la prescribe el médico tratante. Impreso el <span id="fecha"></span>.</div></div>
+</main>
+<footer class="footer"><div class="wrap">Humana Nexo · Uso interno. No distribuir. · <a href="cutaquig.html" style="color:var(--b3);text-decoration:none">Capacitación cutaquig®</a></div></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg2)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
+const ML_POR_G=6, SEM_POR_MES=4;
+const VIAL={1:6,2:12,4:24,8:48};
+let sel={1:0,2:0,4:0,8:0}, gSem=0;
+const fmt=n=>n.toFixed(2).replace('.',',');
+function calcular(){
+ const p=parseFloat(document.getElementById('peso').value), d=parseFloat(document.getElementById('dosis').value);
+ const e=document.getElementById('err');
+ if(!isFinite(p)||p<=0){e.textContent='Ingresá un peso válido en kg.';return;}
+ if(!isFinite(d)||d<=0){e.textContent='Ingresá la dosis prescrita en g/kg/semana.';return;}
+ if(p>300){e.textContent='Verificá el peso: parece fuera de rango.';return;}
+ if(d>1){e.textContent='Verificá la dosis: g/kg/semana suele estar entre 0,05 y 0,40. Confirmá la prescripción.';return;}
+ e.textContent='';
+ const gs=p*d, gm=gs*SEM_POR_MES, vs=gs*ML_POR_G, vm=gm*ML_POR_G;
+ gSem=gs;
+ document.getElementById('gs').textContent=fmt(gs);
+ document.getElementById('gm').textContent=fmt(gm);
+ document.getElementById('vs').textContent=fmt(vs);
+ document.getElementById('vm').textContent=fmt(vm);
+ document.getElementById('out').style.display='';
+ document.getElementById('vialbox').style.display='';
+ ceroVials(); sugerir();
+ document.getElementById('out').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function limpiar(){document.getElementById('peso').value='';document.getElementById('dosis').value='';document.getElementById('err').textContent='';document.getElementById('out').style.display='none';document.getElementById('vialbox').style.display='none';gSem=0;ceroVials();}
+function chg(v,d){sel[v]=Math.max(0,sel[v]+d);pintar();}
+function ceroVials(){sel={1:0,2:0,4:0,8:0};pintar();}
+function sugerir(){
+ if(gSem<=0)return;
+ let r=Math.ceil(gSem-1e-9); sel={1:0,2:0,4:0,8:0};
+ [8,4,2,1].forEach(function(v){ while(r>=v){ sel[v]++; r-=v; } });
+ pintar();
+}
+function pintar(){
+ let g=0,ml=0;
+ [1,2,4,8].forEach(function(v){
+   document.getElementById('n'+v).textContent=sel[v];
+   const pe=document.getElementById('p'+v);
+   if(sel[v]>0){pe.style.display='';pe.textContent=sel[v]+' vial'+(sel[v]>1?'es':'');}else{pe.style.display='none';}
+   g+=sel[v]*v; ml+=sel[v]*VIAL[v];
+ });
+ document.getElementById('selg').textContent=fmt(g)+' g';
+ document.getElementById('selv').textContent=fmt(ml)+' mL';
+ const t=document.getElementById('tot'), c=document.getElementById('cmp');
+ t.classList.remove('ok','no');
+ if(gSem<=0){c.textContent='—';return;}
+ if(g+1e-9>=gSem){ const ex=g-gSem; t.classList.add('ok'); c.innerHTML='✓ Cubre la dosis semanal de <b>'+fmt(gSem)+' g</b>'+(ex>0.001?' · sobrante a desechar: <b>'+fmt(ex)+' g</b>':''); }
+ else { t.classList.add('no'); c.innerHTML='⚠ Faltan <b>'+fmt(gSem-g)+' g</b> para la dosis semanal de <b>'+fmt(gSem)+' g</b>'; }
+}
+document.getElementById('fecha').textContent=new Date().toLocaleDateString('es-AR');
+['peso','dosis'].forEach(function(id){document.getElementById(id).addEventListener('keydown',function(ev){if(ev.key==='Enter')calcular();});});
+/* --- Acceso (mismo login del Academy) --- */
+const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"};
+let auth=null; const gate=document.getElementById('fbgate');
+function showGate(){gate.classList.add('on');}function hideGate(){gate.classList.remove('on');}
+function renderLoading(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">cutaquig®</div><p>Cargando tu sesión…</p></div>';showGate();}
+function renderLogin(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">Uso interno · Médicos y enfermeros</div><h3>Calculadora de dosis</h3><p>Ingresá tu correo y te enviamos un enlace de acceso.</p><input id="fbEmail" type="email" placeholder="tu-correo@ejemplo.com"><button id="fbBtn">Enviar enlace de acceso</button><div class="msg" id="fbMsg"></div></div>';
+ const b=document.getElementById('fbBtn');b.onclick=function(){const em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();const m=document.getElementById('fbMsg');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.className='msg';m.textContent='Ingresá un correo válido.';return;}b.disabled=true;m.textContent='Enviando…';auth.sendSignInLinkToEmail(em,{url:location.origin+location.pathname,handleCodeInApp:true}).then(function(){window.localStorage.setItem('ha_email_link',em);m.className='msg ok';m.innerHTML='¡Listo! Te enviamos un enlace a <b>'+em+'</b>.';}).catch(function(e){b.disabled=false;m.className='msg';m.textContent='No se pudo enviar: '+e.message;});};showGate();}
+try{
+ firebase.initializeApp(firebaseConfig);auth=firebase.auth();
+ try{auth.languageCode='es';}catch(e){}
+ try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
+ auth.onAuthStateChanged(function(u){ if(u){hideGate();} else {renderLogin();} });
+ renderLoading();
+ if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();});}}
+}catch(e){ hideGate(); }
+if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}
+</script>
+</body>
+</html>
