@@ -1,0 +1,143 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Humana Academy · Recorrido</title>
+<link rel="canonical" href="https://academy.humanahc.com.ar/demo.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--d:#0C0713;--c1:#191024;--c2:#241736;--li:#2C1F42;--tx:#EDE6F5;--mu:#9E90B5;
+--mag:#EC2E8E;--ver:#39D98A;--g:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07040D;font-family:Inter,system-ui,sans-serif;color:var(--tx);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;gap:12px}
+.wrap{width:100%;max-width:1240px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.mk{width:34px;height:22px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand b{font-size:16px;font-weight:800}
+.brand span{background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ctl{display:flex;gap:7px}
+.ctl button{background:var(--c2);border:1px solid var(--li);color:var(--tx);border-radius:9px;padding:7px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.ctl button:hover{border-color:var(--mag)}
+.stage{position:relative;border-radius:16px;overflow:hidden;background:var(--d);border:1px solid var(--li);box-shadow:0 26px 70px rgba(0,0,0,.55)}
+.bar{position:absolute;top:0;left:0;height:3px;background:var(--g);width:0;z-index:9}
+.fr{width:100%;height:min(64vh,620px);border:0;display:block;background:var(--d)}
+.load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--d);z-index:6;transition:opacity .4s}
+.load.off{opacity:0;pointer-events:none}
+.load span{color:var(--mu);font-size:13px}
+.nar{position:absolute;left:0;right:0;bottom:0;padding:52px 26px 20px;background:linear-gradient(transparent,rgba(7,4,13,.93) 46%);z-index:7;pointer-events:none}
+.nar .t{font-size:clamp(15px,1.7vw,20px);font-weight:800;letter-spacing:-.01em;margin-bottom:3px}
+.nar .s{font-size:clamp(12px,1.3vw,14.5px);color:#C9B8E0;line-height:1.5;max-width:900px}
+.nar b{color:var(--mag)}
+.nar .in{opacity:0;transform:translateY(10px);animation:in .5s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes in{to{opacity:1;transform:none}}
+.dots{display:flex;gap:5px;justify-content:center;margin-top:12px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#3A2A52;cursor:pointer;transition:.25s}
+.dots i.on{background:var(--mag);width:20px;border-radius:3px}
+.pie{text-align:center;color:#5A4E70;font-size:11.5px;margin-top:10px;line-height:1.6}
+.aviso{background:#2A1F0E;border:1px solid #5C4415;color:#F0C674;border-radius:10px;padding:11px 14px;font-size:12.5px;line-height:1.55;margin-bottom:10px;display:none}
+.aviso.on{display:block}
+@media(max-width:640px){.fr{height:56vh}.nar{padding:44px 16px 16px}}
+</style></head><body>
+<div class="wrap">
+ <div class="top"><div class="brand">
+  <span class="mk"><svg viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span>
+  <b>Humana <span>Academy</span></b><span style="color:#5A4E70;font-size:12px">· Recorrido de la plataforma</span></div>
+  <div class="ctl"><button id="pp">❚❚ Pausar</button><button id="rs">↻ Volver al inicio</button></div></div>
+ <div class="aviso" id="aviso"></div>
+ <div class="stage"><div class="bar" id="bar"></div>
+  <div class="load" id="load"><span>Cargando la plataforma…</span></div>
+  <iframe class="fr" id="fr" title="Humana Academy"></iframe>
+  <div class="nar" id="nar"></div></div>
+ <div class="dots" id="dots"></div>
+ <div class="pie">Esto es la plataforma real, en vivo, no una maqueta. · academy.humanahc.com.ar<br>Flechas ← → para moverte · barra espaciadora para pausar</div>
+</div>
+<script>
+var E=[
+ {u:'index.html', y:[0,0], t:'Tu entorno, no una grilla para todos',
+  s:'Al entrar, cada persona ve <b>su</b> estado: qué hizo, qué le queda y un solo botón grande que dice por dónde seguir.'},
+ {u:'index.html', y:[0,520], t:'Tres recorridos, ordenados por lo que hacés',
+  s:'Un enfermero ve <b>Cutaquig primero</b>. Administración ve Nexo — y Cutaquig no le aparece. El rol decide el entorno.'},
+ {u:'index.html', y:[520,1250], t:'Logros y el programa completo',
+  s:'Seis módulos de doctrina, una idea por módulo, más el caso integrador de Doña Elena. <b>Cada módulo cierra con autoevaluación.</b>'},
+ {u:'cutaquig.html', y:[0,0], t:'Cutaquig®: la capacitación crítica',
+  s:'Medicamento de <b>venta bajo receta</b>. El cartel regulatorio está siempre arriba: uso interno, exclusivo para médicos y enfermeros, contenido validado por Asuntos Regulatorios.'},
+ {u:'cutaquig.html', y:[0,900], t:'Nueve módulos, cero margen de error',
+  s:'Desde qué es una inmunoglobulina hasta farmacovigilancia. <b>El módulo 3 va en rojo</b>: la maltosa interfiere con los glucómetros y es el error más fácil de cometer.'},
+ {u:'calculadora.html', y:[0,560], t:'Calculadora de dosis',
+  s:'El enfermero pone peso y dosis prescrita. <b>70 kg × 0,10 → 7,00 g · 42,00 mL.</b> Coincide exacto con el ejemplo del laboratorio.'},
+ {u:'calculadora.html', y:[560,1250], t:'Viales reales, disponibilidad argentina',
+  s:'En Argentina solo se comercializan los de <b>2 g y 4 g</b>. La herramienta sugiere la combinación y avisa el sobrante a desechar. <b>La dosis la prescribe el médico</b>: esto solo convierte.'},
+ {u:'index.html', y:[0,0], adm:true, t:'Gestión de accesos',
+  s:'Solo lo ven Gustavo y Karina. Acá se decide quién es clínico: <b>el acceso a Cutaquig se otorga, no se declara</b>, y queda registrado quién habilitó a quién.'}
+];
+var DUR=8000;
+var i=0,t=null,pausado=false,ini=0,resto=0;
+var fr=document.getElementById('fr'),bar=document.getElementById('bar'),nar=document.getElementById('nar'),
+    load=document.getElementById('load'),dots=document.getElementById('dots'),aviso=document.getElementById('aviso');
+E.forEach(function(){ dots.appendChild(document.createElement('i')); });
+var ds=[].slice.call(dots.children);
+ds.forEach(function(d,k){ d.onclick=function(){ ir(k); }; });
+
+function narrar(e){
+  nar.innerHTML='<div class="in"><div class="t">'+e.t+'</div><div class="s">'+e.s+'</div></div>';
+}
+function scrollSuave(win,de,a,ms){
+  try{ win.scrollTo(0,de); }catch(err){ return; }
+  if(de===a) return;
+  var t0=null;
+  function paso(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/ms,1);
+    var v=de+(a-de)*(p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2);
+    try{ win.scrollTo(0,v); }catch(err){ return; }
+    if(p<1) requestAnimationFrame(paso); }
+  setTimeout(function(){ requestAnimationFrame(paso); },1100);
+}
+function pintar(n){
+  var e=E[n];
+  ds.forEach(function(d,k){ d.classList.toggle('on',k===n); });
+  narrar(e);
+  load.classList.remove('off');
+  var mismo = fr.getAttribute('data-u')===e.u;
+  function listo(){
+    load.classList.add('off');
+    var w=null; try{ w=fr.contentWindow; }catch(err){}
+    if(!w) return;
+    try{
+      var p=w.document.querySelector('#mpop.on,.pop.on'); if(p)p.classList.remove('on');
+      if(e.adm && typeof w.showAdmin==='function'){ w.showAdmin(); }
+      if(e.u==='calculadora.html' && w.document.getElementById('peso')){
+        w.document.getElementById('peso').value='70';
+        w.document.getElementById('dosis').value='0.10';
+        if(typeof w.calcular==='function'){ w.calcular(); }
+        if(typeof w.sugerir==='function'){ w.sugerir(); }
+      }
+    }catch(err){}
+    scrollSuave(w, e.y[0], e.y[1], (+E[n].dur||DUR)-1800);
+  }
+  if(mismo && !e.adm){ setTimeout(listo,120); }
+  else { fr.setAttribute('data-u',e.u); fr.onload=function(){ setTimeout(listo, e.adm?2200:1500); }; fr.src=e.u+'?demo=1&t='+Date.now(); }
+}
+function correr(ms){
+  ini=Date.now(); resto=ms;
+  bar.style.transition='none'; bar.style.width='0'; void bar.offsetWidth;
+  bar.style.transition='width '+ms+'ms linear'; bar.style.width='100%';
+  t=setTimeout(function(){ ir((i+1)%E.length); }, ms);
+}
+function ir(n){ clearTimeout(t); i=n; pintar(i); if(!pausado) correr(DUR); }
+document.getElementById('pp').onclick=function(){
+  pausado=!pausado;
+  if(pausado){ clearTimeout(t); resto=resto-(Date.now()-ini);
+    var w=getComputedStyle(bar).width; bar.style.transition='none'; bar.style.width=w; this.textContent='▶ Seguir'; }
+  else { this.textContent='❚❚ Pausar'; correr(Math.max(resto,900)); }
+};
+document.getElementById('rs').onclick=function(){ pausado=false; document.getElementById('pp').textContent='❚❚ Pausar'; ir(0); };
+document.addEventListener('keydown',function(ev){
+  if(ev.key==='ArrowRight') ir((i+1)%E.length);
+  if(ev.key==='ArrowLeft') ir((i-1+E.length)%E.length);
+  if(ev.key===' '){ ev.preventDefault(); document.getElementById('pp').click(); }
+});
+setTimeout(function(){
+  try{ var w=fr.contentWindow; if(w && w.document && w.document.querySelector('.fbgate.on')){
+    aviso.innerHTML='<b>Entrá primero a la plataforma</b> para que el recorrido muestre tu entorno: abrí <a href="index.html" style="color:#F0C674">academy.humanahc.com.ar</a>, iniciá sesión, y volvé a esta página.';
+    aviso.classList.add('on'); } }catch(e){}
+},6000);
+ir(0);
+</script></body></html>
