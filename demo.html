@@ -90,6 +90,14 @@ function scrollSuave(win,de,a,ms){
     if(p<1) requestAnimationFrame(paso); }
   setTimeout(function(){ requestAnimationFrame(paso); },1100);
 }
+function abrirAdmin(w,intento){
+  // La sesion del iframe tarda en resolver: reintento hasta que el panel abra de verdad.
+  try{
+    if(typeof w.showAdmin==='function'){ w.showAdmin(); }
+    var ok = w.document.body && /Gesti\u00f3n de accesos/.test(w.document.body.textContent);
+    if(!ok && intento<14){ setTimeout(function(){ abrirAdmin(w,intento+1); }, 450); }
+  }catch(err){ if(intento<14) setTimeout(function(){ abrirAdmin(w,intento+1); }, 450); }
+}
 function pintar(n){
   var e=E[n];
   ds.forEach(function(d,k){ d.classList.toggle('on',k===n); });
@@ -103,7 +111,7 @@ function pintar(n){
     if(!w) return;
     try{
       var p=w.document.querySelector('#mpop.on,.pop.on'); if(p)p.classList.remove('on');
-      if(e.adm && typeof w.showAdmin==='function'){ w.showAdmin(); }
+      if(e.adm){ abrirAdmin(w,0); }
       if(e.u==='calculadora.html' && w.document.getElementById('peso')){
         w.document.getElementById('peso').value='70';
         w.document.getElementById('dosis').value='0.10';
