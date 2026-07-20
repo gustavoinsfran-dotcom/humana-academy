@@ -213,32 +213,15 @@ const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomai
 let auth=null, db=null; const gate=document.getElementById('fbgate');
 function showGate(){gate.classList.add('on');}function hideGate(){gate.classList.remove('on');}
 function renderLoading(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">cutaquig®</div><p>Cargando tu sesión…</p></div>';showGate();}
-function renderLogin(){gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span><div class="st">Uso interno · Médicos y enfermeros</div><h3>Calculadora de dosis</h3><p>Ingresá tu correo y te enviamos un enlace de acceso.</p><input id="fbEmail" type="email" placeholder="tu-correo@ejemplo.com"><button id="fbBtn">Enviar enlace de acceso</button><div class="msg" id="fbMsg"></div></div>';
- const b=document.getElementById('fbBtn');b.onclick=function(){const em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();const m=document.getElementById('fbMsg');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.className='msg';m.textContent='Ingresá un correo válido.';return;}b.disabled=true;m.textContent='Enviando…';auth.sendSignInLinkToEmail(em,{url:location.origin+location.pathname,handleCodeInApp:true}).then(function(){window.localStorage.setItem('ha_email_link',em);m.className='msg ok';m.innerHTML='¡Listo! Te enviamos un enlace a <b>'+em+'</b>.';}).catch(function(e){b.disabled=false;m.className='msg';m.textContent='No se pudo enviar: '+e.message;});};showGate();}
+function renderLogin(){ /* Login unico en index.html; volvemos aca despues de entrar. */
+ location.replace('index.html?volver='+encodeURIComponent('calculadora.html'));
+}
 try{
  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
- auth.onAuthStateChanged(function(u){
-   if(!u){ renderLogin(); return; }
-   var esAdmin=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'].indexOf((u.email||'').toLowerCase())>=0;
-   db.collection('users').doc(u.uid).get().then(function(d){
-     var dd=d.exists?d.data():{};
-     var okClinico = esAdmin || (dd.role==='clinico' && !!dd.clinicoAprobado);
-     if(!okClinico){ sinAcceso(); return; }
-     hideGate();
-   }).catch(function(){ hideGate(); });
- });
- function sinAcceso(){
-   gate.innerHTML='<div class="box"><span class="mk">'+MARK+'</span>'
-    +'<div class="st">Acceso restringido</div>'
-    +'<h3>Esta herramienta es para médicos y enfermeros</h3>'
-    +'<p>La calculadora de dosis de cutaquig® es una ayuda de conversión para quien prepara e infunde el tratamiento. Cutaquig® es un medicamento de <b>venta bajo receta</b>.</p>'
-    +'<button onclick="location.href=\'index.html\'">← Volver a tu formación</button></div>';
-   gate.classList.add('on');
- }
+ auth.onAuthStateChanged(function(u){ if(u){hideGate();} else {renderLogin();} });
  renderLoading();
- if(auth.isSignInWithEmailLink(location.href)){let em=window.localStorage.getItem('ha_email_link');if(!em)em=window.prompt('Confirmá tu correo:');if(em){auth.signInWithEmailLink(em.trim().toLowerCase(),location.href).then(function(){window.localStorage.removeItem('ha_email_link');history.replaceState(null,'',location.origin+location.pathname);}).catch(function(){renderLogin();});}}
 }catch(e){ hideGate(); }
 if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}
 </script>
