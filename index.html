@@ -181,6 +181,49 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 #cert p{font-size:15px;line-height:1.6;max-width:60ch;margin:8px auto;color:#4a3560}
 #cert .cmods{color:#7a6690;font-size:12.5px;margin-top:14px}
 .nameinput{padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;width:340px;max-width:100%;background:var(--card2);color:var(--tx)}
+/* --- Mobile: dedos, no mouse --- */
+*{-webkit-tap-highlight-color:transparent}
+@media(max-width:640px){
+ .wrap{padding-left:18px;padding-right:18px}
+ /* Tarjetas de modulo: mas aire y target grande */
+ .mcard{padding:20px 18px}
+ .mcard h3{font-size:17px}
+ .mcard p{font-size:14px}
+ .mcard .num{width:42px;height:42px}
+ .mcard:active{transform:scale(.985)}
+ /* Tarjetas de ruta */
+ .ruta{padding:20px 18px}
+ .ruta:active{transform:scale(.985);border-color:#8E2E9E}
+ /* Continuar / botones primarios: ancho completo, altos */
+ .rb{width:100%;padding:15px 20px;font-size:16px;border-radius:12px}
+ .btn{width:100%;padding:15px 22px;font-size:16px}
+ .btn.ghost{width:100%}
+ .cont{padding:20px}
+ .cont button{width:100%;padding:16px;font-size:16px}
+ /* Volver: mas grande y comodo */
+ .back{padding:13px 20px;font-size:15px}
+ .back:active{border-color:var(--pink)}
+ /* Quiz: opciones grandes y separadas, faciles de acertar */
+ .opt{padding:16px 16px;font-size:15.5px;margin-bottom:12px;line-height:1.4}
+ .opt:active{border-color:var(--pink)}
+ .q{margin-bottom:24px;padding-bottom:20px}
+ .qt{font-size:15.5px;line-height:1.45}
+ /* Texto de leccion mas legible */
+ .lesson p,.mbody p{font-size:15.5px;line-height:1.7}
+ .lesson h2,.mbody h2{font-size:19px}
+ .quote{font-size:15px;line-height:1.5;padding:14px 16px}
+ /* Titulos del panel personal */
+ .pan h1{font-size:30px}
+ h2.sec{font-size:24px}
+ /* Drawer: links bien altos */
+ .drawer a{padding:17px 22px;font-size:16px}
+ .burger{padding:10px}
+ /* Recursos / listas con buen tap */
+ .rc{padding:16px 18px}
+ .rc:active{border-color:var(--pink)}
+ /* Botones LinkedIn y compartir a ancho completo */
+ .libtn,.share,.certcta button{width:100%!important;padding:15px!important;font-size:15px!important}
+}
 @media print{header.top,footer,.noprint{display:none!important}body{background:#fff}}
 @media(max-width:860px){.grid,.res{grid-template-columns:1fr}nav.desk{display:none}.userbox{display:none}.burger{display:flex}.hero h1{font-size:40px}.hero{padding:64px 0 68px}h2.sec{font-size:26px}}
 .resume{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 20px;flex-wrap:wrap}
@@ -505,7 +548,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=16"></script>
-<script src="extras.js?v=11"></script>
+<script src="firebase-auth.js?v=17"></script>
+<script src="extras.js?v=12"></script>
 </body>
 </html>
