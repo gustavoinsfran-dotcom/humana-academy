@@ -275,7 +275,7 @@
   document.head.appendChild(sadm);
 
   function _prog(d){
-    var sc=d.scores||{}, a=[1,2,3,4,5,6].filter(function(n){return sc[n]>=60;}).length;
+    var sc=d.scores||{}, a=[1,2,3,4,5,6,7,8,9,10].filter(function(n){return sc[n]>=60;}).length;
     var ns=(d.nexo&&d.nexo.scores)||{}, x=[1,2,3,4,5].filter(function(n){return ns[n]>=60;}).length;
     var cs=(d.cutaquig&&d.cutaquig.scores)||{}, c=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]>=60;}).length;
     return {a:a,x:x,c:c};
@@ -322,7 +322,7 @@
   function _pintar(){
     var cont=document.getElementById('gadm'); if(!cont)return;
     var vis=_U.filter(function(u){ return _verOcultas || !u.oculto; });
-    var completos=vis.filter(function(u){ return u.total>=20; });
+    var completos=vis.filter(function(u){ return u.total>=24; });
     var activos=vis.filter(function(u){ return u.total>0; });
     var sinEmpezar=vis.filter(function(u){ return u.total===0; });
 
@@ -350,13 +350,13 @@
     h+='<div class="gcard" style="padding:4px 18px">';
     lista.forEach(function(u){
       var badge = u.esAdmin ? '<span class="ubadge ub-adm">Admin</span>'
-        : (u.total>=20 ? '<span class="ubadge ub-ok">Completó todo</span>'
+        : (u.total>=24 ? '<span class="ubadge ub-ok">Completó todo</span>'
         : (u.total>0 ? '<span class="ubadge ub-pend">En curso</span>'
         : '<span class="ubadge ub-na">Sin empezar</span>'));
       h+='<div class="urow'+(u.oculto?' oculta':'')+'" style="grid-template-columns:minmax(0,2.4fr) auto auto">';
       h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:#6f6288;font-size:11px">(oculta)</span>':'')+'</div>'
         +'<div class="umail">'+esc(u.email)+'</div>'
-        +'<div class="uprog">Academy '+u.a+'/6 · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de 20</b></div></div>';
+        +'<div class="uprog">Academy '+u.a+'/10 · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de 24</b></div></div>';
       h+='<div>'+badge+'</div>';
       h+='<div>'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
       h+='</div>';
