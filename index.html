@@ -496,7 +496,7 @@ function renderModule(m,isCap){
  const res=isCap?'':`<div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">
   <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
   <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
-  <div class="rc"><div class="ico">📖</div><h4>Cuadernillo</h4><div style="margin:10px 0 4px"><a class="dl" href="${CUAD[m.n]}" download>Descargar PDF</a></div></div></div></div>`;
+  <div class="rc"><div class="ico">📖</div><h4>Cuadernillo</h4><div style="margin:10px 0 4px">${CUAD[m.n]?'<a class="dl" href="'+CUAD[m.n]+'" download>Descargar PDF</a>':'<span class="fallback">Disponible próximamente</span>'}</div></div></div></div>`;
  const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Volver'} →</a></div>`;
  app.innerHTML=`<section class="mhero"><div class="blob b2"></div><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
   <div class="k">${isCap?'Caso integrador':'Módulo '+m.n}</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
