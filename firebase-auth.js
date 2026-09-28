@@ -154,12 +154,23 @@
     }).catch(function(e){ setMsg(traducir(e)); });
   };
 
+  /* Si un admin reinició esta cuenta, se borra también el progreso guardado en este equipo. */
+  function _aplicarReinicio(d){
+    try{
+      var r=(d&&d.resetAt&&d.resetAt.toMillis)?d.resetAt.toMillis():0;
+      if(r && r>(STORE.get('ha_reset',0)||0)){
+        STORE.set('ha_s',{}); STORE.set('hn_s',{}); STORE.set('cq_s',{}); STORE.set('ha_reset',r);
+      }
+    }catch(e){}
+  }
+
   function loadProgress(user){
     return db.collection('users').doc(user.uid).get().then(function(doc){
       var d=doc.exists?doc.data():null, cloud=(d&&d.scores)||{}, local={};
+      _aplicarReinicio(d);
       try{ local=STORE.get('ha_s',{})||{}; }catch(e){}
       var merged={};
-      [1,2,3,4,5,6].forEach(function(n){ var v=Math.max(local[n]==null?-1:local[n], cloud[n]==null?-1:cloud[n]); if(v>=0)merged[n]=v; });
+      [1,2,3,4,5,6,7,8,9,10].forEach(function(n){ var v=Math.max(local[n]==null?-1:local[n], cloud[n]==null?-1:cloud[n]); if(v>=0)merged[n]=v; });
       try{ scores=merged; STORE.set('ha_s',merged); }catch(e){}
       if(d&&d.name){ try{ uname=d.name; STORE.set('ha_name',d.name); }catch(e){} }
       window.HA_isAdmin=isAdmin(user);
@@ -287,6 +298,15 @@
     if(ok && !confirm('¿Ocultar esta cuenta del panel? No se borra nada: podés volver a mostrarla cuando quieras.')) return;
     db.collection('users').doc(uid).set({oculto:!!ok},{merge:true}).then(_recargar).catch(_errAdmin);
   };
+  window.__reiniciar=function(uid, nombre){
+    if(!isAdmin(curUser)) return;
+    if(!confirm('¿Reiniciar el progreso de '+nombre+'?\n\nSe borran todos los módulos aprobados de Academy, Nexo y Cutaquig. La cuenta queda como nueva y no se puede deshacer.')) return;
+    db.collection('users').doc(uid).update({
+      scores:{}, 'nexo.scores':{}, 'cutaquig.scores':{},
+      resetAt:firebase.firestore.FieldValue.serverTimestamp(),
+      resetBy:(curUser.email||'')
+    }).then(_recargar).catch(_errAdmin);
+  };
   window.__verOcultas=function(v){ _verOcultas=v; _pintar(); };
   window.__buscar=function(v){ _filtro=(v||'').toLowerCase(); _pintar(); };
 
@@ -358,7 +378,7 @@
         +'<div class="umail">'+esc(u.email)+'</div>'
         +'<div class="uprog">Academy '+u.a+'/10 · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de 24</b></div></div>';
       h+='<div>'+badge+'</div>';
-      h+='<div>'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
+      h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
       h+='</div>';
     });
     h+='</div>';
