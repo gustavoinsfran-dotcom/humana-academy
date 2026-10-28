@@ -11,6 +11,12 @@ service cloud.firestore {
     }
     function isEditor() { return isAdmin(); }
 
+    // Solo cuentas con correo del grupo.
+    function isEquipo() {
+      return request.auth != null && request.auth.token.email != null
+          && request.auth.token.email.lower().matches('.*@(humanahc[.]com|humanahc[.]com[.]ar|infinitypharma[.]com[.]ar)$');
+    }
+
     // Campos que SOLO puede tocar un administrador.
     function noTocaCamposDeAdmin() {
       return request.resource.data.get('clinicoAprobado', false) == resource.data.get('clinicoAprobado', false)
@@ -19,7 +25,7 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
-      allow create: if request.auth != null
+      allow create: if isEquipo()
                     && request.auth.uid == uid
                     && request.resource.data.get('clinicoAprobado', false) == false;
       allow update: if isAdmin()
@@ -27,7 +33,7 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    // Módulos de la Academy. Los lee todo el equipo; los edita el Estudio de contenidos.
+    // Módulos de la Academy. El equipo lee solo lo publicado; los borradores y el Estudio son solo de las editoras.
     function moduloValido() {
       let d = request.resource.data;
       return d.t is string && d.t.size() > 0 && d.t.size() <= 200
@@ -39,7 +45,7 @@ service cloud.firestore {
           && d.body is string && d.body.size() < 200000;
     }
     match /modulos/{id} {
-      allow read: if request.auth != null;
+      allow read: if isEditor() || (isEquipo() && resource.data.estado == 'publicado');
       allow create, update: if isEditor() && moduloValido();
       allow delete: if false;   // nada se borra: se archiva y se puede recuperar
 

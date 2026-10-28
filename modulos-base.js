@@ -222,11 +222,6 @@ window.HA_BASE={
    ],
    "recursos": [
     {
-     "tipo": "video",
-     "titulo": "Resumen en video",
-     "url": "mod3_video.mp4"
-    },
-    {
      "tipo": "documento",
      "titulo": "Cuadernillo del módulo (PDF)",
      "url": "Cuadernillo_Modulo_3.pdf"
@@ -387,11 +382,6 @@ window.HA_BASE={
     }
    ],
    "recursos": [
-    {
-     "tipo": "video",
-     "titulo": "Resumen en video",
-     "url": "mod5_video.mp4"
-    },
     {
      "tipo": "documento",
      "titulo": "Cuadernillo del módulo (PDF)",

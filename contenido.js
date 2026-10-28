@@ -30,7 +30,7 @@
 
   /* Lee la base. Devuelve null si todavía no hay módulos cargados o si no hay conexión. */
   window.HA_cargarContenido=function(db){
-    return db.collection('modulos').get().then(function(qs){
+    return db.collection('modulos').where('estado','==','publicado').get().then(function(qs){
       if(qs.empty) return null;
       var docs=[]; qs.forEach(function(d){ var x=d.data(); x.id=d.id; docs.push(x); });
       var c=HA_armar(docs);
