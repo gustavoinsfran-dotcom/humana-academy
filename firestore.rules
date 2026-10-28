@@ -2,15 +2,16 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Administración de la plataforma y Estudio de contenidos.
     function isAdmin() {
       return request.auth != null && request.auth.token.email in [
         'gustavo.insfran@infinitypharma.com.ar',
         'k.ojanguren@humanahc.com'
       ];
     }
+    function isEditor() { return isAdmin(); }
 
     // Campos que SOLO puede tocar un administrador.
-    // Si el usuario intenta cambiarlos, la escritura se rechaza entera.
     function noTocaCamposDeAdmin() {
       return request.resource.data.get('clinicoAprobado', false) == resource.data.get('clinicoAprobado', false)
           && request.resource.data.get('aprobadoPor', '')     == resource.data.get('aprobadoPor', '');
@@ -18,18 +19,35 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
-
-      // Al crearse la cuenta nadie nace aprobado.
       allow create: if request.auth != null
                     && request.auth.uid == uid
                     && request.resource.data.get('clinicoAprobado', false) == false;
-
-      // El usuario actualiza lo suyo (nombre, progreso, rol declarado),
-      // pero no puede auto-aprobarse. El admin sí puede aprobar.
       allow update: if isAdmin()
                     || (request.auth != null && request.auth.uid == uid && noTocaCamposDeAdmin());
-
       allow delete: if false;
+    }
+
+    // Módulos de la Academy. Los lee todo el equipo; los edita el Estudio de contenidos.
+    function moduloValido() {
+      let d = request.resource.data;
+      return d.t is string && d.t.size() > 0 && d.t.size() <= 200
+          && d.estado in ['publicado', 'borrador', 'archivado']
+          && d.tipo in ['modulo', 'caso']
+          && d.n is int
+          && d.quiz is list && d.quiz.size() <= 30
+          && d.recursos is list && d.recursos.size() <= 20
+          && d.body is string && d.body.size() < 200000;
+    }
+    match /modulos/{id} {
+      allow read: if request.auth != null;
+      allow create, update: if isEditor() && moduloValido();
+      allow delete: if false;   // nada se borra: se archiva y se puede recuperar
+
+      // Cada guardado deja una copia de la versión anterior.
+      match /versiones/{v} {
+        allow read, create: if isEditor();
+        allow update, delete: if false;
+      }
     }
   }
 }

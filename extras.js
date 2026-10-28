@@ -37,7 +37,9 @@
     "Sumaste una herramienta más para tus decisiones."
   ];
   function esc(s){return (''+s).replace(/[<>&]/g,function(x){return x==='<'?'&lt;':x==='>'?'&gt;':'&amp;';});}
-  function completed(sc){return [1,2,3,4,5,6].filter(function(n){return sc[n]!=null&&sc[n]>=60;}).length;}
+  function _ids(){try{return MODULES.map(function(m){return m.n;});}catch(e){return [];}}
+  function total(){return _ids().length||1;}
+  function completed(sc){return _ids().filter(function(n){return sc[n]!=null&&sc[n]>=60;}).length;}
   function gname(){try{return (uname||'').split(' ')[0];}catch(e){return '';}}
   function gscores(){try{return scores||{};}catch(e){return {};}}
 
@@ -48,13 +50,13 @@
   window.motivWelcome=function(){
     if(welcomed)return; welcomed=true;
     var _ob=false; try{_ob=STORE.get("ha_onboarded",false);}catch(e){} if(!_ob){ startOnboarding(); return; }
-    var nm=gname(), sc=gscores(), c=completed(sc), pct=Math.round(c/6*100);
+    var nm=gname(), sc=gscores(), c=completed(sc), N=total(), pct=Math.round(c/N*100);
     var q=QUOTES[Math.floor(Math.random()*QUOTES.length)];
     var hi = nm ? ('Hola, '+esc(nm)+' 👋') : 'Bienvenido 👋';
-    var sub = c===0 ? 'Empecemos. Una idea por módulo.' : (c>=6 ? '¡Completaste el programa! 🎓' : 'Seguí donde dejaste, vas muy bien.');
+    var sub = c===0 ? 'Empecemos. Una idea por módulo.' : (c>=N ? '¡Completaste el programa! 🎓' : 'Seguí donde dejaste, vas muy bien.');
     pop.innerHTML='<div class="box"><span class="mk">'+MK+'</span><h3>'+hi+'</h3><p class="sub">'+sub+'</p>'
       +'<div class="q">“'+esc(q)+'”</div>'
-      +'<div class="pr">Tu avance: '+c+'/6</div><div class="bar"><i style="width:'+pct+'%"></i></div>'
+      +'<div class="pr">Tu avance: '+c+'/'+N+'</div><div class="bar"><i style="width:'+pct+'%"></i></div>'
       +'<button onclick="_closeMotiv()">Continuar</button></div>';
     pop.classList.add('on');
   };
@@ -62,8 +64,8 @@
   window.motivComplete=function(sc){
     sc=sc||gscores(); var c=completed(sc);
     if(!window.toast)return;
-    if(c>=6){ toast('¡Completaste el programa! Ya sos parte de la Medicina de Continuidad 🎓'); return; }
-    if(c===3){ toast('Mitad de camino. Vas muy bien 💪'); return; }
+    var N=total(); if(c>=N){ toast('¡Completaste el programa! Ya sos parte de la Medicina de Continuidad 🎓'); return; }
+    if(c===Math.ceil(N/2) && c<N){ toast('Mitad de camino. Vas muy bien 💪'); return; }
     toast(DONE_MSGS[Math.floor(Math.random()*DONE_MSGS.length)]);
   };
 
@@ -95,18 +97,19 @@
     var title,sub,primL,primA,secL;
     if(passed){
       title='¡Felicitaciones!';
-      sub='Completaste '+(isCap?'el caso integrador':('el Módulo '+n))+' con '+pct+'%.';
+      var _i=isCap?-1:MODULES.findIndex(function(z){return z.n===n;});
+      sub='Completaste '+(isCap?'el caso integrador':('el Módulo '+(_i+1)))+' con '+pct+'%.';
       if(isCap){ primL='Volver al inicio'; primA='home()'; secL=null; }
       else if(typeof allDone==='function'&&allDone()){ primL='Ver mi certificado 🎓'; primA='openCert()'; secL='Seguir acá'; }
-      else { var nx=(typeof MODULES!=='undefined')?MODULES.find(function(z){return z.n===n+1;}):null; if(nx){ primL='Continuar: Módulo '+nx.n+' →'; primA='openM('+nx.n+')'; secL='Seguir acá'; } else { primL='Volver al inicio'; primA='home()'; secL=null; } }
+      else { var nx=MODULES[_i+1]||null; if(nx){ primL='Continuar: Módulo '+(_i+2)+' →'; primA='openM('+nx.n+')'; secL='Seguir acá'; } else { primL='Volver al inicio'; primA='home()'; secL=null; } }
     } else {
       title='¡Casi!';
       sub='Sacaste '+pct+'%. Necesitás 60% para aprobar. Repasá y reintentá.';
       primL='Reintentar'; primA=isCap?'openCap()':'openM('+n+')'; secL='Seguir acá';
     }
-    var compl=[1,2,3,4,5,6].filter(function(z){return scores[z]!=null&&scores[z]>=60;}).length, pp=Math.round(compl/6*100);
+    var compl=completed(scores), N=total(), pp=Math.round(compl/N*100);
     var h='<div class="box"><div style="font-size:44px;line-height:1;margin-bottom:4px">'+(passed?'🎉':'💪')+'</div><h3>'+title+'</h3><p class="sub">'+sub+'</p>';
-    if(passed&&!isCap){ h+='<div class="pr" style="margin-top:16px">Tu avance: '+compl+'/6</div><div class="bar"><i style="width:'+pp+'%"></i></div>'; }
+    if(passed&&!isCap){ h+='<div class="pr" style="margin-top:16px">Tu avance: '+compl+'/'+N+'</div><div class="bar"><i style="width:'+pp+'%"></i></div>'; }
     h+='<button style="width:100%;margin-top:16px" onclick="window._closeMotiv();'+primA+'">'+primL+'</button>';
     if(secL){ h+='<button style="width:100%;margin-top:10px;background:transparent;border:1.5px solid #2C1F42;color:#EDE6F5" onclick="window._closeMotiv()">'+secL+'</button>'; }
     h+='</div>'; pop.innerHTML=h; pop.classList.add('on');
@@ -115,7 +118,7 @@
   // ---- Onboarding: carrusel + coach-marks ----
   var _obcss=false;
   function _obcssInject(){ if(_obcss)return; _obcss=true; var s2=document.createElement("style"); s2.textContent=".tourdots{display:flex;gap:6px;justify-content:center;margin:18px 0 2px}.tourdots i{width:7px;height:7px;border-radius:50%;background:#2C1F42;transition:.2s;display:inline-block}.tourdots i.on{background:#EC2E8E;width:20px;border-radius:4px}"+".tourbtns{display:flex;gap:10px;margin-top:16px}.tourbtns button{flex:1;border:none;cursor:pointer;font-weight:800;font-size:15px;padding:13px;border-radius:11px;font-family:inherit;color:#fff;background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}.tourbtns button.tsec{background:transparent;border:1.5px solid #2C1F42;color:#EDE6F5}"+".coach{position:fixed;inset:0;z-index:360;display:none}.coach.on{display:block}.coach-block{position:absolute;inset:0}"+".coach-ring{position:fixed;border-radius:12px;border:2px solid #EC2E8E;box-shadow:0 0 0 9999px rgba(8,5,15,.72);transition:all .3s;z-index:361;pointer-events:none}"+".coach-tip{position:fixed;max-width:262px;background:#191024;border:1px solid #2C1F42;border-radius:12px;padding:14px 16px;z-index:362;box-shadow:0 12px 30px rgba(0,0,0,.55)}"+".coach-tip p{margin:0 0 10px;color:#EDE6F5;font-size:14px;line-height:1.5}.coach-nav{display:flex;align-items:center;justify-content:space-between}.coach-nav span{color:#9E90B5;font-size:12px}"+".coach-nav button{color:#fff;border:none;font-weight:800;font-size:13px;padding:8px 16px;border-radius:9px;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}"; document.head.appendChild(s2); }
-  var _TOUR=[{ic:"🎓",t:"Bienvenido a Humana Academy",d:"Un programa de formación en Medicina de Continuidad. Lo hacés a tu ritmo, desde donde quieras."},{ic:"📚",t:"Cómo funciona",d:"Cada módulo tiene una lectura breve, audio y video, y una autoevaluación al final para fijar lo aprendido."},{ic:"💾",t:"Tu progreso se guarda solo",d:"Entrás con tu correo y seguís donde dejaste, desde la compu o el celular. No perdés nada."},{ic:"🏆",t:"Tu certificado",d:"Al completar los módulos obtenés tu certificado, que podés descargar y compartir en LinkedIn."}], _ts=0;
+  var _TOUR=[{ic:"🎓",t:"Bienvenido a Humana Academy",d:"Un programa de formación en Medicina de Continuidad. Lo hacés a tu ritmo, desde donde quieras."},{ic:"📚",t:"Cómo funciona",d:"Cada módulo tiene una lectura breve, recursos de apoyo y una autoevaluación al final para fijar lo aprendido."},{ic:"💾",t:"Tu progreso se guarda solo",d:"Entrás con tu correo y seguís donde dejaste, desde la compu o el celular. No perdés nada."},{ic:"🏆",t:"Tu certificado",d:"Al completar los módulos obtenés tu certificado, que podés descargar y compartir en LinkedIn."}], _ts=0;
   function _renderTour(){ _obcssInject(); var s=_TOUR[_ts]; var d=_TOUR.map(function(_,i){return "<i class=\""+(i===_ts?"on":"")+"\"></i>";}).join("");
     var back=_ts>0?"<button class=\"tsec\" onclick=\"__tourPrev()\">Atrás</button>":"";
     pop.innerHTML="<div class=\"box\"><div style=\"font-size:46px;line-height:1;margin-bottom:6px\">"+s.ic+"</div><h3>"+s.t+"</h3><p class=\"sub\" style=\"margin-top:6px\">"+s.d+"</p><div class=\"tourdots\">"+d+"</div><div class=\"tourbtns\">"+back+"<button onclick=\"__tourNext()\">"+(_ts<_TOUR.length-1?"Siguiente":"Empezar")+"</button></div></div>";

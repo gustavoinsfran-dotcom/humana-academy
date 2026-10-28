@@ -241,6 +241,33 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 .onb button{background:var(--grad);color:#fff;border:none;padding:13px 32px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;margin-top:16px}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,70px);background:var(--card);border:1px solid var(--line);color:var(--tx);padding:13px 22px;border-radius:12px;font-weight:600;font-size:14px;z-index:120;opacity:0;transition:.35s cubic-bezier(.2,.8,.2,1);box-shadow:0 12px 30px rgba(0,0,0,.5)}
 .toast.show{transform:translate(-50%,0);opacity:1}
+/* recursos */
+.res{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.rc{text-align:left}
+.rc.big{grid-column:1/-1}
+.rc .rh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.rc .rh h4{margin:0;font-size:15px}
+.rc .rh .ico{font-size:22px}
+.rc .player{width:100%;border-radius:12px;background:#000;display:block}
+.vid{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.aud{width:100%;height:90px;border:0;border-radius:12px;background:#120b1c}
+.aud.sc{height:120px}.aud.sp{height:152px}
+.content ul,.content ol{color:#d8cee8;line-height:1.75;font-size:15.5px;padding-left:22px;margin:0 0 14px}
+.content h3{font-size:17px;margin:20px 0 6px}
+.content a{color:var(--pink)}
+/* mapa en celular: lista vertical */
+.mapl{display:none;list-style:none;margin:0;padding:6px 0 0 0;position:relative}
+.mapl:before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:#3A2A52}
+.mapl li{display:flex;align-items:center;gap:14px;padding:9px 0;cursor:pointer;position:relative}
+.mapl .c{width:44px;height:44px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.mapl li.ok .c{background:#39d98a;color:#08240f}
+.mapl b{display:block;font-size:15px;color:var(--tx);line-height:1.3}
+.mapl span{font-size:12.5px;color:var(--mut);font-style:italic}
+@media(max-width:700px){.mapwrap svg{display:none!important}.mapl{display:block}.maphint{display:none}}
+.drawer a.adm{color:#C88CE0}
+nav.desk a.estudio{color:#F0C674}
+.drawer a.estudio{color:#F0C674}
 </style>
 </head>
 <body>
@@ -255,165 +282,63 @@ footer a{color:var(--pink);text-decoration:none;margin:0 8px}
 </div>
 </header>
 <main id="app"></main>
-<div class="onb" id="onb"><div class="box"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><h3>Bienvenido a <span class="grad">Humana Academy</span></h3><p>Un recorrido breve para incorporar la Medicina de Continuidad. Así funciona:</p><div class="li">10 módulos, una idea por módulo: lectura, audio, video y autoevaluación.</div><div class="li">Cada módulo se completa al aprobar su autoevaluación (60%).</div><div class="li">Al terminar los 6, descargás tu certificado.</div><input class="field" id="onbName" placeholder="Nombre y apellido" autocomplete="name"><input class="field" id="onbEmail" placeholder="Correo electrónico" autocomplete="email"><div class="err" id="onbErr"></div><button onclick="startFromOnb()">Empezar</button></div></div>
 <div class="toast" id="toast"></div>
 <footer><div class="wrap"><div class="fb"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><b style="color:var(--tx)">Humana Academy</b></div>
 Humana Health &amp; Care · Argentina<br>
 <a href="Humana_Documento_Madre.pdf" download>Documento base</a> · <a onclick="openCert()" style="cursor:pointer">Certificado</a> · <a href="estratificador.html">Estratificador comercial</a></div></footer>
+<script src="modulos-base.js?v=1"></script>
+<script src="contenido.js?v=1"></script>
 <script>
-
 const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
-const PPTX={1:"Modulo1_Por_qu_la_Medicina_de_Continuidad.pptx",2:"Modulo2_La_persona_y_la_situaci_n_basal.pptx",3:"Modulo3_Observar_los_microcambios.pptx",4:"Modulo4_La_pir_mide_del_conocimiento.pptx",5:"Modulo5_La_historia_cl_nica_es_de_todos.pptx",6:"Modulo6_La_Unidad_de_Continuidad_Domiciliaria.pptx"};
-const CUAD={1:"Cuadernillo_Modulo_1.pdf",2:"Cuadernillo_Modulo_2.pdf",3:"Cuadernillo_Modulo_3.pdf",4:"Cuadernillo_Modulo_4.pdf",5:"Cuadernillo_Modulo_5.pdf",6:"Cuadernillo_Modulo_6.pdf"};
-const AUDIO=n=>"mod"+n+"_audio.mp3", VIDEO=n=>"mod"+n+"_video.mp4";
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let scores=STORE.get('ha_s',{}), uname=STORE.get('ha_name',''), uemail=STORE.get('ha_email','');
-const done=n=>scores[n]!=null&&scores[n]>=60, allDone=()=>[1,2,3,4,5,6,7,8,9,10].every(done);
-const MODULES=[
-{n:1,t:"Por qué la Medicina de Continuidad",lead:"El punto de partida: el paciente cambió, y la forma de acompañarlo también.",
- body:`<h2>La idea</h2><p>Este módulo tiene un solo propósito: entender por qué necesitamos otra forma de hacer medicina. No hablamos de técnicas ni de protocolos, sino de la idea que da origen a todo lo demás en Humana: el paciente cambió, y la forma de acompañarlo también tiene que cambiar.</p>
- <h2>El punto de partida</h2><p>Nunca tuvimos mejores tratamientos ni más conocimiento. Y sin embargo, las instituciones están saturadas, la guardia se llena y muchos pacientes se reinternan por descompensaciones que parecían inevitables. Si la medicina es tan buena, ¿por qué pasa esto? Porque el paciente que hoy consume la mayor parte de los recursos ya no es aquel para el que fue diseñado el sistema.</p>
- <div class="quote">No estamos asistiendo al mismo paciente para el que fue pensado el sistema sanitario.</div>
- <h2>En profundidad: del episodio a la trayectoria</h2><p>Durante gran parte del siglo XX la medicina se organizó alrededor del episodio: una enfermedad aguda, una internación, un diagnóstico, un tratamiento y la vuelta a casa. Ese modelo salvó millones de vidas. Pero hoy el paciente convive durante años con varias enfermedades a la vez. No necesita solo que lo traten: necesita continuidad, y que alguien conozca su historia y detecte los cambios pequeños antes de que se vuelvan grandes. El sistema sigue pensado para episodios; nuestros pacientes viven trayectorias.</p>
- <div class="quote">La medicina del episodio pregunta: «¿Qué le ocurre hoy?». La medicina de continuidad pregunta: «¿Qué cambió desde la última vez que estaba bien?».</div>
- <h2>Un caso para fijar la idea</h2><p>Un paciente con insuficiencia cardíaca pasa la mayor parte de su vida en su casa. Si su cuidador dice «hoy dejó el mate por la mitad», suena irrelevante; pero si además durmió peor, habla menos y camina menos, ya hay un patrón. Todavía no hay diagnóstico, pero sí un cambio objetivo. Los grandes eventos empiezan con microcambios.</p>
- <h2>El hilo de la historia</h2><p>Acompañar una trayectoria no es estar encima del paciente ni sumar controles. Es no dejar que su historia se corte cada vez que cambia el ámbito, el turno o el profesional. Esa es la definición más exacta de lo que hacemos.</p>
- <div class="quote">La continuidad asistencial no consiste en seguir al paciente. Consiste en no perder nunca el hilo de su historia.</div>
- <p>Y para no perder ese hilo hace falta cambiar la unidad con la que miramos. El sistema tradicional toma fotos sueltas del paciente; nosotros construimos una narrativa continua, donde cada visita, cada llamado y cada observación aporta un fotograma. Ninguno explica por sí solo lo que le pasa: es la integración de todos la que deja ver la película completa. En los próximos módulos vas a ver cómo se arma esa película y quiénes la construyen.</p>
- <h2>En la práctica</h2><p>No hace falta cambiar de especialidad para practicar medicina de continuidad. Alcanza con incorporar una pregunta a cada contacto: «¿esto está igual que cuando el paciente estaba estable?». Empezá a mirar trayectorias, no fotos sueltas.</p>
- <h2>Para llevarte</h2><p>La medicina de continuidad empieza cuando un profesional reconoce que un paciente dejó de ser exactamente el mismo que era ayer. Ese instante, aunque parezca pequeño, es el de mayor valor clínico de toda la trayectoria.</p>`,
- quiz:[{q:"¿Cuál es la diferencia central entre la medicina del episodio y la de continuidad?",o:["Usa mejor tecnología","La del episodio pregunta qué ocurre hoy; la de continuidad, qué cambió desde que estaba bien","Solo atiende en el domicilio","Es más barata"],c:1,e:"La clave es la pregunta: del hecho puntual a la comparación con la situación basal."},{q:"¿Por qué se saturan las instituciones pese a la buena medicina?",o:["Faltan tratamientos","Porque el paciente cambió: hoy vive trayectorias crónicas","Hay pocas instituciones","Los médicos no se forman"],c:1,e:"El problema no es la calidad de la medicina, sino que el perfil del paciente cambió."},{q:"¿Qué es un microcambio?",o:["Un síntoma grave","Una pequeña desviación de la basal que precede a una descompensación","Un error de medicación","Un cambio de tratamiento"],c:1,e:"Aparece antes del diagnóstico: es un cambio objetivo aunque aún no tenga nombre."},{q:"¿Qué convierte una observación aislada en algo relevante?",o:["Que la diga un médico","Que se registre","Que forme un patrón junto con otros cambios","Que salga en un análisis"],c:2,e:"Varios cambios unidos en el tiempo forman un patrón que merece valoración."},{q:"¿Qué significa «acompañar trayectorias»?",o:["Atender más veces","Que cada contacto tenga memoria del anterior y prepare el siguiente","Derivar al especialista","Reducir costos"],c:1,e:"La continuidad es que el conocimiento del paciente no se pierda entre contactos."}]},
-{n:2,t:"La persona y la situación basal",lead:"El «cero clínico»: conocer al paciente estable para reconocer el deterioro.",
- body:`<h2>La idea</h2><p>Antes que el diagnóstico, la persona. Antes que el deterioro, su normalidad. Este módulo instala el punto de referencia sobre el que se apoya todo lo demás: la situación basal.</p>
- <h2>Los principios</h2><p><strong>I. La persona siempre precede a la enfermedad.</strong> Toda enfermedad ocurre dentro de una biografía, una familia, un domicilio, unos valores y un proyecto de vida. Si olvidamos a la persona, el diagnóstico pierde contexto.</p>
- <p><strong>II. Ningún paciente comienza hoy.</strong> Cada persona llega con una historia. Nuestra obligación no es empezar una historia clínica nueva, sino continuar la que ya existe.</p>
- <p><strong>III. La situación basal es el verdadero punto de referencia.</strong> No comparamos al paciente con un ideal: lo comparamos consigo mismo.</p>
- <div class="quote">La pregunta nunca es «¿está bien?». La pregunta es «¿está igual que cuando estaba estable?».</div>
- <h2>En profundidad</h2><p>La situación basal es cómo es el paciente cuando está estable: cómo camina, cómo duerme, cómo piensa, cómo se alimenta, cómo se relaciona. Sin una basal conocida no hay deterioro que detectar, ni prevención posible, ni forma de estratificar el riesgo. Es, literalmente, el cero clínico. Dos personas con los mismos valores de laboratorio pueden estar en situaciones opuestas, porque cada una parte de una basal distinta.</p>
- <h2>En la práctica</h2><p>Registrá la basal de tus pacientes complejos con pocas variables pero constantes: movilidad, sueño, alimentación, ánimo, autonomía y quién lo cuida. Esa foto de la normalidad es la herramienta que después te permite reconocer el cambio.</p>
- <h2>Para llevarte</h2><p>Solo quien conoce la normalidad de un paciente puede reconocer su deterioro. Definir bien la situación basal no es un trámite inicial: es la base de todo.</p>`,
- quiz:[{q:"¿Qué es la situación basal?",o:["El diagnóstico principal","Cómo es el paciente cuando está estable; su punto de referencia","La última analítica","El motivo de consulta de hoy"],c:1,e:"La basal es la normalidad del paciente estable, referencia para detectar cambios."},{q:"¿Cuál es la pregunta correcta?",o:["«¿Está bien?»","«¿Está igual que cuando estaba estable?»","«¿Qué enfermedad tiene?»","«¿Necesita internarse?»"],c:1,e:"Comparamos al paciente consigo mismo, no con un ideal."},{q:"¿Por qué es imprescindible conocer la basal?",o:["Para completar la historia","Porque sin ella no se puede reconocer el deterioro ni prevenir","Porque lo exige el protocolo","Para calcular la medicación"],c:1,e:"Sin basal no hay deterioro detectable ni prevención. Es el cero clínico."},{q:"El primer principio dice que…",o:["La enfermedad precede a la persona","La persona siempre precede a la enfermedad","El diagnóstico es lo primero","La basal no importa"],c:1,e:"Comprendemos a la persona antes de buscar un diagnóstico."},{q:"¿Con qué comparamos al paciente?",o:["Con un valor ideal","Consigo mismo","Con otros pacientes","Con la media de su edad"],c:1,e:"Cada paciente se compara con su propia basal."}]},
-{n:3,t:"Observar: los microcambios",lead:"Observar como acto clínico: método, disciplina y lenguaje para ver lo que otros no ven.",
- body:`<h2>La idea</h2><p>Observar no es un gesto pasivo ni un paso menor. En Humana es un acto clínico, con método, disciplina y lenguaje.</p>
- <h2>Los principios</h2><p><strong>IV. Todo cambio merece ser comprendido</strong>, incluso el que todavía no tiene nombre. Entrenamos la capacidad de detectar los pequeños cambios que aún no son diagnóstico.</p>
- <p><strong>V. Observar es un acto clínico.</strong> Exige método, disciplina y lenguaje, y exige aprender a distinguir lo habitual de lo excepcional.</p>
- <p><strong>VI. La información solo tiene valor cuando modifica una decisión.</strong> El dato inútil agrega ruido; el dato relevante mejora el cuidado.</p>
- <div class="quote">Primero describimos. Después interpretamos. Y solo al final diagnosticamos.</div>
- <h2>En profundidad: los microcambios</h2><p>Ningún paciente pasa de estar estable a una descompensación grave en un instante. Entre ambos extremos hay una secuencia: come un poco menos, habla menos, camina menos, descansa peor, necesita más ayuda. Cada cambio parece nada; juntos cuentan una historia. Nuestra obligación es aprender a leerla antes de que la enfermedad se haga evidente.</p>
- <h2>En la práctica: señales para observar</h2><p>Reconocé y registrá los microcambios más frecuentes: menor apetito, más cansancio, más somnolencia, dificultad para caminar, cambios en el ánimo o el comportamiento, más tos, más hinchazón (edemas), más confusión. Ante cada dato, preguntate: «¿qué vamos a hacer distinto gracias a esto?». Si la respuesta es «nada», probablemente no era necesario.</p>
- <h2>Para llevarte</h2><p>Ningún gran evento clínico aparece de golpe. Aprender a leer los microcambios es anticiparse a la crisis.</p>`,
- quiz:[{q:"¿Cuál es el orden correcto del razonamiento clínico?",o:["Diagnosticar, describir, interpretar","Describir, interpretar, diagnosticar","Interpretar, diagnosticar, describir","Tratar, observar, describir"],c:1,e:"Primero describir, después interpretar y solo al final diagnosticar."},{q:"¿Qué es observar según el modelo?",o:["Una tarea administrativa","Una actividad pasiva","Un acto clínico con método, disciplina y lenguaje","Algo solo de enfermería"],c:2,e:"La observación es una competencia profesional."},{q:"¿Cómo empiezan los grandes eventos clínicos?",o:["De forma brusca","Con microcambios en secuencia","Siempre con dolor","Con un valor alterado"],c:1,e:"Hay una secuencia de pequeños cambios antes de la descompensación."},{q:"¿Cuándo tiene valor la información?",o:["Siempre que sea mucha","Cuando modifica una decisión","Cuando la pide el médico","Cuando se registra"],c:1,e:"Si un dato no cambia una decisión, probablemente no era necesario."},{q:"¿Cuál es un error frecuente al observar?",o:["Describir demasiado","Interpretar demasiado rápido","Preguntar a la familia","Comparar con la basal"],c:1,e:"Interpretar antes de describir bien hace perder información."}]},
-{n:4,t:"La pirámide del conocimiento",lead:"Cómo se construye el razonamiento clínico, capa sobre capa, de la persona al aprendizaje.",
- body:`<h2>La idea</h2><p>El conocimiento clínico no aparece de golpe: se construye capa sobre capa. Queremos que esta pirámide sea la imagen insignia de la Academia, porque ordena toda nuestra forma de razonar.</p>
- <h2>En profundidad: las siete capas</h2><p>De abajo hacia arriba:</p>
- <p><strong>1. La persona</strong> — quién es, cómo vive, qué le importa.<br><strong>2. La situación basal</strong> — cómo es cuando está estable.<br><strong>3. La observación</strong> — qué pasa hoy, sin interpretar todavía.<br><strong>4. El microcambio</strong> — qué se apartó de la basal; acá nace la sospecha.<br><strong>5. La interpretación</strong> — qué significa ese cambio.<br><strong>6. La decisión</strong> — esperar, visitar, tratar, derivar o internar.<br><strong>7. El aprendizaje</strong> — qué nos enseñó este paciente para cuidar mejor al próximo.</p>
- <h2>La secuencia Humana</h2><p>Toda la organización debería funcionar con una misma lógica: <strong>observar → comprender → decidir → actuar → medir → aprender</strong>. Después el ciclo vuelve a empezar, y cada vuelta hace que conozcamos mejor al paciente y que el sistema aprenda.</p>
- <div class="quote">Toda observación debe cambiar el cuidado. Cada dato debe responder: «¿qué vamos a hacer distinto gracias a esta información?».</div>
- <h2>En la práctica</h2><p>Tomá un paciente real y ubicá dónde estás parado en la pirámide. La mayoría de los errores nace de saltear capas: interpretar sin describir, o decidir sin comprender.</p>
- <h2>Para llevarte</h2><p>Formar deja de ser memorizar enfermedades y pasa a ser aprender cómo se construye el conocimiento. Y la continuidad deja de depender de que atienda siempre el mismo médico: depende de que el conocimiento del paciente no se pierda nunca.</p>`,
- quiz:[{q:"¿Qué está en la base de la pirámide?",o:["El diagnóstico","La persona","El tratamiento","La observación"],c:1,e:"Todo empieza por la persona."},{q:"¿Dónde nace la sospecha clínica?",o:["En la interpretación","En el microcambio","En la decisión","En la basal"],c:1,e:"El microcambio es la desviación de la basal, y ahí nace la sospecha."},{q:"¿Cuál es la cima de la pirámide?",o:["La decisión","El diagnóstico","El aprendizaje","La observación"],c:2,e:"Por encima de todo está el aprendizaje."},{q:"¿Qué pregunta debe responder cada dato?",o:["¿Es normal o anormal?","¿Qué haremos distinto gracias a esta información?","¿Quién lo registró?","¿Cuánto cuesta?"],c:1,e:"El conocimiento vale cuando se traduce en una acción distinta."},{q:"La continuidad depende de…",o:["Que atienda siempre el mismo médico","Que el conocimiento del paciente no se pierda","Que haya más visitas","Que se registren todos los datos"],c:1,e:"Lo que sostiene la continuidad es que el conocimiento permanezca."}]},
-{n:5,t:"La historia clínica es de todos",lead:"De los fotogramas a la película: cómo la plataforma asistencial integra todas las miradas en un solo relato del paciente.",
- body:`<h2>La idea</h2><p>Ningún profesional, por bueno que sea, está con el paciente las veinticuatro horas. Por eso la continuidad no la sostiene una persona: la sostiene una plataforma asistencial, un conjunto de miradas que se integran. La historia clínica deja de ser un documento y pasa a ser una historia que se construye entre todos, con el paciente como protagonista.</p>
- <h2>Los principios</h2><p><strong>VII. La continuidad asistencial es una responsabilidad compartida.</strong> Ningún profesional posee toda la información; ninguna disciplina comprende sola toda la realidad del paciente.</p>
- <p><strong>IX. Cada contacto debe dejar al sistema mejor preparado para el siguiente.</strong> Una visita no termina cuando el profesional se va: termina cuando la información generada permite que el próximo continúe sin empezar de cero.</p>
- <h2>En profundidad: la película clínica</h2><p>La medicina tradicional suele decidir a partir de fotografías aisladas del paciente. La plataforma asistencial domiciliaria permite construir algo mucho más valioso: la película completa de su evolución. Cada conversación, cada visita, cada observación, cada llamado, cada valoración funcional, cada resultado de laboratorio y cada pequeño cambio son un fotograma nuevo.</p>
- <div class="quote">Ningún fotograma explica por sí solo la realidad del paciente. Es la integración ordenada de todos ellos la que permite comprender su evolución, anticipar riesgos y decidir mejor.</div>
- <h2>En profundidad: los actores de la plataforma</h2><p>En una plataforma asistencial no hay actores principales ni secundarios. Hay perspectivas diferentes y complementarias sobre una misma realidad: cada uno observa lo que los demás no pueden ver y aporta un fotograma distinto.</p>
- <p><strong>El paciente</strong> es el protagonista y la principal fuente sobre su estado: síntomas, objetivos, prioridades, miedos y la forma en que vive su enfermedad. Aporta lo que ningún estudio ni examen físico puede dar.<br>
- <strong>La familia</strong> aporta contexto: la trayectoria vital, el funcionamiento habitual y los cambios que pasan desapercibidos en una consulta. Suele ser la primera en notar que «algo ya no es igual».<br>
- <strong>El cuidador</strong> es el observador continuo: convive con el paciente y detecta los pequeños cambios —apetito, sueño, movilidad, conducta, dolor, ánimo, cumplimiento— que casi nunca aparecen en una consulta. Es clave para la detección precoz.<br>
- <strong>La enfermería</strong> transforma la observación cotidiana en valoración clínica: integra los datos del paciente y del entorno, identifica riesgos y sigue la evolución.<br>
- <strong>La medicina</strong> integra toda la información disponible: no solo diagnostica, comprende la película completa para interpretar cada hecho dentro de la trayectoria y tomar decisiones proporcionadas.<br>
- <strong>La tecnología</strong> amplía la capacidad de observar —telemedicina, videoconsulta, monitoreo remoto, historia clínica, comunicación—. No reemplaza el juicio clínico: aporta objetividad, continuidad y rapidez.<br>
- <strong>La internación y los hospitales</strong> aportan el conocimiento de los episodios agudos y la alta complejidad. La plataforma preserva esa información para que cada internación no empiece de cero.<br>
- <strong>El laboratorio y el diagnóstico</strong> aportan evidencia objetiva; su valor real aparece cuando los resultados se leen junto con la evolución y no como datos sueltos.<br>
- <strong>Los recursos sociales y comunitarios</strong> importan porque la salud también depende del entorno: aportan soluciones que exceden lo estrictamente sanitario cuando forman parte del plan.</p>
- <h2>La integración</h2><p>El verdadero valor de la plataforma no está en la excelencia individual de cada participante, sino en su capacidad de integrar todas las observaciones en una única narrativa clínica. Un síntoma que cuenta el paciente, un cambio que nota el cuidador, una valoración de enfermería, un resultado de laboratorio y una decisión médica dejan de ser hechos independientes para convertirse en capítulos de una misma historia.</p>
- <div class="quote">La inteligencia de una plataforma asistencial no depende del conocimiento individual de cada participante. Depende de su capacidad para integrar múltiples perspectivas y construir una comprensión compartida de la evolución del paciente.</div>
- <h2>En la práctica</h2><p>Antes de cerrar un contacto, preguntate: ¿qué dejo registrado para que el próximo no empiece de cero? La continuidad no depende de que nunca cambie el profesional, sino de que nunca se pierda el conocimiento.</p>
- <h2>Para llevarte</h2><p>Toda esa película pertenece al paciente: la Historia de Vida genera la Historia Clínica, y la Historia Clínica solo vale si sigue acompañando su vida. Por eso, si mañana cambia el médico pero el conocimiento del paciente permanece, la continuidad sigue intacta. Eso es lo que cuidamos.</p>`,
- quiz:[{q:"¿Qué construye la plataforma asistencial, a diferencia de la medicina tradicional?",o:["Fotografías aisladas del paciente","La película completa de su evolución","Un diagnóstico más rápido","Una base de datos"],c:1,e:"La medicina tradicional decide con fotos sueltas; la plataforma integra los fotogramas en una película."},{q:"En este modelo, ¿qué es un «fotograma»?",o:["El diagnóstico final","Cada observación, visita o dato que aporta un actor","Una foto del paciente","El resumen de la historia clínica"],c:1,e:"Cada visita, llamado, valoración o resultado es un fotograma; ninguno explica solo la realidad."},{q:"En la plataforma asistencial, los actores…",o:["Se ordenan en principales y secundarios","Aportan perspectivas diferentes y complementarias, sin jerarquía","Compiten por la información","Solo cuentan los profesionales"],c:1,e:"No hay actores principales ni secundarios: cada uno ve lo que los demás no pueden ver."},{q:"¿Cuál es el aporte distintivo del cuidador?",o:["El diagnóstico","Ser el observador continuo que detecta los pequeños cambios","La interpretación clínica","El resultado de laboratorio"],c:1,e:"Convive con el paciente y detecta microcambios que casi nunca aparecen en una consulta."},{q:"¿De qué depende la inteligencia de la plataforma?",o:["Del mejor profesional del equipo","De integrar múltiples perspectivas en una comprensión compartida","De tener más tecnología","De registrar más datos"],c:1,e:"El valor no está en la excelencia individual, sino en integrar todas las miradas."},{q:"¿A quién pertenece la historia clínica?",o:["A la institución","Al médico","Al paciente","Al financiador"],c:2,e:"Pertenece al paciente: la Historia de Vida genera la Historia Clínica."}]},
-{n:6,t:"La Unidad de Continuidad Domiciliaria",lead:"Gestionar la incertidumbre y mantener unida la historia del paciente entre niveles.",
- body:`<h2>La idea</h2><p>El paciente crónico transita entre el domicilio, la atención primaria, los especialistas, la guardia, la internación y las residencias, y casi nadie es responsable de mantener la continuidad entre todos. La Unidad de Continuidad Domiciliaria existe para cubrir ese espacio.</p>
- <h2>El principio que la guía</h2><p><strong>VIII. Toda intervención debe respetar el proyecto de vida del paciente.</strong> El mejor tratamiento no siempre es el más agresivo: es el que, además de ser adecuado, respeta cómo esa persona quiere vivir. Curar no siempre es posible; cuidar con sentido siempre lo es.</p>
- <div class="quote">El paciente vive una película. El sistema sanitario vive fotografías. Nuestra responsabilidad es preservar la coherencia de toda la película.</div>
- <h2>En profundidad: gestionar la incertidumbre</h2><p>Buena parte de las consultas a la guardia no nacen de una emergencia real, sino de que el paciente o su familia no saben interpretar un cambio. La incertidumbre genera miedo, y el miedo, decisiones impulsivas. La continuidad transforma esa incertidumbre en conocimiento.</p>
- <div class="quote">La Unidad de Continuidad Domiciliaria no gestiona episodios. Gestiona la incertidumbre.</div>
- <h2>En la práctica: tres pilares</h2><p>La continuidad se sostiene sobre la <strong>confianza</strong> —que no es solo un valor humano, sino una intervención clínica: cuando el paciente sabe que hay un equipo que lo conoce, deja de buscar seguridad en la alta complejidad—, la <strong>educación</strong> —una familia formada observa mejor— y la <strong>observación distribuida</strong> —que convierte los microcambios en decisiones precoces—. Así, no todo termina en la guardia ni en una internación: cada situación va al recurso que aporta más valor.</p>
- <h2>Para llevarte</h2><p>La Unidad de Continuidad no es un recurso más del sistema: es el elemento que lo mantiene unido alrededor de la persona.</p>`,
- quiz:[{q:"«El paciente vive una película; el sistema sanitario vive…»",o:["episodios","fotografías","trayectorias","diagnósticos"],c:1,e:"El único que vive la película entera es el paciente."},{q:"¿Qué gestiona, sobre todo, la Unidad de Continuidad?",o:["Los episodios","La incertidumbre","Las visitas","Los costos"],c:1,e:"Gestiona la incertidumbre, transformándola en conocimiento."},{q:"En este modelo, la confianza es…",o:["Un valor sin efecto clínico","Una intervención clínica que reduce decisiones impulsivas","Un tema secundario","Solo del médico"],c:1,e:"La confianza baja la incertidumbre y las decisiones impulsivas."},{q:"¿Por qué muchas consultas a la guardia podrían evitarse?",o:["Los pacientes exageran","Nacen de no saber interpretar un cambio","Falta personal","La guardia está lejos"],c:1,e:"Suelen ser incertidumbre ante un cambio que nadie supo leer."},{q:"¿Cuál es la misión de la Unidad de Continuidad?",o:["Hacer visitas","Sustituir a la institución","Preservar la continuidad clínica, funcional y humana","Reducir el gasto"],c:2,e:"La eficiencia es consecuencia; la misión es preservar la continuidad."}]},
-{n:7,t:"La Arquitectura Asistencial",lead:"Diseñar quién conoce, quién recuerda y quién coordina la atención de un paciente.",
- body:`<h2>La idea</h2><p>En los seis módulos anteriores construimos la mirada: por qué existe la continuidad, cómo se observa al paciente y por qué la historia es de todos. Ahora damos un paso más y miramos el <strong>diseño</strong> que hace posible todo eso. A ese diseño lo llamamos Arquitectura Asistencial.</p>
- <h2>Qué es</h2><p>La Arquitectura Asistencial es el diseño deliberado del conjunto de profesionales, recursos, relaciones, decisiones y mecanismos de coordinación que permiten que una persona reciba, en cada momento, la atención más adecuada con la mayor continuidad posible. No es un organigrama: es la forma concreta en que el conocimiento del paciente circula entre las personas que lo cuidan.</p>
- <div class="quote">Cuando estas preguntas tienen respuesta clara, aparece la continuidad; cuando no, aparece la fragmentación.</div>
- <h2>Las preguntas que ordenan el diseño</h2><p>Una buena arquitectura asistencial puede responder, en cualquier momento: ¿quién conoce realmente al paciente? ¿Quién mantiene la memoria clínica? ¿Quién detecta e interpreta los primeros cambios? ¿Quién coordina a los profesionales? ¿Cómo circula la información? Si alguna de estas preguntas queda sin dueño, ahí es donde el proceso se rompe.</p>
- <h2>En la práctica</h2><p>Antes de sumar un recurso o un control, preguntate qué pregunta de arquitectura viene a resolver. Un recurso que no responde a ninguna de las cinco no agrega continuidad: agrega ruido.</p>
- <h2>Para llevarte</h2><p>La continuidad no se improvisa: se diseña. La Arquitectura Asistencial es ese diseño hecho explícito, para que ninguna de las cinco preguntas quede sin respuesta.</p>`,
- quiz:[{q:"¿Qué es la Arquitectura Asistencial?",o:["El organigrama del equipo","El diseño deliberado de profesionales, recursos y coordinación que da continuidad a la atención","El listado de tratamientos disponibles","Un software de historia clínica"],c:1,e:"No es una estructura formal: es la forma en que el conocimiento del paciente circula y se sostiene."},{q:"¿Qué aparece cuando las preguntas de la arquitectura quedan sin respuesta?",o:["Más eficiencia","La fragmentación de la atención","Un mejor diagnóstico","Menos costos"],c:1,e:"Cuando nadie es dueño de una de las cinco preguntas, ahí se corta la continuidad."}]},
-{n:8,t:"La trayectoria y las transiciones",lead:"Cada cambio de nivel asistencial es un momento de riesgo. Reducir su impacto es la misión.",
- body:`<h2>La idea</h2><p>El Módulo 6 presentó la Unidad de Continuidad Domiciliaria como el elemento que mantiene unido al sistema. Este módulo mira el punto exacto donde ese sistema tiende a romperse: las transiciones entre niveles.</p>
- <h2>La trayectoria real de un paciente crónico</h2><p>El paciente transita entre domicilio, atención primaria, consultas especializadas, urgencias, hospitalización, rehabilitación, farmacia, servicios sociales y residencias. No es un recorrido lineal ni ordenado: es un ir y venir constante entre ámbitos que muchas veces no se hablan entre sí.</p>
- <div class="quote">En cada transición se puede perder el hilo de la historia del paciente; nuestro trabajo es no perderlo nunca.</div>
- <h2>Por qué cada transición es un riesgo</h2><p>En cada cambio de ámbito pueden perderse datos, modificarse tratamientos sin que el resto del equipo lo sepa, aparecer duplicidades o deteriorarse el estado funcional sin que nadie lo registre. La transición no es un trámite administrativo: es el momento clínico de mayor fragilidad de toda la trayectoria.</p>
- <h2>Una construcción colectiva</h2><p>Reducir el impacto de las transiciones no depende de un profesional heroico. La continuidad es una construcción colectiva entre el paciente, la familia, los cuidadores y todo el equipo. Cada uno sostiene una parte del hilo.</p>
- <h2>Para llevarte</h2><p>Prestá atención especial a los momentos en que el paciente cambia de ámbito, de turno o de profesional. Ahí es donde tu registro y tu comunicación valen más que en cualquier otro momento.</p>`,
- quiz:[{q:"¿Por qué las transiciones entre niveles son momentos de riesgo?",o:["Porque cuestan más","Porque pueden perderse datos, cambiar tratamientos o producirse errores de comunicación","Porque el paciente se cansa","Porque hay menos personal"],c:1,e:"La transición es el momento clínico más frágil: ahí se pierde información y se descoordina el cuidado."},{q:"¿De quién depende la continuidad asistencial?",o:["De un único profesional responsable","De una construcción colectiva entre paciente, familia, cuidadores y equipo","Del hospital","Del software"],c:1,e:"Nadie sostiene solo el hilo: cada uno cuida una parte."}]},
-{n:9,t:"Los principios doctrinales",lead:"Los compromisos intelectuales que ordenan la práctica del modelo Humana.",
- body:`<h2>La idea</h2><p>A lo largo del recorrido fuiste encontrando principios sueltos, uno por módulo. Este módulo los reúne. No son normas ni protocolos: son compromisos intelectuales, la forma de pensar que sostiene todo lo demás.</p>
- <h2>Principio y norma no son lo mismo</h2><p>Una norma se cumple; un principio se asume. La norma dice qué hacer en un caso; el principio te da el criterio para decidir en el caso que la norma no previó. Por eso el modelo se apoya en principios: porque la continuidad se juega, casi siempre, en las situaciones que ningún protocolo anticipó.</p>
- <div class="quote">La continuidad asistencial no consiste en garantizar que siempre atienda el mismo profesional, sino en que el conocimiento del paciente nunca vuelva a empezar desde cero.</div>
- <h2>Los compromisos que sostenemos</h2><p>Cada contacto tiene memoria del anterior y prepara el siguiente: no atendemos más veces, atendemos con continuidad. La historia clínica pertenece al paciente y se construye con él. Ningún profesional observa por sí solo la historia completa, y por eso toda observación debe aportar y cambiar algo en el cuidado; una observación que no cambia nada, no sirve.</p>
- <h2>En la práctica</h2><p>Cuando dudes entre dos caminos, no busques la regla: buscá el principio. Preguntate cuál de las opciones preserva mejor el hilo de la historia del paciente.</p>
- <h2>Para llevarte</h2><p>Los principios no se memorizan para un examen: se internalizan hasta que ordenan solos tus decisiones. Ese es el punto en que el modelo deja de ser una teoría y pasa a ser tu forma de trabajar.</p>`,
- quiz:[{q:"¿Qué significa que «cada contacto tenga memoria del anterior»?",o:["Que se atiende más seguido","Que la información y las decisiones previas se conservan y guían el siguiente contacto","Que siempre atiende el mismo médico","Que se registra todo por escrito"],c:1,e:"Continuidad es que el conocimiento no vuelva a empezar de cero, no que se atienda más veces."},{q:"¿Qué diferencia a un principio de una norma en este modelo?",o:["El principio es más estricto","El principio es un compromiso intelectual; la norma, una regla impuesta","No hay diferencia","La norma es más importante"],c:1,e:"El principio da el criterio para decidir donde la norma no llega."}]},
-{n:10,t:"La forma de enseñar en Humana",lead:"Formar la mirada clínica, no solo transmitir información.",
- body:`<h2>La idea</h2><p>Este es el último módulo del recorrido, y habla de cómo aprendiste todo lo anterior. En Humana Academy no medimos una clase por lo que se memoriza, sino por lo que cambia en la forma de mirar al paciente.</p>
- <h2>El éxito de una clase</h2><p>El éxito de una clase no se mide por la información retenida, sino por lo que el profesional será capaz de observar en un paciente que antes no veía. Un dato memorizado se olvida; una mirada entrenada queda para siempre y se aplica a cada paciente nuevo.</p>
- <div class="quote">No medimos el éxito de una clase por lo que el alumno aprendió, sino por lo que mañana será capaz de observar en un paciente y ayer aún no veía.</div>
- <h2>Cómo está construida la formación</h2><p>La Academy combina dos cosas que no se enseñan por separado: la observación clínica —aprender a ver los microcambios— y la gestión del conocimiento —aprender a que ese conocimiento circule y no se pierda—. Y se apoya en los principios del modelo, entendidos como compromisos, no como reglas.</p>
- <h2>En la práctica</h2><p>Terminaste el recorrido, pero la formación no termina acá: cada paciente que veas de ahora en más es una clase. Preguntate, después de cada contacto, qué viste hoy que antes se te habría pasado.</p>
- <h2>Para llevarte</h2><p>Aprendiste a mirar. Ese es el punto: no salís de acá con más datos, salís viendo cosas que ayer no veías. Y eso, en Medicina de Continuidad, es lo que salva trayectorias.</p>`,
- quiz:[{q:"¿Cómo se mide el éxito de una clase en Humana Academy?",o:["Por la información memorizada","Por la capacidad de observar algo nuevo en el paciente","Por la nota del examen","Por la asistencia"],c:1,e:"Un dato se olvida; una mirada entrenada queda y se aplica a cada paciente."},{q:"¿Qué dos cosas combina la formación de la Academy?",o:["Teoría y examen","Observación clínica y gestión del conocimiento","Protocolos y normas","Anatomía y farmacología"],c:1,e:"Ver los microcambios, y lograr que ese conocimiento circule y no se pierda."}]}
 
-];
-const CAP={t:"Caso integrador: Doña Elena",lead:"Un caso real para aplicar juntos los seis principios del programa.",body:`<p>Doña Elena, 82 años, vive con su hija. Convive con diabetes, insuficiencia cardíaca y artrosis. Desde hace meses está estable: camina hasta el patio, cocina, se acuesta tarde y conversa en los almuerzos del domingo.</p><p>Esta semana su hija nota tres cosas: come la mitad de lo habitual, duerme durante el día y en el último almuerzo habló muy poco. No hay fiebre, no hay dolor, no hay una queja concreta. La hija duda si llamar a la guardia o esperar.</p><p>Con lo aprendido en los seis módulos, resolvé el caso.</p>`,quiz:[{q:"¿Cuál es el primer paso antes de decidir nada?",o:["Enviarla a la guardia","Compararla con su situación basal: cómo es cuando está estable","Pedir estudios urgentes","Cambiar su medicación"],c:1,e:"Sin la basal no se puede interpretar el cambio: la referencia es cómo era Elena cuando estaba estable."},{q:"Comer la mitad, dormir de día y hablar poco son…",o:["Síntomas de una emergencia clara","Microcambios que, juntos, forman un patrón","Datos irrelevantes","Efectos normales de la edad"],c:1,e:"Por separado parecen nada; juntos cuentan una historia y merecen valoración."},{q:"¿Quién aportó la observación clave?",o:["El médico de guardia","La hija, que convive y conoce su normalidad","El laboratorio","La farmacia"],c:1,e:"Conocimiento distribuido: la familia detecta el cambio porque conoce a la persona."},{q:"Ante la duda de la hija, la pregunta correcta es…",o:["«¿Está bien?»","«¿Está igual que cuando estaba estable?»","«¿Tiene fiebre?»","«¿Le duele algo?»"],c:1,e:"Comparamos a Elena consigo misma, no con un ideal."},{q:"La conducta más alineada con la Medicina de Continuidad es…",o:["Esperar a que aparezca un síntoma grave","Mandarla directo a urgencias","Valorarla precozmente para actuar antes de la descompensación","No hacer nada, es la edad"],c:2,e:"La continuidad transforma la incertidumbre en una decisión precoz, evitando la urgencia evitable."}]};
+/* ---------- Contenido: lo carga el Estudio de contenidos; esto es lo que hay en el equipo mientras tanto ---------- */
+let CONT=HA_contenidoInicial();
+let MODULES=CONT.modulos, CAP=CONT.caso;
+const ids=()=>MODULES.map(m=>m.n);
+const pos=n=>MODULES.findIndex(m=>m.n===n)+1;
+const done=n=>scores[n]!=null&&scores[n]>=60;
+const allDone=()=>MODULES.length>0&&ids().every(done);
+const nCompl=()=>ids().filter(done).length;
+let vista='home';
+window.HA_aplicarContenido=function(c){
+  if(!c||!c.modulos||!c.modulos.length)return;
+  CONT=c; MODULES=c.modulos; CAP=c.caso;
+  if(typeof renderUserbox==='function')renderUserbox();
+  if(vista==='home')home();
+};
+
 const app=document.getElementById('app');
 function toggleMenu(){document.getElementById('drawer').classList.toggle('open');document.getElementById('burger').classList.toggle('x');}
 function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('burger').classList.remove('x');}
 function observeReveal(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
+function esc2(x){ return (''+(x==null?'':x)).replace(/[<>&"]/g,c=>c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':'&quot;'); }
+function cap1(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
 
 /* ---------- Entorno personal ---------- */
 function _sc(k){ try{ return STORE.get(k,{})||{}; }catch(e){ return {}; } }
-function _hechos(sc,ids){ return ids.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
+function _hechos(sc,lista){ return lista.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
 function _rutas(){
-  const aca=scores||{}, nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
+  const nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
   return [
    {id:'academy', t:'Humana Academy', d:'La doctrina: cómo observamos, comprendemos y acompañamos al paciente.',
-    ic:'🎓', col:'#8E2E9E', bg:'#241736', tot:10, hechos:_hechos(aca,[1,2,3,4,5,6,7,8,9,10]), ir:"scrollMods()"},
+    ic:'🎓', col:'#8E2E9E', bg:'#241736', tot:MODULES.length, hechos:nCompl(), ir:"scrollMods()"},
    {id:'nexo', t:'Humana Nexo', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.',
     ic:'🤝', col:'#14B8A6', bg:'#0F2E2A', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
    {id:'cutaquig', t:'Cutaquig®', d:'Capacitación de producto: inmunoglobulina subcutánea, técnica y seguridad.',
     ic:'💉', col:'#0EA5E9', bg:'#0C2237', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
   ];
 }
-/* Acceso abierto: todo el equipo ve los tres recorridos. */
-const ACCESO_ORDEN=['academy','nexo','cutaquig'];
-function _permitidas(){ return ACCESO_ORDEN; }
-function _orden(rutas){
-  return rutas.slice().sort((a,b)=>ACCESO_ORDEN.indexOf(a.id)-ACCESO_ORDEN.indexOf(b.id));
-}
-function _veEstratificador(){ return true; }
 function _siguiente(){
-  // primera ruta sin terminar, según el orden del rol
-  const rs=_orden(_rutas());
-  const r=rs.find(x=>x.hechos<x.tot) || null;
+  const r=_rutas().find(x=>x.hechos<x.tot)||null;
   if(!r) return null;
-  if(r.id==='academy'){ const n=[1,2,3,4,5,6,7,8,9,10].find(x=>!done(x)); return {r, n, t:MODULES.find(m=>m.n===n).t, ir:`openM(${n})`}; }
+  if(r.id==='academy'){ const m=MODULES.find(x=>!done(x.n)); return {r, n:pos(m.n), t:m.t, ir:`openM(${m.n})`}; }
   return {r, n:r.hechos+1, t:r.t, ir:r.ir};
 }
 function panelHTML(){
   const nom=(uname||'').split(' ')[0]||'';
-  const rs=_orden(_rutas());
+  const rs=_rutas();
   const tot=rs.reduce((a,x)=>a+x.tot,0), hec=rs.reduce((a,x)=>a+x.hechos,0);
   const sig=_siguiente();
   const cont = sig
@@ -425,7 +350,7 @@ function panelHTML(){
       <h3>No te queda nada pendiente</h3><p>Descargá tus certificados o repasá lo que quieras.</p></div>
       <button onclick="openCert()">Ver certificado →</button></div>`;
   const cards = rs.map(function(r){
-    const pct=Math.round(r.hechos/r.tot*100), fin=r.hechos>=r.tot;
+    const pct=r.tot?Math.round(r.hechos/r.tot*100):0, fin=r.tot>0&&r.hechos>=r.tot;
     const pill = fin ? `<span class="pill" style="background:#39d98a;color:#08240f">Completado</span>`
       : r.hechos>0 ? `<span class="pill" style="background:${r.bg};color:${r.col}">En curso</span>`
       : `<span class="pill" style="background:#241736;color:#9E90B5">Sin empezar</span>`;
@@ -437,7 +362,7 @@ function panelHTML(){
   const cert=allDone();
   const logros = `
     <div class="logro ${hec>0?'on':''}"><span class="e">🚀</span><div><b>Arrancaste</b><span>Completaste tu primer módulo</span></div></div>
-    <div class="logro ${cert?'on':''}"><span class="e">🎓</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo':'Se habilita al aprobar los 10 módulos'}</span></div></div>
+    <div class="logro ${cert?'on':''}"><span class="e">🎓</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo':`Se habilita al aprobar los ${MODULES.length} módulos`}</span></div></div>
     <div class="logro ${hec>=tot?'on':''}"><span class="e">🏆</span><div><b>Recorrido completo</b><span>${hec>=tot?'Terminaste las tres rutas':`${hec} de ${tot} módulos en total`}</span></div></div>`;
   return `<section class="pan"><div class="wrap">
    <div class="hi reveal">${nom?`Hola, ${esc2(nom)}`:'Hola'}</div>
@@ -446,109 +371,115 @@ function panelHTML(){
    <div class="eyebrow grad reveal">Tus rutas</div>
    <h2 class="sec reveal" style="margin-bottom:6px">${rs.length} recorridos, ${tot} módulos</h2>
    <p class="sub reveal">Llevás ${hec} de ${tot} módulos en total.</p>
-   <div class="rutas">${cards}${_veEstratificador()?`<a class="ruta reveal" href="estratificador.html" style="cursor:pointer">
+   <div class="rutas">${cards}<a class="ruta reveal" href="estratificador.html" style="cursor:pointer">
      <div class="top"><span class="ic" style="background:#2A1F0E">📊</span><span class="pill" style="background:#2A1F0E;color:#E0A82E">Herramienta</span></div>
      <h4>Estratificador</h4><p class="d">Herramienta comercial para dimensionar oportunidades con financiadores e instituciones.</p>
-     <div class="pr"><span class="pn">Abrir →</span></div></a>`:''}</div>
+     <div class="pr"><span class="pn">Abrir →</span></div></a></div>
    <div class="eyebrow grad reveal">Tus logros</div>
    <h2 class="sec reveal" style="margin-bottom:14px">Lo que ya conseguiste</h2>
    ${logros}
   </div></section>`;
 }
-function esc2(x){ return (''+x).replace(/[<>&]/g,c=>c==='<'?'&lt;':c==='>'?'&gt;':'&amp;'); }
 
-function home(){if(typeof renderUserbox==='function')renderUserbox();
- const compl=[1,2,3,4,5,6,7,8,9,10].filter(done).length, pct=Math.round(compl/10*100);
- let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${m.n}</div><span class="done">✓</span><h3>${m.t}</h3><p>${m.lead}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
- cards+=`<div class="mcard cap reveal" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${CAP.t}</h3><p>${CAP.lead}</p><span class="go grad">Abrir caso →</span></div>`;
- const nextInc=[1,2,3,4,5,6,7,8,9,10].find(n=>!done(n));
- const resume=(compl>0&&nextInc)?`<div class="resume reveal"><div>Continuá donde quedaste — <b>Módulo ${nextInc}: ${MODULES.find(x=>x.n===nextInc).t}</b></div><div><button class="rb" onclick="openM(${nextInc})">Continuar</button><a onclick="if(confirm('¿Reiniciar tu progreso?')){scores={};STORE.set('ha_s',{});home()}">Reiniciar progreso</a></div></div>`:'';
- const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los 10 módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
+/* ---------- Mapa del programa: se arma solo con los módulos publicados ---------- */
+function _partir(t,max){ const w=(t||'').split(' '); const l=['']; w.forEach(x=>{ const c=l[l.length-1]; if((c+' '+x).trim().length>max&&l.length<2&&c)l.push(x); else l[l.length-1]=(c+' '+x).trim(); }); if(l.length===2&&l[1].length>max+4)l[1]=l[1].slice(0,max+2)+'…'; return l; }
+function mapaHTML(){
+  const N=MODULES.length; if(!N) return '';
+  const G=N<=6?[1000,570,286,192,234,22]:N<=8?[1000,660,340,250,220,21]:[1100,800,430,320,205,20];
+  const W=G[0], H=G[1], cx=W/2, cy=H/2, rx=G[2], ry=G[3], bw=G[4], bh=70, mx=G[5];
+  let lines='', nodes='';
+  MODULES.forEach((m,i)=>{
+    const a=-Math.PI/2+i*2*Math.PI/N, x=cx+rx*Math.cos(a), y=cy+ry*Math.sin(a);
+    const bx=Math.max(8,Math.min(W-bw-8,x-bw/2)), by=y-bh/2;
+    const tl=_partir(m.t,mx), ok=done(m.n);
+    lines+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#3A2A52" stroke-width="2.5"/>`;
+    nodes+=`<g class="mapnode" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(${m.n})}" role="link" tabindex="0" aria-label="Módulo ${i+1}"><rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw}" height="${bh}" rx="15" fill="#1E1430" stroke="${ok?'#39d98a':'#3A2A52'}" stroke-width="1.5"/><circle cx="${(bx+27).toFixed(1)}" cy="${y.toFixed(1)}" r="15" fill="${ok?'#39d98a':'url(#mg)'}"/><text x="${(bx+27).toFixed(1)}" y="${(y+5).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="700" fill="${ok?'#08240f':'#fff'}">${i+1}</text>`
+      +tl.map((s,k)=>`<text x="${(bx+50).toFixed(1)}" y="${(y-(tl.length>1?9:3)+k*18).toFixed(1)}" font-size="${N>8?13.5:14}" font-weight="700" fill="#EDE6F5">${esc2(s)}</text>`).join('')
+      +`<text x="${(bx+50).toFixed(1)}" y="${(y+(tl.length>1?26:16)).toFixed(1)}" font-size="11.5" font-style="italic" fill="#9E90B5">${esc2((m.etiqueta||'').length>28?(m.etiqueta.slice(0,27)+'…'):(m.etiqueta||''))}</text></g>`;
+  });
+  const svg=`<svg style="width:100%;height:auto;display:block" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img" aria-label="Mapa del programa"><defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.5" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs>${lines}${nodes}<rect x="${cx-108}" y="${cy-36}" width="216" height="72" rx="18" fill="url(#mg)"/><text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Medicina de</text><text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Continuidad</text></svg>`;
+  const lista=`<ul class="mapl">${MODULES.map((m,i)=>`<li class="${done(m.n)?'ok':''}" onclick="openM(${m.n})"><span class="c">${done(m.n)?'✓':i+1}</span><div><b>${esc2(m.t)}</b><span>${esc2(m.etiqueta||'')}</span></div></li>`).join('')}</ul>`;
+  return `<div class="mapwrap reveal">${svg}${lista}<p class="maphint">Tocá un módulo para entrar.</p></div>`;
+}
+
+function home(){vista='home';renderUserbox();
+ const N=MODULES.length, compl=nCompl(), pct=N?Math.round(compl/N*100):0;
+ let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${i+1}</div><span class="done">✓</span><h3>${esc2(m.t)}</h3><p>${esc2(m.lead)}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
+ if(CAP) cards+=`<div class="mcard cap reveal" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${esc2(CAP.t)}</h3><p>${esc2(CAP.lead)}</p><span class="go grad">Abrir caso →</span></div>`;
+ const next=MODULES.find(m=>!done(m.n));
+ const resume=(compl>0&&next)?`<div class="resume reveal"><div>Continuá donde quedaste — <b>Módulo ${pos(next.n)}: ${esc2(next.t)}</b></div><div><button class="rb" onclick="openM(${next.n})">Continuar</button></div></div>`:'';
+ const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los ${N} módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
  app.innerHTML=`
  ${panelHTML()}
  <section class="blk" id="mods"><div class="wrap">
-  <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">Seis módulos, una idea por módulo</h2>
-  <p class="sub reveal">Cada módulo combina una lectura breve, un audio, un video y una autoevaluación. Un módulo se completa al aprobar su autoevaluación.</p>
+  <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">${cap1(HA_enLetras(N))} módulos, una idea por módulo</h2>
+  <p class="sub reveal">Cada módulo combina una lectura breve, recursos de apoyo y una autoevaluación. Se completa al aprobar la autoevaluación con 60% o más.</p>
   ${resume}${cert}
-  <div class="prog reveal"><span>${compl}/6 completados ${compl>=6?'🥇':compl>=3?'🥉':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="prog reveal"><span>${compl}/${N} completados ${compl>=N&&N?'🥇':compl>=N/2?'🥉':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
   <div class="grid">${cards}</div></div></section>
- <section class="blk" style="padding-top:0"><div class="wrap"><a href="nexo.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#0F766E,#14B8A6 55%,#2DD4BF);border-radius:20px;padding:28px 30px;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(20,184,166,.22)"><div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#06231d;opacity:.85">Nuevo track · Programa de Asistencia al Paciente</div><h2 style="margin:6px 0 6px;font-size:26px;font-weight:800;color:#04140f">Humana Nexo</h2><p style="margin:0;max-width:640px;color:#06231d;font-weight:600;font-size:15px">Una formación aparte, con su propio entorno y certificado: cómo acompañamos terapias especiales de principio a fin. &nbsp;<span style="text-decoration:underline">Entrar →</span></p></a></div></section>
-<section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow grad reveal">Vista general</div><h2 class="sec reveal">El mapa del programa</h2>
+ <section class="blk" style="padding-top:0"><div class="wrap"><a href="nexo.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#0F766E,#14B8A6 55%,#2DD4BF);border-radius:20px;padding:28px 30px;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(20,184,166,.22)"><div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#06231d;opacity:.85">Track · Programa de Asistencia al Paciente</div><h2 style="margin:6px 0 6px;font-size:26px;font-weight:800;color:#04140f">Humana Nexo</h2><p style="margin:0;max-width:640px;color:#06231d;font-weight:600;font-size:15px">Una formación aparte, con su propio entorno y certificado: cómo acompañamos terapias especiales de principio a fin. &nbsp;<span style="text-decoration:underline">Entrar →</span></p></a></div></section>
+ <section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow grad reveal">Vista general</div><h2 class="sec reveal">El mapa del programa</h2>
   <p class="sub reveal">Toda la Medicina de Continuidad en un vistazo.</p>
-  <div class="mapwrap reveal"><svg style="width:100%;height:auto;display:block" viewBox="0 0 1000 570" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img" aria-label="Mapa del programa"><defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.5" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><line x1="500" y1="285" x2="500" y2="93" stroke="#3A2A52" stroke-width="2.5"/>
-<line x1="500" y1="285" x2="786" y2="189" stroke="#3A2A52" stroke-width="2.5"/>
-<line x1="500" y1="285" x2="786" y2="381" stroke="#3A2A52" stroke-width="2.5"/>
-<line x1="500" y1="285" x2="500" y2="477" stroke="#3A2A52" stroke-width="2.5"/>
-<line x1="500" y1="285" x2="214" y2="381" stroke="#3A2A52" stroke-width="2.5"/>
-<line x1="500" y1="285" x2="214" y2="189" stroke="#3A2A52" stroke-width="2.5"/>
-<g class="mapnode" onclick="openM(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(1)}" role="link" tabindex="0" aria-label="Módulo 1"><rect x="383" y="58" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="410" cy="93" r="15" fill="url(#mg)"/><text x="410" y="98" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text><text x="433" y="84" font-size="14.5" font-weight="700" fill="#EDE6F5">Por qué la Medicina</text><text x="433" y="102" font-size="14.5" font-weight="700" fill="#EDE6F5">de Continuidad</text><text x="433" y="119" font-size="11.5" font-style="italic" fill="#9E90B5">El paciente cambió</text></g>
-<g class="mapnode" onclick="openM(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(2)}" role="link" tabindex="0" aria-label="Módulo 2"><rect x="669" y="154" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="696" cy="189" r="15" fill="url(#mg)"/><text x="696" y="194" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text><text x="719" y="180" font-size="14.5" font-weight="700" fill="#EDE6F5">La persona y la</text><text x="719" y="198" font-size="14.5" font-weight="700" fill="#EDE6F5">situación basal</text><text x="719" y="215" font-size="11.5" font-style="italic" fill="#9E90B5">El cero clínico</text></g>
-<g class="mapnode" onclick="openM(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(3)}" role="link" tabindex="0" aria-label="Módulo 3"><rect x="669" y="346" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="696" cy="381" r="15" fill="url(#mg)"/><text x="696" y="386" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text><text x="719" y="372" font-size="14.5" font-weight="700" fill="#EDE6F5">Observar: los</text><text x="719" y="390" font-size="14.5" font-weight="700" fill="#EDE6F5">microcambios</text><text x="719" y="407" font-size="11.5" font-style="italic" fill="#9E90B5">El acto de mirar</text></g>
-<g class="mapnode" onclick="openM(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(4)}" role="link" tabindex="0" aria-label="Módulo 4"><rect x="383" y="442" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="410" cy="477" r="15" fill="url(#mg)"/><text x="410" y="482" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text><text x="433" y="468" font-size="14.5" font-weight="700" fill="#EDE6F5">La pirámide del</text><text x="433" y="486" font-size="14.5" font-weight="700" fill="#EDE6F5">conocimiento</text><text x="433" y="503" font-size="11.5" font-style="italic" fill="#9E90B5">Capa sobre capa</text></g>
-<g class="mapnode" onclick="openM(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(5)}" role="link" tabindex="0" aria-label="Módulo 5"><rect x="97" y="346" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="124" cy="381" r="15" fill="url(#mg)"/><text x="124" y="386" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text><text x="147" y="372" font-size="14.5" font-weight="700" fill="#EDE6F5">La historia clínica</text><text x="147" y="390" font-size="14.5" font-weight="700" fill="#EDE6F5">es de todos</text><text x="147" y="407" font-size="11.5" font-style="italic" fill="#9E90B5">Conocimiento distribuido</text></g>
-<g class="mapnode" onclick="openM(6)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(6)}" role="link" tabindex="0" aria-label="Módulo 6"><rect x="97" y="154" width="234" height="70" rx="15" fill="#1E1430" stroke="#3A2A52" stroke-width="1.5"/><circle cx="124" cy="189" r="15" fill="url(#mg)"/><text x="124" y="194" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text><text x="147" y="180" font-size="14.5" font-weight="700" fill="#EDE6F5">La Unidad de</text><text x="147" y="198" font-size="14.5" font-weight="700" fill="#EDE6F5">Continuidad Domiciliaria</text><text x="147" y="215" font-size="11.5" font-style="italic" fill="#9E90B5">El hilo que une</text></g>
-<rect x="392" y="249" width="216" height="72" rx="18" fill="url(#mg)"/><text x="500" y="279" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Medicina de</text><text x="500" y="301" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Continuidad</text></svg><p class="maphint">Tocá un módulo para entrar.</p></div></div></section>`;
+  ${mapaHTML()}</div></section>`;
  window.scrollTo(0,0);observeReveal();
 }
-function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else home();}
+function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else{home();setTimeout(()=>{const x=document.getElementById('mods');if(x)x.scrollIntoView();},60);}}
 function renderModule(m,isCap){
- const prev=isCap?null:MODULES.find(x=>x.n===m.n-1), next=isCap?null:MODULES.find(x=>x.n===m.n+1);
- const res=isCap?'':`<div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">
-  <div class="rc"><div class="ico">🎧</div><h4>Audio</h4><audio class="player" controls preload="metadata" src="${AUDIO(m.n)}" onerror="mfail(this)"></audio><span class="fallback">Disponible próximamente</span></div>
-  <div class="rc"><div class="ico">🎬</div><h4>Video</h4><video class="player" controls preload="metadata" src="${VIDEO(m.n)}" onerror="mfail(this)"></video><span class="fallback">Disponible próximamente</span></div>
-  <div class="rc"><div class="ico">📖</div><h4>Cuadernillo</h4><div style="margin:10px 0 4px">${CUAD[m.n]?'<a class="dl" href="'+CUAD[m.n]+'" download>Descargar PDF</a>':'<span class="fallback">Disponible próximamente</span>'}</div></div></div></div>`;
- const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+prev.n):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:'home()'}">${next?('Módulo '+next.n):'Volver'} →</a></div>`;
+ if(!m){home();return;}
+ vista=isCap?'cap':'mod';
+ const i=isCap?-1:MODULES.indexOf(m), prev=isCap?null:MODULES[i-1], next=isCap?null:MODULES[i+1];
+ const res=HA_recursosPanel(m.recursos);
+ const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+i):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:(CAP?'openCap()':'home()')}">${next?('Módulo '+(i+2)):(CAP?'Caso integrador':'Volver')} →</a></div>`;
+ const hayQuiz=(m.quiz||[]).length>0;
  app.innerHTML=`<section class="mhero"><div class="blob b2"></div><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
-  <div class="k">${isCap?'Caso integrador':'Módulo '+m.n}</div><h1>${m.t}</h1><p>${m.lead}</p></div></section>
+  <div class="k">${isCap?'Caso integrador':'Módulo '+(i+1)}</div><h1>${esc2(m.t)}</h1><p>${esc2(m.lead)}</p></div></section>
   <div class="wrap">${res}
-  <div class="panel content"><h3 class="t">${isCap?'El caso':'Contenido'}</h3>${m.body}</div>
-  <div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
+  <div class="panel content"><h3 class="t">${isCap?'El caso':'Contenido'}</h3>${m.body||''}</div>
+  ${hayQuiz?`<div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
   <div style="margin-top:8px"><button class="btn" onclick="grade('${isCap?'cap':m.n}')">Corregir</button> <button class="btn ghost" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reiniciar</button></div>
-  <div class="score" id="score"></div></div>${pager}</div>`;
- renderQuiz(m);window.scrollTo(0,0);
+  <div class="score" id="score"></div></div>`:''}${pager}</div>`;
+ if(hayQuiz)renderQuiz(m);window.scrollTo(0,0);
 }
 function openM(n){STORE.set('ha_last',n);renderModule(MODULES.find(x=>x.n===n),false);}
 function openCap(){renderModule(CAP,true);}
-function mfail(el){el.style.display='none';const fb=el.parentElement.querySelector('.fallback');if(fb)fb.style.display='block';}
 let answers={},curQuiz=null;
-function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${q.q}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${o}</label>`).join('')}<div class="exp" id="e_${qi}">✔ ${q.e}</div></div>`).join('');}
-function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
-function grade(id){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
+function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${esc2(q.q)}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${esc2(o)}</label>`).join('')}${q.e?`<div class="exp" id="e_${qi}">✔ ${esc2(q.e)}</div>`:`<div class="exp" id="e_${qi}"></div>`}</div>`).join('');}
+function pick(qi,oi){answers[qi]=oi;const q=curQuiz.quiz[qi];q.o.forEach((_,i)=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
+function grade(id){const m=curQuiz;
+ const faltan=m.quiz.filter((q,qi)=>answers[qi]==null).length;
+ if(faltan&&!confirm(faltan===1?'Te falta responder una pregunta. ¿Corregir igual?':'Te faltan '+faltan+' preguntas. ¿Corregir igual?'))return;
+ let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
  const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('¡Módulo completado! ✓');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
  const s=document.getElementById('score');s.classList.add('show');
- const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
+ const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Todavía no llegás al 60%. Repasá y volvé a intentar.';
  s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;if(window.showQuizResult)setTimeout(function(){window.showQuizResult(id,pct);},260);}
-function openCert(){closeMenu();const list=MODULES.map(m=>m.t).join(' · ');
+function openCert(){closeMenu();vista='cert';const N=MODULES.length, list=MODULES.map(m=>m.t).join(' · ');
  app.innerHTML=`<section class="blk"><div class="wrap">
- <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Nota:</b> se habilita al completar los 10 módulos.'}</p>
-  <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${uname.replace(/"/g,'')}" oninput="setName(this.value)">
-  <div style="margin-top:16px"><button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div>${typeof liButtonsHTML==='function'?liButtonsHTML(allDone()):''}</div>
+ <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':`<b>Nota:</b> se habilita al completar los ${N} módulos. Llevás ${nCompl()}.`}</p>
+  <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${esc2(uname)}" oninput="setName(this.value)">
+  <div style="margin-top:16px"><button class="btn" onclick="${allDone()?'window.print()':"toast('El certificado se habilita al completar todos los módulos')"}">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div>${typeof liButtonsHTML==='function'?liButtonsHTML(allDone()):''}</div>
  <div id="cert"><div class="certcard"><div class="cinner"><span class="cmk">${MARK}</span>
   <div class="clabel grad">Certificado de finalización</div><h2>Humana Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
-  <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${uname||'Nombre y Apellido'}</div>
-  <p>por haber completado el programa, recorriendo sus seis módulos y aprobando las autoevaluaciones.</p>
-  <div class="cmods">${list}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
+  <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${esc2(uname)||'Nombre y Apellido'}</div>
+  <p>por haber completado el programa, recorriendo sus ${HA_enLetras(N)} módulos y aprobando las autoevaluaciones.</p>
+  <div class="cmods">${esc2(list)}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
  </div></div></div></div></section>`;
  document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});if(allDone())setTimeout(confetti,300);window.scrollTo(0,0);}
-function renderUserbox(){var b=document.getElementById('userbox');if(!b)return;var compl=[1,2,3,4,5,6,7,8,9,10].filter(done).length,pct=Math.round(compl/10*100);var hi=uname?('<span class="hi">Hola, '+uname.split(' ')[0].replace(/[<>&]/g,'')+'</span>'):'';b.innerHTML=hi+'<span class="mini" title="Tu avance"><span>'+compl+'/10</span><span class="mbar"><i style="width:'+pct+'%"></i></span></span>';}
-function startFromOnb(){var n=(document.getElementById('onbName').value||'').trim(),e=(document.getElementById('onbEmail').value||'').trim(),err=document.getElementById('onbErr');if(n.length<3){err.textContent='Ingresá tu nombre y apellido.';return;}if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){err.textContent='Ingresá un correo electrónico válido.';return;}uname=n;uemail=e;STORE.set('ha_name',n);STORE.set('ha_email',e);err.textContent='';document.getElementById('onb').classList.remove('show');STORE.set('ha_seen',true);renderUserbox();var c=document.getElementById('certname');if(c)c.textContent=n;if(typeof toast==='function')toast('¡Bienvenido, '+n.split(' ')[0]+'!');}
+function renderUserbox(){var b=document.getElementById('userbox');if(!b)return;var N=MODULES.length,compl=nCompl(),pct=N?Math.round(compl/N*100):0;var hi=uname?('<span class="hi">Hola, '+esc2(uname.split(' ')[0])+'</span>'):'';b.innerHTML=hi+'<span class="mini" title="Tu avance en Academy"><span>'+compl+'/'+N+'</span><span class="mbar"><i style="width:'+pct+'%"></i></span></span>';}
 function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';if(window.HA_saveName)window.HA_saveName(v);}
 function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
-function closeOnb(){document.getElementById('onb').classList.remove('show');STORE.set('ha_seen',true);}
 function confetti(){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:130';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d');const cols=['#4733A6','#8E2E9E','#EC2E8E','#F0328C','#ffffff'];let P=[];for(let i=0;i<150;i++)P.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,r:4+Math.random()*5,c:cols[i%cols.length],vy:2+Math.random()*3.5,vx:-1.2+Math.random()*2.4,a:Math.random()*6});let f=0;(function loop(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.a+=.12;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore();});f++;if(f<150)requestAnimationFrame(loop);else c.remove();})();}
 home();
-renderUserbox();(function(){var n=document.getElementById('onbName'),e=document.getElementById('onbEmail');if(n&&uname)n.value=uname;if(e&&uemail)e.value=uemail;})();
-if(!STORE.get('ha_seen',false))setTimeout(()=>document.getElementById('onb').classList.add('show'),600);
 let _deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_deferredPrompt=e;const b=document.getElementById('installBtn');if(b)b.style.display='';});
-function installApp(){if(!_deferredPrompt){toast&&toast('La app ya está instalada o tu navegador no lo permite');return;}_deferredPrompt.prompt();_deferredPrompt.userChoice.finally(()=>{_deferredPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});}
+function installApp(){if(!_deferredPrompt){toast('La app ya está instalada o tu navegador no lo permite');return;}_deferredPrompt.prompt();_deferredPrompt.userChoice.finally(()=>{_deferredPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});}
 window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.style.display='none';});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf)return;_rf=true;location.reload();});}
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=19"></script>
-<script src="extras.js?v=13"></script>
+<script src="firebase-auth.js?v=20"></script>
+<script src="extras.js?v=14"></script>
 </body>
 </html>

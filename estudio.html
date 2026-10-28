@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estudio de contenidos · Humana Academy</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0C0713">
+<link rel="icon" href="mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0C0713;--bg2:#140C1F;--card:#191024;--card2:#1E1430;--line:#2C1F42;--line2:#3A2A52;--tx:#EDE6F5;--mut:#9E90B5;--mut2:#6f6288;--pink:#F0328C;--purple:#8E2E9E;--ok:#39d98a;--warn:#F0C674;--grad:linear-gradient(135deg,#4733A6 0%,#8E2E9E 50%,#EC2E8E 100%)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);font-size:14.5px}
+a{color:inherit}
+button,input,select,textarea{font-family:inherit}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* barra superior */
+.top{position:sticky;top:0;z-index:40;background:rgba(12,7,19,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:62px;padding:0 20px;max-width:1400px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mk{width:36px;height:22px}
+.brand .wm{font-weight:800;font-size:16.5px}
+.brand .tag{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--warn);background:#2A1F0E;border:1px solid #5C4415;padding:3px 8px;border-radius:99px;margin-left:4px}
+.top .r{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--mut)}
+.top .r a{text-decoration:none;font-weight:700;color:var(--tx);border:1px solid var(--line2);padding:8px 14px;border-radius:10px}
+.top .r a:hover{border-color:var(--pink);color:var(--pink)}
+.who{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* estructura */
+.lay{display:grid;grid-template-columns:330px minmax(0,1fr);gap:0;max-width:1400px;margin:0 auto;min-height:calc(100vh - 62px)}
+aside{border-right:1px solid var(--line);padding:20px 16px 40px;background:var(--bg2)}
+main{padding:22px 28px 140px;min-width:0}
+.k{font-size:11.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--mut)}
+/* lista de módulos */
+.newbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--grad);color:#fff;border:none;font-weight:800;font-size:14.5px;padding:13px;border-radius:12px;cursor:pointer;margin:0 0 18px;box-shadow:0 10px 26px rgba(236,46,142,.22)}
+.grp{margin:0 0 18px}
+.grp .k{margin:0 0 8px 4px;display:flex;justify-content:space-between;align-items:center}
+.item{display:flex;align-items:center;gap:10px;padding:10px 10px;border-radius:12px;border:1.5px solid transparent;cursor:pointer;margin:0 0 4px;transition:.12s}
+.item:hover{background:var(--card)}
+.item.on{background:var(--card2);border-color:var(--pink)}
+.item .num{width:30px;height:30px;border-radius:9px;background:var(--grad);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.item.bor .num{background:#2A1F0E;color:var(--warn);border:1px dashed #8a6a24}
+.item.arc .num{background:#241736;color:var(--mut2)}
+.item .tx{flex:1;min-width:0}
+.item .tt{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .st{font-size:11px;color:var(--mut);margin-top:2px}
+.item .mv{display:flex;flex-direction:column;gap:2px}
+.item .mv button{background:none;border:1px solid var(--line2);color:var(--mut);width:24px;height:20px;border-radius:6px;cursor:pointer;font-size:10px;line-height:1;padding:0}
+.item .mv button:hover{color:var(--pink);border-color:var(--pink)}
+.item .mv button:disabled{opacity:.25;cursor:default}
+.pill{font-size:10.5px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap;display:inline-block}
+.p-pub{background:#12281d;color:var(--ok)}.p-bor{background:#2A1F0E;color:var(--warn)}.p-arc{background:#241736;color:var(--mut)}
+.toggle{background:none;border:none;color:var(--mut);font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+/* editor */
+.ehead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 16px}
+.ehead h1{font-size:26px;margin:4px 0 4px;font-weight:800;letter-spacing:-.3px;line-height:1.2}
+.ehead .meta{font-size:12.5px;color:var(--mut)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:0 0 22px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:none;border:none;color:var(--mut);font-weight:700;font-size:14px;padding:12px 14px;cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--tx);border-bottom-color:var(--pink)}
+.tabs button .b{display:inline-block;min-width:20px;padding:1px 6px;border-radius:99px;background:var(--card2);font-size:11px;margin-left:6px;color:var(--mut)}
+.f{margin:0 0 18px}
+.f label{display:block;font-weight:700;font-size:13px;margin:0 0 6px}
+.f .h{font-size:12px;color:var(--mut);margin:0 0 7px;line-height:1.5}
+.inp,textarea.inp,select.inp{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:var(--card2);color:var(--tx);font-size:14.5px}
+.inp:focus{outline:none;border-color:var(--pink)}
+textarea.inp{resize:vertical;min-height:70px;line-height:1.5}
+textarea.inp.auto{min-height:46px;resize:none;overflow:hidden}
+.inp.big{font-size:18px;font-weight:700}
+.cnt{float:right;font-size:11px;color:var(--mut2);font-weight:600}
+/* editor de texto */
+.rte{border:1.5px solid var(--line);border-radius:12px;background:var(--card2);overflow:hidden}
+.rte:focus-within{border-color:var(--pink)}
+.tb{display:flex;gap:4px;flex-wrap:wrap;padding:8px;border-bottom:1px solid var(--line);background:#170f23;position:sticky;top:62px;z-index:5}
+.tb button{background:var(--card);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px 10px;font-size:13px;font-weight:700;cursor:pointer;min-width:34px}
+.tb button:hover{border-color:var(--pink);color:var(--pink)}
+.tb .sep{width:1px;background:var(--line);margin:2px 4px}
+.ed{min-height:340px;padding:18px 22px;outline:none;line-height:1.75;font-size:15.5px;color:#d8cee8}
+.ed h2{font-size:20px;margin:22px 0 8px;color:var(--tx)}
+.ed h3{font-size:17px;margin:18px 0 6px;color:var(--tx)}
+.ed p{margin:0 0 12px}
+.ed strong{color:#fff}
+.ed a{color:var(--pink)}
+.ed .quote,.ed blockquote{border-left:3px solid var(--pink);background:#241736;padding:12px 18px;border-radius:0 12px 12px 0;font-style:italic;color:#efe3f7;margin:14px 0}
+.ed:empty:before{content:attr(data-ph);color:var(--mut2)}
+/* tarjetas */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:0 0 14px}
+.card .ch{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
+.card .ch b{font-size:13px;color:var(--pink);letter-spacing:.5px;text-transform:uppercase}
+.mini{display:flex;gap:6px;flex-wrap:wrap}
+.mini button{background:none;border:1px solid var(--line2);color:var(--mut);border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.mini button:hover{color:var(--pink);border-color:var(--pink)}
+.mini button.del:hover{color:#ff6b8b;border-color:#ff6b8b}
+.mini button:disabled{opacity:.3;cursor:default}
+.opt{display:flex;align-items:center;gap:10px;margin:0 0 8px}
+.opt input[type=radio]{width:20px;height:20px;accent-color:#39d98a;flex-shrink:0;cursor:pointer}
+.opt .inp{flex:1}
+.opt.ok .inp{border-color:#2c6b4c;background:#12241b}
+.opt button{background:none;border:none;color:var(--mut2);font-size:18px;cursor:pointer;padding:4px 6px}
+.opt button:hover{color:#ff6b8b}
+.add{background:none;border:1.5px dashed var(--line2);color:var(--mut);border-radius:12px;padding:12px;width:100%;font-weight:700;font-size:13.5px;cursor:pointer}
+.add:hover{border-color:var(--pink);color:var(--pink)}
+.addsm{background:none;border:none;color:var(--pink);font-weight:700;font-size:12.5px;cursor:pointer;padding:4px 0}
+.row{display:grid;grid-template-columns:170px 1fr;gap:10px;margin:0 0 10px}
+.prev{margin-top:12px}
+.note{background:#17122a;border:1px solid #2c2450;border-radius:12px;padding:13px 16px;font-size:12.5px;color:#b9acd0;line-height:1.6;margin:0 0 16px}
+.note b{color:var(--tx)}
+.err{background:#2b1220;border:1px solid #6b2440;color:#ffb3c9;border-radius:12px;padding:12px 16px;font-size:13px;margin:0 0 14px;line-height:1.6}
+/* barra de acciones */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(20,12,31,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.bar .in{max-width:1400px;margin:0 auto;padding:12px 24px 12px 354px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bar .estado{flex:1;min-width:160px;font-size:12.5px;color:var(--mut)}
+.bar .estado b{color:var(--warn)}
+.bar .estado.ok b{color:var(--ok)}
+.b1{background:var(--grad);color:#fff;border:none;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;cursor:pointer;white-space:nowrap}
+.b2{background:transparent;color:var(--tx);border:1.5px solid var(--line2);font-weight:700;font-size:14px;padding:11px 16px;border-radius:11px;cursor:pointer;white-space:nowrap}
+.b2:hover{border-color:var(--pink);color:var(--pink)}
+.b1:disabled,.b2:disabled{opacity:.45;cursor:default}
+.more{position:relative}
+.menu{position:absolute;bottom:52px;right:0;background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:6px;min-width:220px;display:none;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.menu.on{display:block}
+.menu button{display:block;width:100%;text-align:left;background:none;border:none;color:var(--tx);padding:10px 12px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer}
+.menu button:hover{background:var(--card2);color:var(--pink)}
+/* vista previa (igual que la Academy) */
+.pv{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg)}
+.pv .mhero{padding:34px 28px 30px;border-bottom:1px solid var(--line);background:radial-gradient(600px 260px at 90% 120%,rgba(236,46,142,.25),transparent 70%)}
+.pv .mhero .kk{color:var(--mut);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.pv .mhero h1{font-size:30px;margin:8px 0;font-weight:800}
+.pv .mhero p{color:#cfc3e0;font-size:15.5px;max-width:62ch;line-height:1.55;margin:0}
+.pv .body{padding:4px 22px 22px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0}
+.panel h3.t{margin:0 0 14px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--pink);font-weight:700}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.rc{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card2)}
+.rc.big{grid-column:1/-1}
+.rc .rh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.rc .rh h4{margin:0;font-size:15px}.rc .rh .ico{font-size:22px}
+.rc .dl{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--grad);padding:10px 18px;border-radius:9px;text-decoration:none}
+.rc .player{width:100%;border-radius:12px;background:#000;display:block}
+.vid{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.aud{width:100%;height:90px;border:0;border-radius:12px;background:#120b1c}.aud.sc{height:120px}.aud.sp{height:152px}
+.content h2{font-size:20px;margin:22px 0 8px}
+.content h3{font-size:17px;margin:18px 0 6px}
+.content p,.content li{line-height:1.75;font-size:15.5px;color:#d8cee8}
+.content p{margin:0 0 14px}
+.content ul,.content ol{padding-left:22px;margin:0 0 14px}
+.content strong{color:#fff}.content a{color:var(--pink)}
+.quote{border-left:3px solid var(--pink);background:var(--card2);padding:14px 20px;border-radius:0 12px 12px 0;font-style:italic;color:#efe3f7;margin:18px 0;font-size:16px}
+.q{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:none}
+.qt{font-weight:600;margin-bottom:10px}
+.qo{display:block;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:8px;font-size:14.5px;background:var(--card2)}
+.qo.c{border-color:var(--ok);background:rgba(57,217,138,.10)}
+.qe{font-size:13px;color:var(--mut);margin-top:4px}
+/* historial */
+.ver{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4px;border-bottom:1px solid var(--line)}
+.ver b{font-size:13.5px}.ver span{font-size:12px;color:var(--mut)}
+/* estados */
+.vacio{text-align:center;padding:70px 20px;color:var(--mut)}
+.vacio h2{color:var(--tx);font-size:22px;margin:10px 0 8px}
+.gate{min-height:calc(100vh - 62px);display:flex;align-items:center;justify-content:center;padding:24px}
+.gate .box{background:var(--card);border:1px solid var(--line);border-radius:20px;max-width:440px;padding:32px 28px;text-align:center}
+.gate h2{margin:6px 0 8px;font-size:21px}
+.gate p{color:var(--mut);line-height:1.6;margin:0 0 18px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,40px);background:#241736;border:1px solid var(--line2);color:var(--tx);padding:12px 20px;border-radius:12px;font-weight:700;font-size:13.5px;z-index:120;opacity:0;transition:.3s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.selmob{display:none}
+@media(max-width:900px){
+ .lay{grid-template-columns:1fr}
+ aside{display:none}
+ main{padding:16px 16px 170px}
+ .selmob{display:block;margin:0 0 14px}
+ .bar .in{padding:10px 14px}
+ .bar .estado{flex-basis:100%}
+ .bar .b1,.bar .b2{flex:1}
+ .row{grid-template-columns:1fr}
+ .who{display:none}
+ .tb{top:62px}
+ .ehead h1{font-size:22px}
+ .top .in{padding:0 14px}
+ .brand .tag{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="index.html"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><span class="wm">Humana <b class="grad">Academy</b></span><span class="tag">Estudio</span></a>
+  <div class="r"><span class="who" id="who"></span><a href="index.html" id="verAcad">Ver la Academy ↗</a></div>
+</div></header>
+<div id="root"><div class="gate"><div class="box"><h2>Cargando el Estudio…</h2><p>Un segundo.</p></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="modulos-base.js?v=1"></script>
+<script src="contenido.js?v=1"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* =====================================================================
+   Estudio de contenidos — Humana Academy
+   Crear, editar, ordenar, publicar y archivar los módulos de la Academy.
+   Todo se guarda en la misma base de la plataforma y aparece solo en la Academy.
+   ===================================================================== */
+(function(){
+var EDITORES=["gustavo.insfran@infinitypharma.com.ar","k.ojanguren@humanahc.com"];
+firebase.initializeApp({apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"});
+var auth=firebase.auth(), db=firebase.firestore(), FV=firebase.firestore.FieldValue, col=db.collection('modulos');
+var root=document.getElementById('root');
+var yo=null;
+var S={docs:{}, id:null, f:null, base:'', tab:'contenido', verArch:false, versiones:null, cargado:0};
+
+function esc(s){ return (''+(s==null?'':s)).replace(/[<>&"]/g,function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]; }); }
+function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('on'); clearTimeout(toast._t); toast._t=setTimeout(function(){ t.classList.remove('on'); },2800); }
+function clon(o){ return JSON.parse(JSON.stringify(o)); }
+function ms(ts){ return ts&&ts.toMillis?ts.toMillis():0; }
+function fecha(ts){ var m=ms(ts); if(!m) return ''; var d=new Date(m), hoy=new Date();
+  var mismo=d.toDateString()===hoy.toDateString();
+  var hh=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+  return mismo?('hoy '+hh):d.toLocaleDateString('es-AR',{day:'numeric',month:'short'}).replace('.','')+' '+hh; }
+function quien(mail){ if(!mail) return ''; if(/ojanguren/i.test(mail)) return 'Karina'; if(/insfran/i.test(mail)) return 'Gustavo'; return mail.split('@')[0]; }
+
+/* ---------------- acceso ---------------- */
+function pantalla(t,p,btn){ root.innerHTML='<div class="gate"><div class="box"><h2>'+t+'</h2><p>'+p+'</p>'+(btn||'')+'</div></div>'; }
+auth.onAuthStateChanged(function(u){
+  yo=u;
+  if(!u){ pantalla('Entrá con tu cuenta','El Estudio usa la misma cuenta de la Academy. Entrá y te traemos de vuelta acá.','<a class="b1" style="text-decoration:none;display:inline-block" href="index.html?volver=estudio.html">Entrar a la Academy</a>'); return; }
+  if(EDITORES.indexOf((u.email||'').toLowerCase())<0){ pantalla('Este espacio es del equipo de contenidos','Tu cuenta puede hacer la formación, pero no editarla. Si necesitás acceso, pedíselo a Gustavo.','<a class="b2" style="text-decoration:none;display:inline-block" href="index.html">Volver a la Academy</a>'); return; }
+  document.getElementById('who').textContent=u.email;
+  cargarTodo();
+});
+
+/* ---------------- datos ---------------- */
+function cargarTodo(selec){
+  return col.get().then(function(qs){
+    S.docs={}; qs.forEach(function(d){ var x=d.data(); x.id=d.id; S.docs[d.id]=x; });
+    S.cargado=Date.now();
+    if(!Object.keys(S.docs).length){ vistaImportar(); return; }
+    var id=selec||S.id||(lista('recorrido')[0]||{}).id;
+    if(id && S.docs[id]) abrir(id,true); else pintar();
+  }).catch(function(e){
+    if(/permission/i.test(e.message||'')) pantalla('Falta habilitar el Estudio','La base todavía no tiene las reglas que permiten editar contenidos. Avisale a Gustavo.','');
+    else pantalla('No se pudo cargar','Revisá la conexión y recargá la página.<br><small>'+esc(e.message)+'</small>','<button class="b1" onclick="location.reload()">Recargar</button>');
+  });
+}
+function lista(grupo){
+  var arr=Object.keys(S.docs).map(function(k){ return S.docs[k]; });
+  if(grupo==='recorrido') arr=arr.filter(function(d){ return d.tipo!=='caso' && d.estado!=='archivado'; });
+  else if(grupo==='caso') arr=arr.filter(function(d){ return d.tipo==='caso' && d.estado!=='archivado'; });
+  else if(grupo==='archivado') arr=arr.filter(function(d){ return d.estado==='archivado'; });
+  return arr.sort(function(a,b){ return (a.orden||0)-(b.orden||0) || (a.n||0)-(b.n||0); });
+}
+function numeroVisible(d){ // posición entre los publicados, como lo ve la gente
+  if(d.tipo==='caso'||d.estado!=='publicado') return null;
+  return lista('recorrido').filter(function(x){ return x.estado==='publicado'; }).indexOf(d)+1;
+}
+
+/* Primera vez: subir el recorrido actual a la base */
+function vistaImportar(){
+  root.innerHTML='<div class="gate"><div class="box"><div style="font-size:42px">📚</div><h2>Arranquemos el Estudio</h2><p>Para editar, primero copiamos a la base los '+HA_BASE.modulos.length+' módulos y el caso integrador que hoy tiene la Academy. Nada cambia para quienes están cursando.</p><button class="b1" id="imp">Importar el recorrido actual</button></div></div>';
+  document.getElementById('imp').onclick=function(){ this.disabled=true; this.textContent='Importando…'; importarBase().then(function(){ toast('Listo: recorrido importado'); cargarTodo(); }); };
+}
+function importarBase(){
+  var b=db.batch(), ahora=FV.serverTimestamp();
+  HA_BASE.modulos.concat([HA_BASE.caso]).forEach(function(m){
+    var d=clon(m); var id=d.id; delete d.id;
+    d.creadoEn=ahora; d.editadoEn=ahora; d.editadoPor=yo.email; d.creadoPor=yo.email;
+    b.set(col.doc(id), d);
+  });
+  return b.commit();
+}
+
+/* ---------------- abrir / formulario ---------------- */
+function nuevoForm(d){
+  return {t:d.t||'', lead:d.lead||'', etiqueta:d.etiqueta||'', body:d.body||'', quiz:clon(d.quiz||[]), recursos:clon(d.recursos||[])};
+}
+function sucio(){ if(!S.f) return false; leerEditor(); return JSON.stringify(S.f)!==S.base; }
+function claveLocal(id){ return 'estudio_borrador_'+id; }
+function guardarLocal(){ if(!S.id||!S.f) return; try{ if(sucio()) localStorage.setItem(claveLocal(S.id), JSON.stringify({f:S.f,cuando:Date.now()})); else localStorage.removeItem(claveLocal(S.id)); }catch(e){} }
+setInterval(function(){ guardarLocal(); pintarBarra(); }, 4000);
+window.addEventListener('beforeunload',function(e){ if(sucio()){ guardarLocal(); e.preventDefault(); e.returnValue=''; } });
+
+function abrir(id,forzar){
+  if(!forzar && S.id && S.id!==id && sucio()){
+    if(!confirm('Tenés cambios sin guardar en este módulo. ¿Salir igual? (Quedan guardados en este equipo y te los ofrezco al volver.)')) return;
+    guardarLocal();
+  }
+  S.id=id; var d=S.docs[id];
+  S.f=nuevoForm(d); S.base=JSON.stringify(S.f); S.versiones=null;
+  S.loadedEdit=ms(d.editadoEn);
+  try{
+    var loc=JSON.parse(localStorage.getItem(claveLocal(id))||'null');
+    if(loc && loc.f && JSON.stringify(loc.f)!==S.base){
+      if(confirm('Encontré cambios sin guardar de este módulo ('+new Date(loc.cuando).toLocaleString('es-AR')+'). ¿Los recupero?')) S.f=loc.f;
+      else localStorage.removeItem(claveLocal(id));
+    }
+  }catch(e){}
+  pintar();
+}
+
+/* ---------------- pintar ---------------- */
+function itemHTML(d,i,arr,mover){
+  var est=d.estado==='publicado'?'':(d.estado==='borrador'?' bor':' arc');
+  var nv=numeroVisible(d);
+  var num=d.tipo==='caso'?'★':(nv||'·');
+  var st=d.estado==='publicado'?'<span class="pill p-pub">Publicado</span>':d.estado==='borrador'?'<span class="pill p-bor">Borrador</span>':'<span class="pill p-arc">Archivado</span>';
+  var mv=mover?'<div class="mv"><button title="Subir" onclick="event.stopPropagation();E.mover(\''+d.id+'\',-1)" '+(i===0?'disabled':'')+'>▲</button><button title="Bajar" onclick="event.stopPropagation();E.mover(\''+d.id+'\',1)" '+(i===arr.length-1?'disabled':'')+'>▼</button></div>':'';
+  return '<div class="item'+est+(S.id===d.id?' on':'')+'" onclick="E.abrir(\''+d.id+'\')"><span class="num">'+num+'</span><div class="tx"><div class="tt">'+esc(d.t||'Sin título')+'</div><div class="st">'+st+(d.editadoPor?' · '+quien(d.editadoPor)+' '+fecha(d.editadoEn):'')+'</div></div>'+mv+'</div>';
+}
+function asideHTML(){
+  var rec=lista('recorrido'), caso=lista('caso'), arc=lista('archivado');
+  var h='<button class="newbtn" onclick="E.nuevo()">＋ Nuevo módulo</button>';
+  h+='<div class="grp"><div class="k"><span>Recorrido · '+rec.filter(function(x){return x.estado==='publicado';}).length+' publicados</span></div>'+rec.map(function(d,i){ return itemHTML(d,i,rec,true); }).join('')+'</div>';
+  if(caso.length) h+='<div class="grp"><div class="k">Cierre</div>'+caso.map(function(d,i){ return itemHTML(d,i,caso,false); }).join('')+'</div>';
+  if(arc.length) h+='<div class="grp"><div class="k"><span>Archivados · '+arc.length+'</span><button class="toggle" onclick="E.verArch()">'+(S.verArch?'Ocultar':'Ver')+'</button></div>'+(S.verArch?arc.map(function(d,i){ return itemHTML(d,i,arc,false); }).join(''):'')+'</div>';
+  h+='<div class="note" style="margin-top:22px"><b>Cómo funciona.</b> Lo publicado aparece solo en la Academy, en este orden. Los borradores solo se ven acá. Nada se borra: lo archivado se puede recuperar, y cada guardado deja una versión en el historial.</div>';
+  return h;
+}
+function selMobHTML(){
+  var todos=lista('recorrido').concat(lista('caso')).concat(S.verArch?lista('archivado'):[]);
+  return '<div class="selmob"><div style="display:flex;gap:8px"><select class="inp" onchange="E.abrir(this.value)">'+todos.map(function(d){ var nv=numeroVisible(d); return '<option value="'+d.id+'"'+(d.id===S.id?' selected':'')+'>'+(d.tipo==='caso'?'★ ':(nv?nv+'. ':'· '))+esc(d.t)+(d.estado!=='publicado'?' ('+d.estado+')':'')+'</option>'; }).join('')+'</select><button class="b1" style="padding:10px 14px" onclick="E.nuevo()">＋</button></div>'
+   +'<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="b2" style="padding:7px 12px;font-size:12.5px" onclick="E.mover(\''+S.id+'\',-1)">▲ Subir</button><button class="b2" style="padding:7px 12px;font-size:12.5px" onclick="E.mover(\''+S.id+'\',1)">▼ Bajar</button>'+(lista('archivado').length?'<button class="b2" style="padding:7px 12px;font-size:12.5px" onclick="E.verArch()">'+(S.verArch?'Ocultar archivados':'Ver archivados')+'</button>':'')+'</div></div>';
+}
+
+function pintar(){
+  var d=S.docs[S.id];
+  if(!d){ root.innerHTML='<div class="lay"><aside>'+asideHTML()+'</aside><main><div class="vacio"><div style="font-size:40px">📝</div><h2>Elegí un módulo</h2><p>O creá uno nuevo desde «Nuevo módulo».</p></div></main></div>'; return; }
+  var nq=S.f.quiz.length, nr=S.f.recursos.length;
+  var tabs=[['contenido','Contenido'],['recursos','Recursos',nr],['quiz','Autoevaluación',nq],['vista','Vista previa'],['historial','Historial']];
+  var nv=numeroVisible(d);
+  var est=d.estado==='publicado'?'<span class="pill p-pub">Publicado</span>':d.estado==='borrador'?'<span class="pill p-bor">Borrador</span>':'<span class="pill p-arc">Archivado</span>';
+  root.innerHTML='<div class="lay"><aside id="aside">'+asideHTML()+'</aside><main>'
+   +selMobHTML()
+   +'<div class="ehead"><div><div class="k">'+(d.tipo==='caso'?'Caso integrador':(nv?'Módulo '+nv+' en la Academy':'Módulo sin publicar'))+' &nbsp;'+est+'</div><h1 id="htit">'+esc(S.f.t||'Sin título')+'</h1>'
+   +'<div class="meta">'+(d.editadoPor?'Última edición: '+quien(d.editadoPor)+', '+fecha(d.editadoEn):'')+'</div></div></div>'
+   +'<div class="tabs">'+tabs.map(function(t){ return '<button class="'+(S.tab===t[0]?'on':'')+'" onclick="E.tab(\''+t[0]+'\')">'+t[1]+(t[2]!=null?'<span class="b">'+t[2]+'</span>':'')+'</button>'; }).join('')+'</div>'
+   +'<div id="panel"></div></main></div>'
+   +'<div class="bar"><div class="in" id="bar"></div></div>';
+  pintarPanel(); pintarBarra();
+}
+
+function pintarPanel(){
+  var p=document.getElementById('panel'); if(!p) return;
+  var f=S.f;
+  if(S.tab==='contenido'){
+    p.innerHTML=
+      '<div class="f"><label>Título <span class="cnt" id="c_t"></span></label><input class="inp big" maxlength="120" value="'+esc(f.t)+'" oninput="E.set(\'t\',this.value)" placeholder="Por ejemplo: La familia como parte del equipo"></div>'
+     +'<div class="f"><label>Bajada</label><div class="h">Una frase que cuenta de qué se trata. Aparece en la tarjeta del módulo y debajo del título.</div><textarea class="inp" rows="2" maxlength="260" oninput="E.set(\'lead\',this.value)" placeholder="Qué se va a llevar quien haga este módulo.">'+esc(f.lead)+'</textarea></div>'
+     +(S.docs[S.id].tipo==='caso'?'':'<div class="f"><label>Frase del mapa</label><div class="h">Dos a cuatro palabras que resumen la idea. Aparecen en el mapa del programa.</div><input class="inp" maxlength="40" value="'+esc(f.etiqueta)+'" oninput="E.set(\'etiqueta\',this.value)" placeholder="Por ejemplo: El cero clínico"></div>')
+     +'<div class="f"><label>Contenido</label><div class="h">Escribí o pegá el texto. Usá «Subtítulo» para separar secciones y «Cita» para destacar una idea. Si pegás desde Word o Google Docs, el formato se limpia solo.</div>'
+     +'<div class="rte"><div class="tb">'
+     +'<button title="Subtítulo" onmousedown="event.preventDefault()" onclick="E.cmd(\'h2\')">Subtítulo</button>'
+     +'<button title="Párrafo" onmousedown="event.preventDefault()" onclick="E.cmd(\'p\')">Párrafo</button><span class="sep"></span>'
+     +'<button title="Negrita" onmousedown="event.preventDefault()" onclick="E.cmd(\'bold\')"><b>N</b></button>'
+     +'<button title="Cursiva" onmousedown="event.preventDefault()" onclick="E.cmd(\'italic\')"><i>C</i></button><span class="sep"></span>'
+     +'<button title="Lista" onmousedown="event.preventDefault()" onclick="E.cmd(\'ul\')">• Lista</button>'
+     +'<button title="Lista numerada" onmousedown="event.preventDefault()" onclick="E.cmd(\'ol\')">1. Lista</button>'
+     +'<button title="Cita destacada" onmousedown="event.preventDefault()" onclick="E.cmd(\'quote\')">❝ Cita</button>'
+     +'<button title="Enlace" onmousedown="event.preventDefault()" onclick="E.cmd(\'link\')">🔗</button><span class="sep"></span>'
+     +'<button title="Deshacer" onmousedown="event.preventDefault()" onclick="E.cmd(\'undo\')">↶</button>'
+     +'<button title="Quitar formato" onmousedown="event.preventDefault()" onclick="E.cmd(\'clear\')">Limpiar</button>'
+     +'</div><div class="ed content" id="ed" contenteditable="true" data-ph="Empezá a escribir…"></div></div></div>';
+    var ed=document.getElementById('ed'); var limpioAntes=JSON.stringify(S.f)===S.base; ed.innerHTML=f.body; f.body=ed.innerHTML; if(limpioAntes) S.base=JSON.stringify(S.f);
+    ed.addEventListener('input',function(){ leerEditor(); pintarBarra(); });
+    ed.addEventListener('paste',function(e){
+      var cd=e.clipboardData; if(!cd) return; e.preventDefault();
+      var html=cd.getData('text/html'), txt=cd.getData('text/plain');
+      var limpio=html?HA_sanear(html):txt.split(/\n{2,}|\r\n\r\n/).map(function(par){ return '<p>'+esc(par).replace(/\n/g,'<br>')+'</p>'; }).join('');
+      document.execCommand('insertHTML',false,limpio); leerEditor(); pintarBarra();
+    });
+    contar();
+  }
+  else if(S.tab==='recursos'){
+    p.innerHTML='<div class="note"><b>Video y audio.</b> Subilos a YouTube (como «No listado») o a Google Drive (compartido como «Cualquier persona con el enlace») y pegá el enlace acá. La Academy arma el reproductor sola. También sirven Vimeo, SoundCloud y Spotify.<br><b>Documentos.</b> Pegá el enlace de Drive, o el nombre de un archivo que ya esté en la Academy (por ejemplo, Cuadernillo_Modulo_1.pdf).</div>'
+      +'<div id="rlist"></div><button class="add" onclick="E.addRec()">＋ Agregar recurso</button>';
+    pintarRecursos();
+  }
+  else if(S.tab==='quiz'){
+    p.innerHTML='<div class="note"><b>Cómo se aprueba.</b> El módulo se completa con 60% de respuestas correctas o más. Marcá con el círculo la respuesta correcta de cada pregunta. La explicación aparece cuando la persona corrige.</div><div id="qlist"></div><button class="add" onclick="E.addQ()">＋ Agregar pregunta</button>';
+    pintarQuiz();
+  }
+  else if(S.tab==='vista'){ p.innerHTML=vistaHTML(); }
+  else if(S.tab==='historial'){ p.innerHTML='<div class="note">Cada vez que alguien guarda, la versión anterior queda acá. «Recuperar» la carga en el editor: revisala y guardá para que vuelva a la Academy.</div><div id="vlist" class="card"><p style="color:var(--mut)">Cargando…</p></div>'; cargarVersiones(); }
+}
+function contar(){ var c=document.getElementById('c_t'); if(c) c.textContent=(S.f.t||'').length+'/120'; }
+function leerEditor(){ var ed=document.getElementById('ed'); if(ed && S.f) S.f.body=ed.innerHTML; }
+
+function pintarRecursos(){
+  var el=document.getElementById('rlist'); if(!el) return;
+  if(!S.f.recursos.length){ el.innerHTML='<div class="card" style="text-align:center;color:var(--mut)">Este módulo no tiene recursos. Es opcional: el módulo funciona igual.</div>'; return; }
+  el.innerHTML=S.f.recursos.map(function(r,i){
+    var tipos=['video','audio','documento','enlace'];
+    var ok=HA_urlSegura(r.url);
+    var inc=(r.tipo==='video'||r.tipo==='audio')&&ok?HA_incrustar(r.tipo,ok):null;
+    var aviso=!r.url?'':(!ok?'<div class="err" style="margin:10px 0 0">El enlace tiene que empezar con https://</div>':((r.tipo==='video'||r.tipo==='audio')&&!inc?'<div class="note" style="margin:10px 0 0">No reconozco este enlace como reproductor: en la Academy va a aparecer como botón para abrirlo.</div>':''));
+    return '<div class="card"><div class="ch"><b>Recurso '+(i+1)+'</b><div class="mini"><button onclick="E.movRec('+i+',-1)" '+(i===0?'disabled':'')+'>▲</button><button onclick="E.movRec('+i+',1)" '+(i===S.f.recursos.length-1?'disabled':'')+'>▼</button><button class="del" onclick="E.delRec('+i+')">Quitar</button></div></div>'
+      +'<div class="row"><select class="inp" onchange="E.setRec('+i+',\'tipo\',this.value,true)">'+tipos.map(function(t){ return '<option value="'+t+'"'+(r.tipo===t?' selected':'')+'>'+HA_TIPOS[t]+'</option>'; }).join('')+'</select>'
+      +'<input class="inp" value="'+esc(r.titulo)+'" placeholder="Título (por ejemplo: Resumen en video)" oninput="E.setRec('+i+',\'titulo\',this.value)"></div>'
+      +'<input class="inp" value="'+esc(r.url)+'" placeholder="https://… o nombre del archivo" onchange="E.setRec('+i+',\'url\',this.value.trim(),true)">'
+      +aviso+(ok?'<div class="prev res">'+HA_recursoHTML(r)+'</div>':'')+'</div>';
+  }).join('');
+}
+var LETRAS='ABCDEF';
+function pintarQuiz(){
+  var el=document.getElementById('qlist'); if(!el) return;
+  if(!S.f.quiz.length){ el.innerHTML='<div class="card" style="text-align:center;color:var(--mut)">Todavía no hay preguntas. Un módulo publicado necesita al menos una para poder completarse.</div>'; return; }
+  el.innerHTML=S.f.quiz.map(function(q,i){
+    return '<div class="card"><div class="ch"><b>Pregunta '+(i+1)+'</b><div class="mini"><button onclick="E.movQ('+i+',-1)" '+(i===0?'disabled':'')+'>▲</button><button onclick="E.movQ('+i+',1)" '+(i===S.f.quiz.length-1?'disabled':'')+'>▼</button><button onclick="E.dupQ('+i+')">Duplicar</button><button class="del" onclick="E.delQ('+i+')">Quitar</button></div></div>'
+      +'<div class="f" style="margin-bottom:12px"><textarea class="inp auto" rows="2" placeholder="Escribí la pregunta" oninput="E.setQ('+i+',\'q\',this.value);E.alto(this)">'+esc(q.q)+'</textarea></div>'
+      +q.o.map(function(o,j){ return '<div class="opt'+(q.c===j?' ok':'')+'"><input type="radio" name="c'+i+'" title="Respuesta correcta" '+(q.c===j?'checked':'')+' onchange="E.setQ('+i+',\'c\','+j+',true)"><textarea class="inp auto" rows="1" placeholder="Opción '+LETRAS[j]+'" oninput="E.setOpt('+i+','+j+',this.value);E.alto(this)">'+esc(o)+'</textarea>'+(q.o.length>2?'<button title="Quitar opción" onclick="E.delOpt('+i+','+j+')">×</button>':'')+'</div>'; }).join('')
+      +(q.o.length<6?'<button class="addsm" onclick="E.addOpt('+i+')">＋ Agregar opción</button>':'')
+      +'<div class="f" style="margin:12px 0 0"><label style="font-size:12px;color:var(--mut)">Explicación (se muestra al corregir)</label><input class="inp" value="'+esc(q.e)+'" placeholder="Por qué esa es la correcta" oninput="E.setQ('+i+',\'e\',this.value)"></div></div>';
+  }).join('');
+  Array.prototype.forEach.call(el.querySelectorAll('textarea.auto'),E.alto);
+}
+function vistaHTML(){
+  leerEditor(); var f=S.f, d=S.docs[S.id], nv=numeroVisible(d);
+  var quiz=(f.quiz||[]).map(function(q,i){ return '<div class="q"><div class="qt">'+(i+1)+'. '+esc(q.q)+'</div>'+q.o.map(function(o,j){ return (o||'').trim()?'<span class="qo'+(q.c===j?' c':'')+'">'+esc(o)+'</span>':''; }).join('')+(q.e?'<div class="qe">✔ '+esc(q.e)+'</div>':'')+'</div>'; }).join('');
+  return '<div class="note">Así se va a ver en la Academy. La respuesta correcta aparece marcada solo acá.</div>'
+   +'<div class="pv"><div class="mhero"><div class="kk">'+(d.tipo==='caso'?'Caso integrador':'Módulo '+(nv||'nuevo'))+'</div><h1>'+esc(f.t||'Sin título')+'</h1><p>'+esc(f.lead)+'</p></div><div class="body">'
+   +HA_recursosPanel(f.recursos)
+   +'<div class="panel content"><h3 class="t">'+(d.tipo==='caso'?'El caso':'Contenido')+'</h3>'+HA_sanear(f.body)+'</div>'
+   +(quiz?'<div class="panel"><h3 class="t">Autoevaluación</h3>'+quiz+'</div>':'')+'</div></div>';
+}
+function cargarVersiones(){
+  col.doc(S.id).collection('versiones').orderBy('guardadoEn','desc').limit(30).get().then(function(qs){
+    var arr=[]; qs.forEach(function(v){ var x=v.data(); x._id=v.id; arr.push(x); }); S.versiones=arr;
+    var el=document.getElementById('vlist'); if(!el) return;
+    if(!arr.length){ el.innerHTML='<p style="color:var(--mut);margin:0">Todavía no hay versiones anteriores. Aparecen a partir del próximo guardado.</p>'; return; }
+    el.innerHTML=arr.map(function(v,i){ return '<div class="ver"><div><b>'+esc(v.t||'Sin título')+'</b><br><span>'+fecha(v.guardadoEn)+' · antes de un cambio de '+quien(v.reemplazadaPor)+' · estado: '+esc(v.estado||'')+'</span></div><button class="b2" style="padding:8px 12px;font-size:12.5px" onclick="E.recuperar('+i+')">Recuperar</button></div>'; }).join('');
+  }).catch(function(e){ var el=document.getElementById('vlist'); if(el) el.innerHTML='<p style="color:var(--mut)">No se pudo leer el historial. '+esc(e.message)+'</p>'; });
+}
+
+function pintarBarra(){
+  var b=document.getElementById('bar'); if(!b) return; var d=S.docs[S.id]; if(!d) return;
+  var hay=sucio();
+  var ya=document.getElementById('estadoTxt');
+  var est='<div class="estado'+(hay?'':' ok')+'" id="estadoTxt">'+(hay?'<b>●</b> Cambios sin guardar':'<b>✓</b> Todo guardado')+'</div>';
+  var botones;
+  if(d.estado==='publicado') botones='<button class="b1" onclick="E.guardar()" '+(hay?'':'disabled')+'>Guardar y actualizar</button>';
+  else if(d.estado==='borrador') botones='<button class="b2" onclick="E.guardar()" '+(hay?'':'disabled')+'>Guardar borrador</button><button class="b1" onclick="E.publicar()">Publicar</button>';
+  else botones='<button class="b1" onclick="E.restaurar()">Recuperar del archivo</button>';
+  var menu='<div class="more"><button class="b2" onclick="E.menu(event)">Más ▾</button><div class="menu" id="menu">'
+    +'<button onclick="E.tab(\'vista\')">👁 Vista previa</button>'
+    +(d.tipo!=='caso'?'<button onclick="E.duplicar()">⧉ Duplicar módulo</button>':'')
+    +(d.estado==='publicado'?'<button onclick="E.despublicar()">↩ Pasar a borrador</button>':'')
+    +(d.estado!=='archivado'?'<button onclick="E.archivar()">🗄 Archivar</button>':'')
+    +(hay?'<button onclick="E.descartar()">✕ Descartar cambios</button>':'')
+    +'<button onclick="window.open(\'index.html\',\'_blank\')">↗ Ver la Academy</button>'
+    +'</div></div>';
+  if(ya && b.dataset.k===d.estado+hay) return; // nada cambió
+  b.dataset.k=d.estado+hay;
+  b.innerHTML=est+botones+menu;
+}
+
+/* ---------------- validar y guardar ---------------- */
+function problemas(f,paraPublicar){
+  var p=[];
+  if(!(f.t||'').trim()) p.push('Falta el título.');
+  var txt=(new DOMParser().parseFromString(f.body||'','text/html').body.textContent||'').trim();
+  if(paraPublicar && txt.length<20) p.push('El contenido está vacío o es muy corto.');
+  if(paraPublicar && S.docs[S.id].tipo!=='caso' && !f.quiz.length) p.push('Agregá al menos una pregunta en la autoevaluación.');
+  f.quiz.forEach(function(q,i){
+    var llenas=q.o.filter(function(o){ return (o||'').trim(); });
+    if(!(q.q||'').trim()) p.push('La pregunta '+(i+1)+' no tiene texto.');
+    if(llenas.length<2) p.push('La pregunta '+(i+1)+' necesita al menos dos opciones.');
+    if(q.c==null||!(q.o[q.c]||'').trim()) p.push('Marcá la respuesta correcta de la pregunta '+(i+1)+'.');
+  });
+  f.recursos.forEach(function(r,i){ if(!HA_urlSegura(r.url)) p.push('El recurso '+(i+1)+' no tiene un enlace válido.'); });
+  return p;
+}
+function mostrarProblemas(p){
+  S.tab=S.tab; var el=document.getElementById('panel');
+  var box=document.createElement('div'); box.className='err'; box.innerHTML='<b>Antes de guardar:</b><br>'+p.map(esc).join('<br>');
+  var prev=document.querySelector('#panel > .err'); if(prev) prev.remove();
+  el.insertBefore(box, el.firstChild); window.scrollTo(0,0);
+}
+function limpiarForm(f){
+  var o=clon(f);
+  o.t=o.t.trim(); o.lead=(o.lead||'').trim(); o.etiqueta=(o.etiqueta||'').trim();
+  o.body=HA_sanear(o.body);
+  o.quiz=o.quiz.map(function(q){ // saca opciones vacías y reacomoda la correcta
+    var nuevas=[], c=0; q.o.forEach(function(x,j){ if((x||'').trim()){ if(j===q.c) c=nuevas.length; nuevas.push(x.trim()); } });
+    return {q:q.q.trim(), o:nuevas, c:c, e:(q.e||'').trim()};
+  });
+  o.recursos=o.recursos.map(function(r){ return {tipo:r.tipo, titulo:(r.titulo||'').trim(), url:r.url.trim()}; });
+  return o;
+}
+/* Guarda: deja copia de la versión anterior, revisa que nadie haya guardado en el medio, y escribe. */
+function escribir(cambios, msj){
+  var ref=col.doc(S.id);
+  return ref.get().then(function(snap){
+    var actual=snap.exists?snap.data():null;
+    if(actual && ms(actual.editadoEn)>S.loadedEdit+1000 && actual.editadoPor!==yo.email){
+      if(!confirm(quien(actual.editadoPor)+' guardó cambios en este módulo mientras lo editabas ('+fecha(actual.editadoEn)+'). Si seguís, tu versión reemplaza la suya (la suya queda en el historial). ¿Seguir?')) throw {cancel:true};
+    }
+    var b=db.batch();
+    if(actual){
+      var copia={}; ['t','lead','etiqueta','body','quiz','recursos','estado','orden','n','tipo','editadoPor','editadoEn'].forEach(function(k){ if(actual[k]!==undefined) copia[k]=actual[k]; });
+      copia.guardadoEn=FV.serverTimestamp(); copia.reemplazadaPor=yo.email;
+      b.set(ref.collection('versiones').doc(), copia);
+    }
+    cambios.editadoEn=FV.serverTimestamp(); cambios.editadoPor=yo.email;
+    b.set(ref, cambios, {merge:true});
+    return b.commit();
+  }).then(function(){
+    try{ localStorage.removeItem(claveLocal(S.id)); }catch(e){}
+    toast(msj||'Guardado'); return cargarTodo(S.id);
+  }).catch(function(e){
+    if(e&&e.cancel) return;
+    alert('No se pudo guardar.\n\n'+(e&&e.message||e)+'\n\nTus cambios siguen acá: probá de nuevo en un momento.');
+  });
+}
+
+/* ---------------- acciones ---------------- */
+window.E={
+  abrir:function(id){ abrir(id); },
+  tab:function(t){ leerEditor(); S.tab=t; var m=document.getElementById('menu'); if(m)m.classList.remove('on'); pintar(); window.scrollTo(0,0); },
+  verArch:function(){ S.verArch=!S.verArch; pintar(); },
+  set:function(k,v){ S.f[k]=v; if(k==='t'){ var h=document.getElementById('htit'); if(h)h.textContent=v||'Sin título'; contar(); } pintarBarra(); },
+  cmd:function(c){
+    var ed=document.getElementById('ed'); if(!ed) return; ed.focus();
+    if(c==='h2') document.execCommand('formatBlock',false,'h2');
+    else if(c==='p') document.execCommand('formatBlock',false,'p');
+    else if(c==='bold') document.execCommand('bold');
+    else if(c==='italic') document.execCommand('italic');
+    else if(c==='ul') document.execCommand('insertUnorderedList');
+    else if(c==='ol') document.execCommand('insertOrderedList');
+    else if(c==='undo') document.execCommand('undo');
+    else if(c==='clear'){ document.execCommand('removeFormat'); document.execCommand('formatBlock',false,'p'); }
+    else if(c==='quote'){
+      var sel=window.getSelection(); var n=sel.anchorNode; while(n&&n!==ed&&!(n.nodeType===1&&/^(P|H2|H3|DIV|LI)$/.test(n.tagName))) n=n.parentNode;
+      if(n&&n!==ed){ if(n.tagName==='DIV'&&n.className==='quote'){ var p=document.createElement('p'); p.innerHTML=n.innerHTML; n.replaceWith(p); } else { var q=document.createElement('div'); q.className='quote'; q.innerHTML=n.innerHTML; n.replaceWith(q); } }
+    }
+    else if(c==='link'){ var u=prompt('Pegá el enlace (https://…)'); if(u){ if(!/^https?:\/\//i.test(u)) u='https://'+u; document.execCommand('createLink',false,u); } }
+    leerEditor(); pintarBarra();
+  },
+  /* recursos */
+  addRec:function(){ S.f.recursos.push({tipo:'video',titulo:'',url:''}); pintarRecursos(); pintarBarra(); },
+  delRec:function(i){ S.f.recursos.splice(i,1); pintarRecursos(); pintarBarra(); },
+  movRec:function(i,d){ var a=S.f.recursos, j=i+d; if(j<0||j>=a.length) return; var t=a[i]; a[i]=a[j]; a[j]=t; pintarRecursos(); pintarBarra(); },
+  setRec:function(i,k,v,re){ S.f.recursos[i][k]=v; if(re) pintarRecursos(); pintarBarra(); },
+  /* preguntas */
+  addQ:function(){ S.f.quiz.push({q:'',o:['','','',''],c:null,e:''}); pintarQuiz(); pintarBarra(); setTimeout(function(){ var t=document.querySelectorAll('#qlist textarea'); if(t.length){ t[t.length-1].focus(); t[t.length-1].scrollIntoView({block:'center'}); } },50); },
+  delQ:function(i){ if(!confirm('¿Quitar la pregunta '+(i+1)+'?')) return; S.f.quiz.splice(i,1); pintarQuiz(); pintarBarra(); },
+  dupQ:function(i){ S.f.quiz.splice(i+1,0,clon(S.f.quiz[i])); pintarQuiz(); pintarBarra(); },
+  movQ:function(i,d){ var a=S.f.quiz, j=i+d; if(j<0||j>=a.length) return; var t=a[i]; a[i]=a[j]; a[j]=t; pintarQuiz(); pintarBarra(); },
+  setQ:function(i,k,v,re){ S.f.quiz[i][k]=v; if(re) pintarQuiz(); pintarBarra(); },
+  setOpt:function(i,j,v){ S.f.quiz[i].o[j]=v; pintarBarra(); },
+  addOpt:function(i){ S.f.quiz[i].o.push(''); pintarQuiz(); pintarBarra(); },
+  delOpt:function(i,j){ var q=S.f.quiz[i]; q.o.splice(j,1); if(q.c===j) q.c=null; else if(q.c>j) q.c--; pintarQuiz(); pintarBarra(); },
+  /* guardar / estados */
+  guardar:function(){
+    leerEditor(); var d=S.docs[S.id];
+    var p=problemas(S.f, d.estado==='publicado'); if(p.length){ mostrarProblemas(p); return; }
+    escribir(limpiarForm(S.f), d.estado==='publicado'?'Guardado. Ya se ve en la Academy.':'Borrador guardado');
+  },
+  publicar:function(){
+    leerEditor(); var p=problemas(S.f,true); if(p.length){ mostrarProblemas(p); return; }
+    if(!confirm('¿Publicar «'+S.f.t.trim()+'»? Aparece en la Academy para todo el equipo.')) return;
+    var c=limpiarForm(S.f); c.estado='publicado'; escribir(c,'Publicado. Ya está en la Academy.');
+  },
+  despublicar:function(){
+    if(!confirm('¿Pasar a borrador? Deja de verse en la Academy. Quien ya lo aprobó conserva su avance.')) return;
+    leerEditor(); var c=limpiarForm(S.f); c.estado='borrador'; escribir(c,'Pasó a borrador');
+  },
+  archivar:function(){
+    if(!confirm('¿Archivar este módulo? Deja de verse en la Academy y en el recorrido. Lo podés recuperar cuando quieras desde «Archivados».')) return;
+    leerEditor(); var c=limpiarForm(S.f); c.estado='archivado'; S.verArch=true; escribir(c,'Archivado');
+  },
+  restaurar:function(){
+    var maxo=Math.max.apply(null,[0].concat(lista('recorrido').map(function(x){return x.orden||0;})));
+    leerEditor(); var c=limpiarForm(S.f); c.estado='borrador'; if(S.docs[S.id].tipo!=='caso') c.orden=maxo+1; escribir(c,'Recuperado como borrador');
+  },
+  descartar:function(){ if(!confirm('¿Descartar los cambios sin guardar?')) return; try{ localStorage.removeItem(claveLocal(S.id)); }catch(e){} S.f=nuevoForm(S.docs[S.id]); S.base=JSON.stringify(S.f); pintar(); },
+  recuperar:function(i){
+    var v=S.versiones[i]; if(!v) return;
+    if(sucio() && !confirm('Vas a reemplazar lo que tenés en el editor por esta versión. ¿Seguir?')) return;
+    S.f=nuevoForm(v); S.tab='contenido'; pintar(); toast('Versión cargada. Revisala y guardá para aplicarla.');
+  },
+  nuevo:function(){
+    if(S.id && sucio()){ if(!confirm('Tenés cambios sin guardar. ¿Crear otro módulo igual? (Quedan guardados en este equipo.)')) return; guardarLocal(); }
+    var todos=Object.keys(S.docs).map(function(k){ return S.docs[k]; });
+    var n=Math.max.apply(null,[0].concat(todos.map(function(x){ return x.n||0; })))+1;
+    var orden=Math.max.apply(null,[0].concat(lista('recorrido').map(function(x){ return x.orden||0; })))+1;
+    var id='m'+n;
+    var d={n:n, orden:orden, tipo:'modulo', estado:'borrador', t:'Nuevo módulo', etiqueta:'', lead:'',
+      body:'<h2>La idea</h2><p>Contá en pocas líneas de qué se trata el módulo.</p><h2>Para llevarte</h2><p>La idea principal que tiene que quedar.</p>',
+      quiz:[{q:'',o:['','','',''],c:null,e:''}], recursos:[], creadoEn:FV.serverTimestamp(), creadoPor:yo.email, editadoEn:FV.serverTimestamp(), editadoPor:yo.email};
+    col.doc(id).set(d).then(function(){ S.tab='contenido'; toast('Módulo creado como borrador'); return cargarTodo(id); })
+      .catch(function(e){ alert('No se pudo crear.\n\n'+e.message); });
+  },
+  duplicar:function(){
+    leerEditor(); var todos=Object.keys(S.docs).map(function(k){ return S.docs[k]; });
+    var n=Math.max.apply(null,[0].concat(todos.map(function(x){ return x.n||0; })))+1;
+    var orden=Math.max.apply(null,[0].concat(lista('recorrido').map(function(x){ return x.orden||0; })))+1;
+    var c=limpiarForm(S.f); c.t=(c.t+' (copia)').slice(0,200); c.n=n; c.orden=orden; c.tipo='modulo'; c.estado='borrador';
+    c.creadoEn=FV.serverTimestamp(); c.creadoPor=yo.email; c.editadoEn=FV.serverTimestamp(); c.editadoPor=yo.email;
+    col.doc('m'+n).set(c).then(function(){ toast('Copia creada como borrador'); return cargarTodo('m'+n); }).catch(function(e){ alert('No se pudo duplicar.\n\n'+e.message); });
+  },
+  mover:function(id,dir){
+    var arr=lista('recorrido'), i=arr.findIndex(function(x){ return x.id===id; }), j=i+dir;
+    if(i<0||j<0||j>=arr.length) return;
+    var b=db.batch();
+    arr.splice(j,0,arr.splice(i,1)[0]);
+    arr.forEach(function(x,k){ if(x.orden!==k+1) b.update(col.doc(x.id),{orden:k+1}); });
+    b.commit().then(function(){ return cargarTodo(S.id); }).then(function(){ toast('Orden actualizado'); })
+      .catch(function(e){ alert('No se pudo mover.\n\n'+e.message); });
+  },
+  alto:function(t){ t.style.height='auto'; t.style.height=(t.scrollHeight+3)+'px'; },
+  menu:function(e){ e.stopPropagation(); document.getElementById('menu').classList.toggle('on'); }
+};
+document.addEventListener('click',function(){ var m=document.getElementById('menu'); if(m) m.classList.remove('on'); });
+})();
+</script>
+</body>
+</html>

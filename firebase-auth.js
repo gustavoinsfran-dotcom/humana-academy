@@ -169,8 +169,9 @@
       var d=doc.exists?doc.data():null, cloud=(d&&d.scores)||{}, local={};
       _aplicarReinicio(d);
       try{ local=STORE.get('ha_s',{})||{}; }catch(e){}
-      var merged={};
-      [1,2,3,4,5,6,7,8,9,10].forEach(function(n){ var v=Math.max(local[n]==null?-1:local[n], cloud[n]==null?-1:cloud[n]); if(v>=0)merged[n]=v; });
+      var merged={}, claves={};
+      Object.keys(local).concat(Object.keys(cloud)).forEach(function(k){ claves[k]=1; });
+      Object.keys(claves).forEach(function(n){ var v=Math.max(local[n]==null?-1:local[n], cloud[n]==null?-1:cloud[n]); if(v>=0)merged[n]=v; });
       try{ scores=merged; STORE.set('ha_s',merged); }catch(e){}
       if(d&&d.name){ try{ uname=d.name; STORE.set('ha_name',d.name); }catch(e){} }
       window.HA_isAdmin=isAdmin(user);
@@ -220,7 +221,9 @@
     curUser=user;
     if(user){
       suppressOnb();
-      loadProgress(user).then(function(){
+      var contenido = (window.HA_cargarContenido ? HA_cargarContenido(db) : Promise.resolve(null))
+        .then(function(c){ if(c && window.HA_aplicarContenido) HA_aplicarContenido(c); });
+      Promise.all([loadProgress(user), contenido]).then(function(){
         if(!uname){ renderNamePrompt(user); }
         else { enter(user); }
       });
@@ -240,16 +243,15 @@
 
   function isAdmin(u){ return !!(u && ADMINS.indexOf((u.email||'').toLowerCase())>=0); }
 
+  function salir(){ if(confirm('¿Querés cerrar sesión?')){ auth.signOut().then(function(){ location.reload(); }); } }
   function addAdminUI(user){
-    var nav=document.querySelector('nav.desk');
-    if(nav && !document.getElementById('logoutLink')){
-      var lo=document.createElement('a'); lo.id='logoutLink'; lo.textContent='Salir'; lo.style.cursor='pointer';
-      lo.onclick=function(){ if(confirm('¿Querés cerrar sesión?')){ auth.signOut().then(function(){ location.reload(); }); } }; nav.appendChild(lo);
-    }
-    if(isAdmin(user) && nav && !document.getElementById('adminLink')){
-      var a=document.createElement('a'); a.id='adminLink'; a.textContent='Admin'; a.style.cursor='pointer'; a.onclick=showAdmin;
-      nav.insertBefore(a, document.getElementById('logoutLink'));
-    }
+    [['nav.desk','d'],['#drawer','m']].forEach(function(par){
+      var nav=document.querySelector(par[0]); if(!nav || document.getElementById('logout'+par[1])) return;
+      function link(id,txt,fn,cls){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
+        if(typeof fn==='string') a.href=fn; else a.onclick=function(){ if(window.closeMenu)closeMenu(); fn(); }; nav.appendChild(a); }
+      if(isAdmin(user)){ link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
+      link('logout','Salir',salir);
+    });
   }
 
   /* ====================== PANEL DE GESTIÓN DE ACCESOS ====================== */
@@ -285,8 +287,10 @@
    +"@media(max-width:760px){.urow{grid-template-columns:1fr;gap:8px}}";
   document.head.appendChild(sadm);
 
+  function _idsAcademy(){ try{ return MODULES.map(function(m){return m.n;}); }catch(e){ return [1,2,3,4,5,6,7,8,9,10]; } }
+  function _tot(){ return _idsAcademy().length+5+9; }
   function _prog(d){
-    var sc=d.scores||{}, a=[1,2,3,4,5,6,7,8,9,10].filter(function(n){return sc[n]>=60;}).length;
+    var sc=d.scores||{}, a=_idsAcademy().filter(function(n){return sc[n]>=60;}).length;
     var ns=(d.nexo&&d.nexo.scores)||{}, x=[1,2,3,4,5].filter(function(n){return ns[n]>=60;}).length;
     var cs=(d.cutaquig&&d.cutaquig.scores)||{}, c=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]>=60;}).length;
     return {a:a,x:x,c:c};
@@ -300,12 +304,26 @@
   };
   window.__reiniciar=function(uid, nombre){
     if(!isAdmin(curUser)) return;
-    if(!confirm('¿Reiniciar el progreso de '+nombre+'?\n\nSe borran todos los módulos aprobados de Academy, Nexo y Cutaquig. La cuenta queda como nueva y no se puede deshacer.')) return;
-    db.collection('users').doc(uid).update({
-      scores:{}, 'nexo.scores':{}, 'cutaquig.scores':{},
-      resetAt:firebase.firestore.FieldValue.serverTimestamp(),
-      resetBy:(curUser.email||'')
+    if(!confirm('¿Reiniciar el progreso de '+nombre+'?\n\nLa cuenta queda en cero en Academy, Nexo y Cutaquig. Lo que había hecho queda guardado como historial dentro del registro.')) return;
+    var ref=db.collection('users').doc(uid);
+    ref.get().then(function(doc){
+      var d=doc.data()||{};
+      var copia={name:d.name||'', scores:d.scores||{}, nexoScores:(d.nexo&&d.nexo.scores)||{}, cutaquigScores:(d.cutaquig&&d.cutaquig.scores)||{},
+        archivadoEl:firebase.firestore.Timestamp.now(), archivadoPor:(curUser.email||'')};
+      return ref.update({
+        historial:firebase.firestore.FieldValue.arrayUnion(copia),
+        scores:{}, 'nexo.scores':{}, 'cutaquig.scores':{},
+        resetAt:firebase.firestore.FieldValue.serverTimestamp(),
+        resetBy:(curUser.email||'')
+      });
     }).then(_recargar).catch(_errAdmin);
+  };
+  window.__renombrar=function(uid, actual){
+    if(!isAdmin(curUser)) return;
+    var nm=prompt('Nombre y apellido de quien usa esta cuenta (sale en su certificado):', actual||'');
+    if(nm===null) return; nm=nm.trim();
+    if(nm.length<3){ alert('Escribí nombre y apellido.'); return; }
+    db.collection('users').doc(uid).set({name:nm, updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).then(_recargar).catch(_errAdmin);
   };
   window.__verOcultas=function(v){ _verOcultas=v; _pintar(); };
   window.__buscar=function(v){ _filtro=(v||'').toLowerCase(); _pintar(); };
@@ -320,7 +338,7 @@
         b.innerHTML='<b style="color:#F0C674;font-size:14px">Falta un paso para que esto funcione</b>'
          +'<p style="color:#C9A961;font-size:13px;margin:7px 0 0;line-height:1.6">Firestore no me deja guardar el cambio porque las reglas actuales solo permiten que cada uno escriba su propio registro. Para habilitar accesos desde acá hay que publicar las reglas nuevas:<br><br>'
          +'<b>Firebase Console → Firestore Database → Reglas</b> → borrá todo, pegá las reglas que te pasó Claude y tocá <b>Publicar</b>.<br><br>'
-         +'Mientras tanto podés ver a todos, pero no cambiar roles ni habilitar Cutaquig®.</p>';
+         +'Mientras tanto podés ver a todos, pero no cambiar nada.</p>';
         c.insertBefore(b, c.firstChild); window.scrollTo(0,0);
       }
       return;
@@ -342,7 +360,8 @@
   function _pintar(){
     var cont=document.getElementById('gadm'); if(!cont)return;
     var vis=_U.filter(function(u){ return _verOcultas || !u.oculto; });
-    var completos=vis.filter(function(u){ return u.total>=24; });
+    var TOT=_tot(), NA=_idsAcademy().length;
+    var completos=vis.filter(function(u){ return u.total>=TOT; });
     var activos=vis.filter(function(u){ return u.total>0; });
     var sinEmpezar=vis.filter(function(u){ return u.total===0; });
 
@@ -370,15 +389,16 @@
     h+='<div class="gcard" style="padding:4px 18px">';
     lista.forEach(function(u){
       var badge = u.esAdmin ? '<span class="ubadge ub-adm">Admin</span>'
-        : (u.total>=24 ? '<span class="ubadge ub-ok">Completó todo</span>'
+        : (u.total>=TOT ? '<span class="ubadge ub-ok">Completó todo</span>'
         : (u.total>0 ? '<span class="ubadge ub-pend">En curso</span>'
         : '<span class="ubadge ub-na">Sin empezar</span>'));
       h+='<div class="urow'+(u.oculto?' oculta':'')+'" style="grid-template-columns:minmax(0,2.4fr) auto auto">';
       h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:#6f6288;font-size:11px">(oculta)</span>':'')+'</div>'
         +'<div class="umail">'+esc(u.email)+'</div>'
-        +'<div class="uprog">Academy '+u.a+'/10 · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de 24</b></div></div>';
+        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de '+TOT+'</b></div></div>';
       h+='<div>'+badge+'</div>';
-      h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
+      var nmq=esc(u.name).replace(/'/g,'').replace(/\\/g,'');
+      h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
       h+='</div>';
     });
     h+='</div>';
