@@ -2,53 +2,54 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>Humana Academy · Recorrido</title>
 <link rel="canonical" href="https://academy.humanahc.com.ar/demo.html">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#FBF9FA">
+<link rel="icon" href="mark.svg">
+<link rel="stylesheet" href="metodo.css?v=1">
+<link rel="stylesheet" href="metodo-pistas.css?v=1">
 <style>
-:root{--d:#0C0713;--c1:#191024;--c2:#241736;--li:#2C1F42;--tx:#EDE6F5;--mu:#9E90B5;
---mag:#EC2E8E;--ver:#39D98A;--g:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#07040D;font-family:Inter,system-ui,sans-serif;color:var(--tx);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;gap:12px}
-.wrap{width:100%;max-width:1240px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
-.mk{width:34px;height:22px}
-.brand{display:flex;align-items:center;gap:10px}
-.brand b{font-size:16px;font-weight:800}
-.brand span{background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.ctl{display:flex;gap:7px}
-.ctl button{background:var(--c2);border:1px solid var(--li);color:var(--tx);border-radius:9px;padding:7px 13px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
-.ctl button:hover{border-color:var(--mag)}
-.stage{position:relative;border-radius:16px;overflow:hidden;background:var(--d);border:1px solid var(--li);box-shadow:0 26px 70px rgba(0,0,0,.55)}
-.bar{position:absolute;top:0;left:0;height:3px;background:var(--g);width:0;z-index:9}
-.fr{width:100%;height:min(64vh,620px);border:0;display:block;background:var(--d)}
-.load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--d);z-index:6;transition:opacity .4s}
+body.mh{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;gap:12px}
+.dwrap{width:100%;max-width:1240px}
+.dtop{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.dbrand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dbrand .mh-word{font-size:19px}
+.dbrand .sep{width:1px;height:22px;background:var(--mh-line-2)}
+.dbrand .mh-kicker{font-size:11.5px}
+.ctl{display:flex;gap:8px}
+.stage{position:relative;border-radius:var(--mh-r-lg);overflow:hidden;background:var(--mh-bg);border:1px solid var(--mh-line);box-shadow:var(--mh-sh-2)}
+.bar{position:absolute;top:0;left:0;height:2px;background:var(--mh-accent);width:0;z-index:9}
+.fr{width:100%;height:min(64vh,620px);border:0;display:block;background:var(--mh-bg)}
+.load{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:var(--mh-bg);z-index:6;transition:opacity .4s}
 .load.off{opacity:0;pointer-events:none}
-.load span{color:var(--mu);font-size:13px}
-.nar{position:absolute;left:0;right:0;bottom:0;padding:52px 26px 20px;background:linear-gradient(transparent,rgba(7,4,13,.93) 46%);z-index:7;pointer-events:none}
-.nar .t{font-size:clamp(15px,1.7vw,20px);font-weight:800;letter-spacing:-.01em;margin-bottom:3px}
-.nar .s{font-size:clamp(12px,1.3vw,14.5px);color:#C9B8E0;line-height:1.5;max-width:900px}
-.nar b{color:var(--mag)}
-.nar .in{opacity:0;transform:translateY(10px);animation:in .5s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes in{to{opacity:1;transform:none}}
-.dots{display:flex;gap:5px;justify-content:center;margin-top:12px}
-.dots i{width:6px;height:6px;border-radius:50%;background:#3A2A52;cursor:pointer;transition:.25s}
-.dots i.on{background:var(--mag);width:20px;border-radius:3px}
-.pie{text-align:center;color:#5A4E70;font-size:11.5px;margin-top:10px;line-height:1.6}
-.aviso{background:#2A1F0E;border:1px solid #5C4415;color:#F0C674;border-radius:10px;padding:11px 14px;font-size:12.5px;line-height:1.55;margin-bottom:10px;display:none}
+.load .mh-logo{font-size:28px}
+.load span.t{color:var(--mh-mut);font-size:14px}
+.nar{position:absolute;left:20px;bottom:20px;right:20px;z-index:7;pointer-events:none;display:flex}
+.nar .in{max-width:640px;background:var(--mh-ink);color:#fff;border-radius:20px;padding:20px 24px;box-shadow:var(--mh-sh-2);opacity:0;transform:translateY(10px);animation:din .5s var(--mh-ease) forwards}
+.nar .k{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:#E7A9C6;font-size:18px;line-height:1;margin-bottom:8px}
+.nar .t{font-size:clamp(17px,1.7vw,21px);font-weight:700;letter-spacing:-.015em;margin-bottom:6px;line-height:1.3}
+.nar .s{font-size:clamp(14px,1.3vw,15.5px);color:#CFC6D3;line-height:1.55}
+.nar b{color:#fff}
+@keyframes din{to{opacity:1;transform:none}}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
+.dots i{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.dots i:before{content:"";width:6px;height:6px;border-radius:3px;background:var(--mh-line-2);transition:.25s var(--mh-ease)}
+.dots i.on:before{background:var(--mh-accent);width:22px}
+.pie{text-align:center;color:var(--mh-mut);font-size:13px;margin-top:8px;line-height:1.6}
+.aviso{background:var(--mh-warn-tint);border:1px solid #F0DDB0;color:#4A3300;border-radius:14px;padding:13px 16px;font-size:14px;line-height:1.55;margin-bottom:12px;display:none}
 .aviso.on{display:block}
-@media(max-width:640px){.fr{height:56vh}.nar{padding:44px 16px 16px}}
-</style></head><body>
-<div class="wrap">
- <div class="top"><div class="brand">
-  <span class="mk"><svg viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span>
-  <b>Humana <span>Academy</span></b><span style="color:#5A4E70;font-size:12px">· Recorrido de la plataforma</span></div>
-  <div class="ctl"><button id="pp">❚❚ Pausar</button><button id="rs">↻ Volver al inicio</button></div></div>
- <div class="aviso" id="aviso"></div>
+.aviso a{color:var(--mh-warn);font-weight:700}
+@media(max-width:640px){.fr{height:58vh}.nar{left:10px;right:10px;bottom:10px}.nar .in{padding:14px 16px;border-radius:16px}.dbrand .sep,.dbrand .mh-kicker{display:none}.ctl{width:100%}.ctl .mh-btn{flex:1}}
+</style></head><body class="mh">
+<div class="dwrap">
+ <div class="dtop"><div class="dbrand">
+  <span class="mh-word"><b>Humana</b> <span>Academy</span></span><span class="sep" aria-hidden="true"></span><span class="mh-kicker">Recorrido de la plataforma</span></div>
+  <div class="ctl"><button class="mh-btn sec sm" id="pp">Pausar</button><button class="mh-btn ghost sm" id="rs">Volver al inicio</button></div></div>
+ <div class="aviso" id="aviso" role="status"></div>
  <div class="stage"><div class="bar" id="bar"></div>
-  <div class="load" id="load"><span>Cargando la plataforma…</span></div>
+  <div class="load" id="load"><span class="mh-logo"><i>m</i>étodo<b>Humana</b></span><span class="t">Cargando la plataforma…</span></div>
   <iframe class="fr" id="fr" title="Humana Academy"></iframe>
-  <div class="nar" id="nar"></div></div>
+  <div class="nar" id="nar" aria-live="polite"></div></div>
  <div class="dots" id="dots"></div>
- <div class="pie">Esto es la plataforma real, en vivo, no una maqueta. · academy.humanahc.com.ar<br>Flechas ← → para moverte · barra espaciadora para pausar</div>
+ <div class="pie">Esto es la plataforma real, en vivo, no una maqueta. · academy.humanahc.com.ar<br>Flechas izquierda y derecha para moverte · barra espaciadora para pausar</div>
 </div>
 <script>
 var E=[
@@ -75,10 +76,10 @@ var fr=document.getElementById('fr'),bar=document.getElementById('bar'),nar=docu
     load=document.getElementById('load'),dots=document.getElementById('dots'),aviso=document.getElementById('aviso');
 E.forEach(function(){ dots.appendChild(document.createElement('i')); });
 var ds=[].slice.call(dots.children);
-ds.forEach(function(d,k){ d.onclick=function(){ ir(k); }; });
+ds.forEach(function(d,k){ d.setAttribute('role','button'); d.setAttribute('tabindex','0'); d.setAttribute('aria-label','Escena '+(k+1)); d.onclick=function(){ ir(k); }; });
 
 function narrar(e){
-  nar.innerHTML='<div class="in"><div class="t">'+e.t+'</div><div class="s">'+e.s+'</div></div>';
+  nar.innerHTML='<div class="in"><div class="k">'+String(i+1).padStart(2,'0')+' / '+String(E.length).padStart(2,'0')+'</div><div class="t">'+e.t+'</div><div class="s">'+e.s+'</div></div>';
 }
 function scrollSuave(win,de,a,ms){
   try{ win.scrollTo(0,de); }catch(err){ return; }
@@ -149,10 +150,10 @@ function ir(n){ clearTimeout(t); i=n; pintar(i); if(!pausado) correr(DUR); }
 document.getElementById('pp').onclick=function(){
   pausado=!pausado;
   if(pausado){ clearTimeout(t); resto=resto-(Date.now()-ini);
-    var w=getComputedStyle(bar).width; bar.style.transition='none'; bar.style.width=w; this.textContent='▶ Seguir'; }
-  else { this.textContent='❚❚ Pausar'; correr(Math.max(resto,900)); }
+    var w=getComputedStyle(bar).width; bar.style.transition='none'; bar.style.width=w; this.textContent='Seguir'; }
+  else { this.textContent='Pausar'; correr(Math.max(resto,900)); }
 };
-document.getElementById('rs').onclick=function(){ pausado=false; document.getElementById('pp').textContent='❚❚ Pausar'; ir(0); };
+document.getElementById('rs').onclick=function(){ pausado=false; document.getElementById('pp').textContent='Pausar'; ir(0); };
 document.addEventListener('keydown',function(ev){
   if(ev.key==='ArrowRight') ir((i+1)%E.length);
   if(ev.key==='ArrowLeft') ir((i-1+E.length)%E.length);
@@ -160,7 +161,7 @@ document.addEventListener('keydown',function(ev){
 });
 setTimeout(function(){
   try{ var w=fr.contentWindow; if(w && w.document && w.document.querySelector('.fbgate.on')){
-    aviso.innerHTML='<b>Entrá primero a la plataforma</b> para que el recorrido muestre tu entorno: abrí <a href="index.html" style="color:#F0C674">academy.humanahc.com.ar</a>, iniciá sesión, y volvé a esta página.';
+    aviso.innerHTML='<b>Entrá primero a la plataforma</b> para que el recorrido muestre tu entorno: abrí <a href="index.html" >academy.humanahc.com.ar</a>, iniciá sesión, y volvé a esta página.';
     aviso.classList.add('on'); } }catch(e){}
 },6000);
 ir(0);

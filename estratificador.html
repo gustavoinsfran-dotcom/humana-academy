@@ -2,137 +2,162 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Humana · Estratificador comercial</title>
-<meta name="theme-color" content="#0C0713">
+<meta name="theme-color" content="#FBF9FA">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://academy.humanahc.com.ar/estratificador.html">
 <link rel="icon" href="mark.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/arimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="metodo.css?v=1">
+<link rel="stylesheet" href="metodo-pistas.css?v=1">
 <style>
-:root{--bg:#0C0713;--bg2:#140C1F;--card:#191024;--card2:#1E1430;--line:#2C1F42;--tx:#EDE6F5;--mut:#9E90B5;--g1:#4733A6;--g2:#EC2E8E;--pink:#F0328C;--purple:#8E2E9E;--ok:#39d98a;--grad:linear-gradient(135deg,#4733A6 0%,#8E2E9E 50%,#EC2E8E 100%)}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#160D22,#0C0713);border-bottom:1px solid var(--line);padding:16px 0 0}
-.backbtn{color:var(--pink);border:1.5px solid var(--pink);padding:9px 16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0}
-.backbtn:hover{background:var(--pink);color:#fff}
-.htop{display:flex;align-items:center;gap:12px;padding-bottom:16px}
-.htop .mk{width:40px;height:26px;flex-shrink:0}
-.htop h1{font-size:19px;margin:0;font-weight:800}.htop p{margin:2px 0 0;font-size:12.5px;color:var(--mut)}
-.tabs{display:flex;gap:4px;flex-wrap:wrap}
-.tab{padding:12px 20px;font-size:13.5px;font-weight:700;color:var(--mut);cursor:pointer;border-radius:12px 12px 0 0}
-.tab.on{background:var(--bg);color:var(--tx);box-shadow:inset 0 -2px 0 var(--pink)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:18px}
-.card h2{font-size:13px;letter-spacing:.5px;text-transform:uppercase;margin:0 0 4px;font-weight:700}
-.card .ph{font-size:11px;color:var(--mut);margin:0 0 14px}
-label{display:block;font-size:12.5px;font-weight:600;margin:12px 0 5px}
-input[type=text],input[type=number],select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;color:var(--tx);background:var(--card2)}
-textarea{min-height:56px;resize:vertical}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:8px}
-.chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;padding:3px 0}
-.chk input{width:16px;height:16px;accent-color:var(--pink)}
-.hint{font-size:11.5px;color:var(--mut);margin:6px 0 0}
-.layout{display:grid;grid-template-columns:1fr 400px;gap:24px;padding:26px 0 60px}
-.result{position:sticky;top:20px;align-self:start}
-.rcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
-.rcard h3{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--pink);margin:0 0 8px;font-weight:700}
-.level{border-radius:14px;padding:18px 20px;color:#fff;text-align:center;margin-bottom:16px}
-.level.alto{background:linear-gradient(135deg,#1c7a4d,#0f5133)}.level.medio{background:linear-gradient(135deg,#8E2E9E,#5a1c66)}.level.bajo{background:linear-gradient(135deg,#3a2f52,#241834)}
-.level .lb{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.9}.level .lv{font-size:30px;font-weight:800;margin:2px 0}.level .sc{font-size:12px;opacity:.9}
-.prop{font-size:15px;font-weight:700;margin:0 0 6px}
-.rcard p{font-size:13.5px;line-height:1.6;color:#d8cee8;margin:0 0 10px}
-.rcard ul{margin:6px 0 0;padding-left:18px}.rcard li{font-size:13px;line-height:1.55;margin-bottom:5px}
-.tag{display:inline-block;background:rgba(236,46,142,.14);color:#f7a8d0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin:0 4px 4px 0}
-.section{display:none}.section.on{display:block}.pad{padding:26px 0 60px}
-.bcgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.stat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
-.stat .n{font-size:26px;font-weight:800}.stat .l{font-size:12.5px;color:var(--mut)}
-.big{background:var(--grad);border:none}.big .n{color:#fff}.big .l{color:#f3dcec}
-.pb{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
-.pb h3{font-size:16px;margin:0 0 10px}
-.pb .q{font-size:14px;line-height:1.6;margin-bottom:8px;padding-left:18px;position:relative;color:#d8cee8}
-.pb .q:before{content:"›";position:absolute;left:0;color:var(--pink);font-weight:800}
-.obj{border-left:3px solid var(--pink);padding:8px 14px;background:var(--card2);border-radius:0 8px 8px 0;margin-bottom:10px;font-size:13.5px;color:#d8cee8}
-.obj b{color:var(--tx)}
-.emailbox{white-space:pre-wrap;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:13.5px;line-height:1.6;color:#d8cee8}
-.guion .g{margin-bottom:16px}.guion .g .t{font-weight:700;color:var(--pink);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
-.guion .g p{font-size:14.5px;line-height:1.7;margin:6px 0 0;color:#e2d9ef}
-.btn{background:var(--grad);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:700;font-size:13.5px;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--pink);border:1.5px solid var(--pink)}
-.btns{display:flex;gap:10px}
-footer{border-top:1px solid var(--line);text-align:center;padding:22px;font-size:12px;color:var(--mut)}
-footer a{color:var(--pink);text-decoration:none}
-@media(max-width:900px){.layout,.bcgrid{grid-template-columns:1fr}.result{position:static}.checks{grid-template-columns:1fr}}
-@media print{header,footer,.btns,.noprint,.backbtn{display:none!important}.section{display:block!important}.layout{grid-template-columns:1fr}body{background:#fff;color:#000}}
+.ehead{padding:52px 0 26px}
+.ehead .mh-kicker{color:var(--mh-accent-ink)}
+.ehead h1{font-size:clamp(36px,5.4vw,60px);font-weight:400;letter-spacing:-.035em;line-height:1.04;margin:14px 0 14px}
+.ehead h1 b{font-weight:700}
+.ehead p{font-size:18px;color:var(--mh-ink-2);margin:0;max-width:56ch;line-height:1.55}
+.tabsbar{position:sticky;top:72px;z-index:50;background:rgba(251,249,250,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--mh-line);padding:12px 0}
+.tabs{display:inline-flex;gap:4px;padding:4px;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-pill);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:0;border-radius:var(--mh-pill);background:transparent;color:var(--mh-ink-2);font:700 14.5px/1 var(--mh-sans);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.tab .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:16px;color:var(--mh-accent)}
+.tab:hover{background:var(--mh-surface-2);color:var(--mh-ink)}
+.tab.on{background:var(--mh-ink);color:#fff}
+.tab.on .n{color:#E7A9C6}
+.card{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:26px 28px;margin-bottom:16px;box-shadow:var(--mh-sh-1)}
+.card h2{display:flex;align-items:baseline;gap:12px;font-size:20px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em}
+.card h2 .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:26px;line-height:1}
+.card .ph{font-size:14.5px;color:var(--mh-mut);margin:0 0 18px}
+.est label:not(.chk){display:block;font:700 13.5px/1.3 var(--mh-sans);color:var(--mh-ink);margin:14px 0 7px}
+.est input[type=text],.est input[type=number],.est select,.est textarea{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid var(--mh-line-2);border-radius:12px;background:var(--mh-surface);color:var(--mh-ink);font:400 16px/1.4 var(--mh-sans);transition:border-color .15s,box-shadow .15s}
+.est select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23686070' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.est input::placeholder,.est textarea::placeholder{color:var(--mh-mut-2)}
+.est input[type=text]:hover,.est input[type=number]:hover,.est select:hover,.est textarea:hover{border-color:#bfb1b8}
+.est input[type=text]:focus,.est input[type=number]:focus,.est select:focus,.est textarea:focus{outline:none;border-color:var(--mh-accent);box-shadow:0 0 0 4px var(--mh-accent-tint)}
+.est textarea{min-height:84px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.chk{display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 14px;border:1.5px solid var(--mh-line);border-radius:12px;font-size:15px;color:var(--mh-ink-2);cursor:pointer;transition:border-color .15s,background .15s;line-height:1.3}
+.chk:hover{border-color:var(--mh-line-2)}
+.chk:has(input:checked){border-color:var(--mh-accent);background:var(--mh-accent-tint);color:var(--mh-ink)}
+.chk input{width:18px;height:18px;margin:0;flex-shrink:0;accent-color:var(--mh-accent)}
+.hint{font-size:13.5px;color:var(--mh-mut);margin:10px 0 0;line-height:1.5}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;padding:28px 0 64px}
+.result{position:sticky;top:148px;align-self:start}
+.rcard{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:24px;margin-bottom:14px;box-shadow:var(--mh-sh-1)}
+.rcard h3{font:700 12px/1.3 var(--mh-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mh-mut);margin:0 0 12px}
+.level{border-radius:18px;padding:22px 22px 20px;margin-bottom:20px;border:1px solid var(--mh-line);background:var(--mh-surface-2)}
+.level .lb{font:700 11.5px/1.3 var(--mh-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mh-mut)}
+.level .lv{font-size:40px;font-weight:700;letter-spacing:-.03em;color:var(--mh-ink);margin:8px 0 4px;line-height:1}
+.level .sc{font-size:14px;color:var(--mh-mut)}
+.level.alto{background:var(--mh-ink);border-color:var(--mh-ink)}
+.level.alto .lb{color:#E7A9C6}.level.alto .lv{color:#fff}.level.alto .sc{color:#CFC6D3}
+.level.medio{background:var(--mh-accent-tint);border-color:var(--mh-accent-tint-2)}
+.level.medio .lb,.level.medio .lv{color:var(--mh-accent-ink)}.level.medio .sc{color:var(--mh-ink-2)}
+.prop{font-size:19px;font-weight:700;color:var(--mh-ink);margin:0 0 8px;letter-spacing:-.015em;line-height:1.3}
+.rcard p{font-size:15px;line-height:1.6;color:var(--mh-ink-2);margin:0 0 10px}
+.rcard p b{color:var(--mh-ink)}
+.rcard ul{margin:0;padding-left:20px}.rcard li{font-size:14.5px;line-height:1.55;margin-bottom:8px;color:var(--mh-ink-2)}
+.rcard li::marker{color:var(--mh-accent)}
+.tag{display:inline-flex;background:var(--mh-accent-tint);color:var(--mh-accent-ink);font:700 12px/1 var(--mh-sans);padding:7px 10px;border-radius:var(--mh-pill);margin:0 6px 6px 0}
+.section{display:none}.section.on{display:block}.pad{padding:28px 0 64px}
+.bcgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:start}
+.stat{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:18px;padding:20px 22px;margin-bottom:12px}
+.stat .n{font-size:32px;font-weight:700;color:var(--mh-ink);letter-spacing:-.03em;line-height:1.1}
+.stat .l{font-size:14px;color:var(--mh-mut);margin-top:4px}
+.stat.big{background:var(--mh-accent-tint);border-color:var(--mh-accent-tint-2);padding:26px 24px}
+.stat.big .n{color:var(--mh-accent-ink);font-size:clamp(32px,4vw,44px)}
+.stat.big .l{color:var(--mh-ink-2);font-weight:700}
+.pb{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:28px;margin-bottom:16px;box-shadow:var(--mh-sh-1)}
+.pb h3{font-size:22px;font-weight:400;letter-spacing:-.02em;margin:0 0 18px}
+.pb h3 b{font-weight:700}
+.pb .q{font-size:16px;line-height:1.6;margin:0;padding:12px 0 12px 22px;position:relative;color:var(--mh-ink-2);border-top:1px solid var(--mh-line)}
+.pb .q:first-child{border-top:0}
+.pb .q:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:1px;background:var(--mh-hair)}
+.obj{border:1px solid var(--mh-line);border-left:2px solid var(--mh-accent);padding:14px 18px;background:var(--mh-surface);border-radius:0 14px 14px 0;margin-bottom:10px;font-size:15.5px;line-height:1.6;color:var(--mh-ink-2)}
+.obj b{color:var(--mh-ink);font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:18px}
+.emailbox{white-space:pre-wrap;background:var(--mh-surface-2);border:1px solid var(--mh-line);border-radius:14px;padding:20px;font-size:15px;line-height:1.65;color:var(--mh-ink-2)}
+.guion .g{padding:16px 0;border-top:1px solid var(--mh-line)}
+.guion .g:first-of-type{border-top:0;padding-top:0}
+.guion .g .t{font:700 12px/1.3 var(--mh-sans);color:var(--mh-accent-ink);text-transform:uppercase;letter-spacing:.14em}
+.guion .g p{font-size:16.5px;line-height:1.7;margin:8px 0 0;color:var(--mh-ink-2)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btns .mh-btn{flex:1}
+@media(max-width:960px){.layout,.bcgrid{grid-template-columns:1fr}.result{position:static}}
+@media(max-width:640px){.checks,.row2{grid-template-columns:1fr}.card,.pb{padding:22px 18px}.rcard{padding:20px}.ehead{padding:34px 0 18px}.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;border-radius:18px}.tab{padding:6px 8px;font-size:13.5px;white-space:normal;text-align:center;justify-content:center;flex-direction:column;gap:2px;border-radius:14px;line-height:1.2;min-height:52px}.tab .n{font-size:14px}}
+@media print{header.top,footer.pie,.btns,.noprint,.tabsbar{display:none!important}.section{display:block!important}.layout,.bcgrid{grid-template-columns:1fr}.card,.rcard,.pb{box-shadow:none;break-inside:avoid}.level.alto{background:#fff;border-color:#170F1E}.level.alto .lv{color:#170F1E}}
 </style>
 </head>
-<body>
-<header><div class="wrap">
-<div class="htop"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><div style="flex:1"><h1>Humana · Estratificador comercial</h1><p>Herramienta interna del equipo comercial — instituciones de salud (B2B)</p></div><a href="./" class="backbtn">← Academy</a></div>
-<div class="tabs"><div class="tab on" onclick="showTab(0)">Diagnóstico</div><div class="tab" onclick="showTab(1)">Business case</div><div class="tab" onclick="showTab(2)">Playbook & Guion</div></div>
+<body class="mh est">
+<a class="mh-skip" href="#s0">Ir al contenido</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="./" aria-label="Volver a Humana Academy"><span class="mh-word"><b>Humana</b> <span>Estratificador</span></span><span class="sep" aria-hidden="true"></span><span class="mh-logo" aria-hidden="true"><i>m</i>étodo<b>Humana</b></span></a>
+<nav class="desk" aria-label="Principal"><a class="home" href="./">Academy</a></nav>
 </div></header>
-<div class="wrap">
-<div class="section on" id="s0"><div class="layout">
+<div class="wrap"><section class="ehead"><span class="mh-kicker">Herramienta interna · Equipo comercial</span><h1>Estratificador <b>comercial</b></h1><p>Herramienta interna del equipo comercial — instituciones de salud (B2B)</p></section></div>
+<div class="tabsbar noprint"><div class="wrap"><div class="tabs" role="tablist" aria-label="Secciones"><button class="tab on" role="tab" aria-selected="true" aria-controls="s0" onclick="showTab(0)"><span class="n">01</span>Diagnóstico</button><button class="tab" role="tab" aria-selected="false" aria-controls="s1" onclick="showTab(1)"><span class="n">02</span>Business case</button><button class="tab" role="tab" aria-selected="false" aria-controls="s2" onclick="showTab(2)"><span class="n">03</span>Playbook y guion</button></div></div></div>
+<main class="wrap">
+<div class="section on" id="s0" role="tabpanel"><div class="layout">
 <div class="form">
- <div class="card"><h2 class="grad">Fase 1 · Identificación</h2><p class="ph">Datos básicos.</p>
-  <div class="row2"><div><label>Nombre de la institución</label><input type="text" id="f_nombre"></div><div><label>Grupo o red</label><input type="text" id="f_grupo"></div></div>
-  <div class="row2"><div><label>Ubicación</label><input type="text" id="f_ubic"></div><div><label>Área de influencia</label><input type="text" id="f_area"></div></div>
-  <div class="row2"><div><label>Nº aproximado de camas</label><input type="number" id="f_camas" min="0"></div><div><label>Tamaño</label><select id="f_tam"><option value="">—</option><option>Chico</option><option>Mediano</option><option>Grande</option></select></div></div>
+ <div class="card"><h2><span class="n">01</span>Identificación</h2><p class="ph">Datos básicos.</p>
+  <div class="row2"><div><label for="f_nombre">Nombre de la institución</label><input type="text" id="f_nombre"></div><div><label for="f_grupo">Grupo o red</label><input type="text" id="f_grupo"></div></div>
+  <div class="row2"><div><label for="f_ubic">Ubicación</label><input type="text" id="f_ubic"></div><div><label for="f_area">Área de influencia</label><input type="text" id="f_area"></div></div>
+  <div class="row2"><div><label for="f_camas">Nº aproximado de camas</label><input type="number" id="f_camas" min="0" inputmode="numeric"></div><div><label for="f_tam">Tamaño</label><select id="f_tam"><option value="">—</option><option>Chico</option><option>Mediano</option><option>Grande</option></select></div></div>
  </div>
- <div class="card"><h2 class="grad">Fase 2 · Perfil asistencial</h2><p class="ph">Qué tipo de institución es.</p>
-  <label>Especialidades en las que se destaca</label><input type="text" id="f_esp">
-  <label>Tipo de pacientes que atiende principalmente</label><input type="text" id="f_pac">
-  <div class="checks"><label class="chk"><input type="checkbox" id="p_intl">Actividad internacional</label><label class="chk"><input type="checkbox" id="p_quir">Gran actividad quirúrgica</label><label class="chk"><input type="checkbox" id="p_complejos">Orientada a pacientes complejos</label><label class="chk"><input type="checkbox" id="p_envej">Población envejecida</label></div>
+ <div class="card"><h2><span class="n">02</span>Perfil asistencial</h2><p class="ph">Qué tipo de institución es.</p>
+  <label for="f_esp">Especialidades en las que se destaca</label><input type="text" id="f_esp">
+  <label for="f_pac">Tipo de pacientes que atiende principalmente</label><input type="text" id="f_pac">
+  <div class="checks" style="margin-top:16px"><label class="chk"><input type="checkbox" id="p_intl">Actividad internacional</label><label class="chk"><input type="checkbox" id="p_quir">Gran actividad quirúrgica</label><label class="chk"><input type="checkbox" id="p_complejos">Orientada a pacientes complejos</label><label class="chk"><input type="checkbox" id="p_envej">Población envejecida</label></div>
  </div>
- <div class="card"><h2 class="grad">Fase 3 · Capacidades</h2><p class="ph">Marcá los servicios que tiene.</p><div class="checks" id="caps"></div></div>
- <div class="card"><h2 class="grad">Fase 4 · Posibles necesidades</h2><p class="ph">Hipótesis, no afirmaciones.</p><div class="checks" id="needs"></div><label>Otros aspectos</label><input type="text" id="f_otros"></div>
- <div class="card"><h2 class="grad">Fase 5 · Oportunidades para Humana</h2><p class="ph">¿Dónde aportar valor?</p><div class="checks" id="oport"></div></div>
- <div class="card"><h2 class="grad">Fase 6 · Personas clave</h2><p class="ph">Solo cargos estratégicos.</p><div class="row2" id="people"></div></div>
- <div class="card"><h2 class="grad">Fase 7 · Valoración estratégica</h2><p class="ph">La lógica de la propuesta.</p>
-  <label>Problema principal</label>
+ <div class="card"><h2><span class="n">03</span>Capacidades</h2><p class="ph">Marcá los servicios que tiene.</p><div class="checks" id="caps"></div></div>
+ <div class="card"><h2><span class="n">04</span>Posibles necesidades</h2><p class="ph">Hipótesis, no afirmaciones.</p><div class="checks" id="needs"></div><label for="f_otros">Otros aspectos</label><input type="text" id="f_otros"></div>
+ <div class="card"><h2><span class="n">05</span>Oportunidades para Humana</h2><p class="ph">¿Dónde aportar valor?</p><div class="checks" id="oport"></div></div>
+ <div class="card"><h2><span class="n">06</span>Personas clave</h2><p class="ph">Solo cargos estratégicos.</p><div class="row2" id="people"></div></div>
+ <div class="card"><h2><span class="n">07</span>Valoración estratégica</h2><p class="ph">La lógica de la propuesta.</p>
+  <label for="f_problema">Problema principal</label>
   <select id="f_problema"><option value="">—</option><option value="A">A · Falta de camas / presión de ocupación</option><option value="B">B · Estadías prolongadas de crónicos/frágiles</option><option value="C">C · Guardia saturada por pacientes repetidores</option><option value="D">D · Financiadores presionando costo o calidad</option><option value="E">E · Institución chica sin músculo domiciliario propio</option></select>
-  <div class="row2"><div><label>¿Quién paga?</label><select id="f_paga"><option value="">—</option><option value="hospital">La institución</option><option value="financiador">Financiador (obra social / prepaga)</option><option value="paciente">Paciente / familia</option><option value="estado">Estado / sistema público</option></select></div>
-  <div><label>Tipo (posicionamiento)</label><select id="f_tipo"><option value="">—</option><option value="grande">Institución grande</option><option value="mediano">Institución mediana</option><option value="chico">Institución chica</option><option value="privado">Privada con financiadores</option></select></div></div>
-  <label>Fortalezas</label><textarea id="f_str"></textarea><label>Áreas de mejora (donde Humana colabora)</label><textarea id="f_gap"></textarea>
+  <div class="row2"><div><label for="f_paga">¿Quién paga?</label><select id="f_paga"><option value="">—</option><option value="hospital">La institución</option><option value="financiador">Financiador (obra social / prepaga)</option><option value="paciente">Paciente / familia</option><option value="estado">Estado / sistema público</option></select></div>
+  <div><label for="f_tipo">Tipo (posicionamiento)</label><select id="f_tipo"><option value="">—</option><option value="grande">Institución grande</option><option value="mediano">Institución mediana</option><option value="chico">Institución chica</option><option value="privado">Privada con financiadores</option></select></div></div>
+  <label for="f_str">Fortalezas</label><textarea id="f_str"></textarea><label for="f_gap">Áreas de mejora (donde Humana colabora)</label><textarea id="f_gap"></textarea>
  </div>
 </div>
-<div class="result">
- <div class="rcard"><div id="level" class="level bajo"><div class="lb">Nivel de oportunidad</div><div class="lv" id="lvtxt">—</div><div class="sc" id="lvsc"></div></div>
-  <h3>Propuesta de valor sugerida</h3><div id="propbox"><p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p></div></div>
- <div class="rcard"><h3>Próximos pasos</h3><ul id="steps"><li style="color:var(--mut)">Completá la ficha.</li></ul></div>
- <div class="rcard noprint"><div class="btns"><button class="btn" onclick="window.print()">Imprimir ficha</button><button class="btn ghost" onclick="reset()">Reiniciar</button></div><p class="hint" style="text-align:center;margin-top:10px">Se guarda en este navegador para retomar entre reuniones.</p></div>
-</div>
+<aside class="result" aria-label="Resultado">
+ <div class="rcard" aria-live="polite"><div id="level" class="level bajo"><div class="lb">Nivel de oportunidad</div><div class="lv" id="lvtxt">—</div><div class="sc" id="lvsc"></div></div>
+  <h3>Propuesta de valor sugerida</h3><div id="propbox"><p style="color:var(--mh-mut)">Elegí el problema principal (Fase 7).</p></div></div>
+ <div class="rcard"><h3>Próximos pasos</h3><ul id="steps"><li style="color:var(--mh-mut)">Completá la ficha.</li></ul></div>
+ <div class="rcard noprint"><div class="btns"><button class="mh-btn ink" onclick="window.print()">Imprimir ficha</button><button class="mh-btn sec" onclick="reset()">Reiniciar</button></div><p class="hint" style="text-align:center;margin-top:12px">Se guarda en este navegador para retomar entre reuniones.</p></div>
+</aside>
 </div></div>
-<div class="section" id="s1"><div class="pad"><div class="bcgrid">
- <div class="card"><h2 class="grad">Calculadora de valor</h2><p class="ph">Cargá los datos operativos. Los supuestos son editables; es una estimación, no una promesa.</p>
-  <div class="row2"><div><label>Altas complejas por mes</label><input type="number" id="b_altas" min="0" placeholder="ej. 60"></div><div><label>Días de alta que se pueden adelantar</label><input type="number" id="b_dias" min="0" value="4"></div></div>
-  <div class="row2"><div><label>Reinternaciones a 30 días por mes</label><input type="number" id="b_reing" min="0" placeholder="ej. 40"></div><div><label>Reducción estimada de reinternaciones (%)</label><input type="number" id="b_red" min="0" max="100" value="25"></div></div>
-  <div class="row2"><div><label>Estadía media (días)</label><input type="number" id="b_est" min="0" value="7"></div><div><label>Costo por día de cama ($)</label><input type="number" id="b_coste" min="0" placeholder="ej. 250000"></div></div>
+<div class="section" id="s1" role="tabpanel"><div class="pad"><div class="bcgrid">
+ <div class="card"><h2>Calculadora de valor</h2><p class="ph">Cargá los datos operativos. Los supuestos son editables; es una estimación, no una promesa.</p>
+  <div class="row2"><div><label for="b_altas">Altas complejas por mes</label><input type="number" id="b_altas" min="0" placeholder="ej. 60" inputmode="numeric"></div><div><label for="b_dias">Días de alta que se pueden adelantar</label><input type="number" id="b_dias" min="0" value="4" inputmode="numeric"></div></div>
+  <div class="row2"><div><label for="b_reing">Reinternaciones a 30 días por mes</label><input type="number" id="b_reing" min="0" placeholder="ej. 40" inputmode="numeric"></div><div><label for="b_red">Reducción estimada de reinternaciones (%)</label><input type="number" id="b_red" min="0" max="100" value="25" inputmode="numeric"></div></div>
+  <div class="row2"><div><label for="b_est">Estadía media (días)</label><input type="number" id="b_est" min="0" value="7" inputmode="numeric"></div><div><label for="b_coste">Costo por día de cama ($)</label><input type="number" id="b_coste" min="0" placeholder="ej. 250000" inputmode="numeric"></div></div>
   <p class="hint">Ajustá los valores con los datos reales de la institución.</p></div>
- <div>
+ <div aria-live="polite">
   <div class="stat big"><div class="n" id="b_total">$ 0</div><div class="l">Ahorro anual estimado</div></div>
   <div class="stat"><div class="n" id="b_camas">0</div><div class="l">Camas equivalentes liberadas / mes</div></div>
   <div class="stat"><div class="n" id="b_diaslib">0</div><div class="l">Días de internación liberados / mes</div></div>
   <div class="stat"><div class="n" id="b_revit">0</div><div class="l">Reinternaciones evitadas / mes</div></div>
   <p class="hint" id="b_break"></p></div>
 </div></div></div>
-<div class="section" id="s2"><div class="pad">
- <div class="pb guion"><h3>Guion de presentación del servicio</h3>
+<div class="section" id="s2" role="tabpanel"><div class="pad">
+ <div class="pb guion"><h3>Guion de presentación <b>del servicio</b></h3>
   <div class="g"><div class="t">En una frase (20 seg)</div><p>Humana ayuda a instituciones de salud y financiadores (obras sociales y prepagas) a gestionar mejor a sus pacientes más complejos: diseñamos y operamos la continuidad asistencial que evita reinternaciones, libera camas y reduce consultas evitables a la guardia — sin que tengan que construir esa capacidad desde cero.</p></div>
   <div class="g"><div class="t">El problema (30 seg)</div><p>El paciente crónico complejo transita entre la institución, el domicilio, la guardia y los especialistas, y casi nadie es responsable de mantener la continuidad. Ese vacío se traduce en reinternaciones, consultas evitables a la guardia y camas ocupadas por pacientes que ya podrían estar en su casa.</p></div>
   <div class="g"><div class="t">Qué hace Humana (1 min)</div><p>Operamos una Unidad de Continuidad: dirección médica domiciliaria, seguimiento médico-enfermero, observación distribuida (paciente, familia y equipo detectando los cambios a tiempo), la plataforma Humana Core que preserva la memoria clínica, y medición de resultados desde el día uno. No sustituimos a la institución ni a la atención primaria: los integramos alrededor del paciente.</p></div>
   <div class="g"><div class="t">El resultado</div><p>Menos reinternaciones y consultas evitables a la guardia, camas liberadas, mejor experiencia del paciente y de la familia, y un modelo más sostenible. La eficiencia económica aparece como consecuencia de una mejor organización clínica, nunca como el objetivo.</p></div>
   <div class="g"><div class="t">El cierre</div><p>«No proponemos que gasten más, sino que cada recurso que ya invierten genere más valor clínico. ¿Le parece si lo vemos con un caso concreto de su institución?»</p></div></div>
- <div class="pb"><h3>Discovery — preguntas para la primera reunión</h3><div id="pb_disc"><p style="color:var(--mut)">Elegí el problema principal en la pestaña Diagnóstico.</p></div></div>
- <div class="pb"><h3>Objeciones frecuentes y respuesta</h3><div id="pb_obj"></div></div>
- <div class="pb"><h3>Email de apertura (personalizado)</h3><div class="emailbox" id="pb_email">Completá el nombre de la institución y el problema principal.</div><div class="btns noprint" style="margin-top:12px"><button class="btn" onclick="copyEmail()">Copiar email</button></div></div>
+ <div class="pb"><h3>Discovery: <b>preguntas para la primera reunión</b></h3><div id="pb_disc"><p style="color:var(--mh-mut)">Elegí el problema principal en la pestaña Diagnóstico.</p></div></div>
+ <div class="pb"><h3>Objeciones frecuentes <b>y respuesta</b></h3><div id="pb_obj"></div></div>
+ <div class="pb"><h3>Email de apertura <b>personalizado</b></h3><div class="emailbox" id="pb_email">Completá el nombre de la institución y el problema principal.</div><div class="btns noprint" style="margin-top:14px;max-width:260px"><button class="mh-btn ink" id="copybtn" onclick="copyEmail()">Copiar email</button></div></div>
 </div></div>
-</div>
-<footer>Humana Health &amp; Care · Argentina — Estratificador comercial (interno)<br><a href="./">← Volver a Humana Academy</a></footer>
+</main>
+<footer class="pie"><div class="wrap">
+<div><span class="mh-logo"><i>m</i>étodo<b>Humana</b></span><small>Humana Health &amp; Care · Argentina — Estratificador comercial (interno)</small></div>
+<nav aria-label="Pie"><a href="./">Volver a Humana Academy</a></nav>
+</div></footer>
 <script>
 const CAPS=["Internación Domiciliaria","Hospital de Día","UTI","Clínica Médica","Geriatría","Oncología","Cardiología","Neumonología","Neurología","Traumatología","Rehabilitación","Cuidados Paliativos","Continuidad asistencial"];
 const NEEDS=[["n_presion","Presión de camas",2],["n_altas","Dificultad para dar altas complejas",2],["n_cont","Necesidad de continuidad asistencial",2],["n_cronicos","Pacientes crónicos complejos",2],["n_frag","Fragilidad",1],["n_coord","Coordinación con el domicilio",1],["n_hadlim","Recursos limitados de internación domiciliaria",2]];
@@ -153,9 +178,9 @@ const money=n=>'$ '+Math.round(n).toLocaleString('es-AR');
 document.getElementById('caps').innerHTML=CAPS.map((c,i)=>`<label class="chk"><input type="checkbox" id="cap_${i}">${c}</label>`).join('');
 document.getElementById('needs').innerHTML=NEEDS.map(([id,l])=>`<label class="chk"><input type="checkbox" id="${id}">${l}</label>`).join('');
 document.getElementById('oport').innerHTML=OPORT.map((o,i)=>`<label class="chk"><input type="checkbox" id="op_${i}">${o}</label>`).join('');
-document.getElementById('people').innerHTML=PEOPLE.map((p,i)=>`<div><label>${p}</label><input type="text" id="pe_${i}" placeholder="Nombre"></div>`).join('');
+document.getElementById('people').innerHTML=PEOPLE.map((p,i)=>`<div><label for="pe_${i}">${p}</label><input type="text" id="pe_${i}" placeholder="Nombre" autocomplete="off"></div>`).join('');
 document.getElementById('pb_obj').innerHTML=OBJ.map(([o,r])=>`<div class="obj"><b>«${o}»</b><br>${r}</div>`).join('');
-function showTab(i){[0,1,2].forEach(k=>{document.getElementById('s'+k).classList.toggle('on',k===i);document.querySelectorAll('.tab')[k].classList.toggle('on',k===i);});window.scrollTo(0,0);}
+function showTab(i){[0,1,2].forEach(k=>{document.getElementById('s'+k).classList.toggle('on',k===i);const t=document.querySelectorAll('.tab')[k];t.classList.toggle('on',k===i);t.setAttribute('aria-selected',k===i?'true':'false');});window.scrollTo(0,0);}
 function compute(){
  let sc=0; NEEDS.forEach(([id,l,w])=>{if(val(id))sc+=w;});
  if(val('p_complejos'))sc+=2; if(val('p_envej'))sc+=2;
@@ -167,14 +192,14 @@ function compute(){
  document.getElementById('lvsc').textContent='Puntaje '+sc+' · '+(lvl==='alto'?'cuenta prioritaria':lvl==='medio'?'cuenta a desarrollar':'mantener en radar');
  const pr=val('f_problema'),pg=val('f_paga'),tp=val('f_tipo'),nom=val('f_nombre')||'la institución';
  const box=document.getElementById('propbox');
- if(pr&&PROP[pr]){let h=`<div class="prop grad">${PROP[pr].t}</div><p><b>Modelo:</b> ${PROP[pr].m}</p>`;if(pg&&PAGA[pg])h+=`<p>${PAGA[pg]}</p>`;if(tp&&TIPO[tp])h+=`<p>${TIPO[tp]}</p>`;const ops=OPORT.filter((o,i)=>val('op_'+i));if(ops.length)h+=`<div style="margin-top:6px">${ops.map(o=>`<span class="tag">${o}</span>`).join('')}</div>`;box.innerHTML=h;}else box.innerHTML='<p style="color:var(--mut)">Elegí el problema principal (Fase 7).</p>';
+ if(pr&&PROP[pr]){let h=`<div class="prop grad">${PROP[pr].t}</div><p><b>Modelo:</b> ${PROP[pr].m}</p>`;if(pg&&PAGA[pg])h+=`<p>${PAGA[pg]}</p>`;if(tp&&TIPO[tp])h+=`<p>${TIPO[tp]}</p>`;const ops=OPORT.filter((o,i)=>val('op_'+i));if(ops.length)h+=`<div style="margin-top:6px">${ops.map(o=>`<span class="tag">${o}</span>`).join('')}</div>`;box.innerHTML=h;}else box.innerHTML='<p style="color:var(--mh-mut)">Elegí el problema principal (Fase 7).</p>';
  const people=PEOPLE.map((p,i)=>({p,n:val('pe_'+i)})).filter(x=>x.n);
  const steps=['Validar las hipótesis de necesidad (Fase 4) en la primera reunión.'];
  if(pr&&PROP[pr])steps.push('Preparar propuesta enfocada en: <b>'+PROP[pr].t+'</b>.');
  steps.push(people.length?('Contactar a: '+people.map(x=>x.n+' ('+x.p+')').join('; ')+'.'):'Identificar y contactar al Director Médico y/o Gerente.');
  steps.push(lvl==='alto'?'Priorizar esta cuenta y agendar reunión de propuesta.':lvl==='medio'?'Desarrollar la cuenta antes de la propuesta formal.':'Mantener en radar y reevaluar.');
  document.getElementById('steps').innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
- document.getElementById('pb_disc').innerHTML=(pr&&DISC[pr])?DISC[pr].map(q=>`<div class="q">${q}</div>`).join(''):'<p style="color:var(--mut)">Elegí el problema principal en la pestaña Diagnóstico.</p>';
+ document.getElementById('pb_disc').innerHTML=(pr&&DISC[pr])?DISC[pr].map(q=>`<div class="q">${q}</div>`).join(''):'<p style="color:var(--mh-mut)">Elegí el problema principal en la pestaña Diagnóstico.</p>';
  const dest=people.find(x=>x.p==='Director Médico')||people.find(x=>x.p.startsWith('Gerente'))||people[0];
  const saludo=dest?('Estimado/a '+dest.n):'Estimado/a Director/a Médico/a';
  if(pr&&PROP[pr]){document.getElementById('pb_email').textContent=`Asunto: ${nom} — ${PROP[pr].t}\n\n${saludo}:\n\nEn Humana ayudamos a instituciones como ${nom} a ${PROP[pr].t.toLowerCase()}, mediante ${PROP[pr].m.toLowerCase()}\n\nNo proponemos sumar un proveedor más ni aumentar el gasto, sino coordinar lo que ya tienen para que cada recurso genere más valor clínico: menos reinternaciones y consultas evitables a la guardia, camas liberadas y mejor experiencia del paciente.\n\n¿Tendría 30 minutos esta o la próxima semana para verlo? Puedo llevar un caso concreto aplicado a ${nom}.\n\nQuedo a su disposición.\nSaludos cordiales,\n[Tu nombre] · Humana Health & Care Argentina`;}else document.getElementById('pb_email').textContent='Completá el nombre de la institución y el problema principal.';
@@ -186,7 +211,7 @@ function bc(){const altas=numv('b_altas'),dias=numv('b_dias'),reing=numv('b_rein
  document.getElementById('b_camas').textContent=camas.toFixed(1);document.getElementById('b_revit').textContent=revit.toFixed(0);
  document.getElementById('b_total').textContent=money(total);
  document.getElementById('b_break').textContent=total>0?`Desglose anual: por estadía liberada ${money(ahEst)} + por reinternaciones evitadas ${money(ahRe)}. Estimación con supuestos editables.`:'Cargá los datos operativos para estimar el impacto.';}
-function copyEmail(){const t=document.getElementById('pb_email').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);}
+function copyEmail(){const t=document.getElementById('pb_email').textContent;navigator.clipboard&&navigator.clipboard.writeText(t);const b=document.getElementById('copybtn');if(b){b.textContent='Copiado';clearTimeout(window._cb);window._cb=setTimeout(function(){b.textContent='Copiar email';},1800);}}
 function reset(){if(confirm('¿Vaciar la ficha?')){try{localStorage.removeItem('ha_estrat')}catch(e){}allInputs().forEach(el=>{if(el.type==='checkbox')el.checked=false;else if(['b_dias','b_red','b_est'].includes(el.id))return;else el.value='';});compute();}}
 document.addEventListener('input',compute);document.addEventListener('change',compute);
 load();compute();

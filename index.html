@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Humana Academy · Formación en Medicina de Continuidad</title>
-<meta name="description" content="Humana Academy — programa de formación en Medicina de Continuidad. Humana Health & Care · Argentina.">
-<meta name="theme-color" content="#0C0713">
-<meta property="og:title" content="Humana Academy">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Humana Academy · método Humana</title>
+<meta name="description" content="Humana Academy — formación en Medicina de Continuidad del método Humana. Humana Health & Care · Argentina.">
+<meta name="theme-color" content="#FBF9FA">
+<meta property="og:title" content="Humana Academy · método Humana">
 <meta property="og:description" content="Formación en Medicina de Continuidad · Humana Health & Care Argentina">
 <meta property="og:image" content="og.png">
 <meta property="og:type" content="website">
@@ -16,284 +16,293 @@
 <link rel="icon" href="mark.svg">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/arimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bodoni-moda-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="metodo.css?v=1">
 <style>
-:root{--bg:#0C0713;--bg2:#140C1F;--card:#191024;--card2:#1E1430;--line:#2C1F42;--tx:#EDE6F5;--mut:#9E90B5;--g1:#4733A6;--g2:#EC2E8E;--pink:#F0328C;--purple:#8E2E9E;--ok:#39d98a;--grad:linear-gradient(135deg,#4733A6 0%,#8E2E9E 50%,#EC2E8E 100%)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
-a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* header */
-header.top{position:sticky;top:0;z-index:50;background:rgba(12,7,19,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
-.brand .mk{width:38px;height:24px;flex-shrink:0}
-.brand .wm{font-weight:800;font-size:18px;letter-spacing:.2px}
-.brand .wm b{font-weight:800}
-nav.desk{display:flex;gap:26px;font-size:14px;color:var(--mut)}
-nav.desk a{cursor:pointer;text-decoration:none;transition:.15s}
-nav.desk a:hover{color:var(--pink)}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
-.burger span{width:24px;height:2px;background:var(--tx);border-radius:2px;transition:.25s}
-.burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.burger.x span:nth-child(2){opacity:0}
-.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.drawer{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line)}
+/* ---------- estructura ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+main{display:block;min-height:60vh}
+#app:focus{outline:none}
+
+/* ---------- encabezado ---------- */
+header.top{position:sticky;top:0;z-index:60;background:rgba(251,249,250,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--mh-line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:14px;min-height:44px;background:none;border:0;padding:6px 0;cursor:pointer;color:var(--mh-ink)}
+.brand .mh-word{font-size:19px}
+.brand .sep{width:1px;height:22px;background:var(--mh-line-2)}
+.brand .mh-logo{font-size:15px}
+nav.desk{display:flex;align-items:center;gap:4px}
+nav.desk a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--mh-pill);color:var(--mh-ink-2);font-size:15px;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+nav.desk a:hover{background:var(--mh-surface-2);color:var(--mh-ink)}
+nav.desk a.estudio{color:var(--mh-accent-ink);font-weight:700}
+nav.desk a.adm{color:var(--mh-ink);font-weight:700}
+.userbox{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mh-mut)}
+.userbox .hi{color:var(--mh-ink);font-weight:700;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ring{display:inline-flex;align-items:center;gap:8px}
+.ring svg{width:30px;height:30px;transform:rotate(-90deg)}
+.ring .tr{stroke:var(--mh-line)}.ring .pr{stroke:var(--mh-accent);transition:stroke-dashoffset .6s var(--mh-ease)}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--mh-line-2);background:var(--mh-surface);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{width:18px;height:1.5px;background:var(--mh-ink);border-radius:2px;transition:.25s var(--mh-ease)}
+.burger[aria-expanded=true] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded=true] span:nth-child(2){opacity:0}
+.burger[aria-expanded=true] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.drawer{display:none;flex-direction:column;padding:8px 18px 18px;border-top:1px solid var(--mh-line);background:var(--mh-bg)}
 .drawer.open{display:flex}
-.drawer a{padding:15px 22px;border-top:1px solid var(--line);color:var(--tx);text-decoration:none;font-weight:600;font-size:15px}
-/* hero */
-.hero{position:relative;overflow:hidden;padding:92px 0 96px;text-align:center}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0}
-.b1{width:460px;height:460px;background:radial-gradient(circle,#5A2FB0,transparent 70%);top:-120px;left:-80px;animation:float1 14s ease-in-out infinite}
-.b2{width:420px;height:420px;background:radial-gradient(circle,#EC2E8E,transparent 70%);bottom:-140px;right:-60px;animation:float2 16s ease-in-out infinite}
-@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
-@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-30px)}}
-.hero .in{position:relative;z-index:1}
-.hero .bigmk{width:96px;height:60px;margin:0 auto 8px;display:block;filter:drop-shadow(0 10px 30px rgba(236,46,142,.35))}
-.hero .k{font-size:12.5px;letter-spacing:4px;text-transform:uppercase;color:var(--mut);font-weight:600}
-.hero h1{font-size:60px;line-height:1.02;margin:10px 0 16px;font-weight:900;letter-spacing:-1px}
-.hero p{font-size:18px;color:#cfc3e0;max-width:56ch;line-height:1.6;margin:0 auto 30px}
-.cta{display:inline-block;background:var(--grad);color:#fff;font-weight:700;padding:15px 32px;border-radius:12px;text-decoration:none;font-size:15.5px;cursor:pointer;box-shadow:0 10px 30px rgba(236,46,142,.28);transition:.18s}
-.cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(236,46,142,.4)}
-/* sections */
-section.blk{padding:60px 0}
-.eyebrow{font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
-h2.sec{font-size:32px;margin:8px 0 8px;font-weight:800;letter-spacing:-.5px}
-.sub{color:var(--mut);font-size:15.5px;max-width:62ch;line-height:1.6;margin:0 0 30px}
-.reveal{opacity:0;transform:translateY(22px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+.drawer a{display:flex;align-items:center;min-height:52px;padding:0 6px;border-bottom:1px solid var(--mh-line);color:var(--mh-ink);text-decoration:none;font-size:17px;cursor:pointer}
+.drawer a.estudio{color:var(--mh-accent-ink);font-weight:700}
+.drawer a.adm{font-weight:700}
+@media(max-width:900px){nav.desk,.userbox{display:none}.burger{display:inline-flex}.brand .sep,.brand .mh-logo{display:none}}
+
+/* ---------- animación de entrada ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--mh-ease),transform .7s var(--mh-ease)}
 .reveal.in{opacity:1;transform:none}
-.prog{display:flex;align-items:center;gap:12px;margin:0 0 24px;font-size:13px;color:var(--mut)}
-.userbox{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut)}
-.userbox .hi{color:var(--tx);font-weight:600;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.userbox .mini{display:flex;align-items:center;gap:7px}
-.userbox .mbar{width:66px;height:6px;border-radius:4px;background:var(--line);overflow:hidden}
-.userbox .mbar i{display:block;height:100%;background:var(--grad);transition:width .5s cubic-bezier(.2,.8,.2,1)}
-.onb .field{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;background:var(--card2);color:var(--tx);font-size:15px;margin:8px 0 0;font-family:inherit}
-.onb .field:focus{outline:none;border-color:var(--pink)}
-.onb .err{color:#ff6b9d;font-size:12.5px;min-height:17px;margin:5px 0 2px;text-align:left}
-.bar{flex:1;height:8px;background:#241834;border-radius:8px;overflow:hidden;max-width:300px}
-.bar>i{display:block;height:100%;background:var(--grad);width:0;transition:.5s}
-.certcta{background:var(--grad);border-radius:18px;padding:24px 28px;margin:0 0 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 14px 40px rgba(236,46,142,.25)}
-.certcta b{font-size:18px}.certcta small{color:#f3dcec;font-size:13px}
-.certcta button{background:#fff;color:#3a1a52;border:none;font-weight:700;padding:12px 24px;border-radius:10px;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.mcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.mcard:before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:.2s;z-index:0}
-.mcard:hover{transform:translateY(-5px);border-color:transparent;box-shadow:0 20px 44px rgba(0,0,0,.45)}
-.mcard:hover:before{opacity:.10}
-.mcard>*{position:relative;z-index:1}
-.mcard .num{width:46px;height:46px;border-radius:13px;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 8px 20px rgba(236,46,142,.3)}
-.mcard h3{font-size:18px;margin:16px 0 8px;line-height:1.25;font-weight:700}
-.mcard p{font-size:13.5px;color:var(--mut);line-height:1.55;margin:0 0 12px}
-.mcard .go{font-size:13px;font-weight:700}
-.mcard .best{font-size:12px;color:var(--ok);font-weight:700;margin-bottom:10px}
-.mcard .done{position:absolute;top:22px;right:22px;color:var(--ok);font-size:18px;display:none;z-index:2}
-.mcard.v .done{display:block}
-.mcard.cap{border-style:dashed}
-.mcard.cap .num{background:linear-gradient(135deg,#8E2E9E,#EC2E8E)}
-/* module view */
-.mhero{position:relative;overflow:hidden;padding:52px 0 46px;border-bottom:1px solid var(--line)}
-.mhero .blob{opacity:.4}
-.back{color:var(--tx);font-size:13.5px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;font-weight:700;background:var(--card2);border:1px solid var(--line);padding:10px 18px;border-radius:11px;transition:.15s}.back:hover{border-color:var(--pink);color:var(--pink)}
-.mhero .k{color:var(--mut);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
-.mhero h1{font-size:36px;margin:8px 0;font-weight:800;position:relative;z-index:1}
-.mhero p{color:#cfc3e0;font-size:16px;max-width:62ch;line-height:1.55;margin:0;position:relative;z-index:1}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin:22px 0}
-.panel h3.t{margin:0 0 16px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--pink);font-weight:700}
-.res{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.rc{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;background:var(--card2)}
-.rc .ico{font-size:26px}.rc h4{margin:8px 0 10px;font-size:15px}
-.rc audio,.rc video{width:100%;margin-top:4px}
-.rc .fallback{display:none;font-size:12.5px;color:var(--mut);font-style:italic}
-.rc .dl{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--grad);padding:10px 20px;border-radius:9px;text-decoration:none}
-.content h2{font-size:20px;margin:24px 0 8px}
-.content p{line-height:1.75;font-size:15.5px;color:#d8cee8;margin:0 0 14px}
-.content strong{color:#fff}
-.quote{border-left:3px solid var(--pink);background:var(--card2);padding:14px 20px;border-radius:0 12px 12px 0;font-style:italic;color:#efe3f7;margin:18px 0;font-size:16px}
-.q{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:none}
-.qt{font-weight:600;margin-bottom:10px}
-.opt{display:block;padding:12px 15px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:9px;cursor:pointer;font-size:14.5px;transition:.12s;background:var(--card2)}
-.opt:hover{border-color:var(--purple)}
-.opt.sel{border-color:var(--pink);background:rgba(236,46,142,.10)}
-.opt.correct{border-color:var(--ok);background:rgba(57,217,138,.12)}
-.opt.wrong{border-color:#e0466b;background:rgba(224,70,107,.12)}
-.exp{font-size:13.5px;color:var(--mut);margin-top:6px;display:none}.exp.show{display:block}
-.btn{background:var(--grad);color:#fff;border:none;padding:12px 26px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--pink);border:1.5px solid var(--pink)}
-.score{display:none;margin-top:16px;padding:16px 20px;border-radius:12px;background:var(--card2);font-size:16px}
-.score.show{display:block}.score b{color:var(--pink)}
-.pager{display:flex;justify-content:space-between;margin:26px 0 60px;gap:12px}
-.pager a{cursor:pointer;font-weight:600;color:var(--tx);font-size:14px;text-decoration:none;padding:12px 18px;border:1.5px solid var(--line);border-radius:11px}
-.pager a:hover{border-color:var(--pink)}.pager a.disabled{opacity:.35;pointer-events:none}
-.pan{padding:34px 0 6px}
-.pan .hi{font-size:13px;color:var(--mut);font-weight:600;letter-spacing:.3px}
-.pan h1{font-size:clamp(26px,4vw,38px);margin:4px 0 6px;font-weight:800;letter-spacing:-.02em}
-.pan .role{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 11px;border-radius:99px;background:#241736;border:1px solid #3A2A52;color:#C9B8E0;margin-bottom:16px}
-.cont{background:linear-gradient(135deg,#4733A6,#8E2E9E 52%,#EC2E8E);border-radius:20px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;box-shadow:0 16px 40px rgba(142,46,158,.26);margin:0 0 26px}
-.cont .l{flex:1;min-width:230px}
-.cont .k2{font-size:11.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.82)}
-.cont h3{color:#fff;font-size:20px;margin:5px 0 4px;font-weight:800}
-.cont p{color:rgba(255,255,255,.86);font-size:13.5px;margin:0}
-.cont button{background:#fff;color:#3B1E5E;border:none;font-weight:800;font-size:15px;padding:14px 26px;border-radius:12px;cursor:pointer;font-family:inherit;white-space:nowrap}
-.cont button:hover{transform:translateY(-1px)}
-.rutas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0 0 26px}
-.ruta{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:22px;text-decoration:none;display:block;transition:.18s;position:relative;overflow:hidden}
-.ruta:hover{transform:translateY(-3px);border-color:#8E2E9E}
-.ruta.done{border-color:#39d98a}
-.ruta .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.ruta .ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px}
-.ruta .pill{font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:99px}
-.ruta h4{font-size:16px;margin:0 0 3px;color:var(--tx);font-weight:800}
-.ruta .d{font-size:12.5px;color:var(--mut);margin:0 0 14px;line-height:1.45;min-height:36px}
-.ruta .pr{display:flex;align-items:center;gap:9px}
-.ruta .pb{flex:1;height:7px;background:#241736;border-radius:99px;overflow:hidden}
-.ruta .pb i{display:block;height:100%;border-radius:99px;transition:width .5s}
-.ruta .pn{font-size:12px;color:var(--mut);font-weight:700;white-space:nowrap}
-.logro{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 10px}
-.logro.on{border-color:#39d98a;background:#12281d}
-.logro .e{font-size:24px;filter:grayscale(1);opacity:.4}
-.logro.on .e{filter:none;opacity:1}
-.logro b{display:block;font-size:14px;color:var(--tx)}
-.logro span{font-size:12px;color:var(--mut)}
-@media(max-width:640px){.cont{padding:22px}.cont button{width:100%}.ruta .d{min-height:0}}
-.mapwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
-.mapwrap svg{width:100%;height:auto}
-.mapnode{cursor:pointer;transition:transform .15s;transform-box:fill-box;transform-origin:center}
-.mapnode:hover{transform:translateY(-4px)}.mapnode:hover rect{stroke:var(--pink);stroke-width:2.5}
-.mapnode:focus{outline:none}.mapnode:focus rect{stroke:var(--pink);stroke-width:3}
-.maphint{font-size:12.5px;color:var(--mut);margin:10px 0 0;text-align:center}
-footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;text-align:center;color:var(--mut)}
-footer .fb{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
-footer .fb .mk{width:30px;height:19px}
-footer a{color:var(--pink);text-decoration:none;margin:0 8px}
-/* cert */
-#cert .certcard{background:#fff;color:#221030;border-radius:16px;max-width:820px;margin:0 auto;padding:8px}
-#cert .cinner{border:2px solid #EC2E8E;border-radius:12px;padding:40px 34px;text-align:center}
-#cert .cmk{width:70px;height:44px;margin:0 auto 8px;display:block}
-#cert .clabel{letter-spacing:4px;text-transform:uppercase;font-weight:700;font-size:13px}
-#cert h2{font-size:30px;margin:10px 0 4px;color:#2a1240}
-#cert .cname{font-size:34px;font-weight:800;color:#2a1240;border-bottom:2px solid #f3d6e8;display:inline-block;padding:6px 30px;margin:14px 0}
-#cert p{font-size:15px;line-height:1.6;max-width:60ch;margin:8px auto;color:#4a3560}
-#cert .cmods{color:#7a6690;font-size:12.5px;margin-top:14px}
-.nameinput{padding:12px 15px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;width:340px;max-width:100%;background:var(--card2);color:var(--tx)}
-/* --- Mobile: dedos, no mouse --- */
-*{-webkit-tap-highlight-color:transparent}
-@media(max-width:640px){
- .wrap{padding-left:18px;padding-right:18px}
- /* Tarjetas de modulo: mas aire y target grande */
- .mcard{padding:20px 18px}
- .mcard h3{font-size:17px}
- .mcard p{font-size:14px}
- .mcard .num{width:42px;height:42px}
- .mcard:active{transform:scale(.985)}
- /* Tarjetas de ruta */
- .ruta{padding:20px 18px}
- .ruta:active{transform:scale(.985);border-color:#8E2E9E}
- /* Continuar / botones primarios: ancho completo, altos */
- .rb{width:100%;padding:15px 20px;font-size:16px;border-radius:12px}
- .btn{width:100%;padding:15px 22px;font-size:16px}
- .btn.ghost{width:100%}
- .cont{padding:20px}
- .cont button{width:100%;padding:16px;font-size:16px}
- /* Volver: mas grande y comodo */
- .back{padding:13px 20px;font-size:15px}
- .back:active{border-color:var(--pink)}
- /* Quiz: opciones grandes y separadas, faciles de acertar */
- .opt{padding:16px 16px;font-size:15.5px;margin-bottom:12px;line-height:1.4}
- .opt:active{border-color:var(--pink)}
- .q{margin-bottom:24px;padding-bottom:20px}
- .qt{font-size:15.5px;line-height:1.45}
- /* Texto de leccion mas legible */
- .lesson p,.mbody p{font-size:15.5px;line-height:1.7}
- .lesson h2,.mbody h2{font-size:19px}
- .quote{font-size:15px;line-height:1.5;padding:14px 16px}
- /* Titulos del panel personal */
- .pan h1{font-size:30px}
- h2.sec{font-size:24px}
- /* Drawer: links bien altos */
- .drawer a{padding:17px 22px;font-size:16px}
- .burger{padding:10px}
- /* Recursos / listas con buen tap */
- .rc{padding:16px 18px}
- .rc:active{border-color:var(--pink)}
- /* Botones LinkedIn y compartir a ancho completo */
- .libtn,.share,.certcta button{width:100%!important;padding:15px!important;font-size:15px!important}
-}
-@media print{header.top,footer,.noprint{display:none!important}body{background:#fff}}
-@media(max-width:860px){.grid,.res{grid-template-columns:1fr}nav.desk{display:none}.userbox{display:none}.burger{display:flex}.hero h1{font-size:40px}.hero{padding:64px 0 68px}h2.sec{font-size:26px}}
-.resume{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 20px;flex-wrap:wrap}
-.resume b{color:var(--tx)} .resume .rb{background:var(--grad);color:#fff;border:none;padding:10px 20px;border-radius:9px;font-weight:700;cursor:pointer}
-.resume a{color:var(--mut);font-size:12px;cursor:pointer;text-decoration:underline;margin-left:10px}
-.onb{position:fixed;inset:0;background:rgba(6,3,10,.78);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
-.onb.show{display:flex}
-.onb .box{background:var(--card);border:1px solid var(--line);border-radius:22px;max-width:460px;padding:34px 32px;text-align:center;animation:pop .28s cubic-bezier(.2,.8,.2,1)}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
-.onb .mk{width:74px;height:46px;margin:0 auto 12px;display:block}
-.onb h3{font-size:23px;margin:0 0 8px;font-weight:800}
-.onb p{color:var(--mut);font-size:14.5px;line-height:1.6;margin:0 0 18px}
-.onb .li{text-align:left;font-size:14px;color:#d8cee8;margin:9px 0;padding-left:26px;position:relative}
-.onb .li:before{content:"\2713";position:absolute;left:0;color:var(--pink);font-weight:800}
-.onb button{background:var(--grad);color:#fff;border:none;padding:13px 32px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;margin-top:16px}
-.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,70px);background:var(--card);border:1px solid var(--line);color:var(--tx);padding:13px 22px;border-radius:12px;font-weight:600;font-size:14px;z-index:120;opacity:0;transition:.35s cubic-bezier(.2,.8,.2,1);box-shadow:0 12px 30px rgba(0,0,0,.5)}
-.toast.show{transform:translate(-50%,0);opacity:1}
+
+/* ---------- inicio ---------- */
+.hero{padding:72px 0 40px}
+.hero .grid2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:end}
+.hero h1{font-size:clamp(40px,6vw,68px);font-weight:400;letter-spacing:-.035em;line-height:1.02;margin:14px 0 18px}
+.hero h1 .mh-serif{font-size:1.04em}
+.hero .lead{font-size:19px;line-height:1.55;color:var(--mh-ink-2);max-width:34ch;margin:0}
+.next{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:28px;box-shadow:var(--mh-sh-1)}
+.next h2{font-size:22px;font-weight:700;margin:10px 0 6px;line-height:1.25}
+.next p{margin:0 0 18px;color:var(--mh-mut);font-size:15px}
+.next .bar{height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden;margin:0 0 20px}
+.next .bar i{display:block;height:100%;background:var(--mh-accent);border-radius:3px;transition:width .6s var(--mh-ease)}
+.next .mh-btn{width:100%}
+@media(max-width:860px){.hero{padding:44px 0 24px}.hero .grid2{grid-template-columns:1fr;gap:28px}.hero .lead{font-size:17px}}
+
+/* método */
+.metodo{padding:40px 0 24px}
+.mt-card{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:64px 56px 52px;box-shadow:var(--mh-sh-1)}
+.mt-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.mt-card .mh-logo{font-size:clamp(40px,6.4vw,64px)}
+.mt-head p{margin:0;max-width:32ch;color:var(--mh-mut);font-size:15.5px}
+.mt-steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px}
+.mt-step{position:relative;padding:76px 24px 0 0}
+.mt-step:before{content:"";position:absolute;left:0;top:0;width:1px;height:60px;background:linear-gradient(var(--mh-hair),rgba(207,169,188,.12))}
+.mt-step .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:28px;line-height:1}
+.mt-step h3{font-size:21px;font-weight:400;margin:10px 0 0;letter-spacing:-.02em;color:var(--mh-ink)}
+.mt-step h3 b{font-weight:700}
+@media(max-width:420px){.mt-card .mh-logo{font-size:clamp(28px,9.5vw,40px)}}
+@media(max-width:760px){.mt-card{padding:40px 24px 32px}.mt-steps{grid-template-columns:1fr;margin-top:16px}.mt-step{padding:20px 0 20px 22px}.mt-step:before{top:22px;height:calc(100% - 22px)}.mt-step h3{font-size:19px}}
+
+/* secciones */
+section.blk{padding:64px 0}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 28px}
+.sh h1,.sh h2{font-size:clamp(28px,3.6vw,40px);font-weight:400;letter-spacing:-.03em;margin:10px 0 0}
+.sh h1 b,.sh h2 b{font-weight:700}
+.sh p{margin:8px 0 0;color:var(--mh-mut);max-width:52ch;font-size:15.5px}
+@media(max-width:640px){section.blk{padding:44px 0}}
+
+/* rutas */
+.rutas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ruta{position:relative;--rr:20px;display:flex;flex-direction:column;text-align:left;width:100%;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:20px;padding:24px;color:inherit;text-decoration:none;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s var(--mh-ease);font:inherit}
+.ruta:hover{border-color:var(--mh-line-2);box-shadow:var(--mh-sh-2);transform:translateY(-2px)}
+.ruta .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 22px}
+.ruta .rk{font:700 12px/1 var(--mh-sans);letter-spacing:.14em;text-transform:uppercase}
+.ruta h3{font-size:20px;font-weight:700;margin:0 0 6px}
+.ruta p{margin:0 0 22px;color:var(--mh-mut);font-size:14.5px;line-height:1.5;flex:1}
+.ruta .pb{height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden}
+.ruta .pb i{display:block;height:100%;border-radius:3px}
+.ruta .pn{display:flex;justify-content:space-between;margin-top:10px;font-size:13.5px;color:var(--mh-mut)}
+.ruta .pn b{color:var(--mh-ink)}
+.ruta.tool{background:var(--mh-surface-2);border-style:dashed}
+
+/* módulos */
+.mods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--mh-line)}
+.mrow{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:18px;align-items:start;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--mh-line);padding:24px 4px;cursor:pointer;color:inherit;font:inherit;transition:background .2s}
+/* tarjeta entera clicable: el botón real va dentro del título y su ::after cubre la tarjeta */
+.stretch{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:inherit;letter-spacing:inherit;cursor:pointer}
+.stretch:after{content:"";position:absolute;inset:0;border-radius:var(--rr,0)}
+.stretch:focus-visible{outline:none}
+.stretch:focus-visible:after{outline:2px solid var(--mh-accent);outline-offset:3px}
+.mrow:hover{background:linear-gradient(90deg,var(--mh-accent-tint),rgba(248,236,242,0))}
+.mrow .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:34px;line-height:1;padding-top:2px}
+.mrow h3{font-size:18px;font-weight:700;margin:0 0 6px;line-height:1.3}
+.mrow p{margin:0;color:var(--mh-mut);font-size:14.5px;line-height:1.5}
+.mrow .st{padding-top:4px}
+.mrow .ck{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:var(--mh-ok-tint);color:var(--mh-ok);font-weight:700;font-size:14px}
+.mrow .go{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;border:1px solid var(--mh-line-2);color:var(--mh-ink);transition:.2s var(--mh-ease)}
+.mrow:hover .go{background:var(--mh-ink);color:#fff;border-color:var(--mh-ink)}
+.mrow .best{display:block;margin-top:8px;font-size:12.5px;color:var(--mh-ok);font-weight:700}
+@media(max-width:820px){.mods{grid-template-columns:1fr}.mrow{grid-template-columns:48px minmax(0,1fr) auto;gap:14px;padding:20px 2px}.mrow .n{font-size:28px}}
+.progline{display:flex;align-items:center;gap:14px;margin:0 0 22px;font-size:14px;color:var(--mh-mut)}
+.progline .bar{flex:1;max-width:320px;height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden}
+.progline .bar i{display:block;height:100%;background:var(--mh-accent)}
+.progline b{color:var(--mh-ink)}
+
+/* caso y nexo */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+.feat{position:relative;--rr:20px;display:block;text-align:left;width:100%;border-radius:20px;padding:30px;border:1px solid var(--mh-line);background:var(--mh-surface);text-decoration:none;color:inherit;cursor:pointer;font:inherit;transition:box-shadow .2s,transform .2s var(--mh-ease)}
+.feat:hover{box-shadow:var(--mh-sh-2);transform:translateY(-2px)}
+.feat h3{font-size:24px;font-weight:400;margin:12px 0 8px;letter-spacing:-.025em}
+.feat h3 b{font-weight:700}
+.feat p{margin:0 0 18px;color:var(--mh-mut);font-size:15px;line-height:1.55}
+.feat .lk{font-weight:700;color:var(--mh-ink);font-size:14.5px}
+.feat.caso{background:var(--mh-ink);border-color:var(--mh-ink)}
+.feat.caso h3,.feat.caso .lk{color:#fff}.feat.caso p{color:#CFC6D3}.feat.caso .mh-kicker{color:#E7A9C6}
+.feat.nexo{background:var(--mh-teal-tint);border-color:#CFE5E1}
+.feat.nexo .mh-kicker{color:var(--mh-teal)}.feat.nexo .lk{color:var(--mh-teal)}
+@media(max-width:760px){.duo{grid-template-columns:1fr}}
+
+/* mapa */
+.mapwrap{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:24px}
+.mapwrap svg{width:100%;height:auto;display:block}
+.mapnode{cursor:pointer}
+.mapnode rect{transition:stroke .2s,fill .2s}
+.mapnode:hover rect,.mapnode:focus-visible rect{stroke:var(--mh-accent);fill:#FDF7FA}
+.mapnode:focus-visible rect{stroke-width:2.5}
+.mapnode:focus{outline:none}
+.maphint{font-size:13px;color:var(--mh-mut);margin:12px 0 0;text-align:center}
+.mapl{display:none;list-style:none;margin:0;padding:4px 0 0;position:relative}
+.mapl:before{content:"";position:absolute;left:21px;top:26px;bottom:26px;width:1px;background:var(--mh-hair)}
+.mapl li{position:relative}
+.mapl button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:0;padding:10px 0;cursor:pointer;font:inherit;color:inherit}
+.mapl .c{width:44px;height:44px;border-radius:50%;background:var(--mh-surface);border:1px solid var(--mh-hair);color:var(--mh-accent);font-family:var(--mh-serif);font-style:italic;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.mapl .ok .c{background:var(--mh-ok-tint);border-color:#BFDCCB;color:var(--mh-ok);font-family:var(--mh-sans);font-style:normal;font-weight:700}
+.mapl b{display:block;font-size:15.5px;color:var(--mh-ink);line-height:1.3}
+.mapl span{font-size:13px;color:var(--mh-mut)}
+@media(max-width:700px){.mapwrap svg,.maphint{display:none!important}.mapl{display:block}.mapwrap{padding:12px 18px}}
+
+/* logros */
+.logros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.logro{display:flex;gap:16px;align-items:flex-start;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:18px;padding:22px}
+.logro .e{width:40px;height:40px;border-radius:50%;border:1px solid var(--mh-line-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--mh-mut-2);font-family:var(--mh-serif);font-style:italic;font-size:18px}
+.logro.on .e{background:var(--mh-accent);border-color:var(--mh-accent);color:#fff}
+.logro b{display:block;color:var(--mh-ink);font-size:15.5px;margin:2px 0 4px}
+.logro span{font-size:13.5px;color:var(--mh-mut);line-height:1.45}
+@media(max-width:820px){.logros{grid-template-columns:1fr}}
+
+/* ---------- vista de módulo ---------- */
+.mhead{padding:40px 0 36px;border-bottom:1px solid var(--mh-line);background:linear-gradient(180deg,var(--mh-surface) 0%,var(--mh-bg) 100%)}
+.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 12px;margin:0 0 26px;border-radius:var(--mh-pill);border:1px solid var(--mh-line-2);background:var(--mh-surface);color:var(--mh-ink);font-size:14.5px;font-weight:700;text-decoration:none;cursor:pointer}
+.back:hover{border-color:var(--mh-ink)}
+.mhead .kk{display:flex;align-items:center;gap:12px}
+.mhead .kk .n{font-family:var(--mh-serif);font-style:italic;color:var(--mh-accent);font-size:22px}
+.mhead h1{font-size:clamp(32px,5vw,52px);font-weight:400;letter-spacing:-.035em;line-height:1.06;margin:14px 0 14px;max-width:20ch}
+.mhead p.lead{font-size:18.5px;color:var(--mh-ink-2);max-width:56ch;margin:0;line-height:1.55}
+.mstep{display:flex;gap:6px;margin-top:26px}
+.mstep i{flex:1;max-width:44px;height:3px;border-radius:3px;background:var(--mh-line)}
+.mstep i.on{background:var(--mh-accent)}.mstep i.ok{background:var(--mh-hair)}
+.reading{max-width:760px;margin:0 auto;padding:44px 0 20px}
+.content h2{font-size:24px;font-weight:700;margin:40px 0 12px;letter-spacing:-.02em}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:19px;font-weight:700;margin:28px 0 8px}
+.content p,.content li{font-size:17.5px;line-height:1.75;color:var(--mh-ink-2)}
+.content p{margin:0 0 18px}
+.content ul,.content ol{padding-left:24px;margin:0 0 18px}
+.content li{margin:0 0 6px}
+.content strong{color:var(--mh-ink);font-weight:700}
+.content a{color:var(--mh-accent-ink)}
+.content .quote{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:clamp(21px,2.6vw,26px);line-height:1.4;color:var(--mh-ink);border-left:1px solid var(--mh-accent);padding:4px 0 4px 26px;margin:34px 0}
+.sec2{margin:48px 0 0}
+.sec2>.mh-kicker{display:block;margin:0 0 16px}
 /* recursos */
-.res{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
-.rc{text-align:left}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.rc{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:18px;padding:20px}
 .rc.big{grid-column:1/-1}
-.rc .rh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.rc .rh h4{margin:0;font-size:15px}
-.rc .rh .ico{font-size:22px}
+.rc .rh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
+.rc .rh h3,.rc .rh h4{margin:0;font-size:16px;font-weight:700;color:var(--mh-ink);letter-spacing:0;line-height:1.3}
+h2.mh-kicker{margin:0;letter-spacing:.16em;line-height:1.3;color:var(--mh-mut)}
+.rc .ico{font:700 11px/1 var(--mh-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mh-accent-ink);background:var(--mh-accent-tint);padding:6px 9px;border-radius:var(--mh-pill)}
+.rc .dl{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:var(--mh-pill);border:1.5px solid var(--mh-line-2);color:var(--mh-ink);font-weight:700;font-size:14.5px;text-decoration:none}
+.rc .dl:hover{border-color:var(--mh-ink)}
 .rc .player{width:100%;border-radius:12px;background:#000;display:block}
 .vid{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.aud{width:100%;height:90px;border:0;border-radius:12px;background:#120b1c}
-.aud.sc{height:120px}.aud.sp{height:152px}
-.content ul,.content ol{color:#d8cee8;line-height:1.75;font-size:15.5px;padding-left:22px;margin:0 0 14px}
-.content h3{font-size:17px;margin:20px 0 6px}
-.content a{color:var(--pink)}
-/* mapa en celular: lista vertical */
-.mapl{display:none;list-style:none;margin:0;padding:6px 0 0 0;position:relative}
-.mapl:before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:#3A2A52}
-.mapl li{display:flex;align-items:center;gap:14px;padding:9px 0;cursor:pointer;position:relative}
-.mapl .c{width:44px;height:44px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
-.mapl li.ok .c{background:#39d98a;color:#08240f}
-.mapl b{display:block;font-size:15px;color:var(--tx);line-height:1.3}
-.mapl span{font-size:12.5px;color:var(--mut);font-style:italic}
-@media(max-width:700px){.mapwrap svg{display:none!important}.mapl{display:block}.maphint{display:none}}
-.drawer a.adm{color:#C88CE0}
-nav.desk a.estudio{color:#F0C674}
-.drawer a.estudio{color:#F0C674}
+.aud{width:100%;height:90px;border:0;border-radius:12px;background:var(--mh-surface-2)}.aud.sc{height:120px}.aud.sp{height:152px}
+/* autoevaluación */
+.quiz{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:32px}
+.quiz .qi{font-size:14.5px;color:var(--mh-mut);margin:0 0 24px}
+.q{padding:0 0 26px;margin:0 0 26px;border-bottom:1px solid var(--mh-line)}
+.q:last-of-type{border-bottom:0;margin-bottom:8px;padding-bottom:0}
+.qt{display:flex;gap:12px;font-size:17.5px;font-weight:700;color:var(--mh-ink);line-height:1.45;margin:0 0 14px;padding:0}
+.qt .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);flex-shrink:0}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;min-height:54px;padding:13px 16px;border:1.5px solid var(--mh-line-2);border-radius:14px;background:var(--mh-surface);color:var(--mh-ink-2);font:400 16px/1.45 var(--mh-sans);cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#B9A9B2}
+.opt .dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--mh-ctl);flex-shrink:0;position:relative;transition:.15s}
+.opt[aria-checked=true]{border-color:var(--mh-accent);background:var(--mh-accent-tint);color:var(--mh-ink)}
+.opt[aria-checked=true] .dot{border-color:var(--mh-accent);box-shadow:inset 0 0 0 4px var(--mh-accent-tint);background:var(--mh-accent)}
+.opt .tag{margin-left:auto;font:700 12px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.opt.correct{border-color:var(--mh-ok);background:var(--mh-ok-tint);color:var(--mh-ink)}
+.opt.correct .dot{border-color:var(--mh-ok);background:var(--mh-ok);box-shadow:inset 0 0 0 4px var(--mh-ok-tint)}
+.opt.correct .tag{color:var(--mh-ok)}
+.opt.wrong{border-color:var(--mh-err);background:var(--mh-err-tint)}
+.opt.wrong .dot{border-color:var(--mh-err);background:var(--mh-err);box-shadow:inset 0 0 0 4px var(--mh-err-tint)}
+.opt.wrong .tag{color:var(--mh-err)}
+.opt.lock{cursor:default}
+.exp{display:none;margin-top:12px;padding:12px 16px;border-radius:12px;background:var(--mh-surface-2);font-size:15px;color:var(--mh-ink-2);line-height:1.55}
+.exp.show{display:block}
+.qa{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.score{display:none;margin-top:22px;padding:18px 20px;border-radius:14px;background:var(--mh-surface-2);font-size:16px;color:var(--mh-ink)}
+.score.show{display:block}.score.ok{background:var(--mh-ok-tint)}.score b{color:var(--mh-ink)}
+@media(max-width:640px){.quiz{padding:22px 18px}.qa .mh-btn{flex:1}.reading{padding-top:32px}}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 80px}
+.pager button{display:flex;flex-direction:column;gap:4px;text-align:left;padding:18px 20px;border:1px solid var(--mh-line);border-radius:18px;background:var(--mh-surface);cursor:pointer;font:inherit;color:inherit;transition:border-color .2s}
+.pager button:hover{border-color:var(--mh-ink)}
+.pager button.nx{text-align:right;align-items:flex-end}
+.pager small{font-size:12.5px;color:var(--mh-mut);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.pager span{font-size:16px;color:var(--mh-ink);font-weight:700}
+.pager button[disabled]{visibility:hidden}
+
+/* ---------- certificado ---------- */
+.certtools{max-width:620px;margin:0 auto 28px;text-align:center}
+.certtools p{color:var(--mh-mut);margin:0 0 16px}
+.certtools .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+#cert .certcard{background:#fff;max-width:860px;margin:0 auto;border:1px solid var(--mh-line);border-radius:6px;padding:14px;box-shadow:var(--mh-sh-2)}
+#cert .cinner{border:1px solid var(--mh-hair);padding:56px 48px 44px;text-align:center}
+#cert .clabel{font:700 12px/1 var(--mh-sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mh-mut)}
+#cert h2{font-size:34px;font-weight:400;margin:16px 0 4px;letter-spacing:-.03em}
+#cert h2 b{font-weight:700}
+#cert .cname{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:clamp(32px,5vw,46px);color:var(--mh-ink);margin:18px auto 14px;padding:0 24px 10px;border-bottom:1px solid var(--mh-hair);display:inline-block;min-width:60%}
+#cert p{font-size:15.5px;line-height:1.6;max-width:56ch;margin:8px auto;color:var(--mh-ink-2)}
+#cert .cmods{color:var(--mh-mut);font-size:12.5px;margin-top:14px;line-height:1.6}
+#cert .cseal{margin-top:30px;display:flex;justify-content:center}
+#cert .cseal .mh-logo{font-size:22px}
+@media(max-width:640px){#cert .cinner{padding:36px 18px 28px}}
+@media print{header.top,footer,.noprint,.mh-toast{display:none!important}body{background:#fff}#cert .certcard{box-shadow:none;border:0}}
+
+/* ---------- pie ---------- */
+footer{border-top:1px solid var(--mh-line);padding:44px 0 56px;margin-top:40px;color:var(--mh-mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+footer .mh-logo{font-size:26px}
+footer nav{display:flex;gap:6px;flex-wrap:wrap}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--mh-ink-2);text-decoration:none;padding:10px 12px;border-radius:var(--mh-pill);cursor:pointer}
+footer nav a:hover{background:var(--mh-surface-2);color:var(--mh-ink)}
+footer small{display:block;margin-top:10px}
 </style>
 </head>
-<body>
+<body class="mh">
+<a class="mh-skip" href="#app">Ir al contenido</a>
 <header class="top"><div class="wrap">
-<div class="brand" onclick="home()"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><span class="wm">Humana <b class="grad">Academy</b></span></div>
-<nav class="desk" id="navdesk"><a onclick="scrollMods()">Módulos</a><a onclick="openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
+<button class="brand" onclick="home()" aria-label="Humana Academy, ir al inicio"><span class="mh-word"><b>Humana</b> <span>Academy</span></span><span class="sep" aria-hidden="true"></span><span class="mh-logo" aria-hidden="true"><i>m</i>étodo<b>Humana</b></span></button>
+<nav class="desk" id="navdesk" aria-label="Principal"><a href="#mods" onclick="event.preventDefault();scrollMods()">Módulos</a><a href="#certificado" onclick="event.preventDefault();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
 <div class="userbox" id="userbox"></div>
-<button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
+<button class="burger" id="burger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
 </div>
-<div class="drawer" id="drawer">
-<a onclick="closeMenu();scrollMods()">Módulos</a><a onclick="closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a><a id="installBtn" onclick="closeMenu();installApp()" style="display:none;cursor:pointer">⬇ Instalar app</a>
-</div>
+<nav class="drawer" id="drawer" aria-label="Menú">
+<a href="#mods" onclick="event.preventDefault();closeMenu();scrollMods()">Módulos</a><a href="#certificado" onclick="event.preventDefault();closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a><a id="installBtn" href="#" role="button" onclick="event.preventDefault();closeMenu();installApp()" style="display:none">Instalar la app</a>
+</nav>
 </header>
-<main id="app"></main>
-<div class="toast" id="toast"></div>
-<footer><div class="wrap"><div class="fb"><span class="mk"><svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg></span><b style="color:var(--tx)">Humana Academy</b></div>
-Humana Health &amp; Care · Argentina<br>
-<a href="Humana_Documento_Madre.pdf" download>Documento base</a> · <a onclick="openCert()" style="cursor:pointer">Certificado</a> · <a href="estratificador.html">Estratificador comercial</a></div></footer>
+<main id="app" tabindex="-1"></main>
+<div class="mh-toast toast" id="toast" role="status" aria-live="polite"></div>
+<footer><div class="wrap">
+<div><span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span><small>Humana Academy · Humana Health &amp; Care · Argentina</small></div>
+<nav aria-label="Pie"><a href="Humana_Documento_Madre.pdf" download>Documento base</a><a href="#certificado" onclick="event.preventDefault();openCert()">Certificado</a><a href="estratificador.html">Estratificador comercial</a></nav>
+</div></footer>
 <script src="modulos-base.js?v=2"></script>
-<script src="contenido.js?v=2"></script>
+<script src="contenido.js?v=3"></script>
 <script>
-const MARK=`<svg style="width:100%;height:100%;display:block" viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#hg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>`;
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let scores=STORE.get('ha_s',{}), uname=STORE.get('ha_name',''), uemail=STORE.get('ha_email','');
+const LOGO='<span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span>';
 
-/* ---------- Contenido: lo carga el Estudio de contenidos; esto es lo que hay en el equipo mientras tanto ---------- */
+/* ---------- Contenido: lo carga el Estudio; esto es lo que hay en el equipo mientras tanto ---------- */
 let CONT=HA_contenidoInicial();
 let MODULES=CONT.modulos, CAP=CONT.caso;
 const ids=()=>MODULES.map(m=>m.n);
@@ -301,33 +310,45 @@ const pos=n=>MODULES.findIndex(m=>m.n===n)+1;
 const done=n=>scores[n]!=null&&scores[n]>=60;
 const allDone=()=>MODULES.length>0&&ids().every(done);
 const nCompl=()=>ids().filter(done).length;
+const dd=n=>(n<10?'0':'')+n;
 let vista='home';
 window.HA_aplicarContenido=function(c){
   if(!c||!c.modulos||!c.modulos.length)return;
   CONT=c; MODULES=c.modulos; CAP=c.caso;
-  if(typeof renderUserbox==='function')renderUserbox();
+  renderUserbox();
   if(vista==='home')home();
 };
 
 const app=document.getElementById('app');
-function toggleMenu(){document.getElementById('drawer').classList.toggle('open');document.getElementById('burger').classList.toggle('x');}
-function closeMenu(){document.getElementById('drawer').classList.remove('open');document.getElementById('burger').classList.remove('x');}
-function observeReveal(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
+function toggleMenu(){const d=document.getElementById('drawer'),b=document.getElementById('burger');const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');}
+function closeMenu(){const d=document.getElementById('drawer'),b=document.getElementById('burger');d.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menú');}
+document.addEventListener('keydown',e=>{
+  const t=e.target;
+  if(t&&t.matches&&((e.key===' '&&t.matches('a[role="button"]'))||((e.key==='Enter'||e.key===' ')&&t.matches('a[tabindex="0"]:not([href])')))){e.preventDefault();t.click();}
+  if(e.key==='Escape'){const d=document.getElementById('drawer');if(d&&d.classList.contains('open')){const vuelve=d.contains(document.activeElement);closeMenu();if(vuelve)document.getElementById('burger').focus();}}
+});
+const _menosMov=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+function observeReveal(){ if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));return;} const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
 function esc2(x){ return (''+(x==null?'':x)).replace(/[<>&"]/g,c=>c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':'&quot;'); }
 function cap1(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+/* Cambio de vista: título de la pestaña y foco en el h1 nuevo, para que el lector de pantalla anuncie dónde está. */
+function irA(titulo,mover){
+  document.title=(titulo?titulo+' · ':'')+'Humana Academy';
+  window.scrollTo(0,0);
+  if(mover===false)return;
+  const h=app.querySelector('h1');
+  try{ if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});} else app.focus({preventScroll:true}); }catch(e){}
+}
 
-/* ---------- Entorno personal ---------- */
+/* ---------- rutas ---------- */
 function _sc(k){ try{ return STORE.get(k,{})||{}; }catch(e){ return {}; } }
 function _hechos(sc,lista){ return lista.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
 function _rutas(){
   const nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
   return [
-   {id:'academy', t:'Humana Academy', d:'La doctrina: cómo observamos, comprendemos y acompañamos al paciente.',
-    ic:'🎓', col:'#8E2E9E', bg:'#241736', tot:MODULES.length, hechos:nCompl(), ir:"scrollMods()"},
-   {id:'nexo', t:'Humana Nexo', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.',
-    ic:'🤝', col:'#14B8A6', bg:'#0F2E2A', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
-   {id:'cutaquig', t:'Cutaquig®', d:'Capacitación de producto: inmunoglobulina subcutánea, técnica y seguridad.',
-    ic:'💉', col:'#0EA5E9', bg:'#0C2237', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
+   {id:'academy', t:'Humana Academy', k:'Doctrina', d:'Cómo observamos, comprendemos y acompañamos al paciente.', col:'var(--mh-accent)', kc:'var(--mh-accent-ink)', tot:MODULES.length, hechos:nCompl(), ir:"scrollMods()"},
+   {id:'nexo', t:'Humana Nexo', k:'Programa', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.', col:'var(--mh-teal)', kc:'var(--mh-teal)', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
+   {id:'cutaquig', t:'Cutaquig®', k:'Producto', d:'Inmunoglobulina subcutánea: técnica, seguridad y dosificación.', col:'var(--mh-blue)', kc:'var(--mh-blue)', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
   ];
 }
 function _siguiente(){
@@ -336,52 +357,8 @@ function _siguiente(){
   if(r.id==='academy'){ const m=MODULES.find(x=>!done(x.n)); return {r, n:pos(m.n), t:m.t, ir:`openM(${m.n})`}; }
   return {r, n:r.hechos+1, t:r.t, ir:r.ir};
 }
-function panelHTML(){
-  const nom=(uname||'').split(' ')[0]||'';
-  const rs=_rutas();
-  const tot=rs.reduce((a,x)=>a+x.tot,0), hec=rs.reduce((a,x)=>a+x.hechos,0);
-  const sig=_siguiente();
-  const cont = sig
-   ? `<div class="cont reveal"><div class="l"><div class="k2">${hec===0?'Empezá por acá':'Seguí donde dejaste'}</div>
-      <h3>${sig.r.id==='academy'?`Módulo ${sig.n} · ${esc2(sig.t)}`:esc2(sig.r.t)}</h3>
-      <p>${sig.r.id==='academy'?esc2(sig.r.t):`Te faltan ${sig.r.tot-sig.r.hechos} de ${sig.r.tot}`}</p></div>
-      <button onclick="${sig.ir}">${hec===0?'Empezar':'Continuar'} →</button></div>`
-   : `<div class="cont reveal"><div class="l"><div class="k2">Completaste todo</div>
-      <h3>No te queda nada pendiente</h3><p>Descargá tus certificados o repasá lo que quieras.</p></div>
-      <button onclick="openCert()">Ver certificado →</button></div>`;
-  const cards = rs.map(function(r){
-    const pct=r.tot?Math.round(r.hechos/r.tot*100):0, fin=r.tot>0&&r.hechos>=r.tot;
-    const pill = fin ? `<span class="pill" style="background:#39d98a;color:#08240f">Completado</span>`
-      : r.hechos>0 ? `<span class="pill" style="background:${r.bg};color:${r.col}">En curso</span>`
-      : `<span class="pill" style="background:#241736;color:#9E90B5">Sin empezar</span>`;
-    return `<a class="ruta reveal ${fin?'done':''}" onclick="${r.ir}" tabindex="0" style="cursor:pointer">
-      <div class="top"><span class="ic" style="background:${r.bg}">${r.ic}</span>${pill}</div>
-      <h4>${r.t}</h4><p class="d">${r.d}</p>
-      <div class="pr"><div class="pb"><i style="width:${pct}%;background:${r.col}"></i></div><span class="pn">${r.hechos}/${r.tot}</span></div></a>`;
-  }).join('');
-  const cert=allDone();
-  const logros = `
-    <div class="logro ${hec>0?'on':''}"><span class="e">🚀</span><div><b>Arrancaste</b><span>Completaste tu primer módulo</span></div></div>
-    <div class="logro ${cert?'on':''}"><span class="e">🎓</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo':`Se habilita al aprobar los ${MODULES.length} módulos`}</span></div></div>
-    <div class="logro ${hec>=tot?'on':''}"><span class="e">🏆</span><div><b>Recorrido completo</b><span>${hec>=tot?'Terminaste las tres rutas':`${hec} de ${tot} módulos en total`}</span></div></div>`;
-  return `<section class="pan"><div class="wrap">
-   <div class="hi reveal">${nom?`Hola, ${esc2(nom)}`:'Hola'}</div>
-   <h1 class="reveal">Tu <span class="grad">formación</span></h1>
-   ${cont}
-   <div class="eyebrow grad reveal">Tus rutas</div>
-   <h2 class="sec reveal" style="margin-bottom:6px">${rs.length} recorridos, ${tot} módulos</h2>
-   <p class="sub reveal">Llevás ${hec} de ${tot} módulos en total.</p>
-   <div class="rutas">${cards}<a class="ruta reveal" href="estratificador.html" style="cursor:pointer">
-     <div class="top"><span class="ic" style="background:#2A1F0E">📊</span><span class="pill" style="background:#2A1F0E;color:#E0A82E">Herramienta</span></div>
-     <h4>Estratificador</h4><p class="d">Herramienta comercial para dimensionar oportunidades con financiadores e instituciones.</p>
-     <div class="pr"><span class="pn">Abrir →</span></div></a></div>
-   <div class="eyebrow grad reveal">Tus logros</div>
-   <h2 class="sec reveal" style="margin-bottom:14px">Lo que ya conseguiste</h2>
-   ${logros}
-  </div></section>`;
-}
 
-/* ---------- Mapa del programa: se arma solo con los módulos publicados ---------- */
+/* ---------- mapa del programa ---------- */
 function _partir(t,max){ const w=(t||'').split(' '); const l=['']; w.forEach(x=>{ const c=l[l.length-1]; if((c+' '+x).trim().length>max&&l.length<2&&c)l.push(x); else l[l.length-1]=(c+' '+x).trim(); }); if(l.length===2&&l[1].length>max+4)l[1]=l[1].slice(0,max+2)+'…'; return l; }
 function mapaHTML(){
   const N=MODULES.length; if(!N) return '';
@@ -392,94 +369,153 @@ function mapaHTML(){
     const a=-Math.PI/2+i*2*Math.PI/N, x=cx+rx*Math.cos(a), y=cy+ry*Math.sin(a);
     const bx=Math.max(8,Math.min(W-bw-8,x-bw/2)), by=y-bh/2;
     const tl=_partir(m.t,mx), ok=done(m.n);
-    lines+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#3A2A52" stroke-width="2.5"/>`;
-    nodes+=`<g class="mapnode" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(${m.n})}" role="link" tabindex="0" aria-label="Módulo ${i+1}"><rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw}" height="${bh}" rx="15" fill="#1E1430" stroke="${ok?'#39d98a':'#3A2A52'}" stroke-width="1.5"/><circle cx="${(bx+27).toFixed(1)}" cy="${y.toFixed(1)}" r="15" fill="${ok?'#39d98a':'url(#mg)'}"/><text x="${(bx+27).toFixed(1)}" y="${(y+5).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="700" fill="${ok?'#08240f':'#fff'}">${i+1}</text>`
-      +tl.map((s,k)=>`<text x="${(bx+50).toFixed(1)}" y="${(y-(tl.length>1?9:3)+k*18).toFixed(1)}" font-size="${N>8?13.5:14}" font-weight="700" fill="#EDE6F5">${esc2(s)}</text>`).join('')
-      +`<text x="${(bx+50).toFixed(1)}" y="${(y+(tl.length>1?26:16)).toFixed(1)}" font-size="11.5" font-style="italic" fill="#9E90B5">${esc2((m.etiqueta||'').length>28?(m.etiqueta.slice(0,27)+'…'):(m.etiqueta||''))}</text></g>`;
+    lines+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#E2C9D5" stroke-width="1"/>`;
+    nodes+=`<g class="mapnode" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(${m.n})}" role="link" tabindex="0" aria-label="Módulo ${i+1}: ${esc2(m.t)}${ok?', completado':''}"><rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw}" height="${bh}" rx="14" fill="#FFFFFF" stroke="${ok?'#9CCDB4':'#E2D9DE'}" stroke-width="1"/><text x="${(bx+18).toFixed(1)}" y="${(y+8).toFixed(1)}" font-family="Bodoni Moda,Georgia,serif" font-style="italic" font-weight="500" font-size="24" fill="${ok?'#1C7550':'#B8407A'}">${ok?'✓':dd(i+1)}</text>`
+      +tl.map((s,k)=>`<text x="${(bx+58).toFixed(1)}" y="${(y-(tl.length>1?9:3)+k*18).toFixed(1)}" font-size="${N>8?13.5:14}" font-weight="700" fill="#170F1E">${esc2(s)}</text>`).join('')
+      +`<text x="${(bx+58).toFixed(1)}" y="${(y+(tl.length>1?26:16)).toFixed(1)}" font-size="12" fill="#686070">${esc2((m.etiqueta||'').length>28?(m.etiqueta.slice(0,27)+'…'):(m.etiqueta||''))}</text></g>`;
   });
-  const svg=`<svg style="width:100%;height:auto;display:block" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img" aria-label="Mapa del programa"><defs><linearGradient id="mg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.5" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs>${lines}${nodes}<rect x="${cx-108}" y="${cy-36}" width="216" height="72" rx="18" fill="url(#mg)"/><text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Medicina de</text><text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">Continuidad</text></svg>`;
-  const lista=`<ul class="mapl">${MODULES.map((m,i)=>`<li class="${done(m.n)?'ok':''}" onclick="openM(${m.n})"><span class="c">${done(m.n)?'✓':i+1}</span><div><b>${esc2(m.t)}</b><span>${esc2(m.etiqueta||'')}</span></div></li>`).join('')}</ul>`;
-  return `<div class="mapwrap reveal">${svg}${lista}<p class="maphint">Tocá un módulo para entrar.</p></div>`;
+  const svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Arimo,Helvetica,Arial,sans-serif" role="group" aria-label="Mapa del programa">${lines}<circle cx="${cx}" cy="${cy}" r="92" fill="#FBF9FA" stroke="#E2C9D5" stroke-width="1"/>${nodes}<text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="18" fill="#170F1E">Medicina de</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="18" font-weight="700" fill="#170F1E">Continuidad</text></svg>`;
+  const lista=`<ul class="mapl">${MODULES.map((m,i)=>`<li class="${done(m.n)?'ok':''}"><button onclick="openM(${m.n})"><span class="c" aria-hidden="true">${done(m.n)?'✓':dd(i+1)}</span><span><span class="mh-sr">Módulo ${i+1}: </span><b>${esc2(m.t)}</b><span>${esc2(m.etiqueta||'')}${done(m.n)?'<span class="mh-sr">, completado</span>':''}</span></span></button></li>`).join('')}</ul>`;
+  return `<div class="mapwrap reveal">${svg}${lista}<p class="maphint" aria-hidden="true">Tocá un módulo para entrar.</p></div>`;
 }
 
-function home(){vista='home';renderUserbox();
+/* ---------- inicio ---------- */
+function home(){const _mover=vista!=='home'||(document.activeElement&&document.activeElement!==document.body&&app.contains(document.activeElement));vista='home';renderUserbox();
  const N=MODULES.length, compl=nCompl(), pct=N?Math.round(compl/N*100):0;
- let cards=MODULES.map((m,i)=>`<div class="mcard reveal ${done(m.n)?'v':''}" style="transition-delay:${i*40}ms" tabindex="0" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter')openM(${m.n})"><div class="num">${i+1}</div><span class="done">✓</span><h3>${esc2(m.t)}</h3><p>${esc2(m.lead)}</p>${done(m.n)?`<div class="best">Completado · mejor ${scores[m.n]}%</div>`:''}<span class="go grad">Abrir módulo →</span></div>`).join('');
- if(CAP) cards+=`<div class="mcard cap reveal" tabindex="0" onclick="openCap()" onkeydown="if(event.key==='Enter')openCap()"><div class="num">★</div><h3>${esc2(CAP.t)}</h3><p>${esc2(CAP.lead)}</p><span class="go grad">Abrir caso →</span></div>`;
- const next=MODULES.find(m=>!done(m.n));
- const resume=(compl>0&&next)?`<div class="resume reveal"><div>Continuá donde quedaste — <b>Módulo ${pos(next.n)}: ${esc2(next.t)}</b></div><div><button class="rb" onclick="openM(${next.n})">Continuar</button></div></div>`:'';
- const cert=allDone()?`<div class="certcta reveal"><div><b>¡Completaste los ${N} módulos!</b><br><small>Descargá tu certificado.</small></div><button onclick="openCert()">Ver certificado</button></div>`:'';
+ const nom=(uname||'').split(' ')[0]||'';
+ const rs=_rutas(), tot=rs.reduce((a,x)=>a+x.tot,0), hec=rs.reduce((a,x)=>a+x.hechos,0);
+ const sig=_siguiente();
+ const next = sig
+   ? `<aside class="next reveal" aria-label="Tu próximo paso"><span class="mh-kicker">${hec===0?'Empezá por acá':'Seguí donde dejaste'}</span>
+      <h2>${sig.r.id==='academy'?`Módulo ${sig.n} · ${esc2(sig.t)}`:esc2(sig.r.t)}</h2>
+      <p>${sig.r.id==='academy'?`Humana Academy · ${compl} de ${N} módulos`:`Te faltan ${sig.r.tot-sig.r.hechos} de ${sig.r.tot}`}</p>
+      <div class="bar" aria-hidden="true"><i style="width:${sig.r.tot?Math.round(sig.r.hechos/sig.r.tot*100):0}%"></i></div>
+      <button class="mh-btn pri" onclick="${sig.ir}">${hec===0?'Empezar':'Continuar'} <span class="ar" aria-hidden="true">→</span></button></aside>`
+   : `<aside class="next reveal"><span class="mh-kicker">Completaste todo</span><h2>No te queda nada pendiente</h2><p>Descargá tu certificado o repasá lo que quieras.</p><button class="mh-btn pri" onclick="openCert()">Ver certificado <span class="ar" aria-hidden="true">→</span></button></aside>`;
+ const rutas = rs.map(r=>{
+    const p=r.tot?Math.round(r.hechos/r.tot*100):0, fin=r.tot>0&&r.hechos>=r.tot;
+    const pill = fin?'<span class="mh-pillb ok">Completo</span>':r.hechos>0?'<span class="mh-pillb on">En curso</span>':'<span class="mh-pillb off">Sin empezar</span>';
+    return `<div class="ruta reveal"><span class="rt"><span class="rk" style="color:${r.kc}">${r.k}</span>${pill}</span><h3><button class="stretch" onclick="${r.ir}">${r.t}</button></h3><p>${r.d}</p><span class="pb" aria-hidden="true"><i style="width:${p}%;background:${r.col}"></i></span><span class="pn"><span>${r.hechos} de ${r.tot} módulos</span><b>${p}%</b></span></div>`;
+  }).join('')+`<a class="ruta tool reveal" href="estratificador.html"><span class="rt"><span class="rk" style="color:var(--mh-ink)">Herramienta</span></span><h3>Estratificador</h3><p>Para dimensionar oportunidades con financiadores e instituciones.</p><span class="pn"><b>Abrir <span aria-hidden="true">→</span></b><span></span></span></a>`;
+ const mods=MODULES.map((m,i)=>`<div class="mrow reveal"><span class="n" aria-hidden="true">${dd(i+1)}</span><div><h3><button class="stretch" onclick="openM(${m.n})"><span class="mh-sr">Módulo ${i+1}: </span>${esc2(m.t)}</button></h3><p>${esc2(m.lead)}</p>${done(m.n)?`<span class="best">Completado · mejor nota ${scores[m.n]}%</span>`:''}</div><span class="st" aria-hidden="true">${done(m.n)?'<span class="ck">✓</span>':'<span class="go">→</span>'}</span></div>`).join('');
+ const caso=CAP?`<div class="feat caso reveal"><span class="mh-kicker">Caso integrador</span><h3><button class="stretch" onclick="openCap()"><b>${esc2(CAP.t)}</b></button></h3><p>${esc2(CAP.lead)}</p><span class="lk" aria-hidden="true">Abrir el caso →</span></div>`:'';
+ const cert=allDone();
  app.innerHTML=`
- ${panelHTML()}
- <section class="blk" id="mods"><div class="wrap">
-  <div class="eyebrow grad reveal">El programa</div><h2 class="sec reveal">${cap1(HA_enLetras(N))} módulos, una idea por módulo</h2>
-  <p class="sub reveal">Cada módulo combina una lectura breve, recursos de apoyo y una autoevaluación. Se completa al aprobar la autoevaluación con 60% o más.</p>
-  ${resume}${cert}
-  <div class="prog reveal"><span>${compl}/${N} completados ${compl>=N&&N?'🥇':compl>=N/2?'🥉':''}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
-  <div class="grid">${cards}</div></div></section>
- <section class="blk" style="padding-top:0"><div class="wrap"><a href="nexo.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#0F766E,#14B8A6 55%,#2DD4BF);border-radius:20px;padding:28px 30px;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(20,184,166,.22)"><div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#06231d;opacity:.85">Track · Programa de Asistencia al Paciente</div><h2 style="margin:6px 0 6px;font-size:26px;font-weight:800;color:#04140f">Humana Nexo</h2><p style="margin:0;max-width:640px;color:#06231d;font-weight:600;font-size:15px">Una formación aparte, con su propio entorno y certificado: cómo acompañamos terapias especiales de principio a fin. &nbsp;<span style="text-decoration:underline">Entrar →</span></p></a></div></section>
- <section class="blk" style="padding-top:0"><div class="wrap"><div class="eyebrow grad reveal">Vista general</div><h2 class="sec reveal">El mapa del programa</h2>
-  <p class="sub reveal">Toda la Medicina de Continuidad en un vistazo.</p>
-  ${mapaHTML()}</div></section>`;
- window.scrollTo(0,0);observeReveal();
+ <section class="hero"><div class="wrap grid2">
+  <div class="reveal"><span class="mh-kicker">Humana Academy</span>
+   <h1>Hola${nom?`, <span class="mh-serif">${esc2(nom)}</span>`:''}.</h1>
+   <p class="lead">Tu formación en Medicina de Continuidad. Una idea por módulo, a tu ritmo, desde donde estés.</p></div>
+  ${next}
+ </div></section>
+ <section class="metodo" aria-labelledby="mt-t"><div class="wrap"><div class="mt-card reveal">
+  <div class="mt-head"><h2 id="mt-t" style="margin:0">${LOGO}</h2><p>La forma de trabajar de Humana. Todo lo que aprendés acá parte de estos tres pasos.</p></div>
+  <div class="mt-steps"><div class="mt-step"><span class="n">01</span><h3><b>Evaluamos</b> la situación</h3></div><div class="mt-step"><span class="n">02</span><h3><b>Ordenamos</b> el caso</h3></div><div class="mt-step"><span class="n">03</span><h3><b>Activamos</b> el seguimiento</h3></div></div>
+ </div></div></section>
+ <section class="blk"><div class="wrap">
+  <div class="sh reveal"><div><span class="mh-kicker">Tus rutas</span><h2>${rs.length} recorridos, <b>${tot} módulos</b></h2></div><p>Llevás ${hec} de ${tot}. Tu avance se guarda en la compu y en el celular.</p></div>
+  <div class="rutas">${rutas}</div>
+ </div></section>
+ <section class="blk" id="mods" style="padding-top:8px"><div class="wrap">
+  <div class="sh reveal"><div><span class="mh-kicker">El programa</span><h2>${cap1(HA_enLetras(N))} módulos, <b>una idea por módulo</b></h2></div><p>Cada módulo combina una lectura breve y una autoevaluación. Se completa al aprobar con 60% o más.</p></div>
+  <div class="progline reveal"><span><b>${compl}</b> de ${N} completados</span><span class="bar" aria-hidden="true"><i style="width:${pct}%"></i></span></div>
+  <div class="mods">${mods}</div>
+  <div class="duo">${caso}<a class="feat nexo reveal" href="nexo.html"><span class="mh-kicker">Programa de Asistencia al Paciente</span><h3><b>Humana Nexo</b></h3><p>Una formación aparte, con su propio recorrido y certificado: cómo acompañamos terapias especiales de principio a fin.</p><span class="lk">Entrar a Nexo <span aria-hidden="true">→</span></span></a></div>
+ </div></section>
+ <section class="blk" style="padding-top:8px"><div class="wrap">
+  <div class="sh reveal"><div><span class="mh-kicker">Vista general</span><h2>El mapa <b>del programa</b></h2></div><p>Toda la Medicina de Continuidad en un vistazo.</p></div>
+  ${mapaHTML()}
+ </div></section>
+ <section class="blk" style="padding-top:8px"><div class="wrap">
+  <div class="sh reveal"><div><span class="mh-kicker">Tus logros</span><h2>Lo que <b>ya conseguiste</b></h2></div></div>
+  <div class="logros">
+   <div class="logro reveal ${hec>0?'on':''}"><span class="e" aria-hidden="true">i</span><div><b>Arrancaste</b><span>${hec>0?'Completaste tu primer módulo.':'Se activa con tu primer módulo aprobado.'}</span></div></div>
+   <div class="logro reveal ${cert?'on':''}"><span class="e" aria-hidden="true">ii</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo.':`Se habilita al aprobar los ${N} módulos.`}</span></div></div>
+   <div class="logro reveal ${hec>=tot?'on':''}"><span class="e" aria-hidden="true">iii</span><div><b>Recorrido completo</b><span>${hec>=tot?'Terminaste las tres rutas.':`${hec} de ${tot} módulos en total.`}</span></div></div>
+  </div>
+ </div></section>`;
+ irA('',_mover);document.title='Humana Academy · método Humana';observeReveal();
 }
-function scrollMods(){const e=document.getElementById('mods');if(e)e.scrollIntoView();else{home();setTimeout(()=>{const x=document.getElementById('mods');if(x)x.scrollIntoView();},60);}}
+function scrollMods(){
+ const ir=()=>{const x=document.getElementById('mods');if(!x)return;x.scrollIntoView({behavior:_menosMov()?'auto':'smooth'});const h=x.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}};
+ if(document.getElementById('mods'))ir();else{home();setTimeout(ir,60);}
+}
+
+/* ---------- módulo ---------- */
 function renderModule(m,isCap){
  if(!m){home();return;}
  vista=isCap?'cap':'mod';
- const i=isCap?-1:MODULES.indexOf(m), prev=isCap?null:MODULES[i-1], next=isCap?null:MODULES[i+1];
+ const N=MODULES.length, i=isCap?-1:MODULES.indexOf(m), prev=isCap?null:MODULES[i-1], next=isCap?null:MODULES[i+1];
  const res=HA_recursosPanel(m.recursos);
- const pager=isCap?`<div class="pager"><a onclick="home()">← Inicio</a><a onclick="home()">Inicio →</a></div>`:`<div class="pager"><a class="${prev?'':'disabled'}" onclick="${prev?`openM(${prev.n})`:''}">← ${prev?('Módulo '+i):'Inicio'}</a><a onclick="${next?`openM(${next.n})`:(CAP?'openCap()':'home()')}">${next?('Módulo '+(i+2)):(CAP?'Caso integrador':'Volver')} →</a></div>`;
  const hayQuiz=(m.quiz||[]).length>0;
- app.innerHTML=`<section class="mhero"><div class="blob b2"></div><div class="wrap"><a class="back" onclick="home()">← Volver a los módulos</a>
-  <div class="k">${isCap?'Caso integrador':'Módulo '+(i+1)}</div><h1>${esc2(m.t)}</h1><p>${esc2(m.lead)}</p></div></section>
-  <div class="wrap">${res}
-  <div class="panel content"><h3 class="t">${isCap?'El caso':'Contenido'}</h3>${m.body||''}</div>
-  ${hayQuiz?`<div class="panel"><h3 class="t">Autoevaluación</h3><div id="quiz"></div>
-  <div style="margin-top:8px"><button class="btn" onclick="grade('${isCap?'cap':m.n}')">Corregir</button> <button class="btn ghost" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reiniciar</button></div>
-  <div class="score" id="score"></div></div>`:''}${pager}</div>`;
- if(hayQuiz)renderQuiz(m);window.scrollTo(0,0);
+ const pasos=isCap?'':`<div class="mstep" aria-hidden="true">${MODULES.map((x,k)=>`<i class="${k===i?'on':done(x.n)?'ok':''}"></i>`).join('')}</div>`;
+ const pager=isCap
+  ? `<nav class="pager" aria-label="Navegación"><button onclick="home()"><small>Volver</small><span>Inicio</span></button><button disabled></button></nav>`
+  : `<nav class="pager" aria-label="Módulos"><button ${prev?`onclick="openM(${prev.n})"`:'disabled'}><small>← Anterior</small><span>${prev?esc2(prev.t):''}</span></button><button class="nx" onclick="${next?`openM(${next.n})`:(CAP?'openCap()':'home()')}"><small>Siguiente →</small><span>${next?esc2(next.t):(CAP?'Caso integrador':'Volver al inicio')}</span></button></nav>`;
+ app.innerHTML=`<section class="mhead"><div class="wrap"><button class="back" onclick="home()"><span aria-hidden="true">←</span> Módulos</button>
+  <div class="kk">${isCap?'<span class="mh-kicker">Caso integrador</span>':`<span class="n" aria-hidden="true">${dd(i+1)}</span><span class="mh-kicker">Módulo ${i+1} de ${N}</span>`}</div>
+  <h1>${esc2(m.t)}</h1><p class="lead">${esc2(m.lead)}</p>${pasos}</div></section>
+  <div class="wrap"><article class="reading">
+   <div class="content">${m.body||''}</div>
+   ${res?`<section class="sec2" aria-labelledby="rs"><h2 class="mh-kicker" id="rs">Recursos del módulo</h2>${res}</section>`:''}
+   ${hayQuiz?`<section class="sec2" aria-labelledby="qz"><h2 class="mh-kicker" id="qz">Autoevaluación</h2><div class="quiz"><p class="qi">${m.quiz.length} ${m.quiz.length===1?'pregunta':'preguntas'} · se aprueba con 60% o más.</p><div id="quiz"></div>
+    <div class="qa"><button class="mh-btn pri" id="btnCorr" onclick="grade('${isCap?'cap':m.n}')">Corregir</button><button class="mh-btn sec" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reintentar</button></div>
+    <div class="score" id="score" role="status" aria-live="polite"></div></div></section>`:''}
+   ${pager}
+  </article></div>`;
+ if(hayQuiz)renderQuiz(m);irA(isCap?'Caso integrador':`Módulo ${i+1}: ${m.t}`);
 }
 function openM(n){STORE.set('ha_last',n);renderModule(MODULES.find(x=>x.n===n),false);}
 function openCap(){renderModule(CAP,true);}
-let answers={},curQuiz=null;
-function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q"><div class="qt">${qi+1}. ${esc2(q.q)}</div>${q.o.map((o,oi)=>`<label class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})">${esc2(o)}</label>`).join('')}${q.e?`<div class="exp" id="e_${qi}">✔ ${esc2(q.e)}</div>`:`<div class="exp" id="e_${qi}"></div>`}</div>`).join('');}
-function pick(qi,oi){answers[qi]=oi;const q=curQuiz.quiz[qi];q.o.forEach((_,i)=>{const e=document.getElementById('o_'+qi+'_'+i);if(e)e.classList.remove('sel');});document.getElementById('o_'+qi+'_'+oi).classList.add('sel');}
-function grade(id){const m=curQuiz;
+let answers={},curQuiz=null,corregido=false;
+function renderQuiz(m){answers={};curQuiz=m;corregido=false;const qz=document.getElementById('quiz');qz.innerHTML=m.quiz.map((q,qi)=>`<fieldset class="q" style="border:0;padding-left:0;padding-right:0;min-width:0"><legend class="qt" id="qt_${qi}"><span class="n">${qi+1}.</span><span>${esc2(q.q)}</span></legend><div class="opts" role="radiogroup" aria-labelledby="qt_${qi}">${q.o.map((o,oi)=>`<button type="button" class="opt" role="radio" aria-checked="false" tabindex="${oi===0?0:-1}" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})"><span class="dot" aria-hidden="true"></span><span>${esc2(o)}</span><span class="tag"></span></button>`).join('')}</div><div class="exp" id="e_${qi}">${q.e?esc2(q.e):''}</div></fieldset>`).join('');
+ qz.onkeydown=quizTeclas;}
+/* Flechas entre opciones, como un grupo de radios nativo: mueven el foco y eligen. */
+function quizTeclas(e){const b=e.target.closest&&e.target.closest('.opt[role=radio]');if(!b)return;const [,qi,oi]=b.id.split('_').map(Number);const n=curQuiz.quiz[qi].o.length;let j=null;
+ if(e.key==='ArrowDown'||e.key==='ArrowRight')j=(oi+1)%n;else if(e.key==='ArrowUp'||e.key==='ArrowLeft')j=(oi-1+n)%n;else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;
+ if(j==null)return;e.preventDefault();const d=document.getElementById('o_'+qi+'_'+j);if(!d)return;
+ if(corregido){curQuiz.quiz[qi].o.forEach((_,i)=>{const x=document.getElementById('o_'+qi+'_'+i);if(x)x.tabIndex=i===j?0:-1;});}else pick(qi,j);d.focus();}
+function pick(qi,oi){if(corregido)return;answers[qi]=oi;curQuiz.quiz[qi].o.forEach((_,i)=>{const e=document.getElementById('o_'+qi+'_'+i);if(e){e.setAttribute('aria-checked',i===oi?'true':'false');e.tabIndex=i===oi?0:-1;}});}
+function grade(id){const m=curQuiz;if(corregido)return;
  const faltan=m.quiz.filter((q,qi)=>answers[qi]==null).length;
  if(faltan&&!confirm(faltan===1?'Te falta responder una pregunta. ¿Corregir igual?':'Te faltan '+faltan+' preguntas. ¿Corregir igual?'))return;
- let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
- const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('¡Módulo completado! ✓');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
- const s=document.getElementById('score');s.classList.add('show');
+ corregido=true;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.add('lock');el.setAttribute('aria-disabled','true');const tg=el.querySelector('.tag');if(oi===q.c){el.classList.add('correct');tg.textContent='Correcta';}else if(answers[qi]===oi){el.classList.add('wrong');tg.textContent='Tu respuesta';}});if(answers[qi]===q.c)ok++;const ex=document.getElementById('e_'+qi);if(ex.textContent.trim())ex.classList.add('show');});
+ const b=document.getElementById('btnCorr');if(b)b.disabled=true;
+ const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('Módulo completado');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
+ const s=document.getElementById('score');s.classList.add('show');if(pct>=60)s.classList.add('ok');
  const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Todavía no llegás al 60%. Repasá y volvé a intentar.';
- s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;if(window.showQuizResult)setTimeout(function(){window.showQuizResult(id,pct);},260);}
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> bien (${pct}%). ${msg}`;if(window.showQuizResult)setTimeout(function(){window.showQuizResult(id,pct);},300);}
+
+/* ---------- certificado ---------- */
 function openCert(){closeMenu();vista='cert';const N=MODULES.length, list=MODULES.map(m=>m.t).join(' · ');
  app.innerHTML=`<section class="blk"><div class="wrap">
- <div class="noprint" style="text-align:center;margin-bottom:20px"><p class="sub" style="margin:0 auto 14px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':`<b>Nota:</b> se habilita al completar los ${N} módulos. Llevás ${nCompl()}.`}</p>
-  <input class="nameinput" id="cname" placeholder="Tu nombre y apellido" value="${esc2(uname)}" oninput="setName(this.value)">
-  <div style="margin-top:16px"><button class="btn" onclick="${allDone()?'window.print()':"toast('El certificado se habilita al completar todos los módulos')"}">Imprimir / Guardar PDF</button> <button class="btn ghost" onclick="home()">Volver</button></div>${typeof liButtonsHTML==='function'?liButtonsHTML(allDone()):''}</div>
- <div id="cert"><div class="certcard"><div class="cinner"><span class="cmk">${MARK}</span>
-  <div class="clabel grad">Certificado de finalización</div><h2>Humana Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
-  <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${esc2(uname)||'Nombre y Apellido'}</div>
+ <div class="certtools noprint"><span class="mh-kicker">Tu certificado</span><h1 style="font-weight:400;font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;margin:12px 0 10px">Certificado de <b>Humana Academy</b></h1>
+  <p>${allDone()?'Revisá tu nombre y descargalo.':`Se habilita al completar los ${N} módulos. Llevás ${nCompl()}.`}</p>
+  <label class="mh-label" for="cname">Nombre y apellido</label><input class="mh-input" id="cname" style="max-width:380px;text-align:center" placeholder="Tu nombre y apellido" value="${esc2(uname)}" oninput="setName(this.value)">
+  <div class="row"><button class="mh-btn pri" ${allDone()?'onclick="window.print()"':'disabled aria-disabled="true"'}>Imprimir o guardar PDF</button><button class="mh-btn sec" onclick="home()">Volver</button></div>${typeof liButtonsHTML==='function'?liButtonsHTML(allDone()):''}</div>
+ <div id="cert"><div class="certcard"><div class="cinner">
+  <div class="clabel">Certificado de finalización</div><h2><b>Humana</b> Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
+  <p style="margin-top:22px">Se otorga el presente certificado a</p><div class="cname" id="certname">${esc2(uname)||'Nombre y Apellido'}</div>
   <p>por haber completado el programa, recorriendo sus ${HA_enLetras(N)} módulos y aprobando las autoevaluaciones.</p>
   <div class="cmods">${esc2(list)}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
+  <div class="cseal">${LOGO}</div>
  </div></div></div></div></section>`;
- document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});if(allDone())setTimeout(confetti,300);window.scrollTo(0,0);}
-function renderUserbox(){var b=document.getElementById('userbox');if(!b)return;var N=MODULES.length,compl=nCompl(),pct=N?Math.round(compl/N*100):0;var hi=uname?('<span class="hi">Hola, '+esc2(uname.split(' ')[0])+'</span>'):'';b.innerHTML=hi+'<span class="mini" title="Tu avance en Academy"><span>'+compl+'/'+N+'</span><span class="mbar"><i style="width:'+pct+'%"></i></span></span>';}
+ document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});irA('Certificado');}
+
+function renderUserbox(){var b=document.getElementById('userbox');if(!b)return;var N=MODULES.length,c=nCompl(),p=N?c/N:0,C=2*Math.PI*12;var hi=uname?('<span class="hi">'+esc2(uname.split(' ')[0])+'</span>'):'';b.innerHTML=hi+'<span class="ring" title="Tu avance en Academy" role="img" aria-label="Tu avance en Academy: '+c+' de '+N+' módulos"><svg viewBox="0 0 30 30" aria-hidden="true"><circle class="tr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5"/><circle class="pr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+(C*(1-p)).toFixed(1)+'"/></svg><span>'+c+'/'+N+'</span></span>';}
 function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';if(window.HA_saveName)window.HA_saveName(v);}
-function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
-function confetti(){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:130';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d');const cols=['#4733A6','#8E2E9E','#EC2E8E','#F0328C','#ffffff'];let P=[];for(let i=0;i<150;i++)P.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,r:4+Math.random()*5,c:cols[i%cols.length],vy:2+Math.random()*3.5,vx:-1.2+Math.random()*2.4,a:Math.random()*6});let f=0;(function loop(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.a+=.12;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore();});f++;if(f<150)requestAnimationFrame(loop);else c.remove();})();}
+function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2800);}
+function confetti(){}
 home();
 let _deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_deferredPrompt=e;const b=document.getElementById('installBtn');if(b)b.style.display='';});
 function installApp(){if(!_deferredPrompt){toast('La app ya está instalada o tu navegador no lo permite');return;}_deferredPrompt.prompt();_deferredPrompt.userChoice.finally(()=>{_deferredPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});}
 window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.style.display='none';});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf)return;_rf=true;location.reload();});}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false,_teniaSW=!!navigator.serviceWorker.controller;/* solo recarga cuando hay una versión nueva, no en la primera visita (evita un cambio de contexto inesperado) */navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf||!_teniaSW)return;_rf=true;location.reload();});}
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=20"></script>
-<script src="extras.js?v=14"></script>
+<script src="firebase-auth.js?v=21"></script>
+<script src="extras.js?v=16"></script>
 </body>
 </html>

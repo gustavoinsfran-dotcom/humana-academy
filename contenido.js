@@ -55,19 +55,19 @@
     var u=urlSegura(url); if(!u) return null;
     var m;
     if((m=u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/i)))
-      return {html:'<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/'+m[1]+'?rel=0" title="Video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>', ancho:true};
+      return {html:'<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/'+m[1]+'?rel=0" title="Reproductor de video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>', ancho:true};
     if((m=u.match(/vimeo\.com\/(?:video\/)?(\d+)/i)))
-      return {html:'<div class="vid"><iframe src="https://player.vimeo.com/video/'+m[1]+'" title="Video" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>', ancho:true};
+      return {html:'<div class="vid"><iframe src="https://player.vimeo.com/video/'+m[1]+'" title="Reproductor de video" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>', ancho:true};
     if((m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([\w-]{20,})/i))){
       var src='https://drive.google.com/file/d/'+m[1]+'/preview';
-      if(tipo==='audio') return {html:'<iframe class="aud" src="'+src+'" title="Audio" loading="lazy" allow="autoplay"></iframe>', ancho:false};
-      if(tipo==='video') return {html:'<div class="vid"><iframe src="'+src+'" title="Video" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>', ancho:true};
+      if(tipo==='audio') return {html:'<iframe class="aud" src="'+src+'" title="Reproductor de audio" loading="lazy" allow="autoplay"></iframe>', ancho:false};
+      if(tipo==='video') return {html:'<div class="vid"><iframe src="'+src+'" title="Reproductor de video" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>', ancho:true};
       return null;
     }
     if(/soundcloud\.com\//i.test(u))
-      return {html:'<iframe class="aud sc" src="https://w.soundcloud.com/player/?url='+encodeURIComponent(u)+'&color=%23ec2e8e&visual=false" title="Audio" loading="lazy"></iframe>', ancho:false};
+      return {html:'<iframe class="aud sc" src="https://w.soundcloud.com/player/?url='+encodeURIComponent(u)+'&color=%23b8407a&visual=false" title="Reproductor de audio" loading="lazy"></iframe>', ancho:false};
     if(/spotify\.com\/(episode|track|show)\//i.test(u))
-      return {html:'<iframe class="aud sp" src="'+esc(u.replace('open.spotify.com/','open.spotify.com/embed/'))+'" title="Audio" loading="lazy" allow="encrypted-media"></iframe>', ancho:false};
+      return {html:'<iframe class="aud sp" src="'+esc(u.replace('open.spotify.com/','open.spotify.com/embed/'))+'" title="Reproductor de audio" loading="lazy" allow="encrypted-media"></iframe>', ancho:false};
     if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u))
       return {html:'<video class="player" controls preload="metadata" playsinline src="'+esc(u)+'"></video>', ancho:true};
     if(/\.(mp3|m4a|wav|ogg|aac)(\?|$)/i.test(u))
@@ -75,27 +75,29 @@
     return null;
   };
 
-  var ICO={video:'🎬',audio:'🎧',documento:'📄',enlace:'🔗'};
+  var ICO={video:'Video',audio:'Audio',documento:'Documento',enlace:'Enlace'};
   var NOMBRE={video:'Video',audio:'Audio',documento:'Documento',enlace:'Enlace'};
   window.HA_TIPOS=NOMBRE;
 
-  window.HA_recursoHTML=function(r){
+  /* nivel: nivel del título de cada recurso (h2 a h4) para que la jerarquía quede bien según dónde se muestre. */
+  window.HA_recursoHTML=function(r,nivel){
     var u=urlSegura(r.url); if(!u) return '';
+    var hx='h'+((nivel>=2&&nivel<=4)?nivel:3);
     var tipo=ICO[r.tipo]?r.tipo:'enlace';
     var tit=esc(r.titulo||NOMBRE[tipo]);
     var inc=(tipo==='video'||tipo==='audio')?HA_incrustar(tipo,u):null;
     var ext=/^https?:/i.test(u);
-    if(inc) return '<div class="rc'+(inc.ancho?' big':'')+'"><div class="rh"><span class="ico">'+ICO[tipo]+'</span><h4>'+tit+'</h4></div>'+inc.html+'</div>';
+    if(inc) return '<div class="rc'+(inc.ancho?' big':'')+'"><div class="rh"><'+hx+'>'+tit+'</'+hx+'><span class="ico">'+ICO[tipo]+'</span></div>'+inc.html+'</div>';
     var esPdf=/\.pdf(\?|$)/i.test(u);
     var btn=esPdf&&!ext?'Descargar PDF':(tipo==='video'?'Ver video':tipo==='audio'?'Escuchar':tipo==='documento'?'Abrir documento':'Abrir enlace');
-    return '<div class="rc"><div class="rh"><span class="ico">'+ICO[tipo]+'</span><h4>'+tit+'</h4></div>'
-      +'<a class="dl" href="'+esc(u)+'"'+(ext?' target="_blank" rel="noopener"':(esPdf?' download':''))+'>'+btn+(ext?' ↗':'')+'</a></div>';
+    return '<div class="rc"><div class="rh"><'+hx+'>'+tit+'</'+hx+'><span class="ico">'+(esPdf?'PDF':ICO[tipo])+'</span></div>'
+      +'<a class="dl" href="'+esc(u)+'"'+(ext?' target="_blank" rel="noopener"':(esPdf?' download':''))+'>'+btn+(ext?' <span aria-hidden="true">↗</span><span class="mh-sr"> (se abre en otra pestaña)</span>':'')+'</a></div>';
   };
 
-  window.HA_recursosPanel=function(lista){
-    var h=(lista||[]).map(HA_recursoHTML).filter(Boolean).join('');
+  window.HA_recursosPanel=function(lista,nivel){
+    var h=(lista||[]).map(function(r){ return HA_recursoHTML(r,nivel); }).filter(Boolean).join('');
     if(!h) return '';
-    return '<div class="panel"><h3 class="t">Recursos del módulo</h3><div class="res">'+h+'</div></div>';
+    return '<div class="res">'+h+'</div>';
   };
 
   /* ---------- Limpieza del texto que se escribe en el editor ---------- */

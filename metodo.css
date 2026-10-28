@@ -1,0 +1,104 @@
+/* =====================================================================
+   método Humana — sistema visual de Humana Academy
+   Fino, claro y sereno. Tinta violácea, magenta del método, líneas finas.
+   Tipografías propias del sitio (sin dependencias externas).
+   ===================================================================== */
+@font-face{font-family:"Arimo";src:url(fonts/arimo-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Arimo";src:url(fonts/arimo-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Arimo";src:url(fonts/arimo-latin-700-normal.woff2) format("woff2");font-weight:600 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-500-italic.woff2) format("woff2");font-weight:400 600;font-style:italic;font-display:swap}
+
+:root{
+  /* superficies */
+  --mh-bg:#FBF9FA; --mh-surface:#FFFFFF; --mh-surface-2:#F6F2F4; --mh-surface-3:#EFE9EC;
+  /* tinta */
+  --mh-ink:#170F1E; --mh-ink-2:#433B48; --mh-mut:#686070; --mh-mut-2:#756C7A; /* mut-2: 4.8:1 sobre fondo (antes 3.6) */
+  /* líneas */
+  --mh-line:#E8E2E6; --mh-line-2:#D8CDD3; --mh-hair:#CFA9BC;
+  /* borde de campos y controles: 3.4:1 sobre blanco (WCAG 1.4.11) */
+  --mh-ctl:#938893;
+  /* magenta del método */
+  --mh-accent:#B8407A; --mh-accent-ink:#9A2F63; --mh-accent-tint:#F8ECF2; --mh-accent-tint-2:#F2DCE7;
+  /* apoyo */
+  --mh-blue:#28449B; --mh-blue-tint:#ECEFF8;
+  --mh-teal:#1D6B64; --mh-teal-tint:#E6F2F0;
+  --mh-ok:#1C7550; --mh-ok-tint:#E7F4EC;
+  --mh-warn:#7D5200; --mh-warn-tint:#FFF4DC;
+  --mh-err:#AF2318; --mh-err-tint:#FCEBE9;
+  /* tipografía */
+  --mh-sans:"Arimo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mh-serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  /* forma */
+  --mh-r-sm:10px; --mh-r:16px; --mh-r-lg:24px; --mh-pill:999px;
+  --mh-sh-1:0 1px 2px rgba(23,15,30,.04),0 1px 1px rgba(23,15,30,.03);
+  --mh-sh-2:0 18px 40px -18px rgba(23,15,30,.18),0 2px 6px rgba(23,15,30,.04);
+  --mh-ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+
+/* ---------- base ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body.mh{margin:0;background:var(--mh-bg);color:var(--mh-ink-2);font-family:var(--mh-sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.mh *,.mh *:before,.mh *:after{box-sizing:border-box}
+.mh h1,.mh h2,.mh h3,.mh h4{color:var(--mh-ink);font-family:var(--mh-sans);letter-spacing:-.02em;line-height:1.15}
+.mh a{color:var(--mh-accent-ink)}
+.mh ::selection{background:var(--mh-accent-tint-2);color:var(--mh-ink)}
+.mh :focus{outline:none}
+.mh :focus-visible{outline:2px solid var(--mh-accent);outline-offset:3px;border-radius:6px}
+.mh [tabindex="-1"]:focus{outline:none}
+.mh button{font-family:inherit}
+.mh-skip{position:absolute;left:12px;top:-60px;z-index:999;background:var(--mh-ink);color:#fff!important;padding:10px 16px;border-radius:var(--mh-pill);font-weight:700;text-decoration:none;transition:top .2s}
+.mh-skip:focus{top:12px}
+.mh-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.mh *,.mh *:before,.mh *:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.mh{scroll-behavior:auto!important}}
+
+/* ---------- logo método Humana ---------- */
+.mh-logo{display:inline-flex;align-items:baseline;font-family:var(--mh-sans);color:var(--mh-ink);letter-spacing:-.025em;line-height:1;white-space:nowrap;font-weight:400}
+.mh-logo i{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:1.13em;letter-spacing:-.03em;margin-right:-.035em}
+.mh-logo b{font-weight:700;margin-left:.26em}
+.mh-word{font-family:var(--mh-sans);color:var(--mh-ink);letter-spacing:-.02em;white-space:nowrap}
+.mh-word b{font-weight:700}
+.mh-word span{font-weight:400;color:var(--mh-mut)}
+.mh-serif{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);letter-spacing:-.01em}
+
+/* ---------- botones ---------- */
+.mh-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:var(--mh-pill);border:1.5px solid transparent;font:700 15px/1.2 var(--mh-sans);letter-spacing:.005em;text-decoration:none;cursor:pointer;transition:background .2s var(--mh-ease),color .2s,border-color .2s,transform .15s var(--mh-ease),box-shadow .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.mh-btn:active{transform:scale(.98)}
+.mh-btn[disabled],.mh-btn[aria-disabled=true]{opacity:.45;cursor:not-allowed;transform:none}
+.mh-btn.pri{background:var(--mh-accent);color:#fff}
+.mh-btn.pri:hover{background:var(--mh-accent-ink)}
+.mh-btn.ink{background:var(--mh-ink);color:#fff}
+.mh-btn.ink:hover{background:#2c2233}
+.mh-btn.sec{background:var(--mh-surface);color:var(--mh-ink);border-color:var(--mh-line-2)}
+.mh-btn.sec:hover{border-color:var(--mh-ink)}
+.mh-btn.ghost{background:transparent;color:var(--mh-accent-ink);border-color:transparent;padding-left:12px;padding-right:12px}
+.mh-btn.ghost:hover{background:var(--mh-accent-tint)}
+.mh-btn.sm{min-height:40px;padding:8px 16px;font-size:14px}
+@media (pointer:coarse){.mh-btn.sm{min-height:44px}}
+.mh-btn .ar{transition:transform .2s var(--mh-ease)}
+.mh-btn:hover .ar{transform:translateX(3px)}
+
+/* ---------- etiquetas ---------- */
+.mh-kicker{font:700 12px/1.3 var(--mh-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mh-mut)}
+.mh-pillb{display:inline-flex;align-items:center;gap:6px;font:700 11.5px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:var(--mh-pill);white-space:nowrap}
+.mh-pillb.ok{background:var(--mh-ok-tint);color:var(--mh-ok)}
+.mh-pillb.on{background:var(--mh-accent-tint);color:var(--mh-accent-ink)}
+.mh-pillb.off{background:var(--mh-surface-2);color:var(--mh-mut)}
+.mh-pillb.warn{background:var(--mh-warn-tint);color:var(--mh-warn)}
+
+/* ---------- campos ---------- */
+.mh-field{display:block;margin:0 0 16px}
+.mh-field>label,.mh-label{display:block;font:700 13.5px/1.3 var(--mh-sans);color:var(--mh-ink);margin:0 0 7px}
+.mh-input{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid var(--mh-ctl);border-radius:12px;background:var(--mh-surface);color:var(--mh-ink);font:400 16px/1.4 var(--mh-sans);transition:border-color .15s,box-shadow .15s}
+.mh-input::placeholder{color:var(--mh-mut-2)}
+.mh-input:hover{border-color:var(--mh-mut)}
+.mh-input:focus{outline:none;border-color:var(--mh-accent);box-shadow:0 0 0 1px var(--mh-accent),0 0 0 5px var(--mh-accent-tint)}
+.mh-input.bad{border-color:var(--mh-err);box-shadow:0 0 0 4px var(--mh-err-tint)}
+
+/* ---------- toast ---------- */
+.mh-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);background:var(--mh-ink);color:#fff;padding:13px 20px;border-radius:var(--mh-pill);font:700 14px/1.3 var(--mh-sans);z-index:500;opacity:0;pointer-events:none;transition:.3s var(--mh-ease);box-shadow:var(--mh-sh-2);max-width:calc(100vw - 32px);text-align:center}
+.mh-toast.show,.mh-toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- líneas del método ---------- */
+.mh-lines{display:flex;justify-content:space-around;height:56px}
+.mh-lines span{width:1px;background:linear-gradient(var(--mh-hair),rgba(207,169,188,.15))}

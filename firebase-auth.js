@@ -11,7 +11,8 @@
   };
   var ADMINS = ["gustavo.insfran@infinitypharma.com.ar","k.ojanguren@humanahc.com"];
   var DOMINIOS = ["humanahc.com","humanahc.com.ar","infinitypharma.com.ar"];
-  var MK='<svg viewBox="0 0 128 74" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block"><defs><linearGradient id="fbhg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4733A6"/><stop offset="0.45" stop-color="#8E2E9E"/><stop offset="1" stop-color="#EC2E8E"/></linearGradient></defs><path fill="url(#fbhg)" d="M6 66 L40 18 L40 9 L48 9 L48 15 L50 12 Q53 8 56 13 L62 24 Q84 52 124 44 Q98 41 68 31 Q60 28 55 34 L34 66 Z"/></svg>';
+  var MK='<span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span>';
+  function SIDE(){ return '<div class="side"><div><span class="mh-word" style="font-size:18px"><b>Humana</b> <span>Academy</span></span></div><div>'+MK+'<p>La formación en Medicina de Continuidad del equipo de Humana Health &amp; Care Argentina.</p><div class="steps" aria-hidden="true"><div><i>01</i>Evaluamos la situación</div><div><i>02</i>Ordenamos el caso</div><div><i>03</i>Activamos el seguimiento</div></div></div><div class="foot">Acceso para el equipo de Humana Health &amp; Care · Argentina</div></div>'; }
 
   if(typeof firebase==='undefined'){console.warn('Firebase SDK no cargó');return;}
   try{ firebase.initializeApp(firebaseConfig); }catch(e){}
@@ -21,52 +22,54 @@
   try{ STORE.set('ha_seen', true); }catch(e){}
 
   var st=document.createElement('style');
-  st.textContent=".fbgate{position:fixed;inset:0;z-index:400;background:radial-gradient(1000px 500px at 50% -10%,#1b1030,#0C0713 60%);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}"
+  st.textContent=".fbgate{position:fixed;inset:0;z-index:400;background:var(--mh-bg,#FBF9FA);display:none;overflow-y:auto;font-family:var(--mh-sans,Arial,sans-serif)}"
    +".fbgate.on{display:flex}"
-   +".fbgate .box{background:#191024;border:1px solid #2C1F42;border-radius:22px;max-width:410px;width:100%;padding:30px 28px;text-align:center;animation:fbpop .3s cubic-bezier(.2,.8,.2,1);margin:auto}"
-   +"@keyframes fbpop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}"
-   +".fbgate .mk{width:58px;height:36px;margin:0 auto 14px;display:block}"
-   +".fbgate h3{color:#EDE6F5;font-size:20px;margin:0 0 5px;font-weight:800}"
-   +".fbgate h3 b{background:linear-gradient(135deg,#8E2E9E,#EC2E8E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}"
-   +".fbgate p{color:#9E90B5;font-size:13.5px;line-height:1.5;margin:0 0 16px}"
-   +".fbtabs{display:flex;background:#140D1F;border:1px solid #2C1F42;border-radius:11px;padding:4px;margin:0 0 18px}"
-   +".fbtabs button{flex:1;background:transparent;border:none;color:#9E90B5;font-weight:700;font-size:13.5px;padding:9px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.15s}"
-   +".fbtabs button.on{background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E);color:#fff}"
-   +".fbf{text-align:left;margin:0 0 11px}"
-   +".fbf label{display:block;color:#9E90B5;font-size:12px;font-weight:600;margin:0 0 5px}"
-   +".fbgate input,.fbgate select{width:100%;padding:12px 14px;border:1.5px solid #2C1F42;border-radius:10px;background:#1E1430;color:#EDE6F5;font-size:15px;font-family:inherit}"
-   +".fbgate input:focus,.fbgate select:focus{outline:none;border-color:#EC2E8E}"
-   +".fbgate input.bad{border-color:#F0328C}"
-   +".pwrap{position:relative}.pwrap input{padding-right:52px}"
-   +".pwrap .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;color:#9E90B5;font-size:11px;font-weight:700;cursor:pointer;padding:6px 8px;width:auto;font-family:inherit}"
-   +".fbgate button.pri{width:100%;border:none;cursor:pointer;color:#fff;font-weight:700;font-size:15px;padding:13px;border-radius:11px;background:linear-gradient(135deg,#4733A6,#8E2E9E 50%,#EC2E8E);font-family:inherit;margin-top:6px}"
-   +".fbgate button.pri:disabled{opacity:.55;cursor:default}"
-   +".rolegrid{display:grid;gap:7px;margin:0 0 11px}"
-   +".rolegrid .r{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid #2C1F42;background:#1E1430;border-radius:10px;padding:10px 12px;cursor:pointer;transition:.15s}"
-   +".rolegrid .r:hover{border-color:#8E2E9E}"
-   +".rolegrid .r.on{border-color:#EC2E8E;background:#241736}"
-   +".rolegrid .r i{width:15px;height:15px;border-radius:50%;border:2px solid #4a3a66;flex:0 0 auto;transition:.15s}"
-   +".rolegrid .r.on i{border-color:#EC2E8E;background:#EC2E8E;box-shadow:inset 0 0 0 3px #241736}"
-   +".rolegrid .r b{display:block;color:#EDE6F5;font-size:13.5px;font-weight:700}"
-   +".rolegrid .r span{color:#8b7da3;font-size:11.5px}"
-   +".fbgate .msg{min-height:16px;color:#F0328C;font-size:12.5px;margin:9px 2px 0;line-height:1.45;text-align:left}"
-   +".fbgate .msg.ok{color:#39d98a}"
-   +".fbgate .lnk{background:none;border:none;color:#9E90B5;font-size:12.5px;cursor:pointer;text-decoration:underline;font-family:inherit;padding:8px;width:auto;margin-top:4px}"
-   +".fbgate .lnk:hover{color:#EC2E8E}"
-   +".fbgate .foot{color:#6f6288;font-size:11.5px;margin-top:16px;line-height:1.5}"
-   +".admt{width:100%;border-collapse:collapse;margin-top:12px}"
-   +".admt th,.admt td{text-align:left;padding:11px 14px;border-bottom:1px solid #2C1F42;font-size:14px;color:#EDE6F5}"
-   +".admt th{color:#9E90B5;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}"
-   +".admt tr:hover td{background:#1E1430}";
+   +".fbgate .lay{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;min-height:100%}"
+   +".fbgate .side{background:#fff;border-right:1px solid var(--mh-line,#E8E2E6);display:flex;flex-direction:column;justify-content:space-between;padding:56px}"
+   +".fbgate .side .mh-logo{font-size:clamp(40px,5vw,60px)}"
+   +".fbgate .side p{max-width:34ch;color:var(--mh-mut,#686070);font-size:16px;line-height:1.6;margin:18px 0 0}"
+   +".fbgate .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px}"
+   +".fbgate .steps div{position:relative;padding:62px 16px 0 0;color:var(--mh-ink,#170F1E);font-size:15px;line-height:1.35}"
+   +".fbgate .steps div:before{content:'';position:absolute;left:0;top:0;width:1px;height:48px;background:linear-gradient(#CFA9BC,rgba(207,169,188,.12))}"
+   +".fbgate .steps i{display:block;font-family:var(--mh-serif,Georgia,serif);font-style:italic;color:var(--mh-accent,#B8407A);font-size:22px;margin-bottom:6px}"
+   +".fbgate .foot{color:var(--mh-mut,#686070);font-size:13px;line-height:1.5}"
+   +".fbgate .main{display:flex;align-items:center;justify-content:center;padding:40px 24px}"
+   +".fbgate .box{width:100%;max-width:400px;animation:fbin .5s cubic-bezier(.22,1,.36,1)}"
+   +"@keyframes fbin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}"
+   +".fbgate h1{font-size:34px;font-weight:400;letter-spacing:-.03em;color:var(--mh-ink,#170F1E);margin:12px 0 8px;line-height:1.1}"
+   +".fbgate h1 b{font-weight:700}"
+   +".fbgate .sub{color:var(--mh-mut,#686070);font-size:15.5px;line-height:1.55;margin:0 0 26px}"
+   +".fbtabs{display:grid;grid-template-columns:1fr 1fr;background:var(--mh-surface-2,#F6F2F4);border-radius:999px;padding:4px;margin:0 0 24px}"
+   +".fbtabs button{min-height:44px;background:transparent;border:0;border-radius:999px;color:var(--mh-ink-2,#433B48);font:700 14.5px/1 var(--mh-sans,Arial);cursor:pointer;transition:.2s}"
+   +".fbtabs button[aria-selected=true]{background:#fff;color:var(--mh-ink,#170F1E);box-shadow:0 1px 3px rgba(23,15,30,.12)}"
+   +".fbf{margin:0 0 16px}"
+   +".pwrap{position:relative}.pwrap .mh-input{padding-right:84px}"
+   +".pwrap .eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);min-height:40px;min-width:44px;background:none;border:0;border-radius:999px;color:var(--mh-accent-ink,#9A2F63);font:700 13px/1 var(--mh-sans,Arial);cursor:pointer;padding:0 12px}"
+   +".pwrap .eye:hover{background:var(--mh-accent-tint,#F8ECF2)}"
+   +".fbgate .mh-btn.pri{width:100%;margin-top:6px}"
+   +".fbgate .msg{min-height:20px;color:var(--mh-err,#AF2318);font-size:14px;margin:12px 2px 0;line-height:1.5}"
+   +".fbgate .msg.ok{color:var(--mh-ok,#1C7550)}"
+   +".fbgate .lnk{display:block;min-height:44px;margin:14px auto 0;background:none;border:0;color:var(--mh-accent-ink,#9A2F63);font:700 14.5px/1 var(--mh-sans,Arial);cursor:pointer;padding:12px 16px;border-radius:999px}"
+   +".fbgate .lnk:hover{background:var(--mh-accent-tint,#F8ECF2)}"
+   +".fbgate .small{margin-top:28px;color:var(--mh-mut,#686070);font-size:13px;text-align:center;line-height:1.5}"
+   +".fbgate .load{display:flex;flex-direction:column;align-items:center;gap:18px;color:var(--mh-mut,#686070);font-size:15px}"
+   +".fbgate .load .mh-logo{font-size:34px}"
+   +".fbgate .dots{display:flex;gap:6px}.fbgate .dots i{width:6px;height:6px;border-radius:50%;background:#CFA9BC;animation:fbd 1.2s infinite}.fbgate .dots i:nth-child(2){animation-delay:.2s}.fbgate .dots i:nth-child(3){animation-delay:.4s}"
+   +"@keyframes fbd{0%,100%{opacity:.3}50%{opacity:1}}"
+   +"@media(max-width:860px){.fbgate .lay{grid-template-columns:1fr}.fbgate .side{border-right:0;border-bottom:1px solid var(--mh-line,#E8E2E6);padding:28px 22px}.fbgate .side .steps,.fbgate .side .foot{display:none}.fbgate .side p{display:none}.fbgate .side .mh-logo{font-size:34px}.fbgate .main{align-items:flex-start;padding:28px 20px 40px}}";
   document.head.appendChild(st);
 
-  var gate=document.createElement('div'); gate.className='fbgate'; gate.id='fbgate';
+  var gate=document.createElement('div'); gate.className='fbgate'; gate.id='fbgate'; gate.setAttribute('role','region'); gate.setAttribute('aria-label','Acceso a Humana Academy');
   document.body.appendChild(gate);
+  /* Con la pantalla de acceso adelante, lo de atrás queda inerte (no se puede tabular a lo que no se ve). */
+  var _detras=[];
+  function bloquear(){ Array.prototype.forEach.call(document.body.children,function(el){ if(el!==gate && !/^(SCRIPT|STYLE|LINK)$/.test(el.tagName) && !el.inert){ el.inert=true; _detras.push(el); } }); }
+  function soltar(){ _detras.forEach(function(el){ el.inert=false; }); _detras=[]; }
   function esc(s){return (''+s).replace(/[<>&"]/g,function(c){return c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':'&quot;';});}
-  function showGate(){gate.classList.add('on');}
-  function hideGate(){gate.classList.remove('on');}
+  function showGate(){gate.classList.add('on'); soltar(); bloquear();}
+  function hideGate(){gate.classList.remove('on'); soltar();}
   function suppressOnb(){var o=document.getElementById('onb');if(o)o.classList.remove('show');}
-  function renderLoading(){ gate.innerHTML='<div class="box"><span class="mk">'+MK+'</span><h3>Humana <b>Academy</b></h3><p>Cargando tu sesión…</p></div>'; showGate(); }
+  function renderLoading(){ gate.innerHTML='<div class="main" style="width:100%"><div class="load" role="status">'+MK+'<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Cargando tu sesión</span></div></div>'; showGate(); }
   function dominioOK(em){ var d=(em.split('@')[1]||'').toLowerCase(); return DOMINIOS.indexOf(d)>=0; }
   function emailOK(em){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em); }
 
@@ -82,45 +85,49 @@
     return (e&&e.message)||'No se pudo completar. Probá de nuevo.';
   }
   function setMsg(t,ok){ var m=document.getElementById('fbMsg'); if(!m)return; m.className='msg'+(ok?' ok':''); m.innerHTML=t; }
+  /* Marca el campo con error para lectores de pantalla y lleva el foco ahí. */
+  function marcar(id){ var el=document.getElementById(id); if(!el)return; el.classList.add('bad'); el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fbMsg'); el.focus(); }
 
   var modo='login'; // login | signup
-  window.__fbTab=function(m){ modo=m; renderAuth(); };
+  window.__fbTab=function(m,foco){ modo=m; renderAuth(true); if(foco!==false){ var t=document.getElementById(m==='login'?'tbIn':'tbUp'); if(t)t.focus(); } };
+  /* Pestañas con flechas (patrón ARIA de tabs). */
+  window.__fbTabKey=function(e){ if(['ArrowLeft','ArrowRight','Home','End'].indexOf(e.key)<0)return; e.preventDefault(); var sig=(e.key==='Home')?'login':(e.key==='End')?'signup':(modo==='login'?'signup':'login'); __fbTab(sig); };
 
-  function renderAuth(){
+  function renderAuth(sinFoco){
     var esLogin = modo==='login';
-    var h='<div class="box"><span class="mk">'+MK+'</span>'
-      +'<h3>Humana <b>Academy</b></h3>'
-      +'<p>'+(esLogin?'Entrá con tu correo y contraseña.':'Creá tu cuenta. Te lleva menos de un minuto.')+'</p>'
-      +'<div class="fbtabs"><button id="tbIn" class="'+(esLogin?'on':'')+'" onclick="__fbTab(\'login\')">Entrar</button>'
-      +'<button id="tbUp" class="'+(esLogin?'':'on')+'" onclick="__fbTab(\'signup\')">Crear cuenta</button></div>';
-
+    document.title=(esLogin?'Entrar':'Crear cuenta')+' · Humana Academy';
+    var h='<div class="lay">'+SIDE()+'<div class="main"><div class="box">'
+      +'<span class="mh-kicker">Humana Academy</span>'
+      +'<h1>'+(esLogin?'Hola de <b>nuevo</b>':'Creá tu <b>cuenta</b>')+'</h1>'
+      +'<p class="sub">'+(esLogin?'Entrá con tu correo de trabajo y tu contraseña.':'Te lleva menos de un minuto. Usá tu correo de trabajo.')+'</p>'
+      +'<div class="fbtabs" role="tablist" aria-label="Modo de acceso" onkeydown="__fbTabKey(event)"><button type="button" role="tab" id="tbIn" aria-controls="fbPanel" tabindex="'+(esLogin?0:-1)+'" aria-selected="'+esLogin+'" onclick="__fbTab(\'login\')">Entrar</button>'
+      +'<button type="button" role="tab" id="tbUp" aria-controls="fbPanel" tabindex="'+(esLogin?-1:0)+'" aria-selected="'+(!esLogin)+'" onclick="__fbTab(\'signup\')">Crear cuenta</button></div>'
+      +'<div id="fbPanel" role="tabpanel" aria-labelledby="'+(esLogin?'tbIn':'tbUp')+'"><form id="fbForm" novalidate>';
     if(!esLogin){
-      h+='<div class="fbf"><label for="fbName">Nombre y apellido</label><input id="fbName" type="text" autocomplete="name" placeholder="Ana García"></div>';
+      h+='<div class="fbf"><label class="mh-label" for="fbName">Nombre y apellido</label><input class="mh-input" id="fbName" type="text" autocomplete="name" placeholder="Ana García" required></div>';
     }
-    h+='<div class="fbf"><label for="fbEmail">Correo</label><input id="fbEmail" type="email" autocomplete="'+(esLogin?'username':'email')+'" placeholder="tu-correo@humanahc.com"></div>'
-      +'<div class="fbf"><label for="fbPass">Contraseña</label><div class="pwrap"><input id="fbPass" type="password" autocomplete="'+(esLogin?'current-password':'new-password')+'" placeholder="'+(esLogin?'Tu contraseña':'Mínimo 6 caracteres')+'"><button type="button" class="eye" onclick="__fbEye()">VER</button></div></div>';
-
-    h+='<button class="pri" id="fbBtn">'+(esLogin?'Entrar':'Crear mi cuenta')+'</button>'
-      +'<div class="msg" id="fbMsg"></div>';
-    h+='<button class="lnk" onclick="__fbReset()">'+(esLogin?'Olvidé mi contraseña':'Ya tengo cuenta pero no tengo contraseña')+'</button>';
-    h+='<div class="foot">Acceso para el equipo de Humana Health &amp; Care · Argentina</div></div>';
+    h+='<div class="fbf"><label class="mh-label" for="fbEmail">Correo de trabajo</label><input class="mh-input" id="fbEmail" type="email" inputmode="email" autocomplete="'+(esLogin?'username':'email')+'" placeholder="nombre@humanahc.com.ar" required></div>'
+      +'<div class="fbf"><label class="mh-label" for="fbPass">Contraseña</label><div class="pwrap"><input class="mh-input" id="fbPass" type="password" autocomplete="'+(esLogin?'current-password':'new-password')+'" placeholder="'+(esLogin?'Tu contraseña':'Mínimo 6 caracteres')+'" required><button type="button" class="eye" onclick="__fbEye()" aria-label="Ver contraseña" aria-pressed="false">Ver</button></div></div>';
+    h+='<button type="submit" class="mh-btn pri" id="fbBtn">'+(esLogin?'Entrar':'Crear mi cuenta')+'</button>'
+      +'<div class="msg" id="fbMsg" role="alert" aria-live="assertive"></div></form></div>';
+    h+='<button type="button" class="lnk" onclick="__fbReset()">'+(esLogin?'Olvidé mi contraseña':'Ya tengo cuenta pero no tengo contraseña')+'</button>';
+    h+='<p class="small">Sirven los correos @humanahc.com, @humanahc.com.ar e @infinitypharma.com.ar.</p></div></div></div>';
     gate.innerHTML=h; showGate();
 
-    var f=document.getElementById(esLogin?'fbEmail':'fbName'); if(f)setTimeout(function(){f.focus();},80);
-    ['fbName','fbEmail','fbPass'].forEach(function(id){ var el=document.getElementById(id);
-      if(el)el.addEventListener('keydown',function(ev){ if(ev.key==='Enter'){ev.preventDefault();document.getElementById('fbBtn').click();} }); });
-    document.getElementById('fbBtn').onclick = esLogin ? doLogin : doSignup;
+    var f=document.getElementById(esLogin?'fbEmail':'fbName'); if(f && !sinFoco && matchMedia('(min-width: 861px)').matches)setTimeout(function(){f.focus();},80);
+    document.getElementById('fbForm').onsubmit=function(ev){ ev.preventDefault(); (esLogin?doLogin:doSignup)(); };
+    ['fbName','fbEmail','fbPass'].forEach(function(id){ var el=document.getElementById(id); if(el)el.addEventListener('input',function(){ el.classList.remove('bad'); el.removeAttribute('aria-invalid'); }); });
   }
 
   window.__fbEye=function(){ var p=document.getElementById('fbPass'); if(!p)return;
-    var v=p.type==='password'; p.type=v?'text':'password'; p.parentNode.querySelector('.eye').textContent=v?'OCULTAR':'VER'; p.focus(); };
+    var v=p.type==='password'; p.type=v?'text':'password'; var b=p.parentNode.querySelector('.eye'); b.textContent=v?'Ocultar':'Ver'; b.setAttribute('aria-label',v?'Ocultar contraseña':'Ver contraseña'); b.setAttribute('aria-pressed',v?'true':'false'); };
 
   function doLogin(){
     var em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();
     var pw=document.getElementById('fbPass').value||'';
     var btn=document.getElementById('fbBtn');
-    if(!emailOK(em)){ setMsg('Ingresá un correo válido.'); document.getElementById('fbEmail').classList.add('bad'); return; }
-    if(!pw){ setMsg('Ingresá tu contraseña.'); document.getElementById('fbPass').classList.add('bad'); return; }
+    if(!emailOK(em)){ setMsg('Ingresá un correo válido.'); marcar('fbEmail'); return; }
+    if(!pw){ setMsg('Ingresá tu contraseña.'); marcar('fbPass'); return; }
     btn.disabled=true; setMsg('Entrando…',true);
     auth.signInWithEmailAndPassword(em,pw).catch(function(e){ btn.disabled=false; setMsg(traducir(e)); });
   }
@@ -130,10 +137,10 @@
     var em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();
     var pw=document.getElementById('fbPass').value||'';
     var btn=document.getElementById('fbBtn');
-    if(nm.length<3||nm.indexOf(' ')<0){ setMsg('Escribí tu nombre y apellido.'); document.getElementById('fbName').classList.add('bad'); return; }
-    if(!emailOK(em)){ setMsg('Ingresá un correo válido.'); document.getElementById('fbEmail').classList.add('bad'); return; }
-    if(!dominioOK(em)){ setMsg('Usá tu correo de trabajo: <b>@humanahc.com</b>, <b>@humanahc.com.ar</b> o <b>@infinitypharma.com.ar</b>. La plataforma es para el equipo.'); document.getElementById('fbEmail').classList.add('bad'); return; }
-    if(pw.length<6){ setMsg('La contraseña necesita al menos 6 caracteres.'); document.getElementById('fbPass').classList.add('bad'); return; }
+    if(nm.length<3||nm.indexOf(' ')<0){ setMsg('Escribí tu nombre y apellido.'); marcar('fbName'); return; }
+    if(!emailOK(em)){ setMsg('Ingresá un correo válido.'); marcar('fbEmail'); return; }
+    if(!dominioOK(em)){ setMsg('Usá tu correo de trabajo: <b>@humanahc.com</b>, <b>@humanahc.com.ar</b> o <b>@infinitypharma.com.ar</b>. La plataforma es para el equipo.'); marcar('fbEmail'); return; }
+    if(pw.length<6){ setMsg('La contraseña necesita al menos 6 caracteres.'); marcar('fbPass'); return; }
     btn.disabled=true; setMsg('Creando tu cuenta…',true);
     auth.createUserWithEmailAndPassword(em,pw).then(function(cred){
       try{ uname=nm; STORE.set('ha_name',nm); }catch(e){}
@@ -147,7 +154,7 @@
 
   window.__fbReset=function(){
     var em=(document.getElementById('fbEmail').value||'').trim().toLowerCase();
-    if(!emailOK(em)){ setMsg('Escribí tu correo arriba y volvé a tocar «Olvidé mi contraseña».'); document.getElementById('fbEmail').focus(); return; }
+    if(!emailOK(em)){ setMsg('Escribí tu correo arriba y volvé a tocar «Olvidé mi contraseña».'); marcar('fbEmail'); return; }
     setMsg('Enviando…',true);
     auth.sendPasswordResetEmail(em).then(function(){
       setMsg('Te enviamos un correo a <b>'+esc(em)+'</b> para crear una contraseña nueva.<br><b>Fijate en spam</b>: llega desde noreply@humana-academy.firebaseapp.com.',true);
@@ -189,16 +196,16 @@
   }
 
   function renderNamePrompt(user){
-    gate.innerHTML='<div class="box"><span class="mk">'+MK+'</span><h3>¡Bienvenido!</h3>'
-      +'<p>Decinos tu nombre y apellido para personalizar tu certificado.</p>'
-      +'<div class="fbf"><label for="fbName">Nombre y apellido</label><input id="fbName" type="text" placeholder="Ana García" autocomplete="name"></div>'
-      +'<button class="pri" id="fbNameBtn">Continuar</button><div class="msg" id="fbMsg"></div></div>';
+    document.title='Un último paso · Humana Academy';
+    gate.innerHTML='<div class="lay">'+SIDE()+'<div class="main"><div class="box"><span class="mh-kicker">Bienvenida</span><h1>Un último <b>paso</b></h1>'
+      +'<p class="sub">Contanos tu nombre y apellido. Así aparece en tu certificado.</p>'
+      +'<form id="fbNameForm" novalidate><div class="fbf"><label class="mh-label" for="fbName">Nombre y apellido</label><input class="mh-input" id="fbName" type="text" placeholder="Ana García" autocomplete="name" required></div>'
+      +'<button type="submit" class="mh-btn pri" id="fbNameBtn">Continuar</button><div class="msg" id="fbMsg" role="alert"></div></form></div></div></div>';
     showGate(); setTimeout(function(){var f=document.getElementById('fbName');if(f)f.focus();},80);
-    document.getElementById('fbName').addEventListener('keydown',function(ev){ if(ev.key==='Enter'){ev.preventDefault();document.getElementById('fbNameBtn').click();} });
-    document.getElementById('fbNameBtn').onclick=function(){
+    document.getElementById('fbNameForm').onsubmit=function(ev){ ev.preventDefault(); var btn=document.getElementById('fbNameBtn');
       var nm=(document.getElementById('fbName').value||'').trim();
-      if(nm.length<3||nm.indexOf(' ')<0){ setMsg('Escribí tu nombre y apellido.'); return; }
-      this.disabled=true;
+      if(nm.length<3||nm.indexOf(' ')<0){ setMsg('Escribí tu nombre y apellido.'); marcar('fbName'); return; }
+      btn.disabled=true;
       try{ uname=nm; STORE.set('ha_name',nm); }catch(e){}
       db.collection('users').doc(user.uid).set({name:nm, email:user.email, updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).finally(function(){ enter(user); });
     };
@@ -247,10 +254,10 @@
   function addAdminUI(user){
     [['nav.desk','d'],['#drawer','m']].forEach(function(par){
       var nav=document.querySelector(par[0]); if(!nav || document.getElementById('logout'+par[1])) return;
-      function link(id,txt,fn,cls){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
-        if(typeof fn==='string') a.href=fn; else a.onclick=function(){ if(window.closeMenu)closeMenu(); fn(); }; nav.appendChild(a); }
+      function link(id,txt,fn,cls,boton){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
+        if(typeof fn==='string') a.href=fn; else { a.href='#'+id; if(boton)a.setAttribute('role','button'); a.onclick=function(ev){ ev.preventDefault(); if(window.closeMenu)closeMenu(); fn(); }; } nav.appendChild(a); }
       if(isAdmin(user)){ link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
-      link('logout','Salir',salir);
+      link('logout','Salir',salir,'',true);
     });
   }
 
@@ -258,33 +265,27 @@
   var _U=[], _filtro='', _verOcultas=false;
 
   var sadm=document.createElement('style');
-  sadm.textContent=".gcard{background:var(--card,#191024);border:1px solid #2C1F42;border-radius:14px;padding:16px 18px}"
-   +".gstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:0 0 18px}"
-   +".gstat{background:#1E1430;border-radius:12px;padding:13px 15px}"
-   +".gstat b{display:block;font-size:23px;font-weight:800;color:#EDE6F5;line-height:1.2}"
-   +".gstat span{font-size:11.5px;color:#9E90B5}"
-   +".gstat.al{background:#2A1F0E}.gstat.al b{color:#F0C674}.gstat.al span{color:#C9A961}"
-   +".gtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}"
-   +"#gq{flex:1;min-width:200px;padding:10px 13px;border:1.5px solid #2C1F42;border-radius:10px;background:#1E1430;color:#EDE6F5;font-size:14px;font-family:inherit}"
-   +"#gq:focus{outline:none;border-color:#EC2E8E}"
-   +".gchk{display:flex;align-items:center;gap:7px;color:#9E90B5;font-size:12.5px;cursor:pointer;white-space:nowrap}"
-   +".urow{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.5fr) auto auto;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid #2C1F42}"
-   +".urow:hover{background:#1E1430}"
-   +".urow.pend{background:#221806}"
-   +".urow.oculta{opacity:.42}"
-   +".uname{font-weight:700;color:#EDE6F5;font-size:14px;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
-   +".umail{color:#9E90B5;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
-   +".uprog{color:#8b7da3;font-size:11.5px;margin-top:3px}"
-   +".urol{padding:8px 10px;border:1.5px solid #2C1F42;border-radius:9px;background:#1E1430;color:#EDE6F5;font-size:12.5px;font-family:inherit;width:100%;cursor:pointer}"
-   +".urol:focus{outline:none;border-color:#EC2E8E}"
-   +".ubtn{border:none;border-radius:9px;padding:8px 13px;font-weight:800;font-size:12px;cursor:pointer;font-family:inherit;white-space:nowrap;width:auto}"
-   +".ubtn.ok{background:#39d98a;color:#08240f}"
-   +".ubtn.off{background:transparent;color:#9E90B5;border:1px solid #3A2A52}"
-   +".ubtn.gh{background:transparent;color:#6f6288;border:1px solid #2C1F42;font-weight:700}"
-   +".ubtn:disabled{opacity:.5;cursor:default}"
-   +".ubadge{font-size:10.5px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap}"
-   +".ub-ok{background:#12281d;color:#39d98a}.ub-pend{background:#2A1F0E;color:#F0C674}.ub-na{background:#241736;color:#7d6f94}.ub-adm{background:#2B1B3D;color:#C88CE0}"
-   +"@media(max-width:760px){.urow{grid-template-columns:1fr;gap:8px}}";
+  sadm.textContent=".gcard{background:#fff;border:1px solid var(--mh-line);border-radius:20px;padding:6px 22px}"
+   +".gstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:0 0 20px}"
+   +".gstat{background:#fff;border:1px solid var(--mh-line);border-radius:18px;padding:18px 20px}"
+   +".gstat b{display:block;font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:34px;color:var(--mh-accent);line-height:1.1}"
+   +".gstat span{font-size:13.5px;color:var(--mh-mut)}"
+   +".gtools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 16px}"
+   +"#gq{flex:1;min-width:220px}"
+   +".gchk{display:flex;align-items:center;gap:8px;color:var(--mh-ink-2);font-size:14.5px;cursor:pointer;white-space:nowrap;min-height:44px}"
+   +".gchk input{width:18px;height:18px;accent-color:#B8407A}"
+   +".urow{display:grid;grid-template-columns:minmax(0,2.4fr) auto auto;gap:14px;align-items:center;padding:16px 2px;border-bottom:1px solid var(--mh-line)}"
+   +".urow:last-child{border-bottom:0}"
+   +".urow.oculta{opacity:.5}"
+   +".uname{font-weight:700;color:var(--mh-ink);font-size:15.5px;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
+   +".umail{color:var(--mh-mut);font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
+   +".uprog{color:var(--mh-mut);font-size:13px;margin-top:4px}"
+   +".uprog b{color:var(--mh-ink)}"
+   +".ubtn{min-height:44px;border:1.5px solid var(--mh-line-2);background:#fff;color:var(--mh-ink);border-radius:999px;padding:0 14px;font:700 13px/1 var(--mh-sans);cursor:pointer;white-space:nowrap}"
+   +".ubtn:hover{border-color:var(--mh-ink)}"
+   +".ubadge{font:700 11.5px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;white-space:nowrap}"
+   +".ub-ok{background:var(--mh-ok-tint);color:var(--mh-ok)}.ub-pend{background:var(--mh-accent-tint);color:var(--mh-accent-ink)}.ub-na{background:var(--mh-surface-2);color:var(--mh-mut)}.ub-adm{background:var(--mh-ink);color:#fff}"
+   +"@media(max-width:760px){.urow{grid-template-columns:1fr!important;gap:10px}}";
   document.head.appendChild(sadm);
 
   function _idsAcademy(){ try{ return MODULES.map(function(m){return m.n;}); }catch(e){ return [1,2,3,4,5,6,7,8,9,10]; } }
@@ -325,7 +326,7 @@
     if(nm.length<3){ alert('Escribí nombre y apellido.'); return; }
     db.collection('users').doc(uid).set({name:nm, updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).then(_recargar).catch(_errAdmin);
   };
-  window.__verOcultas=function(v){ _verOcultas=v; _pintar(); };
+  window.__verOcultas=function(v){ _verOcultas=v; _pintar(); var c=document.getElementById('gocu'); if(c)c.focus(); };
   window.__buscar=function(v){ _filtro=(v||'').toLowerCase(); _pintar(); };
 
   function _errAdmin(e){
@@ -334,9 +335,9 @@
     if(falta && c){
       var b=document.getElementById('gwarn');
       if(!b){ b=document.createElement('div'); b.id='gwarn';
-        b.style.cssText='background:#2A1F0E;border:1px solid #5C4415;border-radius:12px;padding:16px 18px;margin:0 0 16px';
-        b.innerHTML='<b style="color:#F0C674;font-size:14px">Falta un paso para que esto funcione</b>'
-         +'<p style="color:#C9A961;font-size:13px;margin:7px 0 0;line-height:1.6">Firestore no me deja guardar el cambio porque las reglas actuales solo permiten que cada uno escriba su propio registro. Para habilitar accesos desde acá hay que publicar las reglas nuevas:<br><br>'
+        b.style.cssText='background:var(--mh-warn-tint);border-radius:16px;padding:18px 20px;margin:0 0 16px';
+        b.innerHTML='<b style="color:var(--mh-warn);font-size:15px">Falta un paso para que esto funcione</b>'
+         +'<p style="color:var(--mh-ink-2);font-size:14px;margin:7px 0 0;line-height:1.6">Firestore no me deja guardar el cambio porque las reglas actuales solo permiten que cada uno escriba su propio registro. Para habilitar accesos desde acá hay que publicar las reglas nuevas:<br><br>'
          +'<b>Firebase Console → Firestore Database → Reglas</b> → borrá todo, pegá las reglas que te pasó Claude y tocá <b>Publicar</b>.<br><br>'
          +'Mientras tanto podés ver a todos, pero no cambiar nada.</p>';
         c.insertBefore(b, c.firstChild); window.scrollTo(0,0);
@@ -372,8 +373,8 @@
      +'<div class="gstat"><b>'+sinEmpezar.length+'</b><span>sin empezar</span></div>'
      +'</div>';
 
-    h+='<div class="gtools"><input id="gq" type="search" placeholder="Buscar por nombre o correo…" value="'+esc(_filtro)+'" oninput="__buscar(this.value)">'
-     +'<label class="gchk"><input type="checkbox" style="width:auto" '+(_verOcultas?'checked':'')+' onchange="__verOcultas(this.checked)"> Ver ocultas</label></div>';
+    h+='<div class="gtools"><label class="mh-sr" for="gq">Buscar personas</label><input id="gq" class="mh-input" type="search" placeholder="Buscar por nombre o correo…" value="'+esc(_filtro)+'" oninput="__buscar(this.value)">'
+     +'<label class="gchk"><input type="checkbox" id="gocu" '+(_verOcultas?'checked':'')+' onchange="__verOcultas(this.checked)"> Ver ocultas</label></div>';
 
     var lista=vis.filter(function(u){
       if(!_filtro) return true;
@@ -384,25 +385,25 @@
       return (a.name||'').localeCompare(b.name||'');
     });
 
-    if(!lista.length){ h+='<div class="gcard" style="text-align:center;color:#9E90B5">Nadie coincide con la búsqueda.</div>'; cont.innerHTML=h; return; }
+    if(!lista.length){ h+='<div class="gcard" style="text-align:center;color:var(--mh-mut);padding:28px">Nadie coincide con la búsqueda.</div>'; cont.innerHTML=h; return; }
 
-    h+='<div class="gcard" style="padding:4px 18px">';
+    h+='<div class="gcard">';
     lista.forEach(function(u){
       var badge = u.esAdmin ? '<span class="ubadge ub-adm">Admin</span>'
         : (u.total>=TOT ? '<span class="ubadge ub-ok">Completó todo</span>'
         : (u.total>0 ? '<span class="ubadge ub-pend">En curso</span>'
         : '<span class="ubadge ub-na">Sin empezar</span>'));
       h+='<div class="urow'+(u.oculto?' oculta':'')+'" style="grid-template-columns:minmax(0,2.4fr) auto auto">';
-      h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:#6f6288;font-size:11px">(oculta)</span>':'')+'</div>'
+      h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:var(--mh-mut);font-size:12px;font-weight:400">(oculta)</span>':'')+'</div>'
         +'<div class="umail">'+esc(u.email)+'</div>'
-        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 — <b style="color:#C9B8E0">'+u.total+' de '+TOT+'</b></div></div>';
+        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 · <b>'+u.total+' de '+TOT+'</b></div></div>';
       h+='<div>'+badge+'</div>';
       var nmq=esc(u.name).replace(/'/g,'').replace(/\\/g,'');
       h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
       h+='</div>';
     });
     h+='</div>';
-    h+='<p style="color:#6f6288;font-size:11.5px;margin-top:14px;line-height:1.6">Todo el equipo ve los tres recorridos. El registro está limitado a los correos del grupo. Cutaquig® es un medicamento de venta bajo receta: su capacitación es de uso interno y no debe difundirse fuera de Humana.</p>';
+    h+='<p style="color:var(--mh-mut);font-size:13px;margin-top:16px;line-height:1.6">Todo el equipo ve los tres recorridos. El registro está limitado a los correos del grupo. Cutaquig® es un medicamento de venta bajo receta: su capacitación es de uso interno y no debe difundirse fuera de Humana.</p>';
     cont.innerHTML=h;
     var q=document.getElementById('gq'); if(q && _filtro){ q.focus(); q.setSelectionRange(q.value.length,q.value.length); }
   }
@@ -410,14 +411,13 @@
   window.showAdmin=function(){
     if(!isAdmin(curUser)) return;
     var app=document.getElementById('app'); if(!app)return;
-    app.innerHTML='<section class="blk"><div class="wrap"><a class="back" onclick="home()" style="cursor:pointer">← Volver</a>'
-      +'<div class="eyebrow grad" style="margin-top:10px">Panel de administración</div>'
-      +'<h2 class="sec">Quién está aprendiendo</h2>'
-      +'<p class="sub">Todos los que entraron a la plataforma y cuánto avanzaron.</p>'
-      +'<div id="gadm"><p class="sub">Cargando…</p></div></div></section>';
-    window.scrollTo(0,0);
-    _cargar().then(_pintar).catch(function(e){
-      document.getElementById('gadm').innerHTML='<div class="gcard" style="border-color:#F0328C"><b style="color:#F0328C">No se pudo cargar</b><p style="color:#9E90B5;font-size:13px;margin-top:6px">'+esc(e.message)+'</p></div>';
+    try{ vista='admin'; }catch(e){}
+    app.innerHTML='<section class="blk"><div class="wrap"><button class="back" onclick="home()"><span aria-hidden="true">←</span> Inicio</button>'
+      +'<div class="sh"><div><span class="mh-kicker">Administración</span><h1 tabindex="-1">Quién está <b>aprendiendo</b></h1></div><p>Todas las personas que entraron a la plataforma y cuánto avanzaron.</p></div>'
+      +'<div id="gadm" aria-busy="true"><p class="sub">Cargando…</p></div></div></section>';
+    document.title='Administración · Humana Academy'; window.scrollTo(0,0); try{ app.querySelector('h1').focus({preventScroll:true}); }catch(e){}
+    _cargar().then(_pintar).then(function(){ var g=document.getElementById('gadm'); if(g)g.removeAttribute('aria-busy'); }).catch(function(e){
+      document.getElementById('gadm').innerHTML='<div class="gcard" style="padding:22px"><b style="color:var(--mh-err)">No se pudo cargar</b><p style="color:var(--mh-mut);font-size:14px;margin-top:6px">'+esc(e.message)+'</p></div>';
     });
   };
 })();
