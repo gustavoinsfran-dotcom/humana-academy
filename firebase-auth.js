@@ -166,7 +166,7 @@
     try{
       var r=(d&&d.resetAt&&d.resetAt.toMillis)?d.resetAt.toMillis():0;
       if(r && r>(STORE.get('ha_reset',0)||0)){
-        STORE.set('ha_s',{}); STORE.set('hn_s',{}); STORE.set('cq_s',{}); STORE.set('ha_reset',r);
+        STORE.set('ha_s',{}); STORE.set('hn_s',{}); STORE.set('cq_s',{}); STORE.set('hc_s',{}); STORE.set('ha_reset',r);
       }
     }catch(e){}
   }
@@ -190,6 +190,7 @@
         try{ STORE.set(clave,out); }catch(e){} return out; }
       window.HA_nexo     = mezcla((d&&d.nexo&&d.nexo.scores)||{}, 'hn_s', [1,2,3,4,5]);
       window.HA_cutaquig = mezcla((d&&d.cutaquig&&d.cutaquig.scores)||{}, 'cq_s', [1,2,3,4,5,6,7,8,9]);
+      window.HA_comercial = mezcla((d&&d.comercial&&d.comercial.scores)||{}, 'hc_s', [1,2,3,4]);
       try{ uemail=user.email||''; STORE.set('ha_email',uemail); }catch(e){}
       return db.collection('users').doc(user.uid).set({email:user.email, scores:merged, name:(uname||(d&&d.name)||''), updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).catch(function(){});
     }).catch(function(){});
@@ -289,12 +290,13 @@
   document.head.appendChild(sadm);
 
   function _idsAcademy(){ try{ return MODULES.map(function(m){return m.n;}); }catch(e){ return [1,2,3,4,5,6,7,8,9,10]; } }
-  function _tot(){ return _idsAcademy().length+5+9; }
+  function _tot(){ return _idsAcademy().length+5+9+4; }
   function _prog(d){
     var sc=d.scores||{}, a=_idsAcademy().filter(function(n){return sc[n]>=60;}).length;
     var ns=(d.nexo&&d.nexo.scores)||{}, x=[1,2,3,4,5].filter(function(n){return ns[n]>=60;}).length;
     var cs=(d.cutaquig&&d.cutaquig.scores)||{}, c=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]>=60;}).length;
-    return {a:a,x:x,c:c};
+    var os=(d.comercial&&d.comercial.scores)||{}, o=[1,2,3,4].filter(function(n){return os[n]>=60;}).length;
+    return {a:a,x:x,c:c,o:o};
   }
   function _esAdminMail(m){ return ADMINS.indexOf((m||'').toLowerCase())>=0; }
 
@@ -305,15 +307,15 @@
   };
   window.__reiniciar=function(uid, nombre){
     if(!isAdmin(curUser)) return;
-    if(!confirm('¿Reiniciar el progreso de '+nombre+'?\n\nLa cuenta queda en cero en Academy, Nexo y Cutaquig. Lo que había hecho queda guardado como historial dentro del registro.')) return;
+    if(!confirm('¿Reiniciar el progreso de '+nombre+'?\n\nLa cuenta queda en cero en Academy, Nexo, Cutaquig y la formación comercial. Lo que había hecho queda guardado como historial dentro del registro.')) return;
     var ref=db.collection('users').doc(uid);
     ref.get().then(function(doc){
       var d=doc.data()||{};
-      var copia={name:d.name||'', scores:d.scores||{}, nexoScores:(d.nexo&&d.nexo.scores)||{}, cutaquigScores:(d.cutaquig&&d.cutaquig.scores)||{},
+      var copia={name:d.name||'', scores:d.scores||{}, nexoScores:(d.nexo&&d.nexo.scores)||{}, cutaquigScores:(d.cutaquig&&d.cutaquig.scores)||{}, comercialScores:(d.comercial&&d.comercial.scores)||{},
         archivadoEl:firebase.firestore.Timestamp.now(), archivadoPor:(curUser.email||'')};
       return ref.update({
         historial:firebase.firestore.FieldValue.arrayUnion(copia),
-        scores:{}, 'nexo.scores':{}, 'cutaquig.scores':{},
+        scores:{}, 'nexo.scores':{}, 'cutaquig.scores':{}, 'comercial.scores':{},
         resetAt:firebase.firestore.FieldValue.serverTimestamp(),
         resetBy:(curUser.email||'')
       });
@@ -353,7 +355,7 @@
         var d=doc.data()||{}; var p=_prog(d);
         _U.push({uid:doc.id, name:d.name||'(sin nombre)', email:d.email||'—',
           oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email),
-          a:p.a, x:p.x, c:p.c, total:p.a+p.x+p.c});
+          a:p.a, x:p.x, c:p.c, o:p.o, total:p.a+p.x+p.c+p.o});
       });
     });
   }
@@ -396,7 +398,7 @@
       h+='<div class="urow'+(u.oculto?' oculta':'')+'" style="grid-template-columns:minmax(0,2.4fr) auto auto">';
       h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:var(--mh-mut);font-size:12px;font-weight:400">(oculta)</span>':'')+'</div>'
         +'<div class="umail">'+esc(u.email)+'</div>'
-        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 · <b>'+u.total+' de '+TOT+'</b></div></div>';
+        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 · Comercial '+u.o+'/4 · <b>'+u.total+' de '+TOT+'</b></div></div>';
       h+='<div>'+badge+'</div>';
       var nmq=esc(u.name).replace(/'/g,'').replace(/\\/g,'');
       h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';

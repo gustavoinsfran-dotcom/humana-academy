@@ -344,11 +344,12 @@ function irA(titulo,mover){
 function _sc(k){ try{ return STORE.get(k,{})||{}; }catch(e){ return {}; } }
 function _hechos(sc,lista){ return lista.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
 function _rutas(){
-  const nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
+  const nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s'), co=window.HA_comercial||_sc('hc_s');
   return [
    {id:'academy', t:'Humana Academy', k:'Doctrina', d:'Cómo observamos, comprendemos y acompañamos al paciente.', col:'var(--mh-accent)', kc:'var(--mh-accent-ink)', tot:MODULES.length, hechos:nCompl(), ir:"scrollMods()"},
    {id:'nexo', t:'Humana Nexo', k:'Programa', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.', col:'var(--mh-teal)', kc:'var(--mh-teal)', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
-   {id:'cutaquig', t:'Cutaquig®', k:'Producto', d:'Inmunoglobulina subcutánea: técnica, seguridad y dosificación.', col:'var(--mh-blue)', kc:'var(--mh-blue)', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
+   {id:'cutaquig', t:'Cutaquig®', k:'Producto', d:'Inmunoglobulina subcutánea: técnica, seguridad y dosificación.', col:'var(--mh-blue)', kc:'var(--mh-blue)', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"},
+   {id:'comercial', t:'Formación comercial', k:'Gestión', d:'Cómo presentar Humana a prepagas, obras sociales e instituciones.', col:'var(--mh-ink)', kc:'var(--mh-ink)', tot:4, hechos:_hechos(co,[1,2,3,4]), ir:"location.href='comercial.html'"}
   ];
 }
 function _siguiente(){
