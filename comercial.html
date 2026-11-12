@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formación comercial · Humana Academy</title>
+<meta name="description" content="Formación comercial e institucional de Humana Health & Care · Argentina: cómo presentar Humana a prepagas, obras sociales e instituciones.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF9FA">
+<meta property="og:title" content="Formación comercial · Humana Academy">
+<meta property="og:description" content="Cómo presentar Humana a prepagas, obras sociales e instituciones">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://academy.humanahc.com.ar/comercial.html">
+<link rel="icon" href="mark.svg">
+<link rel="preload" href="fonts/arimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bodoni-moda-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="metodo.css?v=1">
+<link rel="stylesheet" href="metodo-pistas.css?v=1">
+</head>
+<body class="mh p-com">
+<a class="mh-skip" href="#app">Ir al contenido</a>
+<header class="top"><div class="wrap">
+<button class="brand" onclick="home()" aria-label="Formación comercial, ir al inicio"><span class="mh-word"><b>Humana</b> <span>Comercial</span></span><span class="sep" aria-hidden="true"></span><span class="mh-logo" aria-hidden="true"><i>m</i>étodo<b>Humana</b></span></button>
+<nav class="desk" aria-label="Principal"><a class="lk" href="#les" onclick="scrollLes();return false">Lecciones</a><a class="lk" href="#cert" onclick="openCert();return false">Certificado</a><div class="userbox" id="userbox"></div><a class="home" href="index.html">Academy</a></nav>
+</div></header>
+<main id="app" tabindex="-1"></main>
+<div class="fbgate" id="fbgate" role="status" aria-live="polite"></div>
+<div class="mh-toast toast" id="toast" role="status" aria-live="polite"></div>
+<div class="mpop" id="mpop" role="dialog" aria-modal="true" aria-label="Aviso"></div>
+<footer class="pie"><div class="wrap">
+<div><span class="mh-logo"><i>m</i>étodo<b>Humana</b></span><small>Formación comercial e institucional · Humana Health &amp; Care · Argentina</small></div>
+<nav aria-label="Pie"><a href="#les" onclick="scrollLes();return false">Lecciones</a><a href="#cert" onclick="openCert();return false">Certificado</a><a href="index.html">Volver a Academy</a></nav>
+</div></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const LOGO='<span class="mh-logo"><i>m</i>étodo<b>Humana</b></span>';
+const ICK='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const IAR='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const IBK='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M13 8H4M7.5 4.5L4 8l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const pad=n=>String(n).padStart(2,'0');
+const LI='<svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>';
+const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let scores=STORE.get('hc_s',{}), uname=STORE.get('ha_name',''), uemail=STORE.get('ha_email','');
+const IDS=[1,2,3,4];
+const done=n=>scores[n]!=null&&scores[n]>=60, allDone=()=>IDS.every(done);
+
+const LES=[
+{n:1,t:"Qué aporta Humana",lead:"Lo que tenés que poder explicar en dos minutos a una prepaga, una obra social o una institución.",
+ body:`<h2>La idea</h2><p>Humana concentra en un solo operador la gestión y el seguimiento de la atención en domicilio de <strong>pacientes crónicos complejos</strong>: pluripatológicos, frágiles y con alto uso de recursos.</p><p>Alrededor de cada paciente arma una estructura organizada y continua: un <strong>equipo de referencia</strong> que conoce su historia, sigue su evolución, detecta cambios y responde en su casa.</p>
+ <div class="quote">Acercamos la capacidad de respuesta sanitaria a la puerta de su casa.</div>
+ <h2>Los cuatro problemas que ayudamos a ordenar</h2>
+ <ul><li><strong>Fragmentación:</strong> muchos profesionales e intervenciones, sin una coordinación clínica integrada.</li>
+ <li><strong>Guardias repetidas:</strong> consultas a la guardia por situaciones que, en algunos casos, se pueden valorar y resolver en domicilio.</li>
+ <li><strong>Internaciones y reinternaciones:</strong> episodios que se pueden prevenir o abordar antes cuando hay seguimiento continuo.</li>
+ <li><strong>Estadías prolongadas:</strong> pacientes estabilizados que pueden seguir su recuperación en casa, con una estructura adecuada.</li></ul>
+ <h2>Qué nos diferencia</h2><p>Una visita médica, una curación o una internación domiciliaria son intervenciones concretas. Humana es quien <strong>organiza, integra y da continuidad</strong> a esas intervenciones.</p><p>Con el seguimiento detectamos cambios, valoramos su importancia y activamos una respuesta proporcionada, antes de la próxima complicación.</p>
+ <h2>A qué pacientes atendemos</h2><p>Pacientes crónicos complejos, en general mayores, con varias patologías, internaciones repetidas, consultas frecuentes a la guardia y tratamientos que necesitan coordinación.</p><p>La edad es frecuente, pero no es el criterio. Lo que define es la <strong>complejidad clínica</strong> y la necesidad de continuidad. Pasa mucho con pacientes que viven lejos de los grandes centros, para quienes la guardia termina siendo la única respuesta que conocen.</p>
+ <h2>Para llevarte</h2><p>Humana trabaja junto al hospital y respeta las internaciones necesarias. Busca que cada paciente reciba la atención que necesita, en el momento oportuno y en el lugar más adecuado. Lo que ofrecemos es una forma distinta de organizar la atención de los pacientes que más continuidad necesitan.</p>`,
+ quiz:[{q:"¿Qué hace Humana, en una frase?",o:["Hace visitas médicas sueltas","Concentra la gestión y el seguimiento en domicilio de pacientes crónicos complejos","Reemplaza al hospital","Vende internación domiciliaria por día"],c:1,e:"Un solo operador que organiza y sigue la atención en casa del paciente complejo."},{q:"¿Cuál de estos es uno de los problemas que ayudamos a ordenar?",o:["La fragmentación de la atención","El precio de los medicamentos","La publicidad de la prepaga","Los trámites de afiliación"],c:0,e:"Fragmentación, guardias repetidas, internaciones y estadías prolongadas."},{q:"Frente a la internación domiciliaria o las visitas que el financiador ya tiene, Humana…",o:["Las reemplaza a todas","Organiza, integra y da continuidad a esas intervenciones","Solo hace curaciones","Compite por precio"],c:1,e:"La diferencia está en cómo se organiza y se sostiene la atención."},{q:"¿Qué define si un paciente es para Humana?",o:["Tener más de 80 años","La complejidad clínica y la necesidad de continuidad","Vivir en la ciudad","Tener prepaga"],c:1,e:"La edad es frecuente, pero lo que define es la complejidad."},{q:"¿Humana busca evitar todas las internaciones?",o:["Sí, siempre","No: busca que cada paciente reciba la atención adecuada en el lugar adecuado","Solo las de urgencia","Depende del precio"],c:1,e:"Hay internaciones necesarias. El foco es el recurso más adecuado en cada momento."}]},
+
+{n:2,t:"Las preguntas difíciles",lead:"Seis preguntas que te van a hacer seguro, cómo responderlas y qué preguntar vos.",
+ body:`<h2>La idea</h2><p>En cada reunión aparecen las mismas preguntas. Acá están las respuestas de Humana y, para cada una, la pregunta que conviene hacer vos para entender la necesidad del otro lado.</p>
+ <h2>1. «Ya tenemos internación domiciliaria y visitas. ¿Qué tienen de distinto?»</h2><p>Humana gestiona la atención en domicilio como un <strong>proceso continuo</strong>. Las visitas, la enfermería o la internación forman parte de un plan organizado alrededor del paciente.</p><p>Si preguntan si reemplazamos a sus prestadores: podemos asumir de forma integrada algunas prestaciones y el seguimiento de una población definida, según el acuerdo y la capacidad operativa. La idea es ordenar la atención de quienes necesitan gestión continua.</p><p><strong>Tu pregunta:</strong> «¿Quién hace hoy el seguimiento de un paciente complejo entre una prestación y la siguiente?»</p>
+ <h2>2. «¿Para qué una plataforma si ya tenemos historia clínica?»</h2><p>La tecnología de Humana convive con sus sistemas. Sirve para organizar la atención, registrar lo que se hace, seguir la evolución, detectar cambios y coordinar al equipo, con trazabilidad.</p><p>Estamos desarrollando un agente de inteligencia artificial que apoye al equipo, siempre con supervisión profesional. Presentalo como lo que es: algo en desarrollo.</p><p>Si piden acceso a la información: se pueden acordar informes con indicadores y actividad, según el contrato y la Ley 25.326 de protección de datos.</p><p><strong>Tu pregunta:</strong> «¿Qué información les gustaría recibir periódicamente para seguir a los pacientes?»</p>
+ <h2>3. «¿Qué garantía tenemos de ahorrar?»</h2><p>Humana no promete cifras. Propone medir. Estamos desarrollando <strong>Impacta Humana</strong>, una herramienta para comparar la inversión en nuestro modelo con la evolución del gasto: guardias, internaciones, reinternaciones, días de estadía, episodios resueltos en domicilio y costos.</p><p>Si preguntan si podemos demostrar una internación evitada: se documenta con criterios clínicos definidos. Y para hablar de ahorro hace falta una comparación válida y costos de referencia acordados.</p><p><strong>Tu pregunta:</strong> «¿Tienen datos de uso y costos de estos pacientes para armar una referencia inicial?»</p>
+ <h2>4. «Si el paciente termina internado igual, ¿qué aportan?»</h2><p>Hay situaciones que necesitan hospital, como una fractura de cadera que requiere cirugía. Humana trabaja en dos momentos: detectar y tratar a tiempo lo que se puede resolver en casa, y sostener el regreso después del alta, con un equipo que el paciente y su familia ya conocen.</p><p>Sobre las estadías: podemos ayudar a identificar pacientes estabilizados que pueden seguir en casa, si las condiciones lo permiten. Cuánto se reduce se evalúa en cada caso.</p><p><strong>Tu pregunta:</strong> «¿Tienen pacientes que siguen internados porque no hay una estructura para continuar en casa?»</p>
+ <h2>5. «¿Cuál es la tarifa?»</h2><p>El precio se construye según la población, la complejidad y la intensidad de atención. Buscamos un precio pactado, sostenible para Humana y defendible para quien contrata. Se mira la inversión global, no el costo de una visita.</p><p>Si quieren empezar con pocos pacientes: se puede plantear un piloto con población definida, criterios de inclusión, prestaciones, duración e indicadores.</p><p><strong>Tu pregunta:</strong> «¿Con qué grupo de pacientes les interesaría empezar y qué resultados necesitarían para ampliar?»</p>
+ <h2>6. «¿Atienden solo a personas mayores? ¿Llegan lejos?»</h2><p>Lo que define es la complejidad clínica, no la edad. Para pacientes que viven lejos de los grandes centros, el modelo es especialmente útil. Se estudia con una organización territorial adecuada, verificando antes recursos, tiempos de respuesta y seguridad.</p><p><strong>Tu pregunta:</strong> «¿Tienen identificados pacientes complejos en zonas alejadas que usen mucho la guardia?»</p>
+ <h2>Para llevarte</h2><p>No alcanza con explicar bien Humana. Se trata de escuchar, identificar una necesidad, reconocer nuestros límites operativos y proponer una colaboración viable.</p>`,
+ quiz:[{q:"Si te preguntan si Humana garantiza un ahorro, respondés que…",o:["Sí, un porcentaje fijo","No prometemos cifras: proponemos medirlo con información verificable","El costo no importa","Depende del laboratorio"],c:1,e:"El ahorro se mide y se demuestra; no se promete."},{q:"Impacta Humana hoy es…",o:["Una herramienta terminada","Una herramienta en desarrollo para comparar inversión y gasto","Una prepaga","Un sistema de facturación"],c:1,e:"Se presenta como lo que es: algo en desarrollo."},{q:"Si piden la tarifa en la primera reunión…",o:["Das un precio por visita","Explicás que se construye según población, complejidad e intensidad, y proponés un piloto","Te negás a hablar de plata","Ofrecés el precio más bajo"],c:1,e:"Primero entender la población; el precio se pacta después."},{q:"Sobre el acceso a la información de los pacientes…",o:["Se comparte todo, sin límites","Se acuerdan informes según el contrato y la protección de datos","Nunca se comparte nada","Se manda por WhatsApp"],c:1,e:"Indicadores y actividad, dentro del contrato y de la Ley 25.326."},{q:"Después de cada respuesta, conviene…",o:["Seguir hablando de Humana","Hacer una pregunta para entender la necesidad del otro lado","Cerrar el contrato","Mandar la presentación"],c:1,e:"Cada respuesta abre una pregunta que te acerca a la necesidad real."}]},
+
+{n:3,t:"Cómo llevar una reunión",lead:"Una primera reunión de media hora, paso a paso: de la preparación al próximo paso acordado.",
+ body:`<h2>La idea</h2><p>En una primera reunión no se venden prestaciones sueltas ni se cierra un contrato. El objetivo es <strong>identificar una población de pacientes</strong> donde Humana pueda aportar valor y <strong>acordar un próximo paso concreto</strong>.</p>
+ <h2>Antes de ir</h2><ul><li>Cómo está organizado el financiador o la institución en la zona.</li><li>Con qué clínicas y sanatorios trabaja.</li><li>Qué servicios domiciliarios tiene contratados, si se sabe.</li><li>Quiénes son los responsables médicos, de prestaciones y de auditoría.</li><li>Qué necesidades podría tener con pacientes crónicos complejos, altas y uso de internación.</li></ul><p>No des por supuesto el problema. Andá preparado para descubrirlo.</p>
+ <h2>Apertura · 5 minutos</h2><div class="quote">Gracias por recibirnos. Les cuento brevemente qué hace Humana, pero sobre todo me interesa conocer cómo gestionan hoy a sus pacientes crónicos complejos y qué dificultades encuentran.</div><p>El objetivo es abrir una conversación profesional y que el otro empiece a contar su realidad. Conviene evitar arrancar enumerando servicios, pasando tarifas o hablando de ahorro.</p>
+ <h2>Exploración · 12 minutos</h2><p>Es la parte más importante. Cinco preguntas guía:</p><ol><li>¿Cómo gestionan hoy a los pacientes crónicos complejos que usan mucho la internación?</li><li>¿Dónde encuentran más dificultades: guardias repetidas, reinternaciones, estadías largas o la continuidad después del alta?</li><li>Cuando uno de estos pacientes se descompensa en su casa, ¿qué respuesta tiene antes de ir a la guardia?</li><li>¿Tienen dificultades con pacientes que viven lejos de los grandes centros?</li><li>Si pudieran mejorar una sola cosa en la atención de estos pacientes en los próximos meses, ¿cuál sería?</li></ol>
+ <h2>Profundizar</h2><p>No se trata de hacer cinco preguntas seguidas. Escuchá y repreguntá cuando aparece algo concreto:</p><p><em>«Tenemos muchos pacientes mayores que vuelven a la guardia.»</em> → «¿Tienen identificados los perfiles que más vuelven?» → <em>«Sobre todo cardíacos y respiratorios.»</em> → «¿Hay algún seguimiento entre una guardia y la siguiente, o el paciente vuelve cuando se descompensa?»</p>
+ <h2>Presentación de Humana · 8 minutos</h2><p>Con la necesidad sobre la mesa, la vinculás con el modelo. Contá solo lo que responde al problema que apareció en la charla.</p>
+ <h2>Lo económico</h2><p>El modelo económico se construye juntos: primero la población, su complejidad y la intensidad que necesita; después un precio sostenible para ambas partes. Conviene evitar:</p><ul><li>Dar un precio sin conocer las necesidades.</li><li>Prometer porcentajes de ahorro.</li><li>Decir que todas las internaciones son evitables.</li><li>Comprometer cobertura o tiempos de respuesta sin verificar la capacidad operativa.</li></ul>
+ <h2>Cierre · 5 minutos</h2><div class="quote">Por lo que hablamos, tendría sentido empezar analizando un grupo de pacientes con estas características. ¿Les parece identificar una población inicial y armar una reunión de trabajo con los responsables?</div><p>Buenos resultados de una primera reunión: una segunda reunión con dirección médica o auditoría, una población identificada, perfiles clínicos para revisar, un circuito de derivación o un piloto delimitado.</p><p>Nunca comprometas acceso a datos clínicos identificables sin una base legal y un procedimiento autorizado.</p>
+ <h2>Después de la reunión</h2><ol><li>¿Qué necesidad concreta identifiqué?</li><li>¿Qué pacientes están involucrados?</li><li>¿Cómo se atienden hoy?</li><li>¿Qué podría aportar Humana?</li><li>¿Qué información necesito para una propuesta?</li><li>¿Qué compromisos todavía no tengo que asumir?</li><li>¿Qué próximo paso acordamos?</li></ol>
+ <h2>Para llevarte</h2><p>Una buena reunión es la que permite entender una necesidad real, ver dónde puede intervenir Humana y acordar un próximo paso.</p>`,
+ quiz:[{q:"El objetivo de una primera reunión es…",o:["Cerrar el contrato","Identificar una población donde Humana aporte valor y acordar un próximo paso","Presentar todas las prestaciones","Pasar la tarifa"],c:1,e:"Entender la necesidad y salir con un próximo paso."},{q:"¿Cuál es la parte más importante de la reunión?",o:["La apertura","La exploración: preguntar y escuchar","La presentación","El cierre"],c:1,e:"Doce minutos para entender la realidad del otro."},{q:"En la apertura conviene evitar…",o:["Agradecer","Arrancar enumerando servicios o hablando de tarifas","Presentarse","Preguntar"],c:1,e:"Primero la conversación; los servicios y la plata, después."},{q:"En la presentación de Humana…",o:["Contás todo lo que hacemos","Contás lo que responde al problema que apareció en la charla","Mostrás precios","Hablás de la competencia"],c:1,e:"Solo lo que conecta con la necesidad identificada."},{q:"Una reunión termina bien cuando…",o:["Mandás la presentación por mail","Hay un próximo paso concreto acordado","Te piden presupuesto","Dura más de una hora"],c:1,e:"El cierre siempre propone una continuidad concreta."}]},
+
+{n:4,t:"Estudiar a un financiador o una institución",lead:"Qué averiguar antes de ir y cómo ordenar la oportunidad en una ficha.",
+ body:`<h2>La idea</h2><p>Estudiar a un financiador no es saber cuántos afiliados tiene. Es entender <strong>cómo usa sus recursos</strong>, qué pacientes necesitan una gestión más organizada y si Humana puede dar una respuesta sostenible.</p>
+ <h2>Qué averiguar</h2><ol>
+ <li><strong>Identificación:</strong> nombre, tipo (prepaga, obra social, institución u otro), grupo al que pertenece, afiliados en total y en la zona, planes y cómo viene en el mercado.</li>
+ <li><strong>Población:</strong> edades (más de 65, 75 y 85), crónicos y pluripatológicos, alta complejidad, reinternaciones, uso frecuente de guardia, dependencia y dónde viven.</li>
+ <li><strong>Red:</strong> clínicas y sanatorios propios y contratados, centros y especialistas, guardias, prestadores domiciliarios, enfermería, internación domiciliaria, programas de crónicos y cómo se coordina la internación con el domicilio.</li>
+ <li><strong>Uso y costos</strong> (si hay información): consultas a guardia, internaciones, reinternaciones a 30 y 90 días, estadía media, diagnósticos de mayor uso, costos medios y gasto por afiliado. Separá los costos potencialmente evitables de los ahorros demostrados.</li>
+ <li><strong>Gestión clínica:</strong> si tiene programas de cronicidad, si estratifica por riesgo, si sigue a los pacientes después del alta, quién coordina y cómo detecta una descompensación en casa.</li>
+ <li><strong>Contratación:</strong> por prestación, por módulo, por cápita, por paciente y mes o por objetivos; autorizaciones, auditoría, facturación y plazos de pago.</li>
+ <li><strong>Capacidad de pago:</strong> situación económica, historial de pago a prestadores y riesgo de cobranza. En Argentina conviene mirar especialmente el tipo de financiador, la cadena de contratación y las condiciones reales de cobro.</li>
+ <li><strong>Interlocutores:</strong> dirección médica, prestaciones, auditoría médica, dirección regional, finanzas, contratación de prestadores y programas de crónicos. De cada uno: nombre, cargo, capacidad de decisión, contacto y estado de la relación.</li></ol>
+ <h2>La oportunidad para Humana</h2><p>Con lo que averiguaste, se define: <strong>población</strong> objetivo, <strong>necesidad</strong> concreta, <strong>intervención</strong> de Humana, <strong>territorio</strong> que podemos cubrir, <strong>modelo económico</strong> e <strong>indicadores</strong> para medir.</p>
+ <ul><li><strong>Prioridad alta:</strong> necesidad concreta, población identificable, interlocutor adecuado y viabilidad asistencial y económica.</li><li><strong>Prioridad media:</strong> hay interés, pero falta información o validación.</li><li><strong>Prioridad baja:</strong> no hay una necesidad identificada o la colaboración no es viable.</li></ul>
+ <p>Riesgos a mirar: pocos pacientes, dispersión territorial con costos altos, tarifas que no cubren la intensidad de atención, interlocutor sin capacidad de decisión, trabas de autorización o facturación, riesgo de falta de pago y exigencias que Humana no pueda asumir.</p>
+ <h2>Cómo marcar cada dato</h2><ul><li><strong>Confirmado:</strong> respaldado por una fuente verificable o por documentación de la entidad.</li><li><strong>Estimado:</strong> calculado con supuestos explícitos.</li><li><strong>Pendiente:</strong> información que hay que pedir o comprobar.</li></ul>
+ <div class="quote">Una hipótesis comercial y una necesidad demostrada son cosas distintas.</div>
+ <p><button class="mh-btn sec" onclick="openFicha()">Abrir la ficha para imprimir</button> <a class="mh-btn ghost" href="estratificador.html">Usar el Estratificador</a></p>
+ <h2>Para llevarte</h2><p>Estudiamos a un financiador para entender cómo usa sus recursos y si Humana puede ofrecer una respuesta asistencial y económicamente sostenible.</p>`,
+ quiz:[{q:"Estudiar a un financiador sirve para…",o:["Saber cuántos afiliados tiene y nada más","Entender cómo usa sus recursos y si Humana puede dar una respuesta sostenible","Copiar su web","Calcular una comisión"],c:1,e:"El tamaño es un dato; lo que importa es cómo usa sus recursos."},{q:"Un dato calculado con supuestos explícitos se marca como…",o:["Confirmado","Estimado","Pendiente","Descartado"],c:1,e:"Confirmado, estimado o pendiente: cada dato con su etiqueta."},{q:"En Argentina, sobre la capacidad de pago conviene mirar especialmente…",o:["El logo","El tipo de financiador, la cadena de contratación y las condiciones reales de cobro","La cantidad de sucursales","Las redes sociales"],c:1,e:"Quién paga, por dónde pasa el contrato y cómo se cobra en la práctica."},{q:"Una oportunidad de prioridad alta tiene…",o:["Interés, pero sin datos","Necesidad concreta, población identificable, interlocutor adecuado y viabilidad","Solo un contacto conocido","Un precio bajo"],c:1,e:"Las cuatro condiciones juntas."},{q:"¿Cuál de estos es un riesgo a evaluar?",o:["El riesgo de falta de pago","Que la reunión sea virtual","Que tengan web","Que tengan muchos afiliados"],c:0,e:"Cobranza, volumen, dispersión, tarifas y capacidad de decisión."}]}
+];
+
+const app=document.getElementById('app');
+function scrollLes(){const e=document.getElementById('les');if(e)e.scrollIntoView({behavior:'smooth'});else{home();setTimeout(scrollLes,60);}}
+function reunionMap(){
+ const S=[['Antes','Preparación'],['5 min','Apertura'],['12 min','Exploración'],['8 min','Presentación'],['Juntos','Lo económico'],['5 min','Cierre']];
+ const W=1000,y=150,x0=95,dx=162;
+ const line=`<line x1="${x0}" y1="${y}" x2="${x0+dx*5}" y2="${y}" stroke="#DDD6E1" stroke-width="1.5"/>`;
+ const nodes=S.map((s,i)=>{const x=x0+dx*i, key=i===2;return `<g><circle cx="${x}" cy="${y}" r="${key?34:28}" fill="${key?'#170F1E':'#FFFFFF'}" stroke="#170F1E" stroke-width="1.2"/><text x="${x}" y="${y+7}" text-anchor="middle" font-family="Bodoni Moda,Georgia,serif" font-style="italic" font-size="20" fill="${key?'#FFFFFF':'#170F1E'}">${pad(i+1)}</text><text x="${x}" y="${y-52}" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.5" fill="#686070">${s[0].toUpperCase()}</text><text x="${x}" y="${y+66}" text-anchor="middle" font-size="16" font-weight="700" fill="#170F1E">${s[1]}</text></g>`;}).join('');
+ const svg=`<svg viewBox="0 0 ${W} 260" xmlns="http://www.w3.org/2000/svg" font-family="Arimo,Helvetica,Arial,sans-serif" role="img" aria-label="Los seis momentos de una reunión: preparación, apertura de 5 minutos, exploración de 12 minutos, presentación de 8 minutos, lo económico y cierre de 5 minutos">${line}${nodes}<text x="${x0+dx*2}" y="${y+92}" text-anchor="middle" font-size="12.5" fill="#686070">La parte más importante</text></svg>`;
+ const list=`<ul class="mapl">${S.map((s,i)=>`<li${i===2?' class="core"':''}><span class="c">${pad(i+1)}</span><b>${s[1]} <span style="font-weight:400;color:var(--mh-mut)">· ${s[0]}</span></b></li>`).join('')}</ul>`;
+ return svg+list;
+}
+function home(){
+ const compl=IDS.filter(done).length, pct=Math.round(compl/4*100);
+ const rows=LES.map(m=>`<button type="button" class="mrow lcard ${done(m.n)?'v':''}" onclick="openL(${m.n})"><span class="n" aria-hidden="true">${pad(m.n)}</span><span><span class="t">${m.t}</span><span class="d">${m.lead}</span>${done(m.n)?`<span class="best">Completada · mejor nota ${scores[m.n]}%</span>`:''}</span><span class="st">${done(m.n)?`<span class="ck" title="Completada">${ICK}<span class="mh-sr">Completada</span></span>`:`<span class="go" aria-hidden="true">${IAR}</span>`}</span></button>`).join('');
+ const nextInc=IDS.find(n=>!done(n)), nx=nextInc?LES.find(x=>x.n===nextInc):null;
+ const next=nx?`<aside class="next" aria-label="Tu avance"><span class="mh-kicker">${compl?'Seguí donde dejaste':'Empezá por acá'}</span><h2>Lección ${nx.n} · ${nx.t}</h2><p>Formación comercial · ${compl} de 4 lecciones</p><div class="bar"><i style="width:${pct}%"></i></div><button class="mh-btn pa" onclick="openL(${nx.n})">${compl?'Continuar':'Empezar'} <span class="ar">${IAR}</span></button></aside>`
+  :`<aside class="next" aria-label="Tu avance"><span class="mh-kicker">Formación completa</span><h2>Tu certificado está listo</h2><p>Completaste las 4 lecciones de la formación comercial.</p><div class="bar"><i style="width:100%"></i></div><button class="mh-btn pa" onclick="openCert()">Ver certificado <span class="ar">${IAR}</span></button></aside>`;
+ const cert=allDone()?`<div class="certcta"><div><b>Completaste la formación comercial</b><span>Ya podés descargar tu certificado.</span></div><button class="mh-btn pa" onclick="openCert()">Ver certificado</button></div>`:'';
+ app.innerHTML=`
+ <section class="phero"><div class="wrap grid2">
+  <div><span class="mh-kicker">Formación comercial e institucional</span>
+  <h1>Presentar <b>Humana</b></h1>
+  <p class="lead">Cómo explicar qué hace Humana, responder las preguntas difíciles y llevar una reunión con prepagas, obras sociales e instituciones.</p>
+  <div class="acts"><button class="mh-btn sec" onclick="scrollLes()">Ver las lecciones</button><button class="mh-btn ghost" onclick="openCert()">Certificado</button></div></div>
+  ${next}
+ </div></section>
+ <section class="blk" style="padding-top:24px"><div class="wrap"><div class="hilo"><div class="mh-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><blockquote>Una buena reunión entiende una necesidad real <em>y termina con un próximo paso.</em></blockquote><p>Escuchar, identificar una necesidad, reconocer nuestros límites y proponer una colaboración viable.</p></div></div></section>
+ <section class="blk" id="les"><div class="wrap">
+  <div class="sh"><div><span class="mh-kicker">La formación</span><h2>Cuatro lecciones, <b>una reunión mejor</b></h2><p>Para preparar cada encuentro con un financiador o una institución. Cada lección cierra con una autoevaluación; al completar las cuatro, obtenés tu certificado.</p></div></div>
+  ${cert}
+  <div class="progline"><span><b>${compl}</b> de 4 completadas</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="mods">${rows}</div>
+ </div></section>
+ <section class="blk" style="padding-top:0"><div class="wrap"><div class="sh"><div><span class="mh-kicker">La reunión</span><h2>Seis momentos, <b>media hora</b></h2><p>Una primera reunión, de la preparación al próximo paso acordado.</p></div></div><div class="mapwrap">${reunionMap()}</div></div></section>`;
+ renderUserbox();window.scrollTo(0,0);
+}
+let answers={},curQuiz=null;
+function openL(n){renderLesson(LES.find(x=>x.n===n));}
+function renderLesson(m){
+ const prev=LES.find(x=>x.n===m.n-1), next=LES.find(x=>x.n===m.n+1);
+ const steps=LES.map(x=>`<i class="${x.n===m.n?'on':(done(x.n)?'ok':'')}"></i>`).join('');
+ const pager=`<nav class="pager" aria-label="Otras lecciones"><button type="button" ${prev?`onclick="openL(${prev.n})"`:'disabled'}><small>Anterior</small><span>${prev?prev.t:''}</span></button><button type="button" class="nx" onclick="${next?`openL(${next.n})`:'home()'}"><small>${next?'Siguiente':'Fin del recorrido'}</small><span>${next?next.t:'Volver al inicio'}</span></button></nav>`;
+ app.innerHTML=`<section class="mhead"><div class="wrap"><button class="back" onclick="home()">${IBK} Lecciones</button>
+  <div class="kk"><span class="n" aria-hidden="true">${pad(m.n)}</span><span class="mh-kicker">Lección ${m.n} de 4</span></div><h1>${m.t}</h1><p class="lead">${m.lead}</p><div class="mstep" aria-hidden="true">${steps}</div></div></section>
+  <div class="wrap"><div class="reading">
+  <article class="content">${m.body}</article>
+  <section class="sec2" aria-labelledby="aut"><span class="mh-kicker" id="aut">Autoevaluación</span><div class="quiz"><p class="qi">${m.quiz.length} preguntas · se aprueba con 60% o más.</p><div id="quiz"></div>
+  <div class="qa"><button class="mh-btn pa" onclick="grade(${m.n})">Corregir</button><button class="mh-btn sec" onclick="openL(${m.n})">Reintentar</button></div>
+  <div class="score" id="score" role="status" aria-live="polite"></div></div></section>${pager}</div></div>`;
+ renderQuiz(m);window.scrollTo(0,0);
+}
+function renderQuiz(m){answers={};curQuiz=m;document.getElementById('quiz').innerHTML=m.quiz.map((q,qi)=>`<div class="q" role="radiogroup" aria-labelledby="qt_${qi}"><p class="qt" id="qt_${qi}"><span class="n">${qi+1}.</span><span>${q.q}</span></p><div class="opts">${q.o.map((o,oi)=>`<button type="button" role="radio" aria-checked="false" class="opt" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})"><span class="dot" aria-hidden="true"></span><span>${o}</span></button>`).join('')}</div><div class="exp" id="e_${qi}">${q.e}</div></div>`).join('');}
+function pick(qi,oi){answers[qi]=oi;[0,1,2,3].forEach(i=>{const e=document.getElementById('o_'+qi+'_'+i);if(e){e.classList.remove('sel');e.setAttribute('aria-checked','false');}});const s=document.getElementById('o_'+qi+'_'+oi);s.classList.add('sel');s.setAttribute('aria-checked','true');}
+function grade(n){const m=curQuiz;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.remove('sel');el.style.pointerEvents='none';el.setAttribute('aria-disabled','true');if(oi===q.c)el.classList.add('correct');else if(answers[qi]===oi)el.classList.add('wrong');});if(answers[qi]===q.c)ok++;document.getElementById('e_'+qi).classList.add('show');});
+ const pct=Math.round(ok/m.quiz.length*100);const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('hc_s',scores);saveProgress();}
+ if(pct>=60&&(prev==null||prev<60)){const c=IDS.filter(done).length;toast(c>=4?'Completaste la formación comercial':'Lección completada');}
+ renderUserbox();
+ const s=document.getElementById('score');s.classList.add('show');s.classList.toggle('ok',pct>=60);
+ const msg=pct>=60?(pct===100?'Excelente, dominás el tema.':'Aprobada. Lección completada.'):'Aún no alcanzás el 60%. Repasá y volvé a intentar.';
+ s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> correctas (${pct}%). ${msg}`;setTimeout(function(){showLessonResult(n,pct);},260);}
+function openCert(){const list=LES.map(m=>m.t).join(' · ');
+ app.innerHTML=`<section class="blk"><div class="wrap">
+ <button class="back noprint" onclick="home()">${IBK} Volver</button>
+ <div class="certtools noprint"><span class="mh-kicker" style="color:var(--pa)">Tu certificado</span><p style="margin-top:10px">Escribí tu nombre y descargá tu certificado. ${allDone()?'':'<b>Se habilita al completar las 4 lecciones.</b>'}</p>
+  <label class="mh-sr" for="cname">Tu nombre y apellido</label><input class="mh-input" id="cname" placeholder="Tu nombre y apellido" autocomplete="name" value="${(uname||'').replace(/"/g,'')}" oninput="setName(this.value)">
+  <div class="row"><button class="mh-btn pa" onclick="window.print()">Imprimir o guardar PDF</button></div>
+ </div>
+ <div id="cert"><div class="certcard"><div class="cinner">
+  <div class="clabel">Certificado de finalización</div><h2>Formación <b>comercial</b></h2><p style="margin-top:0">Formación comercial e institucional</p>
+  <p>Se otorga el presente certificado a</p><div class="cname" id="certname">${uname||'Nombre y Apellido'}</div>
+  <p>por haber completado la formación comercial e institucional de Humana, recorriendo sus cuatro lecciones y aprobando las autoevaluaciones.</p>
+  <div class="cmods">${list}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div><div class="cseal">${LOGO}</div>
+ </div></div></div></div></section>`;
+ const d=document.getElementById('certdate');if(d)d.textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});window.scrollTo(0,0);}
+function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';if(curUser)saveProgress();}
+function renderUserbox(){const b=document.getElementById('userbox');if(!b)return;const compl=IDS.filter(done).length,p=compl/4,C=2*Math.PI*12;const hi=uname?`<span class="hi">${uname.split(' ')[0].replace(/[<>&]/g,'')}</span>`:'';b.innerHTML=hi+`<span class="ring" title="Tu avance en la formación comercial" aria-label="Avance en la formación comercial: ${compl} de 4"><svg viewBox="0 0 30 30" aria-hidden="true"><circle class="tr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5"/><circle class="pr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-p)).toFixed(1)}"/></svg><span>${compl}/4</span></span>`;}
+
+  // ---- Onboarding: carrusel + coach-marks ----
+  function _obcssInject(){ /* estilos en metodo-pistas.css */ }
+  var _TOUR=[{t:"Bienvenido a la <b>formación comercial</b>",d:"Cómo presentar Humana a prepagas, obras sociales e instituciones. La hacés a tu ritmo, desde donde quieras."},{t:"Cómo <b>funciona</b>",d:"Son 4 lecciones. Cada una cierra con una autoevaluación para fijar lo aprendido."},{t:"Tu progreso <b>se guarda solo</b>",d:"Entrás con tu correo y seguís donde dejaste, desde la compu o el celular."},{t:"Tu <b>certificado</b>",d:"Al completar las 4 lecciones obtenés tu certificado, para descargar."}], _ts=0;
+  function _renderTour(){ _obcssInject(); var pop=document.getElementById("mpop"); if(!pop)return; var s=_TOUR[_ts]; var d=_TOUR.map(function(_,i){return "<i class=\""+(i===_ts?"on":"")+"\"></i>";}).join("");
+    var back=_ts>0?"<button class=\"mh-btn sec\" onclick=\"__tourPrev()\">Atrás</button>":"";
+    pop.innerHTML="<div class=\"box\"><div class=\"pnum\" aria-hidden=\"true\">"+pad(_ts+1)+"</div><h3>"+s.t+"</h3><p class=\"ps\">"+s.d+"</p><div class=\"tourdots\" aria-hidden=\"true\">"+d+"</div><div class=\"tourbtns\">"+back+"<button class=\"mh-btn pa\" onclick=\"__tourNext()\">"+(_ts<_TOUR.length-1?"Siguiente":"Empezar")+"</button></div></div>";
+    pop.classList.add("on"); }
+  window.__tourNext=function(){ if(_ts<_TOUR.length-1){_ts++;_renderTour();}else{var pop=document.getElementById("mpop"); if(pop)pop.classList.remove("on"); _startCoach();} };
+  window.__tourPrev=function(){ if(_ts>0){_ts--;_renderTour();} };
+  function _coachTargets(){ var a=[]; var ub=document.getElementById("userbox"); if(ub)a.push({el:ub,t:"Acá ves tu avance en todo momento."}); var cd=document.querySelector(".lcard"); if(cd)a.push({el:cd,t:"Tocá acá para empezar a aprender."}); var ce=document.querySelector("nav.desk a[onclick*='openCert']"); if(ce)a.push({el:ce,t:"Tu certificado aparece acá al terminar."}); return a.filter(function(x){return x.el&&x.el.getBoundingClientRect().width>0;}); }
+  function _startCoach(){ _obcssInject(); var tg=_coachTargets(); if(!tg.length){ _finishOb(); return; } var i=0; var ov=document.getElementById("coach"); if(!ov){ov=document.createElement("div");ov.id="coach";ov.className="coach";document.body.appendChild(ov);}
+    function show(){ var el=tg[i].el; el.scrollIntoView({block:"center"}); setTimeout(function(){ var r=el.getBoundingClientRect(); var p=8; var below=r.bottom<window.innerHeight-150; var ty=below?(r.bottom+12):(r.top-12); var tx=Math.max(12,Math.min(window.innerWidth-282,r.left));
+      ov.innerHTML="<div class=\"coach-block\"></div><div class=\"coach-ring\" style=\"left:"+(r.left-p)+"px;top:"+(r.top-p)+"px;width:"+(r.width+p*2)+"px;height:"+(r.height+p*2)+"px\"></div><div class=\"coach-tip\" style=\"left:"+tx+"px;top:"+ty+"px;"+(below?"":"transform:translateY(-100%)")+"\"><p>"+tg[i].t+"</p><div class=\"coach-nav\"><span>"+(i+1)+" de "+tg.length+"</span><button class=\"mh-btn pa sm\" onclick=\"__coachNext()\">"+(i<tg.length-1?"Siguiente":"Listo")+"</button></div></div>";
+      ov.classList.add("on"); },320); }
+    window.__coachNext=function(){ i++; if(i>=tg.length){ ov.classList.remove("on"); _finishOb(); } else show(); }; show(); }
+  function _finishOb(){ try{STORE.set("hc_onboarded",true);}catch(e){} }
+  function startComOnboarding(){ _ts=0; _renderTour(); }
+
+function closePop(){var p=document.getElementById('mpop');if(p)p.classList.remove('on');}
+function showLessonResult(n,pct){var pop=document.getElementById('mpop');if(!pop)return;var passed=pct>=60;var compl=IDS.filter(done).length,pp=Math.round(compl/4*100);var title,sub,primL,primA,sec;
+ if(passed){var next=LES.find(function(x){return x.n===n+1;});title='<b>¡Felicitaciones!</b>';sub='Completaste la Lección '+n+' con '+pct+'%.';if(allDone()){primL='Ver mi certificado';primA='openCert()';}else if(next){primL='Continuar con la Lección '+next.n;primA='openL('+next.n+')';}else{primL='Volver al inicio';primA='home()';}sec=true;}
+ else{title='<b>¡Casi!</b>';sub='Sacaste '+pct+'%. Necesitás 60% para aprobar. Repasá y reintentá.';primL='Reintentar';primA='openL('+n+')';sec=true;}
+ pop.innerHTML='<div class="box"><div class="pnum'+(passed?'':' no')+'">'+pct+'<small>%</small></div><span class="mh-kicker">Lección '+n+'</span><h3>'+title+'</h3><p class="ps">'+sub+'</p>'+(passed?'<div class="pr"><span>Tu avance en la formación comercial</span><b>'+compl+' de 4</b></div><div class="pbar"><i style="width:'+pp+'%"></i></div>':'')+'<div class="pbtns"><button class="mh-btn pa" onclick="closePop();'+primA+'">'+primL+'</button>'+(sec?'<button class="mh-btn sec" onclick="closePop()">Seguir acá</button>':'')+'</div></div>';pop.classList.add('on');var b=pop.querySelector('.mh-btn');if(b)b.focus();}
+function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
+function openFicha(){const F=[['Entidad',''],['País y zona',''],['Tipo de financiador o institución','Prepaga · obra social · institución · otro'],['Afiliados o beneficiarios',''],['Población objetivo estimada',''],['Red asistencial relevante',''],['Cómo atiende hoy en domicilio',''],['Principal necesidad identificada',''],['Oportunidad para Humana',''],['Modelo económico posible',''],['Interlocutores clave','Nombre · cargo · decide sí/no · contacto'],['Capacidad de pago y riesgos',''],['Viabilidad territorial y operativa',''],['Información pendiente de confirmar',''],['Fuentes consultadas y fecha',''],['Prioridad','Alta · media · baja'],['Próximo paso','']];
+ app.innerHTML=`<section class="blk"><div class="wrap"><button class="back noprint" onclick="openL(4)">${IBK} Volver a la lección</button>
+ <div class="certtools noprint"><span class="mh-kicker" style="color:var(--pa)">Ficha resumen</span><p style="margin-top:10px">Imprimila o guardala en PDF y completala antes de cada reunión. Marcá cada dato como confirmado, estimado o pendiente.</p><div class="row"><button class="mh-btn pa" onclick="window.print()">Imprimir o guardar PDF</button></div></div>
+ <div class="ficha"><h2 style="margin:0 0 4px">Ficha de financiador o institución</h2><p style="margin:0 0 18px;color:var(--mh-mut)">Formación comercial · Humana Health &amp; Care · Argentina</p>
+ <table style="width:100%;border-collapse:collapse">${F.map(f=>`<tr><th scope="row" style="text-align:left;vertical-align:top;width:38%;padding:12px 12px 12px 0;border-top:1px solid var(--mh-line);font-size:14px">${f[0]}</th><td style="padding:12px 0;border-top:1px solid var(--mh-line);color:var(--mh-mut);font-size:13px;height:34px">${f[1]}</td></tr>`).join('')}</table></div></div></section>`;
+ window.scrollTo(0,0);}
+
+/* ---- Firebase: login + progreso (campo comercial del usuario) ---- */
+const firebaseConfig={apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"};
+let auth=null,db=null,curUser=null;
+const gate=document.getElementById('fbgate');
+function showGate(){gate.classList.add('on');}function hideGate(){gate.classList.remove('on');}
+function renderLoading(){gate.innerHTML='<div class="box">'+LOGO+'<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><p>Cargando tu sesión</p><span class="mh-kicker">Formación comercial</span></div>';showGate();}
+function renderLogin(){ /* Login unico en index.html; volvemos aca despues de entrar. */
+ location.replace('index.html?volver='+encodeURIComponent('comercial.html'));
+}
+function saveProgress(){if(!curUser||!db)return;db.collection('users').doc(curUser.uid).set({email:curUser.email,name:(uname||''),comercial:{scores:scores,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}
+function loadProgress(user){return db.collection('users').doc(user.uid).get().then(function(doc){const d=doc.exists?doc.data():null;try{const r=(d&&d.resetAt&&d.resetAt.toMillis)?d.resetAt.toMillis():0;if(r&&r>(STORE.get('ha_reset',0)||0)){STORE.set('ha_s',{});STORE.set('hn_s',{});STORE.set('cq_s',{});STORE.set('hc_s',{});STORE.set('ha_reset',r);}}catch(e){}const cloud=(d&&d.comercial&&d.comercial.scores)||{};let local={};try{local=STORE.get('hc_s',{})||{};}catch(e){}const merged={};IDS.forEach(function(n){const v=Math.max(local[n]==null?-1:local[n],cloud[n]==null?-1:cloud[n]);if(v>=0)merged[n]=v;});scores=merged;STORE.set('hc_s',merged);if(d&&d.name){uname=d.name;STORE.set('ha_name',d.name);}uemail=user.email||'';return db.collection('users').doc(user.uid).set({email:user.email,name:(uname||(d&&d.name)||''),comercial:{scores:merged,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});}).catch(function(){});}
+try{
+ firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+ try{auth.languageCode='es';}catch(e){}
+ try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
+ auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();if(!STORE.get("hc_onboarded",false))setTimeout(startComOnboarding,600);});}else{renderLogin();}});
+ renderLoading();
+}catch(e){ home(); }
+if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}
+</script>
+</body>
+</html>

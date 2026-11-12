@@ -5,6 +5,8 @@
    ===================================================================== */
 body.mh{--pa:var(--mh-accent);--pa-ink:var(--mh-accent-ink);--pa-tint:var(--mh-accent-tint);--pa-line:var(--mh-accent-tint-2)}
 body.mh.p-nexo{--pa:#1D6B64;--pa-ink:#16554F;--pa-tint:#E6F2F0;--pa-line:#CFE5E1}
+body.mh.p-com{--pa:#170F1E;--pa-ink:#433B48;--pa-tint:#F1EEF3;--pa-line:#DDD6E1}
+@media print{.mh .ficha{border:0!important;padding:0!important}}
 body.mh.p-cq{--pa:#28449B;--pa-ink:#1F3680;--pa-tint:#ECEFF8;--pa-line:#D3DAEE}
 
 /* ---------- estructura ---------- */
