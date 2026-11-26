@@ -92,7 +92,7 @@ Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinte
 
 1. Los cambios del sitio van en una rama, con un pull request que Gus aprueba. Nunca directo a main.
 2. Antes de proponer un cambio, correr la regresión completa (sección 6). Cero fallas nuevas.
-3. Contenido nuevo de Karina: se carga como borrador. Se publica con su validación.
+3. Todo lo que Gus comparte de Karina ya está revisado y validado con ella. Se carga tal cual y se publica. No se le pide revisión a Karina.
 4. Nada se borra: se archiva.
 5. No inventar herramientas ni procesos que el equipo no usa.
 
@@ -255,7 +255,7 @@ Evaluación: cinco preguntas de conocimiento y una simulación del caso.
 - La respuesta favorable a un tratamiento no confirma por sí sola un diagnóstico.
 - La tecnología no sustituye el juicio clínico. El acceso y las acciones se delimitan por rol.
 - La doctrina revisa sus criterios cada seis meses (primera revisión: mayo de 2027). El núcleo cambia solo con aprobación de Dirección Médica y Dirección General. Cada versión lleva número y fecha; la anterior se archiva.
-- Todo el material está en borrador para validación de la Dirección Médica: se carga como borrador y Karina lo publica.
+- El material que comparte Gus ya está validado con la Dirección Médica: se carga y se publica. Lo que falta (por ejemplo, preguntas de evaluación) se le pide a Karina como contenido nuevo, no como revisión.
 
 ### 8.8 Fases de implantación (Karina)
 
@@ -288,8 +288,8 @@ Las rutas actuales (Nexo, Cutaquig, Formación comercial) siguen. Los módulos a
 
 1. Rama `reestructuracion`.
 2. Estructura nueva: módulos 0 a 5, nueve troncos, seis escuelas, campo escuela por usuario, catálogo de patologías.
-3. Carga del Módulo 0 Doctrina Humana completo y del piloto Insuficiencia cardíaca con sus seis versiones, en borrador.
+3. Carga del Módulo 0 Doctrina Humana completo y del piloto Insuficiencia cardíaca con sus seis versiones.
 4. Estudio: plantillas de unidad y de patología, ficha de gobernanza, preguntas críticas.
 5. Capa por país en toda la Academy.
 6. Regresión completa con pruebas nuevas.
-7. Pull request para Gus y revisión de Karina antes de publicar.
+7. Pull request para Gus. Gus aprueba y se publica.
