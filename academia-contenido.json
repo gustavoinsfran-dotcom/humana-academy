@@ -1,6 +1,6 @@
 {
  "version": "2026-11-26",
- "nota": "Material de Karina (noviembre de 2026). Todo en borrador. Se importa desde el Estudio de la nueva Academy.",
+ "nota": "Material de Karina (noviembre de 2026), validado por la Dirección Médica. Publicado.",
  "docs": [
   {
    "id": "modulo-0",
@@ -85,14 +85,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Borrador v2",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v2",
     "fecha": "2026-11",
     "referencias": "Doctrina Humana, nueva edición, borrador v2 (noviembre de 2026)",
     "proximaRevision": "2027-05"
    },
    "fuente": "Doctrina_Humana_nueva_edicion_borrador_v2.pdf",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -137,14 +138,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -201,14 +203,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -265,14 +268,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -329,14 +333,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -393,14 +398,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -457,14 +463,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -521,14 +528,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -585,14 +593,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -649,14 +658,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -713,14 +723,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -751,14 +762,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -789,14 +801,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -827,14 +840,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -865,14 +879,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -903,14 +918,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -936,14 +952,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -962,14 +979,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -988,14 +1006,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1014,14 +1033,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1040,14 +1060,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1066,14 +1087,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1092,14 +1114,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1118,14 +1141,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1144,14 +1168,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1170,14 +1195,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1196,14 +1222,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1222,14 +1249,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1248,14 +1276,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1274,14 +1303,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1300,14 +1330,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1326,14 +1357,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1352,14 +1384,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1378,14 +1411,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1404,14 +1438,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1430,14 +1465,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1456,14 +1492,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1482,14 +1519,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1508,14 +1546,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1534,14 +1573,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1560,14 +1600,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1586,14 +1627,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1612,14 +1654,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1638,14 +1681,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1664,14 +1708,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1690,14 +1735,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1716,14 +1762,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1742,14 +1789,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1768,14 +1816,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1794,14 +1843,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1820,14 +1870,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1846,14 +1897,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1872,14 +1924,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1898,14 +1951,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1924,14 +1978,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1950,14 +2005,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -1976,14 +2032,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Índice de formación (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Indice_de_formacion.md",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -2048,14 +2105,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa por Enfermedades · Propuesta curricular para validación por Dirección Médica (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Programa_Por_Enfermedades.docx",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -2295,14 +2353,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Módulo 01 Insuficiencia cardíaca · Unidad docente maestra y seis adaptaciones por perfil · Versión de trabajo (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Humana_Academy_Modulo_01_Insuficiencia_Cardiaca.docx",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -2340,14 +2399,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Programa Integral Visual · Programa por Enfermedades · Doctrina Humana (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Programa Integral Visual · Programa por Enfermedades · Doctrina Humana",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   },
   {
@@ -2384,14 +2444,15 @@
    "video": "",
    "gobernanza": {
     "autor": "Dirección Médica · Dra. Karina Ojanguren",
-    "revisor": "",
-    "version": "Versión de trabajo",
+    "revisor": "Dirección Médica · Dra. Karina Ojanguren",
+    "version": "v1",
     "fecha": "2026-11",
     "referencias": "Humana Academy · Programa por Enfermedades · Propuesta curricular para validación por Dirección Médica (noviembre de 2026)",
     "proximaRevision": ""
    },
    "fuente": "Programa por Enfermedades · Programa Integral Visual · Módulo 01 IC",
-   "estado": "borrador",
+   "estado": "publicado",
+   "base": true,
    "umbral": 60
   }
  ]

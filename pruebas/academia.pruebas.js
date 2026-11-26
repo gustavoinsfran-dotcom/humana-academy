@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const RAIZ = path.join(__dirname, '..');
-const BORR = JSON.parse(fs.readFileSync(path.join(RAIZ, 'docs/karina/borradores.json'), 'utf8')).docs;
+const BORR = JSON.parse(fs.readFileSync(path.join(RAIZ, 'academia-contenido.json'), 'utf8')).docs;
 
 /* Base simulada con el material de Karina. estado: 'borrador' | 'publicado'. cambios: {id: {...}} */
 function base(estado, cambios) {
@@ -59,8 +59,9 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     });
     esperar(!faltan.length, faltan.length + ' frases no están en el original:\n  ' + faltan.slice(0, 12).join('\n  '));
   });
-  await prueba('academia: todo el material entra como borrador y completo', async () => {
-    esperar(BORR.every(d => d.estado === 'borrador'), 'Hay contenido que no es borrador');
+  await prueba('academia: todo el material sale publicado, completo y con gobernanza', async () => {
+    esperar(BORR.every(d => d.estado === 'publicado' && d.base === true), 'Hay contenido que no sale publicado');
+    esperar(BORR.every(d => d.gobernanza.revisor && d.gobernanza.version && d.gobernanza.fecha), 'Falta revisor, versión o fecha');
     const tipo = t => BORR.filter(d => d.tipo === t).length;
     esperar(tipo('tronco') === 9, 'No están los nueve troncos');
     esperar(tipo('escuela') === 6, 'No están las seis escuelas');
@@ -74,15 +75,39 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     esperar(BORR.every(d => d.gobernanza && d.gobernanza.autor), 'Falta la ficha de gobernanza');
   });
 
-  /* ---------- Sin contenido publicado ---------- */
-  await prueba('academia: alumna sin nada publicado ve "en preparación" y ningún borrador', async () => {
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db: base('borrador') });
+  /* ---------- Publicado sin pasar por el Estudio ---------- */
+  await prueba('academia: el material se ve publicado sin traerlo a la base', async () => {
+    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio');
+    await listo(page, '.ac-m0');
+    esperar(!/preparación/i.test(await page.textContent('#app')), 'Muestra "en preparación" con el material publicado');
+    esperar(!(await page.$('#pre .ac-pre')), 'Una alumna ve la barra de vista previa');
+    await page.click('.ac-m0 .mh-btn');
+    await listo(page, '.ac-sec');
+    esperar(/Pregunta central/.test(await page.textContent('#app')), 'No se ve la Doctrina');
+    esperar(/Revisor clínico[\s\S]*Karina Ojanguren/i.test(await page.textContent('#app')), 'La ficha no muestra el revisor');
+    await foto(page, 'academia-doctrina-alumna');
+    await sinErrores(page);
+    await ctx.close();
+  });
+  await prueba('academia: lo archivado o vuelto a borrador en el Estudio deja de verse', async () => {
+    const db = base('publicado', { 'modulo-0': { estado: 'archivado' }, 'tronco-01': { estado: 'borrador' } });
+    db['users/alumna'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
+    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db });
     await listo(page, '#app h1');
-    const t = await page.textContent('#app');
-    esperar(/preparación/i.test(t), 'No muestra "en preparación"');
-    esperar(!/Pregunta central|Carta Magna/.test(await page.content()), 'Se filtró contenido en borrador');
+    esperar(await page.evaluate(() => doc('modulo-0') === null && doc('tronco-01') === null && !!doc('tronco-02')), 'Lo archivado o en borrador sigue visible');
+    await sinErrores(page);
+    await ctx.close();
+  });
+  await prueba('academia: un borrador nuevo del Estudio no le llega a una alumna', async () => {
+    const db = { 'academia/patologia-epoc': { t: 'EPOC borrador de prueba', tipo: 'patologia', modulo: 3, area: 'Respiratoria', estado: 'borrador', secciones: [], gobernanza: {} } };
+    db['users/alumna'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
+    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db });
+    await listo(page, '.ac-m0');
+    await page.evaluate(() => verModulo(3));
+    await listo(page, '.mhead h1');
+    esperar(!/EPOC borrador de prueba/.test(await page.content()), 'Se filtró un borrador');
     const negado = await page.evaluate(() => firebase.firestore().collection('academia').get().then(() => false, e => e.code === 'permission-denied'));
-    esperar(negado, 'Una alumna pudo leer los borradores');
+    esperar(negado, 'Una alumna pudo leer toda la colección');
     await sinErrores(page);
     await ctx.close();
   });
@@ -138,7 +163,7 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
 
   /* ---------- Publicado: alumna, Módulo 0 obligatorio, escuela ---------- */
   await prueba('academia: el Módulo 0 se completa antes que el resto', async () => {
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'celular', { db: base('publicado') });
+    const { ctx, page } = await abrir('alumna', 'academia.html', 'celular');
     await listo(page, '.ac-m0');
     esperar(/Sin asignar/.test(await page.textContent('#app')), 'Sin escuela no lo indica');
     esperar((await page.$$('.ac-card[aria-disabled=true]')).length === 5, 'Los módulos 1 a 5 no están bloqueados');
@@ -159,7 +184,7 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     await ctx.close();
   });
   await prueba('academia: un médico ve su versión del piloto de insuficiencia cardíaca', async () => {
-    const db = base('publicado');
+    const db = {};
     db['users/medico'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
     const { ctx, page } = await abrir('medico', 'academia.html', 'escritorio', { db });
     await listo(page, '.ac-m0');
@@ -256,12 +281,12 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
       const { ctx, page } = await abrir('editora', 'estudio-academia.html', pantalla);
       await listo(page, '#principal');
       await foto(page, 'estudio-academia-vacio-' + pantalla);
-      await page.click('aside >> text=Importar material de Karina');
+      await page.click('aside >> text=Traer el material de Karina');
       await page.waitForFunction(() => document.querySelectorAll('aside .it').length > 50, null, { timeout: 8000 });
       let db = await leerDB(page);
       const ac = Object.keys(db).filter(k => /^academia\/[^/]+$/.test(k));
       esperar(ac.length === 61, 'Importó ' + ac.length + ' documentos');
-      esperar(ac.every(k => db[k].estado === 'borrador'), 'Importó algo que no es borrador');
+      esperar(ac.every(k => db[k].estado === 'publicado' && db[k].base === true), 'Trajo algo que no está publicado');
       await page.evaluate(() => abrirDoc('patologia-insuficiencia-cardiaca'));
       await listo(page, '#fT');
       await foto(page, 'estudio-academia-ic-' + pantalla);
@@ -273,6 +298,11 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
       await page.fill('[data-r="quiz.0.o.1"]', 'Incorrecta');
       await page.check('#c_quiz0_0');
       await page.check('.q .chk input');
+      await page.click('.bar >> text=Volver a borrador');
+      await page.waitForFunction(() => /borrador/.test(document.querySelector('main h1').textContent), null, { timeout: 6000 });
+      await page.evaluate(() => abrirDoc('patologia-insuficiencia-cardiaca'));
+      await listo(page, '#gR');
+      await page.fill('#gR', '');
       await page.click('.bar >> text=Publicar');
       await listo(page, '.prob');
       esperar(/revisor clínico/.test(await page.textContent('.prob')), 'Publicó sin revisor clínico');
@@ -293,6 +323,20 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
       await ctx.close();
     });
   }
+  await prueba('estudio-academia: publicar todos los borradores completos de una vez', async () => {
+    const db = base('publicado', { 'tronco-01': { estado: 'borrador' }, 'tronco-02': { estado: 'borrador' }, 'tronco-03': { estado: 'borrador', gobernanza: { autor: 'x', revisor: '', version: 'v1', fecha: '2026-11' } } });
+    const { ctx, page } = await abrir('editora', 'estudio-academia.html', 'escritorio', { db });
+    await listo(page, 'aside .it');
+    await page.click('aside >> text=Publicar todos los borradores (3)');
+    await page.waitForFunction(() => !/Publicar todos los borradores \(3\)/.test(document.querySelector('aside').textContent), null, { timeout: 6000 });
+    const d = await leerDB(page);
+    esperar(d['academia/tronco-01'].estado === 'publicado' && d['academia/tronco-02'].estado === 'publicado', 'No publicó los completos');
+    esperar(d['academia/tronco-03'].estado === 'borrador', 'Publicó uno sin revisor');
+    esperar(Object.keys(d).some(k => k.startsWith('academia/tronco-01/versiones/')), 'No dejó la versión anterior');
+    esperar(/Publicar todos los borradores \(1\)/.test(await page.textContent('aside')), 'No muestra el que quedó en borrador');
+    await sinErrores(page);
+    await ctx.close();
+  });
   await prueba('estudio-academia: plantillas de unidad y de patología', async () => {
     const { ctx, page } = await abrir('editora', 'estudio-academia.html');
     await listo(page, '#principal');

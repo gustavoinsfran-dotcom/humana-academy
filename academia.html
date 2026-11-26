@@ -366,9 +366,16 @@ function cargarUsuario(user){
     const a=d.academia||{}; PROG={ok:a.ok||{}, scores:a.scores||{}};
   }).catch(function(){});
 }
+/* El material validado vive en academia-contenido.json y se ve aunque nadie lo haya traído a la base.
+   Lo que está en Firestore (editado en el Estudio) reemplaza a su versión del archivo. */
+function cargarBase(){ return fetch('academia-contenido.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{docs:[]}).then(j=>j.docs||[]).catch(()=>[]); }
+function leerAcademia(q){ return q.get().then(function(qs){ const a=[]; qs.forEach(function(s){ const x=s.data(); x.id=s.id; a.push(x); }); return a; }).catch(function(e){ console.warn('No se pudo leer la Academy', e&&e.code); return []; }); }
 function cargarContenido(){
-  const q=EDITORA?db.collection('academia'):db.collection('academia').where('estado','==','publicado');
-  return q.get().then(function(qs){ RAW=[]; DOCS={}; qs.forEach(function(s){ const x=s.data(); x.id=s.id; RAW.push(x); DOCS[s.id]=x; }); }).catch(function(e){ console.warn('No se pudo leer la Academy', e&&e.code); });
+  const col=db.collection('academia');
+  const qs=EDITORA?[leerAcademia(col)]:[leerAcademia(col.where('estado','==','publicado')), leerAcademia(col.where('base','==',true))];
+  return Promise.all([cargarBase()].concat(qs)).then(function(r){
+    DOCS={}; r.forEach(function(a){ a.forEach(function(d){ DOCS[d.id]=d; }); }); RAW=Object.values(DOCS);
+  });
 }
 try{
   firebase.initializeApp(firebaseConfig); auth=firebase.auth(); db=firebase.firestore();
