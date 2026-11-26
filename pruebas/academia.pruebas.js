@@ -331,7 +331,8 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     await ctx.close();
     ({ ctx, page } = await abrir('alumna', 'index.html'));
     await listo(page, '#app .mods');
-    esperar(!(await page.$('#nuevad')), 'Una alumna ve el enlace a la vista previa');
+    esperar(await page.$('#nuevad'), 'Una alumna no ve el enlace a la nueva Academy');
+    esperar(!(await page.$('#estudiod')), 'Una alumna ve el enlace al Estudio');
     const negado = await page.evaluate(() => firebase.firestore().collection('users').doc('alumna').set({ escuela: 'medicos' }, { merge: true }).then(() => false, e => e.code === 'permission-denied'));
     esperar(negado, 'La alumna pudo asignarse una escuela');
     await sinErrores(page);
