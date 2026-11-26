@@ -256,7 +256,8 @@
       var nav=document.querySelector(par[0]); if(!nav || document.getElementById('logout'+par[1])) return;
       function link(id,txt,fn,cls,boton){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
         if(typeof fn==='string') a.href=fn; else { a.href='#'+id; if(boton)a.setAttribute('role','button'); a.onclick=function(ev){ ev.preventDefault(); if(window.closeMenu)closeMenu(); fn(); }; } nav.appendChild(a); }
-      if(isAdmin(user)){ link('nueva','Nueva Academy','academia.html','nueva'); link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
+      link('nueva','Nueva Academy','academia.html','nueva');
+      if(isAdmin(user)){ link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
       link('logout','Salir',salir,'',true);
     });
   }
