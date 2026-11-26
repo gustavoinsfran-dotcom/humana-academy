@@ -4,7 +4,7 @@
    Reglas: versión simplificada de firestore.rules, para probar que los borradores no se filtran. */
 (function(){
   var ADMINS=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'];
-  var CAMPOS_ADMIN=['clinicoAprobado','aprobadoPor','escuela','rol'];
+  var CAMPOS_ADMIN=['clinicoAprobado','aprobadoPor','escuela','escuelaPor','rol'];
   function leer(){ try{ return JSON.parse(localStorage.getItem('__mock'))||{user:null,db:{}}; }catch(e){ return {user:null,db:{}}; } }
   function guardar(s){ localStorage.setItem('__mock',JSON.stringify(s)); }
   function ahora(){ var t=Date.now(); return {__ts:t}; }
@@ -70,7 +70,9 @@
     if(p[0]==='modulos'||p[0]==='academia'){
       if(!esAdmin(u)) return false;
       if(p.length===4) return !antes; // versiones: solo crear
-      return ['publicado','borrador','archivado'].indexOf(despues.estado)>=0;
+      if(['publicado','borrador','archivado'].indexOf(despues.estado)<0) return false;
+      if(p[0]==='academia' && despues.estado==='publicado'){ var g=despues.gobernanza||{}; if(!g.autor||!g.revisor) return false; }
+      return true;
     }
     return false;
   }

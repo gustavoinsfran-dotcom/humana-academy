@@ -256,7 +256,7 @@
       var nav=document.querySelector(par[0]); if(!nav || document.getElementById('logout'+par[1])) return;
       function link(id,txt,fn,cls,boton){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
         if(typeof fn==='string') a.href=fn; else { a.href='#'+id; if(boton)a.setAttribute('role','button'); a.onclick=function(ev){ ev.preventDefault(); if(window.closeMenu)closeMenu(); fn(); }; } nav.appendChild(a); }
-      if(isAdmin(user)){ link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
+      if(isAdmin(user)){ link('nueva','Nueva Academy','academia.html','nueva'); link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
       link('logout','Salir',salir,'',true);
     });
   }
@@ -319,6 +319,17 @@
       });
     }).then(_recargar).catch(_errAdmin);
   };
+  /* Escuela de la nueva Academy: la asignan los administradores. */
+  var _ESCUELAS=[['','Sin escuela'],['medicos','Médicos'],['enfermeria','Enfermería'],['kinesiologia','Fisioterapia / Kinesiología'],['cuidadores','Cuidadores'],['pacientes','Pacientes y familiares'],['coordinacion','Coordinación asistencial']];
+  window.__escuela=function(uid, v){
+    if(!isAdmin(curUser)) return;
+    db.collection('users').doc(uid).set({escuela:v||'', escuelaPor:(curUser.email||''), updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})
+      .then(function(){ _U.forEach(function(u){ if(u.uid===uid) u.escuela=v||''; }); }).catch(_errAdmin);
+  };
+  function _selEscuela(u){
+    return '<label class="mh-sr" for="esc_'+u.uid+'">Escuela de '+esc(u.name)+'</label><select class="ubtn" id="esc_'+u.uid+'" onchange="__escuela(\''+u.uid+'\',this.value)">'
+      +_ESCUELAS.map(function(e){ return '<option value="'+e[0]+'"'+(u.escuela===e[0]?' selected':'')+'>'+e[1]+'</option>'; }).join('')+'</select>';
+  }
   window.__renombrar=function(uid, actual){
     if(!isAdmin(curUser)) return;
     var nm=prompt('Nombre y apellido de quien usa esta cuenta (sale en su certificado):', actual||'');
@@ -352,7 +363,7 @@
       _U=[]; qs.forEach(function(doc){
         var d=doc.data()||{}; var p=_prog(d);
         _U.push({uid:doc.id, name:d.name||'(sin nombre)', email:d.email||'—',
-          oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email),
+          oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email), escuela:d.escuela||'',
           a:p.a, x:p.x, c:p.c, total:p.a+p.x+p.c});
       });
     });
@@ -399,7 +410,7 @@
         +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 · <b>'+u.total+' de '+TOT+'</b></div></div>';
       h+='<div>'+badge+'</div>';
       var nmq=esc(u.name).replace(/'/g,'').replace(/\\/g,'');
-      h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
+      h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+_selEscuela(u)+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
       h+='</div>';
     });
     h+='</div>';

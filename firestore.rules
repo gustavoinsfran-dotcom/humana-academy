@@ -20,14 +20,20 @@ service cloud.firestore {
     // Campos que SOLO puede tocar un administrador.
     function noTocaCamposDeAdmin() {
       return request.resource.data.get('clinicoAprobado', false) == resource.data.get('clinicoAprobado', false)
-          && request.resource.data.get('aprobadoPor', '')     == resource.data.get('aprobadoPor', '');
+          && request.resource.data.get('aprobadoPor', '')     == resource.data.get('aprobadoPor', '')
+          // Nueva Academy: la escuela y el rol los asigna un administrador.
+          && request.resource.data.get('escuela', '')         == resource.data.get('escuela', '')
+          && request.resource.data.get('escuelaPor', '')      == resource.data.get('escuelaPor', '')
+          && request.resource.data.get('rol', 'equipo')       == resource.data.get('rol', 'equipo');
     }
 
     match /users/{uid} {
       allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
       allow create: if isEquipo()
                     && request.auth.uid == uid
-                    && request.resource.data.get('clinicoAprobado', false) == false;
+                    && request.resource.data.get('clinicoAprobado', false) == false
+                    && request.resource.data.get('escuela', '') == ''
+                    && request.resource.data.get('rol', 'equipo') == 'equipo';
       allow update: if isAdmin()
                     || (request.auth != null && request.auth.uid == uid && noTocaCamposDeAdmin());
       allow delete: if false;
@@ -50,6 +56,26 @@ service cloud.firestore {
       allow delete: if false;   // nada se borra: se archiva y se puede recuperar
 
       // Cada guardado deja una copia de la versión anterior.
+      match /versiones/{v} {
+        allow read, create: if isEditor();
+        allow update, delete: if false;
+      }
+    }
+
+    // Nueva Academy (reestructuración, noviembre de 2026): Doctrina, troncos, escuelas, unidades, patologías.
+    // Mismo criterio que "modulos": el equipo lee solo lo publicado; los borradores son de las editoras.
+    function academiaValido() {
+      let d = request.resource.data;
+      return d.t is string && d.t.size() > 0 && d.t.size() <= 200
+          && d.estado in ['publicado', 'borrador', 'archivado']
+          && d.tipo in ['doctrina', 'programa', 'tronco', 'escuela', 'unidad', 'patologia', 'herramienta', 'practica']
+          && d.modulo is int && d.modulo >= 0 && d.modulo <= 5
+          && (d.estado != 'publicado' || (d.gobernanza.autor.size() > 0 && d.gobernanza.revisor.size() > 0));
+    }
+    match /academia/{id} {
+      allow read: if isEditor() || (isEquipo() && resource.data.estado == 'publicado');
+      allow create, update: if isEditor() && academiaValido();
+      allow delete: if false;   // nada se borra: se archiva
       match /versiones/{v} {
         allow read, create: if isEditor();
         allow update, delete: if false;

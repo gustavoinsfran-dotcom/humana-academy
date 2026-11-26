@@ -148,6 +148,8 @@ const PAGINAS = [
   await prueba('index: alumna hace un módulo y se guarda el puntaje', async () => {
     const { ctx, page } = await abrir('alumna', 'index.html');
     await listo(page, '#app .mods');
+    await page.waitForSelector('#mpop.on', { timeout: 3000 }).catch(() => {}); // saludo de bienvenida
+    await page.keyboard.press('Escape');
     await page.evaluate(() => openM(MODULES[0].n));
     await listo(page, '#quiz .opt');
     const n = await page.evaluate(() => curQuiz.quiz.length);

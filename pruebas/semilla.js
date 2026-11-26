@@ -15,7 +15,7 @@ function estado(quien, dbExtra) {
     if (p.escuela) d.escuela = p.escuela;
     db['users/' + p.uid] = d;
   });
-  Object.assign(db, dbExtra || {});
+  Object.keys(dbExtra || {}).forEach(k => { db[k] = db[k] ? Object.assign({}, db[k], dbExtra[k]) : dbExtra[k]; });
   const cuentas = {};
   Object.values(PERSONAS).forEach(p => { cuentas[p.email] = { uid: p.uid, pass: 'clave-prueba' }; });
   const p = quien ? PERSONAS[quien] : null;
