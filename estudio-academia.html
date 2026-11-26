@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estudio de la nueva Academy · Humana Academy</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="mark.svg">
+<link rel="preload" href="fonts/arimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="metodo.css?v=1">
+<style>
+body{min-height:100%}
+#principal:focus{outline:none}
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);border-bottom:1px solid var(--mh-line)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:0 24px;max-width:1440px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;min-height:44px;text-decoration:none;color:var(--mh-ink)}
+.brand .mh-word{font-size:18px}
+.tagE{font:700 11.5px/1 var(--mh-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mh-accent-ink);background:var(--mh-accent-tint);padding:7px 11px;border-radius:999px}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{min-height:44px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;color:var(--mh-ink-2);font-weight:700;font-size:14px;text-decoration:none}
+.top nav a:hover{background:var(--mh-surface-2)}
+.lay{display:grid;grid-template-columns:330px minmax(0,1fr);max-width:1440px;margin:0 auto;min-height:calc(100vh - 64px)}
+aside{border-right:1px solid var(--mh-line);padding:22px 16px 48px;background:#fff}
+main{padding:28px 36px 140px;min-width:0}
+main,aside,.box,.sec,.q{min-width:0;overflow-wrap:anywhere}
+.volver{display:none}
+@media(max-width:900px){.lay{grid-template-columns:minmax(0,1fr)}aside{border-right:0;border-bottom:1px solid var(--mh-line)}main{padding:22px 16px 60px}.lay.abierto aside{display:none}.volver{display:inline-flex;margin:0 0 14px}main .bar{position:static}.box{padding:16px}}
+.k{font:700 12px/1.3 var(--mh-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mh-mut)}
+.grp{margin:18px 0 0}
+.grp h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mh-mut);margin:0 0 6px;padding:0 8px}
+.it{display:flex;justify-content:space-between;gap:8px;align-items:center;width:100%;min-height:44px;background:none;border:0;border-radius:10px;padding:8px;text-align:left;font:inherit;font-size:14.5px;color:var(--mh-ink);cursor:pointer}
+.it:hover{background:var(--mh-surface-2)}
+.it[aria-current=true]{background:var(--mh-accent-tint)}
+.it span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st{font:700 10.5px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.st.borrador{background:var(--mh-warn-tint);color:var(--mh-warn)}
+.st.publicado{background:var(--mh-ok-tint);color:var(--mh-ok)}
+.st.archivado{background:var(--mh-surface-3);color:var(--mh-mut)}
+.acc{display:flex;flex-direction:column;gap:8px}
+.acc .mh-btn{width:100%;min-height:44px;font-size:14px}
+.box{background:#fff;border:1px solid var(--mh-line);border-radius:18px;padding:20px 22px;margin:0 0 18px}
+.box>h2{font-size:18px;margin:0 0 12px}
+.f{margin:0 0 14px}
+.f label,.lab{display:block;font-weight:700;font-size:13.5px;color:var(--mh-ink-2);margin:0 0 6px}
+.f .mh-input,.f textarea,.f select{width:100%}
+textarea.mh-input{min-height:90px;padding:12px 14px;line-height:1.5;resize:vertical;font:inherit;font-size:15px}
+select.mh-input{min-height:46px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.row2{grid-template-columns:1fr}}
+.ed{min-height:120px;border:1.5px solid var(--mh-ctl);border-radius:12px;padding:14px 16px;background:#fff;font-size:15.5px;line-height:1.65;color:var(--mh-ink-2);overflow-x:auto}
+.ed:focus{outline:2px solid var(--mh-accent);outline-offset:1px}
+.ed table{border-collapse:collapse;width:100%}.ed td,.ed th{border:1px solid var(--mh-line);padding:6px}
+.ed .quote{font-style:italic;border-left:2px solid var(--mh-accent);padding-left:12px}
+.sec{border:1px solid var(--mh-line);border-radius:14px;padding:14px;margin:0 0 12px;background:var(--mh-surface)}
+.sec .hd{display:flex;gap:8px;align-items:center;margin:0 0 8px;flex-wrap:wrap}
+.sec .hd .mh-input{flex:1;min-width:200px}
+.mini{min-height:44px;min-width:44px;border:1.5px solid var(--mh-line-2);background:#fff;border-radius:999px;padding:0 12px;font:700 13px/1 var(--mh-sans);color:var(--mh-ink-2);cursor:pointer}
+.mini:hover{border-color:var(--mh-ink)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}
+.tabs button{min-height:44px;border:1.5px solid var(--mh-line-2);background:#fff;border-radius:999px;padding:0 14px;font:700 13.5px/1 var(--mh-sans);color:var(--mh-ink-2);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--mh-ink);color:#fff;border-color:var(--mh-ink)}
+.q{border:1px solid var(--mh-line);border-radius:14px;padding:14px;margin:0 0 12px;background:#fff}
+.q.crit{border-color:var(--mh-err);box-shadow:inset 3px 0 0 var(--mh-err)}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;margin:0 0 8px}
+.opt input[type=radio]{width:20px;height:20px;accent-color:var(--mh-ok)}
+.chk{display:flex;gap:8px;align-items:center;min-height:44px;font-weight:700;font-size:14px;color:var(--mh-err);cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--mh-err)}
+.bar{position:sticky;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--mh-line);padding:12px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px;z-index:10}
+.bar .msg{color:var(--mh-mut);font-size:14px;margin-right:auto}
+.prob{background:var(--mh-err-tint);color:var(--mh-err);border-radius:12px;padding:12px 16px;margin:0 0 16px;font-size:14.5px;line-height:1.55}
+.ayuda{color:var(--mh-mut);font-size:13.5px;line-height:1.55;margin:4px 0 10px}
+.sug{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 0}
+.sug .mini{font-weight:400}
+.vers li{font-size:14px;color:var(--mh-mut);margin:0 0 6px}
+.gate{min-height:80vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--mh-ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14.5px;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body class="mh">
+<a class="mh-skip" href="#principal">Ir al contenido</a>
+<header class="top" id="topbar" style="display:none"><div class="in">
+  <a class="brand" href="academia.html"><span class="mh-word"><b>Humana</b> <span>Academy</span></span><span class="tagE">Estudio · nueva Academy</span></a>
+  <nav aria-label="Estudio"><a href="academia.html" target="_blank" rel="noopener">Vista previa <span aria-hidden="true">↗</span><span class="mh-sr"> (se abre en otra pestaña)</span></a><a href="estudio.html">Estudio actual</a><a href="index.html">Inicio</a></nav>
+</div></header>
+<div id="root"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="pais.js?v=1"></script>
+<script src="academia-estructura.js?v=1"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* Estudio de la nueva Academy: solo editoras (Karina y Gus).
+   Todo se guarda como borrador. Publicar pide la ficha de gobernanza completa.
+   Nada se borra: se archiva, y cada guardado deja una copia en "versiones". */
+var A=HA_AC, P=HA_PAIS, esc=A.esc;
+var EDITORES=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'];
+firebase.initializeApp({apiKey:"AIzaSyAuFD2_AQOhOJDp92GFEreOc_8Si39ki2o",authDomain:"humana-academy.firebaseapp.com",projectId:"humana-academy",storageBucket:"humana-academy.firebasestorage.app",messagingSenderId:"516938011921",appId:"1:516938011921:web:09feb7c8677faf7c77a8b0"});
+var auth=firebase.auth(), db=firebase.firestore(), FV=firebase.firestore.FieldValue, col=db.collection('academia');
+var root=document.getElementById('root'), yo=null;
+var S={docs:[], id:null, f:null, base:'', tab:'comun', verArch:false};
+
+function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('on'); clearTimeout(toast._t); toast._t=setTimeout(function(){ t.classList.remove('on'); },2800); }
+function clon(o){ return JSON.parse(JSON.stringify(o)); }
+function at(o,ruta){ return ruta.split('.').reduce(function(x,k){ return x==null?undefined:x[k]; },o); }
+function poner(o,ruta,v){ var p=ruta.split('.'), x=o; for(var i=0;i<p.length-1;i++){ if(x[p[i]]==null) x[p[i]]=/^\d+$/.test(p[i+1])?[]:{}; x=x[p[i]]; } x[p[p.length-1]]=v; }
+
+auth.onAuthStateChanged(function(u){
+  yo=u;
+  if(!u || EDITORES.indexOf((u.email||'').toLowerCase())<0){ root.innerHTML=''; location.replace('index.html'); return; }
+  document.getElementById('topbar').style.display='';
+  cargar();
+});
+
+/* ---------- datos ---------- */
+function cargar(sel){
+  return col.get().then(function(qs){
+    S.docs=[]; qs.forEach(function(d){ var x=d.data(); x.id=d.id; S.docs.push(x); });
+    if(sel) abrirDoc(sel); else pintar();
+  }).catch(function(e){ root.innerHTML='<main class="gate" id="principal"><div><h1>No se pudo cargar</h1><p>'+esc(e.message)+'</p></div></main>'; });
+}
+function porId(id){ return S.docs.filter(function(d){ return d.id===id; })[0]; }
+
+/* ---------- importar el material de Karina ---------- */
+function importar(){
+  fetch('docs/karina/borradores.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error('No se encontró docs/karina/borradores.json'); return r.json(); }).then(function(j){
+    var nuevos=j.docs.filter(function(d){ return !porId(d.id); });
+    if(!nuevos.length){ toast('Todo el material ya está cargado'); return; }
+    if(!confirm('Se cargan '+nuevos.length+' contenidos del material de Karina, todos como borrador.\nLos que ya existen no se tocan.\n\n¿Seguimos?')) return;
+    var lotes=[], b=db.batch(), n=0;
+    nuevos.forEach(function(d){
+      var x=clon(d); delete x.id; x.estado='borrador'; x.creadoEn=FV.serverTimestamp(); x.creadoPor=yo.email; x.editadoEn=FV.serverTimestamp(); x.editadoPor=yo.email; x.origen='docs/karina · '+(j.version||'');
+      b.set(col.doc(d.id),x); n++; if(n%400===0){ lotes.push(b); b=db.batch(); }
+    });
+    lotes.push(b);
+    return lotes.reduce(function(p,l){ return p.then(function(){ return l.commit(); }); },Promise.resolve()).then(function(){ toast(nuevos.length+' borradores cargados'); return cargar(); });
+  }).catch(function(e){ alert('No se pudo importar.\n\n'+e.message); });
+}
+
+/* ---------- crear desde plantilla ---------- */
+function nuevo(tipo){
+  var t=prompt(tipo==='patologia'?'Nombre de la patología (como figura en el catálogo):':'Título de la unidad:'); if(!t) return;
+  t=t.trim(); var id, d;
+  var gob={autor:'',revisor:'',version:'v1',fecha:new Date().toISOString().slice(0,7),referencias:'',proximaRevision:''};
+  if(tipo==='patologia'){
+    var area='', enCat=null; A.AREAS.forEach(function(a){ a.mods.forEach(function(m){ if(m.t.toLowerCase()===t.toLowerCase()){ area=a.t; enCat=m; } }); });
+    id=enCat?enCat.id:'patologia-'+A.slug(t);
+    d={tipo:'patologia',modulo:3,orden:enCat&&enCat.prioridad||50,area:area,t:enCat?enCat.t:t,sub:'Ficha clínica maestra y seis versiones',lead:'',
+       secciones:A.PLANTILLA_PATOLOGIA.map(function(x,i){ return {id:'ap'+(i+1),t:(i+1)+'. '+x,body:''}; }),
+       versiones:{}, quiz:[], simulacion:{caso:'',pasos:[]}, reflexion:[], video:'', gobernanza:gob};
+    A.ESCUELAS.forEach(function(e){ d.versiones[e.id]={lead:'',secciones:[],quiz:[],reflexion:[]}; });
+  } else {
+    var e=prompt('Escuela (escribí una): '+A.ESCUELAS.map(function(x){ return x.id; }).join(', ')); if(!e||!A.escuela(e.trim())){ toast('Escuela no reconocida'); return; }
+    e=e.trim(); var n=S.docs.filter(function(x){ return x.tipo==='unidad'&&x.escuela===e; }).length+1;
+    id='unidad-'+e+'-'+A.pad(n);
+    d={tipo:'unidad',modulo:2,orden:n,n:n,escuela:e,t:t,lead:'',secciones:A.PLANTILLA_UNIDAD.map(function(x){ return {id:x[0],t:x[1],body:''}; }),
+       quiz:[], simulacion:{caso:'',pasos:[]}, reflexion:[], video:'', gobernanza:gob};
+  }
+  if(porId(id)){ toast('Ya existe: se abre'); abrirDoc(id); return; }
+  d.estado='borrador'; d.umbral=60; d.creadoEn=FV.serverTimestamp(); d.creadoPor=yo.email; d.editadoEn=FV.serverTimestamp(); d.editadoPor=yo.email;
+  col.doc(id).set(d).then(function(){ toast('Creado como borrador'); return cargar(id); }).catch(function(e){ alert('No se pudo crear.\n\n'+e.message); });
+}
+
+/* ---------- lista ---------- */
+function asideHTML(){
+  var h='<div class="acc"><button class="mh-btn pri" onclick="importar()">Importar material de Karina</button>'
+   +'<button class="mh-btn sec" onclick="nuevo(\'unidad\')">Nueva unidad (plantilla de cinco pasos)</button>'
+   +'<button class="mh-btn sec" onclick="nuevo(\'patologia\')">Nueva patología (plantilla de diez apartados)</button></div>'
+   +'<label class="chk" style="color:var(--mh-ink-2)"><input type="checkbox" '+(S.verArch?'checked':'')+' onchange="S.verArch=this.checked;pintar()"> Ver archivados</label>';
+  A.MODULOS.forEach(function(m){
+    var ds=S.docs.filter(function(d){ return d.modulo===m.n && (S.verArch||d.estado!=='archivado'); })
+      .sort(function(a,b){ return (a.tipo===b.tipo?0:a.tipo==='unidad'?1:-1) || (a.escuela||'').localeCompare(b.escuela||'') || (a.orden||0)-(b.orden||0); });
+    if(!ds.length) return;
+    h+='<div class="grp"><h2>Módulo '+m.n+' · '+esc(m.t)+'</h2>'+ds.map(function(d){
+      var nom=(d.tipo==='unidad'?(A.escuela(d.escuela)||{t:''}).t+' · '+d.n+'. ':'')+P.L(d.t,'es');
+      return '<button class="it" onclick="abrirDoc(\''+d.id+'\')"'+(S.id===d.id?' aria-current="true"':'')+'><span>'+esc(nom)+'</span><span class="st '+d.estado+'">'+d.estado+'</span></button>';
+    }).join('')+'</div>';
+  });
+  return h;
+}
+function pintar(){
+  var foco=document.activeElement&&document.activeElement.id;
+  root.innerHTML='<div class="lay'+(S.f?' abierto':'')+'"><aside aria-label="Contenidos">'+asideHTML()+'</aside><main id="principal" tabindex="-1">'+(S.f?editorHTML():inicioHTML())+'</main></div>';
+  if(foco){ var el=document.getElementById(foco); if(el) el.focus({preventScroll:true}); }
+}
+function inicioHTML(){
+  var c={borrador:0,publicado:0,archivado:0}; S.docs.forEach(function(d){ c[d.estado]=(c[d.estado]||0)+1; });
+  return '<span class="k">Estudio de la nueva Academy</span><h1 style="font-size:30px;margin:8px 0 12px">Módulos 0 a 5, <b>seis escuelas</b></h1>'
+   +'<p class="ayuda" style="font-size:15.5px">'+c.borrador+' borradores · '+c.publicado+' publicados · '+c.archivado+' archivados.</p>'
+   +(S.docs.length?'':'<div class="box"><h2>Empezá por importar</h2><p class="ayuda">El material de Karina (Doctrina, nueve troncos, seis escuelas, cuarenta unidades, programa por enfermedades y piloto de insuficiencia cardíaca) se carga en un paso. Todo entra como borrador.</p><button class="mh-btn pri" onclick="importar()">Importar material de Karina</button></div>')
+   +'<div class="box"><h2>Cómo funciona</h2><ul class="ayuda" style="padding-left:20px"><li>Todo se guarda como borrador. Solo lo publicado lo ve el equipo.</li><li>Publicar pide la ficha de gobernanza: autor, revisor clínico, versión y fecha.</li><li>Las preguntas marcadas como críticas: si se fallan, no se aprueba aunque la nota alcance.</li><li>Para España y Argentina, escribí <b>[[España|Argentina]]</b>. Solo léxico y datos locales.</li><li>Nada se borra: se archiva. Cada guardado deja una copia de la versión anterior.</li></ul></div>';
+}
+
+/* ---------- editor ---------- */
+function abrirDoc(id){
+  if(S.f && sucio() && !confirm('Hay cambios sin guardar. ¿Salir igual?')) return;
+  var d=porId(id); if(!d) return;
+  S.id=id; S.f=clon(d); S.base=JSON.stringify(S.f); S.tab='comun';
+  S.f.gobernanza=S.f.gobernanza||{}; S.f.secciones=S.f.secciones||[]; S.f.quiz=S.f.quiz||[]; S.f.reflexion=S.f.reflexion||[];
+  if(!S.f.simulacion) S.f.simulacion={caso:'',pasos:[]};
+  S.f.simulacion.pasos=S.f.simulacion.pasos||[];
+  pintar(); var m=document.getElementById('principal'); if(m) m.focus({preventScroll:true}); window.scrollTo(0,0); cargarVersiones();
+}
+function cerrarDoc(){ if(sucio()&&!confirm('Hay cambios sin guardar. ¿Salir igual?')) return; S.f=null; S.id=null; pintar(); window.scrollTo(0,0); }
+function sucio(){ leerEditores(); return JSON.stringify(S.f)!==S.base; }
+function base(){ return S.tab==='comun'?'':'versiones.'+S.tab+'.'; }
+function val(r){ var v=at(S.f,r); return v==null?'':v; }
+function campo(id,lab,ruta,tipo,ayuda){
+  var v=esc(val(ruta));
+  return '<div class="f"><label for="'+id+'">'+lab+'</label>'+(ayuda?'<p class="ayuda">'+ayuda+'</p>':'')
+    +(tipo==='area'?'<textarea class="mh-input" id="'+id+'" data-r="'+ruta+'" oninput="cambio(this)">'+v+'</textarea>'
+     :'<input class="mh-input" id="'+id+'" data-r="'+ruta+'" value="'+v+'" oninput="cambio(this)"'+(tipo==='num'?' type="number" min="1" max="100"':'')+'>')+'</div>';
+}
+function cambio(el){ var v=el.value; if(el.type==='number') v=parseInt(v,10)||60; poner(S.f,el.getAttribute('data-r'),v); }
+function leerEditores(){ Array.prototype.forEach.call(document.querySelectorAll('.ed[data-r]'),function(el){ poner(S.f,el.getAttribute('data-r'),el.innerHTML); }); }
+
+function seccionesEd(ruta){
+  var secs=at(S.f,ruta)||[];
+  return secs.map(function(s,i){
+    var r=ruta+'.'+i, sug=P.sugerencias(s.body);
+    return '<div class="sec"><div class="hd"><label class="mh-sr" for="st_'+i+'">Título del apartado '+(i+1)+'</label><input class="mh-input" id="st_'+i+'" data-r="'+r+'.t" value="'+esc(s.t)+'" oninput="cambio(this)">'
+      +(S.f.tipo==='doctrina'?'<label class="mh-sr" for="sp_'+i+'">Parte</label><select class="mh-input" id="sp_'+i+'" style="width:auto" data-r="'+r+'.parte" onchange="cambio(this)">'+[['intro','Introducción'],['nucleo','Núcleo'],['consulta','De consulta']].map(function(o){ return '<option value="'+o[0]+'"'+(s.parte===o[0]?' selected':'')+'>'+o[1]+'</option>'; }).join('')+'</select>':'')
+      +'<button class="mini" onclick="mover(\''+ruta+'\','+i+',-1)" aria-label="Subir apartado '+(i+1)+'">↑</button><button class="mini" onclick="mover(\''+ruta+'\','+i+',1)" aria-label="Bajar apartado '+(i+1)+'">↓</button><button class="mini" onclick="quitar(\''+ruta+'\','+i+')">Quitar</button></div>'
+      +'<div class="ed" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Texto de '+esc(s.t)+'" data-r="'+r+'.body">'+A.sanear(s.body)+'</div>'
+      +(sug.length?'<div class="sug"><span class="ayuda" style="margin:0">Argentina:</span>'+sug.map(function(g){ return '<button class="mini" onclick="marcarPais(\''+r+'.body\',\''+esc(g.es)+'\',\''+esc(g.ar)+'\')">'+esc(g.es)+' → '+esc(g.ar)+' ('+g.n+')</button>'; }).join('')+'</div>':'')
+      +'</div>';
+  }).join('')+'<button class="mini" onclick="agregarSec(\''+ruta+'\')">Agregar apartado</button>';
+}
+function marcarPais(r,es,ar){ leerEditores(); poner(S.f,r,P.marcar(at(S.f,r),es,ar)); pintar(); toast('Marca agregada: revisá que sea léxico y no clínico'); }
+function agregarSec(ruta){ leerEditores(); var a=at(S.f,ruta); if(!a){ a=[]; poner(S.f,ruta,a); } a.push({id:'s'+Date.now().toString(36),t:'Nuevo apartado',body:''}); pintar(); }
+function quitar(ruta,i){ leerEditores(); if(!confirm('¿Quitar este apartado? Queda en el historial de versiones.')) return; at(S.f,ruta).splice(i,1); pintar(); }
+function mover(ruta,i,d){ leerEditores(); var a=at(S.f,ruta), j=i+d; if(j<0||j>=a.length) return; var t=a[i]; a[i]=a[j]; a[j]=t; pintar(); }
+
+function preguntasEd(ruta,titulo){
+  var qs=at(S.f,ruta)||[];
+  return qs.map(function(q,i){
+    var r=ruta+'.'+i; q.o=q.o||['','','',''];
+    return '<div class="q'+(q.critica?' crit':'')+'"><div class="f"><label for="q_'+A.slug(ruta)+i+'">'+titulo+' '+(i+1)+'</label><input class="mh-input" id="q_'+A.slug(ruta)+i+'" data-r="'+r+'.q" value="'+esc(q.q)+'" oninput="cambio(this)"></div>'
+     +'<fieldset style="border:0;padding:0;margin:0"><legend class="lab">Opciones · marcá la correcta</legend>'+q.o.map(function(o,oi){
+        return '<div class="opt"><input type="radio" name="c_'+A.slug(ruta)+i+'" id="c_'+A.slug(ruta)+i+'_'+oi+'" '+(q.c===oi?'checked':'')+' onchange="correcta(\''+r+'\','+oi+')" aria-label="Opción '+(oi+1)+' es la correcta"><input class="mh-input" data-r="'+r+'.o.'+oi+'" value="'+esc(o)+'" oninput="cambio(this)" aria-label="Opción '+(oi+1)+'"></div>'; }).join('')+'</fieldset>'
+     +'<div class="f"><label for="x_'+A.slug(ruta)+i+'">Explicación</label><input class="mh-input" id="x_'+A.slug(ruta)+i+'" data-r="'+r+'.e" value="'+esc(q.e)+'" oninput="cambio(this)"></div>'
+     +'<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><label class="chk"><input type="checkbox" '+(q.critica?'checked':'')+' onchange="critica(\''+r+'\',this.checked)"> Pregunta crítica de seguridad</label><span style="flex:1"></span><button class="mini" onclick="quitar(\''+ruta+'\','+i+')">Quitar</button></div></div>';
+  }).join('')+'<button class="mini" onclick="agregarQ(\''+ruta+'\')">Agregar '+titulo.toLowerCase()+'</button>';
+}
+function correcta(r,oi){ poner(S.f,r+'.c',oi); }
+function critica(r,v){ poner(S.f,r+'.critica',!!v); leerEditores(); pintar(); }
+function agregarQ(ruta){ leerEditores(); var a=at(S.f,ruta); if(!a){ a=[]; poner(S.f,ruta,a); } a.push({q:'',o:['','','',''],c:null,e:'',critica:false}); pintar(); }
+
+function editorHTML(){
+  var f=S.f, b=base(), esVers=f.versiones&&Object.keys(f.versiones).length;
+  var h='<button class="mini volver" onclick="cerrarDoc()">← Todos los contenidos</button><br>'+'<span class="k">Módulo '+f.modulo+' · '+esc(A.TIPOS[f.tipo]||f.tipo)+(f.escuela?' · '+esc((A.escuela(f.escuela)||{}).t):'')+'</span>'
+   +'<h1 style="font-size:28px;margin:8px 0 6px">'+esc(P.L(f.t,'es'))+' <span class="st '+f.estado+'">'+f.estado+'</span></h1>'
+   +(f.fuente?'<p class="ayuda">Fuente: '+esc(f.fuente)+'</p>':'')
+   +'<div id="prob"></div>';
+  h+='<div class="box"><h2>Datos</h2>'+campo('fT','Título','t')+'<div class="row2">'+campo('fS','Subtítulo','sub')+campo('fU','Nota para aprobar (%)','umbral','num')+'</div>'+campo('fL','Bajada','lead','area')
+   +campo('fV','Video de la unidad','video','', 'Enlace de YouTube, Vimeo, Google Drive o archivo .mp4. Lo graba el equipo de Humana.')+'</div>';
+  if(esVers){
+    h+='<div class="tabs" role="tablist" aria-label="Versión">'+[['comun','Común']].concat(A.ESCUELAS.map(function(e){ return [e.id,e.t]; })).map(function(t){ return '<button role="tab" id="tb_'+t[0]+'" aria-selected="'+(S.tab===t[0])+'" onclick="verTab(\''+t[0]+'\')">'+esc(t[1])+'</button>'; }).join('')+'</div>';
+    if(S.tab!=='comun'){ if(!at(f,'versiones.'+S.tab)) poner(f,'versiones.'+S.tab,{lead:'',secciones:[],quiz:[],reflexion:[]});
+      h+='<div class="box"><h2>Versión '+esc(A.escuela(S.tab).t)+'</h2>'+campo('vT','Título de la versión (opcional)',b+'titulo')+campo('vL','Bajada de la versión',b+'lead','area')+'</div>'; }
+  }
+  h+='<div class="box"><h2>Contenido'+(S.tab!=='comun'?' de esta versión':'')+'</h2>'
+   +(f.tipo==='patologia'&&S.tab==='comun'?'<p class="ayuda">Plantilla única de diez apartados. La ficha clínica maestra es la versión común; de ella salen las seis versiones.</p>':'')
+   +(f.tipo==='unidad'?'<p class="ayuda">Cinco pasos: aprender, comprender, aplicar, registrar y comunicar, comprobar. Más objetivos y bibliografía.</p>':'')
+   +seccionesEd(b+'secciones')+'</div>';
+  var refl=(at(f,b+'reflexion')||[]).join('\n');
+  h+='<div class="box"><h2>Preguntas para pensar</h2><p class="ayuda">Preguntas abiertas, una por línea. No se corrigen.</p><label class="mh-sr" for="fR">Preguntas para pensar</label><textarea class="mh-input" id="fR" style="width:100%" oninput="poner(S.f,\''+b+'reflexion\',this.value.split(\'\\n\').filter(function(x){return x.trim();}))">'+esc(refl)+'</textarea></div>';
+  h+='<div class="box"><h2>Evaluación · preguntas de conocimiento</h2><p class="ayuda">'+(S.tab==='comun'?'Si una escuela no tiene preguntas propias, usa estas.':'Solo para esta escuela.')+' Una pregunta crítica fallada = no aprueba.</p>'+preguntasEd(b+'quiz','Pregunta')+'</div>';
+  if(S.tab==='comun'){
+    h+='<div class="box"><h2>Simulación del caso</h2>'+campo('fC','Situación','simulacion.caso','area','Contá el caso con su línea basal y el cambio. Después, cada paso es una decisión.')+preguntasEd('simulacion.pasos','Paso')+'</div>';
+  }
+  var g='gobernanza.';
+  h+='<div class="box"><h2>Ficha de gobernanza</h2><div class="row2">'+campo('gA','Autor',g+'autor')+campo('gR','Revisor clínico',g+'revisor')+'</div><div class="row2">'+campo('gV','Versión',g+'version')+campo('gF','Fecha',g+'fecha')+'</div>'
+   +campo('gP','Próxima revisión',g+'proximaRevision')+campo('gX','Referencias',g+'referencias','area')+'</div>';
+  h+='<div class="box"><h2>Versiones anteriores</h2><ul class="vers" id="vers"><li>Cargando…</li></ul></div>';
+  h+='<div class="bar"><span class="msg">'+(f.editadoPor?'Último cambio: '+esc(f.editadoPor):'')+'</span>'
+   +'<button class="mh-btn sec" onclick="guardar()">Guardar borrador</button>'
+   +(f.estado==='archivado'?'<button class="mh-btn sec" onclick="recuperar()">Recuperar como borrador</button>':'<button class="mh-btn sec" onclick="archivar()">Archivar</button>')
+   +(f.estado==='publicado'?'<button class="mh-btn sec" onclick="despublicar()">Volver a borrador</button>':'<button class="mh-btn pri" onclick="publicar()">Publicar</button>')+'</div>';
+  return h;
+}
+function verTab(t){ leerEditores(); S.tab=t; pintar(); var b=document.getElementById('tb_'+t); if(b) b.focus(); }
+
+/* ---------- validación ---------- */
+function problemas(f,paraPublicar){
+  var p=[];
+  if(!(f.t||'').trim()) p.push('Falta el título.');
+  function revisar(qs,nombre){ (qs||[]).forEach(function(q,i){ if(!(q.q||'').trim()) p.push(nombre+' '+(i+1)+': falta el enunciado.'); else { var o=(q.o||[]).filter(function(x){ return (x||'').trim(); }); if(o.length<2) p.push(nombre+' '+(i+1)+': necesita al menos dos opciones.'); if(typeof q.c!=='number'||!(q.o[q.c]||'').trim()) p.push(nombre+' '+(i+1)+': marcá la opción correcta.'); } }); }
+  revisar(f.quiz,'Pregunta'); revisar(f.simulacion&&f.simulacion.pasos,'Paso de la simulación');
+  Object.keys(f.versiones||{}).forEach(function(e){ revisar(f.versiones[e].quiz,(A.escuela(e)||{t:e}).t+' · pregunta'); });
+  if(paraPublicar){ var g=f.gobernanza||{}; ['autor','revisor','version','fecha'].forEach(function(k){ if(!(g[k]||'').trim()) p.push('Ficha de gobernanza: falta '+({autor:'el autor',revisor:'el revisor clínico',version:'la versión',fecha:'la fecha'})[k]+'.'); }); }
+  return p;
+}
+function limpiar(f){
+  var o=clon(f); delete o.id;
+  function san(secs){ (secs||[]).forEach(function(s){ s.body=A.sanear(s.body); }); }
+  san(o.secciones); Object.keys(o.versiones||{}).forEach(function(e){ san(o.versiones[e].secciones); });
+  function qs(a){ return (a||[]).map(function(q){ var opc=(q.o||[]).map(function(x){ return (x||'').trim(); }); return {q:(q.q||'').trim(),o:opc.filter(Boolean),c:typeof q.c==='number'?opc.slice(0,q.c).filter(Boolean).length:null,e:(q.e||'').trim(),critica:!!q.critica}; }); }
+  o.quiz=qs(o.quiz); if(o.simulacion) o.simulacion.pasos=qs(o.simulacion.pasos);
+  Object.keys(o.versiones||{}).forEach(function(e){ o.versiones[e].quiz=qs(o.versiones[e].quiz); });
+  ['creadoEn','editadoEn','publicadoEn'].forEach(function(k){ delete o[k]; });
+  o.umbral=parseInt(o.umbral,10)||60;
+  return o;
+}
+function escribir(cambios,msj){
+  leerEditores();
+  var f=S.f, p=problemas(f,cambios.estado==='publicado');
+  var pb=document.getElementById('prob');
+  if(p.length){ pb.innerHTML='<div class="prob" role="alert"><b>Antes de '+(cambios.estado==='publicado'?'publicar':'guardar')+':</b><ul style="margin:6px 0 0;padding-left:20px">'+p.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul></div>'; pb.scrollIntoView({block:'center'}); return Promise.resolve(); }
+  pb.innerHTML='';
+  var ref=col.doc(S.id), previo=porId(S.id), b=db.batch();
+  if(previo){ var copia=clon(previo); delete copia.id; copia.guardadoEn=FV.serverTimestamp(); copia.reemplazadaPor=yo.email; b.set(ref.collection('versiones').doc(),copia); }
+  var d=limpiar(f); Object.assign(d,cambios); d.editadoEn=FV.serverTimestamp(); d.editadoPor=yo.email;
+  if(cambios.estado==='publicado'){ d.publicadoEn=FV.serverTimestamp(); d.publicadoPor=yo.email; }
+  b.set(ref,d);
+  return b.commit().then(function(){ S.f=null; toast(msj); return cargar(S.id); }).catch(function(e){ alert('No se pudo guardar.\n\n'+e.message); });
+}
+function guardar(){ escribir({estado:S.f.estado==='publicado'?'publicado':(S.f.estado==='archivado'?'archivado':'borrador')},'Guardado'); }
+function publicar(){ if(!confirm('¿Publicar? Lo va a ver todo el equipo.')) return; escribir({estado:'publicado'},'Publicado'); }
+function despublicar(){ escribir({estado:'borrador'},'Volvió a borrador'); }
+function archivar(){ if(!confirm('¿Archivar? Deja de verse, pero no se borra: se puede recuperar.')) return; escribir({estado:'archivado'},'Archivado'); }
+function recuperar(){ escribir({estado:'borrador'},'Recuperado como borrador'); }
+function cargarVersiones(){
+  col.doc(S.id).collection('versiones').orderBy('guardadoEn','desc').limit(20).get().then(function(qs){
+    var el=document.getElementById('vers'); if(!el) return;
+    if(qs.empty){ el.innerHTML='<li>Todavía no hay versiones anteriores.</li>'; return; }
+    var h=''; qs.forEach(function(v){ var x=v.data(), m=x.guardadoEn&&x.guardadoEn.toMillis?new Date(x.guardadoEn.toMillis()).toLocaleString('es-AR'):''; h+='<li>'+esc(m)+' · '+esc(x.estado||'')+' · '+esc(x.reemplazadaPor||'')+'</li>'; });
+    el.innerHTML=h;
+  }).catch(function(){ var el=document.getElementById('vers'); if(el) el.innerHTML='<li>No se pudo leer el historial.</li>'; });
+}
+window.addEventListener('beforeunload',function(e){ if(S.f&&sucio()){ e.preventDefault(); e.returnValue=''; } });
+</script>
+</body>
+</html>

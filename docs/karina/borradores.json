@@ -1,0 +1,2398 @@
+{
+ "version": "2026-11-26",
+ "nota": "Material de Karina (noviembre de 2026). Todo en borrador. Se importa desde el Estudio de la nueva Academy.",
+ "docs": [
+  {
+   "id": "modulo-0",
+   "tipo": "doctrina",
+   "modulo": 0,
+   "orden": 0,
+   "t": "Doctrina Humana",
+   "sub": "Cómo dirigimos el cuidado del paciente complejo en su casa",
+   "lead": "Edición de trabajo para validación de la Dirección Médica",
+   "secciones": [
+    {
+     "id": "d01",
+     "t": "01 · Cómo leer esta doctrina · Un núcleo estable y criterios vivos",
+     "body": "<p>Esta doctrina tiene dos capas. El núcleo recoge lo que no cambia aunque cambien el mercado, la tecnología o los servicios: la tesis, los principios y las líneas firmes. Los criterios recogen cómo aplicamos ese núcleo hoy, y se revisan cada seis meses.</p><p>Trabajamos en un sector que cambia cada trimestre. Por eso la doctrina orienta decisiones y no las sustituye. Si algo nuevo aporta valor y no encaja en el texto, se aplica el test de coherencia antes de descartarlo.</p><p>La doctrina es el Módulo 0 de Humana Academy: el tronco doctrinal obligatorio para todo el equipo. Tiene cuatro partes: el núcleo (principios, líneas firmes, test de coherencia y Carta Magna), los conceptos clave, cómo se organiza el conocimiento y la arquitectura de Humana Academy. El núcleo se lee en 15 minutos; el resto es de consulta.</p>",
+     "parte": "intro"
+    },
+    {
+     "id": "d02",
+     "t": "02 · Por qué existe Humana · Dirección clínica domiciliaria",
+     "body": "<div class=\"quote\">Humana dirige la atención clínica del paciente complejo a lo largo de toda su trayectoria (en casa, en consulta y en las transiciones hospitalarias), con un criterio común que conecta a todos los que intervienen en su cuidado.</div><p>La medicina sabe tratar enfermedades. Lo que falta es alguien que organice el conjunto cuando una persona vive con varias enfermedades, varios profesionales y una familia que cuida. Esa organización es un acto clínico, y es lo que hacemos.</p><p>Humana existe desde 2011. Nace de la práctica domiciliaria que la Dra. Karina Ojanguren inició en 2010. Hoy esa práctica está escrita como método Humana y se apoya en tecnología propia, Humana Intelligence.</p><p><strong>Pregunta central:</strong> ¿quién dirige el cuidado de esta persona entre una visita y la siguiente?</p>",
+     "parte": "intro"
+    },
+    {
+     "id": "d03",
+     "t": "03 · Principios · Ocho principios",
+     "body": "<p>Los cuatro primeros describen cómo cuidamos; los cuatro últimos, cómo funciona la organización que cuida.</p><h3>01 · El paciente vive entre visitas</h3><p><strong>Idea.</strong> La unidad de trabajo es la trayectoria del paciente, no la visita ni el [[ingreso|internación]].</p><p><strong>En la práctica.</strong> Cada decisión se toma pensando en lo que pasará en las semanas siguientes y queda conectada con la anterior.</p><p><strong>Cómo lo sabemos.</strong> Cualquier profesional que abre la historia entiende en dos minutos dónde está el paciente y hacia dónde va.</p><h3>02 · La casa es un entorno clínico</h3><p><strong>Idea.</strong> El domicilio tiene sus propios riesgos, recursos y reglas. Ahí se ve cómo vive de verdad una persona.</p><p><strong>En la práctica.</strong> El contexto social, la vivienda y el cuidador forman parte de la valoración clínica.</p><p><strong>Cómo lo sabemos.</strong> El plan de cada paciente recoge quién le cuida, con qué recursos y qué puede fallar en casa.</p><h3>03 · Dirigir el cuidado es una función clínica</h3><p><strong>Idea.</strong> La unidad de gobierno es la decisión registrada. Cada paciente tiene una dirección clínica identificada. Todos comparten el mismo itinerario, pero no las mismas atribuciones: cada perfil observa, valora o decide según su competencia.</p><p><strong>En la práctica.</strong> El trabajo sigue un mismo ciclo para todos: comprender, valorar, clasificar, planificar, observar, actuar, comunicar y comprobar. Ante un cambio, el circuito es observar › registrar › valorar › decidir › comprobar. La estratificación clínica (H1–H4) la asigna el equipo clínico; pacientes y cuidadores conocen sus implicaciones.</p><p><strong>Cómo lo sabemos.</strong> Toda decisión relevante tiene autor, fecha y motivo, y nadie decide fuera de su competencia.</p><h3>04 · La familia forma parte del equipo</h3><p><strong>Idea.</strong> El cuidador y el propio paciente ven lo que el profesional no ve. Una familia alineada evita crisis.</p><p><strong>En la práctica.</strong> Pacientes y cuidadores se forman en Humana Academy, igual que los profesionales, con su propio lenguaje. Aprenden qué vigilar, cómo avisar y qué no deben hacer: no diagnostican ni modifican la medicación por su cuenta.</p><p><strong>Cómo lo sabemos.</strong> El cuidador principal está identificado, sabe contar qué ha cambiado y desde cuándo, y tiene un canal directo con la dirección clínica.</p><h3>05 · Los pequeños cambios avisan antes que las crisis</h3><p><strong>Idea.</strong> Muchas descompensaciones empiezan como cambios pequeños en el día a día: come menos, duerme peor, se cansa antes. Un cambio solo tiene sentido comparado con la situación basal de cada paciente.</p><p><strong>En la práctica.</strong> Documentamos la situación basal y registramos los microcambios frente a ella. Los umbrales se personalizan; no hay un valor universal. Un cambio pide comunicación y valoración, pero no confirma por sí solo un diagnóstico.</p><p><strong>Cómo lo sabemos.</strong> Medimos cuántas señales terminan en una intervención que evita un traslado. Es nuestra hipótesis de trabajo más importante y la tratamos como tal hasta tener datos.</p><h3>06 · El criterio se escribe para que no se pierda</h3><p><strong>Idea.</strong> La experiencia es de una persona; el conocimiento escrito es de la organización.</p><p><strong>En la práctica.</strong> El criterio clínico de Humana se documenta en el Manual Maestro y se enseña en Humana Academy. Ese conocimiento pertenece a Humana.</p><p><strong>Cómo lo sabemos.</strong> Un profesional nuevo decide como decidiría la dirección médica en los casos frecuentes.</p><h3>07 · La calidad se diseña</h3><p><strong>Idea.</strong> Una organización no puede depender del esfuerzo heroico de unos pocos.</p><p><strong>En la práctica.</strong> Los procesos hacen fácil la decisión segura y difícil el error. Cada evento adverso o [[ingreso|internación]] evitable cambia un proceso.</p><p><strong>Cómo lo sabemos.</strong> Los resultados se mantienen cuando cambia el equipo.</p><h3>08 · Solo prometemos lo que podemos demostrar</h3><p><strong>Idea.</strong> La confianza de [[aseguradoras|prepagas, obras sociales e instituciones]], hospitales y familias es nuestro activo más frágil.</p><p><strong>En la práctica.</strong> Toda afirmación se clasifica de A a E (verificado, documentado, observado, aspiracional, no autorizado). Lo que no está demostrado se presenta como objetivo.</p><p><strong>Cómo lo sabemos.</strong> Ninguna pieza externa contiene afirmaciones de nivel D o E presentadas como resultado.</p>",
+     "parte": "nucleo"
+    },
+    {
+     "id": "d04",
+     "t": "04 · Inteligencia artificial · La IA propone; la dirección clínica decide",
+     "body": "<div class=\"quote\">Usamos la IA para todo lo que la haga mejor que nosotros, y reservamos para las personas la decisión y la responsabilidad.</div><p>La IA ya lee, resume, relaciona antecedentes, detecta patrones, prioriza y explica, y lo hará cada año mejor. Separamos el trabajo por responsabilidad, no por capacidad.</p><table><thead><tr><th>Lo hace la tecnología</th><th>Exige responsabilidad clínica</th></tr></thead><tbody><tr><td>Registrar y ordenar lo que pasa en casa</td><td>Escuchar al paciente y a su familia</td></tr><tr><td>Detectar microcambios y emitir señales</td><td>Decidir si una señal requiere intervenir</td></tr><tr><td>Proponer prioridades y siguientes pasos</td><td>Fijar el plan y firmarlo</td></tr><tr><td>Preparar informes, resúmenes y documentación</td><td>Explicar la decisión y responder de ella</td></tr><tr><td>Conservar y consultar el criterio escrito de Humana</td><td>Revisar y actualizar ese criterio</td></tr></tbody></table><h3>Tres reglas de uso</h3><ol><li><strong>Señalar sin diagnosticar.</strong> Humana Intelligence emite alertas y señales de cambio para vigilar, siempre sujetas a validación clínica. No diagnostica ni prescribe.</li><li><strong>Cada propuesta tiene un revisor con nombre.</strong> Lo que la IA propone y se aplica queda registrado con quien lo aprobó.</li><li><strong>Adoptamos rápido lo que mejora una decisión.</strong> Una herramienta nueva entra si reduce errores, ahorra tiempo clínico o mejora la anticipación. Se retira si no lo demuestra.</li></ol>",
+     "parte": "consulta"
+    },
+    {
+     "id": "d05",
+     "t": "05 · Líneas firmes · Lo que no se negocia",
+     "body": "<p>Seis líneas se mantienen aunque un cliente, un socio o una oportunidad pidan otra cosa.</p><ol><li>Toda decisión clínica y toda alerta tienen un responsable con nombre.</li><li>Una emergencia activa el circuito urgente sin esperar a la revisión ordinaria.</li><li>Todo servicio con la marca Humana declara su modelo: dirección clínica directa de Humana o supervisión metodológica y tecnológica. Esto incluye los servicios de cuidados y los socios que usan nuestro respaldo.</li><li>Los datos del paciente se usan para cuidarle. Cualquier otro uso requiere su consentimiento y una base legal verificada.</li><li>Ninguna afirmación sin soporte llega a un cliente. Si no hay dato, se dice que no lo hay.</li><li>El conocimiento clínico de Humana es propiedad de Humana. Ningún acuerdo tecnológico o comercial lo cede.</li></ol>",
+     "parte": "nucleo"
+    },
+    {
+     "id": "d06",
+     "t": "06 · Cuando algo nuevo no encaja · El test de coherencia",
+     "body": "<p>Un servicio, una herramienta o un acuerdo nuevo no necesita estar en la doctrina para seguir adelante. Necesita pasar estas cinco preguntas:</p><ol><li>¿Mejora una decisión clínica sobre la trayectoria de un paciente?</li><li>¿Queda registrado y con un responsable?</li><li>¿Podemos medir si funciona?</li><li>¿Lo podemos explicar sin afirmaciones de nivel D o E?</li><li>¿Genera ingresos, protege la reputación o fortalece nuestra posición?</li></ol><table><thead><tr><th>Si…</th><th>Entonces</th></tr></thead><tbody><tr><td>Choca con una línea firme</td><td>No se hace.</td></tr><tr><td>Pasa las cinco preguntas</td><td>Se hace, aunque la doctrina no lo mencione.</td></tr><tr><td>Choca con un principio pero aporta valor</td><td>Se prueba de forma acotada y se lleva a la siguiente revisión. Puede que el principio necesite cambiar.</td></tr></tbody></table>",
+     "parte": "nucleo"
+    },
+    {
+     "id": "d07",
+     "t": "07 · Conceptos clave · Diez conceptos para un mismo lenguaje",
+     "body": "<p>Desarrollan los principios y forman el vocabulario de trabajo de todo el equipo. Cada uno se explica con el mismo caso: Antonio, 82 años, insuficiencia cardíaca, fragilidad y dependencia parcial, que vive en casa con apoyo familiar.</p><h3>01 · Trayectoria clínica</h3><p>La evolución del paciente a lo largo del tiempo, con sus periodos de estabilidad, sus crisis y sus transiciones. Es nuestra unidad de trabajo: cada visita, llamada o [[ingreso|internación]] es un punto dentro de ella.</p><p><strong>En la práctica.</strong> Antes de decidir, preguntamos de dónde viene el paciente y hacia dónde va, no solo qué le pasa hoy.</p><p><strong>Con Antonio.</strong> Dos [[ingresos|internaciones]] por descompensación en un año no son dos episodios aislados. Son una trayectoria que pide anticipar [[el tercero|la tercera]].</p><h3>02 · Gestión clínica longitudinal</h3><p>Dirigimos la trayectoria completa: consulta, domicilio y transiciones hospitalarias. El domicilio es donde más tiempo pasa el paciente, pero el modelo integra también el antes y el después de cada [[ingreso|internación]].</p><p><strong>En la práctica.</strong> El alta es un cambio de escenario. El plan se revisa al salir del hospital y la información [[del ingreso|de la internación]] entra en la historia.</p><p><strong>Con Antonio.</strong> Tras el alta, su plan se ajusta en los primeros días con lo que cambió en el hospital.</p><h3>03 · Unidad de cuidado distribuida</h3><p>El paciente, la familia, el cuidador profesional, los equipos sanitarios del territorio y la central de coordinación de Humana forman una misma estructura asistencial, con competencias y responsabilidades distintas.</p><p><strong>En la práctica.</strong> Todos comparten el mismo plan y el mismo circuito de comunicación. Nadie trabaja con información que los demás no tienen.</p><p><strong>Con Antonio.</strong> La cuidadora, la enfermera, el médico de Humana y su médico de atención primaria saben quién hace qué y a quién avisar.</p><h3>04 · Situación basal</h3><p>El estado habitual del paciente cuando está estable: cómo respira, cuánto camina, cómo duerme, qué come, qué entiende. Todo cambio se interpreta frente a ella.</p><p><strong>En la práctica.</strong> Se documenta al inicio y se actualiza cuando cambia la situación del paciente.</p><p><strong>Con Antonio.</strong> Camina dentro de casa con ayuda, duerme con una almohada y no tiene disnea en reposo.</p><h3>05 · Microcambio y señal</h3><p>Un microcambio es una variación pequeña respecto a la situación basal. Cuando se registra y la dirección clínica debe revisarlo, se convierte en señal. Detectarlos a tiempo es uno de los elementos diferenciales del método Humana.</p><p><strong>En la práctica.</strong> Los umbrales se personalizan por paciente. Un cambio pide comunicación y valoración, pero no confirma por sí solo un diagnóstico.</p><p><strong>Con Antonio.</strong> Durante tres días se cansa más, gana peso y necesita más almohadas. La cuidadora lo anota y avisa.</p><h3>06 · Estratificación dinámica (H1–H4)</h3><p>No todos los pacientes necesitan la misma intensidad asistencial. La clasificación H1–H4 orienta el plan de salud, los recursos y la frecuencia de seguimiento. El nivel sube o baja cuando cambia la situación del paciente.</p><p><strong>En la práctica.</strong> El nivel lo asigna el equipo clínico. Pacientes y cuidadores conocen lo que implica, pero no lo asignan.</p><p><strong>Con Antonio.</strong> Si la señal se confirma como descompensación, su nivel puede subir durante semanas y volver a bajar al estabilizarse.</p><h3>07 · Plan de salud y evaluación del resultado</h3><p>El plan fija objetivos, intervenciones y frecuencia de seguimiento. No basta con registrar lo que hacemos: tenemos que saber qué pasó después de cada intervención y decidir si el plan se mantiene, se modifica o se intensifica.</p><p><strong>En la práctica.</strong> Cada intervención relevante tiene un resultado registrado y una fecha de revisión. Una mejoría clínica no prueba por sí sola el diagnóstico inicial.</p><p><strong>Con Antonio.</strong> Tras el ajuste, se comprueba en los días siguientes si recupera su situación basal y se actualiza el plan.</p><h3>08 · Autonomía del paciente</h3><p>Las preferencias del paciente, sus objetivos terapéuticos y su calidad de vida forman parte de cada decisión. El mejor plan es el que el paciente entiende y acepta.</p><p><strong>En la práctica.</strong> Los objetivos del paciente se registran en el plan y se revisan con él y con su familia.</p><p><strong>Con Antonio.</strong> Si prefiere evitar [[nuevos ingresos|nuevas internaciones]] aunque eso limite algunas pruebas, esa preferencia orienta las decisiones.</p><h3>09 · Seguridad asistencial</h3><p>La seguridad depende de que estén claros las competencias, los límites de actuación, los horarios de cobertura y los circuitos de comunicación y escalado. La respuesta es escalonada.</p><p><strong>En la práctica.</strong> Los signos de gravedad de la tabla proceden del módulo de insuficiencia cardíaca de Humana Academy; cada módulo de patología define los suyos.</p><table><thead><tr><th>Situación</th><th>Respuesta</th></tr></thead><tbody><tr><td>Cambio leve</td><td>Registrar y comunicar por el circuito establecido</td></tr><tr><td>Deterioro progresivo</td><td>Valoración clínica pronta</td></tr><tr><td>Signos de gravedad (disnea intensa en reposo, dolor torácico persistente, síncope, confusión aguda grave)</td><td>Activar emergencias, [[112 en España|107 (SAME) o 911, según la jurisdicción]], sin esperar a la revisión ordinaria</td></tr></tbody></table><h3>10 · Dirección clínica directa y supervisión metodológica</h3><p>Humana puede intervenir de dos formas, y hay que distinguirlas, sobre todo al crecer y al firmar acuerdos con otros operadores sanitarios.</p><p><strong>En la práctica.</strong> Cada servicio con la marca Humana declara cuál de los dos modelos aplica (línea firme 3).</p><table><thead><tr><th></th><th>Dirección clínica directa</th><th>Supervisión metodológica y tecnológica</th></tr></thead><tbody><tr><td>Quién decide sobre el paciente</td><td>El equipo clínico de Humana</td><td>El equipo clínico del operador</td></tr><tr><td>Qué aporta Humana</td><td>Decisión, seguimiento y responsabilidad clínica</td><td>Método, formación, tecnología y auditoría</td></tr><tr><td>Responsabilidad clínica</td><td>Humana</td><td>El operador</td></tr></tbody></table>",
+     "parte": "consulta"
+    },
+    {
+     "id": "d08",
+     "t": "08 · Cómo se organiza el conocimiento · Cuatro estructuras, un ciclo",
+     "body": "<p>El conocimiento de Humana vive en cuatro estructuras conectadas. Ninguna funciona por separado.</p><ul><li><strong>Doctrina Humana</strong> · Cómo pensamos</li><li><strong>Manual Maestro</strong> del método Humana · Cómo trabajamos</li><li><strong>Humana Academy</strong> · Cómo transmitimos y evaluamos</li><li><strong>Impacto Humana</strong> · Cómo medimos y validamos</li></ul><p>Los resultados que mide Impacto Humana actualizan el Manual Maestro y los contenidos de Humana Academy y, cuando corresponde, motivan una revisión de esta doctrina. Así se construye un sistema de aprendizaje continuo.</p>",
+     "parte": "consulta",
+     "grafico": true
+    },
+    {
+     "id": "d09",
+     "t": "09 · Humana Academy · Una misma lógica asistencial para todos",
+     "body": "<p>Humana Academy enseña a todos los perfiles a integrar lo que ya saben dentro de una misma lógica asistencial. Todos deben entender qué observamos, por qué, cómo lo comunicamos, quién toma cada decisión y cómo comprobamos el resultado.</p><p>La estructura es común. Cambian el lenguaje, la profundidad y las competencias exigibles a cada perfil. Compartir el itinerario no significa compartir atribuciones clínicas.</p><table><thead><tr><th>Módulo</th><th>Contenido</th><th>Para quién</th></tr></thead><tbody><tr><td>0 · Doctrina Humana</td><td>Principios, líneas firmes, conceptos clave y Carta Magna. Tronco doctrinal obligatorio</td><td>Todos</td></tr><tr><td>1 · Tronco metodológico común</td><td>Cronicidad y complejidad · valoración integral · situación clínica y funcional basal · estratificación H1–H4 · plan de salud · microcambios · comunicación y coordinación · seguridad y evaluación de resultados</td><td>Todos, adaptado a cada perfil</td></tr><tr><td>2 · Formación por perfil</td><td>Seis escuelas: médicos · enfermería · fisioterapia y kinesiología · cuidadores · pacientes y familiares · coordinadores y responsables de unidades asistenciales</td><td>Cada perfil, su escuela</td></tr><tr><td>3 · Patologías</td><td>Cardiovascular, respiratoria, neurológica, metabólica, fragilidad, dependencia, heridas complejas, paliativos y otras. Prioridad: insuficiencia cardíaca, EPOC, demencias, diabetes y fragilidad</td><td>Todos, cada uno desde su responsabilidad</td></tr><tr><td>4 · Herramientas tecnológicas</td><td>Historia clínica (Humana Uno) · Humana Intelligence · app del paciente y del cuidador · comunicación, alertas y coordinación · Impacto Humana</td><td>Según permisos de cada rol</td></tr><tr><td>5 · Aplicación práctica y evaluación</td><td>Casos clínicos, detección de microcambios, simulación de situaciones asistenciales, uso de las herramientas y evaluación de competencias</td><td>Todos</td></tr></tbody></table><h3>Cómo se construye cada patología</h3><p>Se parte de una ficha clínica maestra validada por la Dirección Médica, con un índice único de diez apartados: definición · causas y evolución · síntomas · valoración · tratamientos y cuidados · criterios de estabilidad · microcambios y signos de deterioro · actuaciones por perfil y límites · comunicación y escalado · registro y resultados. De esa ficha salen seis versiones, una por escuela.</p><h3>Cómo se enseña</h3><p>Cada unidad sigue cinco pasos: aprender (explicación breve), comprender (un caso común contado con el lenguaje de cada perfil), aplicar (ejercicio dentro de las competencias), registrar y comunicar (con las herramientas reales) y comprobar (evaluación).</p><h3>Cómo se evalúa</h3><p>Preguntas de conocimiento y una simulación del caso. Para aprobar no basta con la nota: no se puede cometer ningún error crítico de seguridad, como omitir una emergencia o recomendar un cambio de medicación sin habilitación.</p><h3>Gobernanza</h3><p>Cada contenido identifica autor, revisor clínico, versión, fecha y referencias. Los umbrales de alerta y las recomendaciones terapéuticas se fijan en protocolos específicos, no en los materiales formativos.</p><div class=\"quote\">Humana Academy convierte el método Humana en conocimiento que se transmite, se evalúa, se actualiza y se reproduce en distintos territorios, sin depender de las personas que lo han desarrollado.</div>",
+     "parte": "consulta"
+    },
+    {
+     "id": "d10",
+     "t": "10 · Vocabulario y actualización · Cómo hablamos y cómo cambiamos",
+     "body": "<p>El vocabulario forma parte de los criterios: se revisa con la doctrina.</p><table><thead><tr><th>Usamos</th><th>Evitamos</th><th>Motivo</th></tr></thead><tbody><tr><td>Dirección clínica domiciliaria</td><td>Humanización</td><td>Describe una función concreta, no una actitud</td></tr><tr><td>Trayectoria, continuidad asistencial</td><td>Acompañamiento</td><td>Indica proceso clínico con responsable</td></tr><tr><td>Paciente complejo, post-alta</td><td>Cercanía</td><td>Define el segmento que atendemos</td></tr><tr><td>Gasto gestionado, trazabilidad</td><td>Ahorro garantizado</td><td>Solo prometemos lo demostrable</td></tr><tr><td>método Humana</td><td>Método CASA</td><td>Nombre retirado en septiembre de 2026</td></tr><tr><td>Humana, desde 2011</td><td>Más de 15 años</td><td>Mensaje de trayectoria vigente</td></tr><tr><td>Internación domiciliaria (Argentina)</td><td>Hospitalización a domicilio (Argentina)</td><td>Uso local</td></tr></tbody></table><h3>Cómo se actualiza la doctrina</h3><ol><li>Revisión de criterios cada seis meses. Primera revisión propuesta: mayo de 2027.</li><li>Los cambios en el núcleo requieren la aprobación de la Dirección Médica y de Dirección General.</li><li>Cualquier persona del equipo puede proponer un cambio por escrito, con el caso que lo motiva.</li><li>Cada versión lleva número y fecha. La anterior se archiva.</li></ol>",
+     "parte": "consulta"
+    },
+    {
+     "id": "carta",
+     "t": "Carta Magna · Dirigir el cuidado allí donde las personas viven",
+     "body": "<p>Creemos que el futuro de la medicina también se decide en la capacidad de dirigir el cuidado allí donde las personas viven. Por eso nos comprometemos a:</p><ul><li>Dirigir cada trayectoria con un criterio común y un responsable con nombre.</li><li>Anticipar en lugar de reaccionar, leyendo los pequeños cambios antes de que sean crisis.</li><li>Incorporar a la familia como parte del equipo.</li><li>Usar la tecnología para ampliar el criterio clínico y para que el conocimiento no dependa de la memoria de una persona.</li><li>Diseñar la calidad en lugar de confiarla al esfuerzo individual.</li><li>Aprender de cada paciente para cuidar mejor al siguiente.</li><li>Prometer solo lo que podemos demostrar.</li></ul><p>Nuestro mayor patrimonio es el conocimiento que conservamos, compartimos y hacemos crecer. Y lo ponemos siempre al servicio de la persona, por encima del episodio.</p>",
+     "parte": "nucleo"
+    }
+   ],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Borrador v2",
+    "fecha": "2026-11",
+    "referencias": "Doctrina Humana, nueva edición, borrador v2 (noviembre de 2026)",
+    "proximaRevision": "2027-05"
+   },
+   "fuente": "Doctrina_Humana_nueva_edicion_borrador_v2.pdf",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "programa-integral",
+   "tipo": "programa",
+   "modulo": 1,
+   "orden": 0,
+   "t": "Programa integral",
+   "sub": "Documento de arquitectura docente",
+   "lead": "Una misma doctrina asistencial, nueve troncos comunes y seis escuelas.",
+   "secciones": [
+    {
+     "id": "principio",
+     "t": "Principio rector",
+     "body": "<p>Una misma doctrina asistencial, nueve troncos comunes y seis escuelas. El vocabulario, la profundidad y las competencias se adaptan a cada destinatario. Compartir el itinerario no significa compartir atribuciones clínicas.</p>"
+    },
+    {
+     "id": "caso",
+     "t": "Caso transversal: del microcambio al resultado",
+     "body": "<ol><li><strong>Cuidador / paciente</strong> · Comunica una señal</li><li><strong>Enfermería</strong> · Valora y registra</li><li><strong>Médico</strong> · Decide y ajusta</li><li><strong>Coordinación</strong> · Organiza actuaciones</li><li><strong>Equipo</strong> · Comprueba evolución</li></ol><p>Ejemplo docente: cambio en disnea respecto al basal. La respuesta depende de la gravedad y de los protocolos de seguridad. En emergencias se activa el circuito urgente correspondiente, sin esperar a la revisión ordinaria.</p>",
+     "grafico": true
+    },
+    {
+     "id": "metodo",
+     "t": "Método de enseñanza y evaluación",
+     "body": "<ul><li><strong>Aprender:</strong> Explicación breve adaptada al destinatario.</li><li><strong>Comprender:</strong> Caso clínico o cotidiano común, contado con distinto vocabulario.</li><li><strong>Aplicar:</strong> Ejercicio práctico delimitado por competencias.</li><li><strong>Registrar y comunicar:</strong> Uso de herramientas y circuitos cuando proceda.</li><li><strong>Comprobar:</strong> Evaluación de conocimientos y desempeño observable.</li></ul>"
+    },
+    {
+     "id": "implantacion",
+     "t": "Implantación propuesta",
+     "body": "<p>Fase 1: validar el índice maestro y las competencias de cada escuela. Fase 2: desarrollar las nueve unidades maestras. Fase 3: adaptar materiales, vídeos y casos a cada perfil. Fase 4: añadir módulos clínicos o técnicos especializados. Fase 5: pilotar, evaluar y revisar contenidos.</p>"
+    },
+    {
+     "id": "gobernanza",
+     "t": "Nota de gobernanza",
+     "body": "<p>H1–H4 es una clasificación clínica interna. Pacientes y cuidadores conocen sus implicaciones prácticas, pero no asignan el nivel. La respuesta favorable a un tratamiento no confirma por sí sola un diagnóstico.</p>"
+    }
+   ],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-01",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 1,
+   "n": 1,
+   "t": "Comprender",
+   "sub": "Persona y contexto",
+   "lead": "Objetivo común: comprender a la persona y su contexto.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Abordaje integral del paciente crónico complejo",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Conocer al paciente y sus necesidades",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Comprender su situación funcional",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Conocer a la persona que cuido",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Comprender mi salud y mi entorno",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Identificar necesidades asistenciales y organizativas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-02",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 2,
+   "n": 2,
+   "t": "Valorar",
+   "sub": "Situación inicial",
+   "lead": "Objetivo común: identificar la situación basal y las necesidades.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Valoración clínica multidimensional",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Valoración enfermera y riesgos",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Valoración funcional y movilidad",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Reconocer necesidades y cambios habituales",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Reconocer mi estado habitual",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Recoger y verificar información",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-03",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 3,
+   "n": 3,
+   "t": "Clasificar",
+   "sub": "Complejidad y riesgo",
+   "lead": "Objetivo común: interpretar estabilidad, complejidad y riesgo.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Estratificación clínica H1–H4",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Comprender intensidad y necesidades de seguimiento",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Reconocer riesgo de deterioro funcional",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Saber cuándo se necesita más ayuda",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Comprender cambios en mi nivel de atención",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Aplicar operativamente el nivel asignado",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-04",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 4,
+   "n": 4,
+   "t": "Planificar",
+   "sub": "Objetivos y tareas",
+   "lead": "Objetivo común: definir y organizar un plan individualizado.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Plan individualizado y objetivos terapéuticos",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Plan de cuidados y seguimiento",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Objetivos de rehabilitación",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Organizar cuidados diarios",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Conocer mi plan y mis tareas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Programar tareas, agendas y recursos",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-05",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 5,
+   "n": 5,
+   "t": "Observar",
+   "sub": "Microcambios",
+   "lead": "Objetivo común: reconocer cambios respecto a la situación habitual.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Interpretar microcambios y descompensación",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Detectar signos de deterioro",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Detectar cambios funcionales",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Identificar pequeñas señales",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Reconocer cambios en mi salud",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Recibir y escalar alertas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-06",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 6,
+   "n": 6,
+   "t": "Actuar",
+   "sub": "Respuesta adecuada",
+   "lead": "Objetivo común: responder dentro de las competencias y activar ayuda.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Decisiones diagnósticas y terapéuticas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Intervenciones dentro de competencia",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Adaptar intervención y derivar",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Seguir instrucciones y pedir ayuda",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Autocuidado y cuándo consultar",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Activar circuitos y recursos",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-07",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 7,
+   "n": 7,
+   "t": "Comunicar",
+   "sub": "Continuidad asistencial",
+   "lead": "Objetivo común: transmitir información útil y a tiempo.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Comunicación clínica interdisciplinar",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Registro y transmisión estructurada",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Comunicar evolución funcional",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Explicar lo observado",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Comunicar síntomas y dudas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Trazabilidad de comunicaciones",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-08",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 8,
+   "n": 8,
+   "t": "Comprobar",
+   "sub": "Evolución y resultados",
+   "lead": "Objetivo común: verificar resultados y actualizar el plan.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Evaluar respuesta y modificar tratamiento",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Evaluar resultados de cuidados",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Medir resultados funcionales",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "Observar si los cuidados ayudan",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "Reconocer avances y dificultades",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Verificar ejecución y cerrar incidencias",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "tronco-09",
+   "tipo": "tronco",
+   "modulo": 1,
+   "orden": 9,
+   "n": 9,
+   "t": "Tecnología",
+   "sub": "Registro y coordinación",
+   "lead": "Objetivo común: utilizar las herramientas con seguridad y trazabilidad.",
+   "secciones": [],
+   "versiones": {
+    "medicos": {
+     "lead": "Humana Uno e Intelligence para decisiones",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "enfermeria": {
+     "lead": "Registro, tareas y alertas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "kinesiologia": {
+     "lead": "Registro funcional y resultados",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "cuidadores": {
+     "lead": "App cuidador y tareas",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "pacientes": {
+     "lead": "App paciente y formación",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    },
+    "coordinacion": {
+     "lead": "Panel de coordinación y seguimiento",
+     "secciones": [],
+     "quiz": [],
+     "reflexion": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa Integral Visual · Documento de arquitectura docente (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Integral_Visual.docx · 3. Adaptación de contenidos por perfil",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-medicos",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 1,
+   "escuela": "medicos",
+   "t": "Médicos",
+   "sub": "Decisiones clínicas",
+   "lead": "Decisiones clínicas",
+   "secciones": [
+    {
+     "id": "proceso",
+     "t": "El proceso maestro de Humana",
+     "body": "<p>Humana Academy enseña cómo se organiza la atención de una persona en su domicilio: cómo conocemos su situación, acordamos un plan, detectamos cambios entre visitas y comprobamos el resultado de lo que hacemos. A ese recorrido lo llamamos el proceso maestro de Humana. Las cinco escuelas comparten el mismo recorrido y trabajan sobre casos comunes. Cada una lo explica con su propio lenguaje y lo lleva a las decisiones, cuidados o tareas que corresponden a quienes participan.</p>"
+    },
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Diagnóstico diferencial, tratamiento, decisiones clínicas, seguimiento y derivación.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-enfermeria",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 2,
+   "escuela": "enfermeria",
+   "t": "Enfermería",
+   "sub": "Cuidados y seguimiento",
+   "lead": "Cuidados y seguimiento",
+   "secciones": [
+    {
+     "id": "proceso",
+     "t": "El proceso maestro de Humana",
+     "body": "<p>Humana Academy enseña cómo se organiza la atención de una persona en su domicilio: cómo conocemos su situación, acordamos un plan, detectamos cambios entre visitas y comprobamos el resultado de lo que hacemos. A ese recorrido lo llamamos el proceso maestro de Humana. Las cinco escuelas comparten el mismo recorrido y trabajan sobre casos comunes. Cada una lo explica con su propio lenguaje y lo lleva a las decisiones, cuidados o tareas que corresponden a quienes participan.</p>"
+    },
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Valoración enfermera, monitorización, educación, intervenciones y comunicación.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-kinesiologia",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 3,
+   "escuela": "kinesiologia",
+   "t": "Fisioterapia / Kinesiología",
+   "sub": "Funcionalidad",
+   "lead": "Funcionalidad",
+   "secciones": [
+    {
+     "id": "proceso",
+     "t": "El proceso maestro de Humana",
+     "body": "<p>Humana Academy enseña cómo se organiza la atención de una persona en su domicilio: cómo conocemos su situación, acordamos un plan, detectamos cambios entre visitas y comprobamos el resultado de lo que hacemos. A ese recorrido lo llamamos el proceso maestro de Humana. Las cinco escuelas comparten el mismo recorrido y trabajan sobre casos comunes. Cada una lo explica con su propio lenguaje y lo lleva a las decisiones, cuidados o tareas que corresponden a quienes participan.</p>"
+    },
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Función, ejercicio seguro, tolerancia, rehabilitación y comunicación de incidencias.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-cuidadores",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 4,
+   "escuela": "cuidadores",
+   "t": "Cuidadores",
+   "sub": "Observación cotidiana",
+   "lead": "Observación cotidiana",
+   "secciones": [
+    {
+     "id": "proceso",
+     "t": "El proceso maestro de Humana",
+     "body": "<p>Humana Academy enseña cómo se organiza la atención de una persona en su domicilio: cómo conocemos su situación, acordamos un plan, detectamos cambios entre visitas y comprobamos el resultado de lo que hacemos. A ese recorrido lo llamamos el proceso maestro de Humana. Las cinco escuelas comparten el mismo recorrido y trabajan sobre casos comunes. Cada una lo explica con su propio lenguaje y lo lleva a las decisiones, cuidados o tareas que corresponden a quienes participan.</p>"
+    },
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Rutinas de cuidado, señales observables, comunicación y límites de actuación.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-pacientes",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 5,
+   "escuela": "pacientes",
+   "t": "Pacientes y familiares",
+   "sub": "Autocuidado",
+   "lead": "Autocuidado",
+   "secciones": [
+    {
+     "id": "proceso",
+     "t": "El proceso maestro de Humana",
+     "body": "<p>Humana Academy enseña cómo se organiza la atención de una persona en su domicilio: cómo conocemos su situación, acordamos un plan, detectamos cambios entre visitas y comprobamos el resultado de lo que hacemos. A ese recorrido lo llamamos el proceso maestro de Humana. Las cinco escuelas comparten el mismo recorrido y trabajan sobre casos comunes. Cada una lo explica con su propio lenguaje y lo lleva a las decisiones, cuidados o tareas que corresponden a quienes participan.</p>"
+    },
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Comprensión de la enfermedad, autocuidado pactado, adherencia y solicitud de ayuda.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "escuela-coordinacion",
+   "tipo": "escuela",
+   "modulo": 2,
+   "orden": 6,
+   "escuela": "coordinacion",
+   "t": "Coordinación asistencial",
+   "sub": "Circuitos y recursos",
+   "lead": "Circuitos y recursos",
+   "secciones": [
+    {
+     "id": "profundidad",
+     "t": "Profundidad y responsabilidad en patologías",
+     "body": "<p>Circuitos, agendas, seguimiento de tareas, trazabilidad y escalado de alertas.</p>"
+    }
+   ],
+   "unidades": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual (2. Las seis escuelas) · Programa por Enfermedades (4. Adaptación a las seis escuelas)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-01",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 1,
+   "n": 1,
+   "escuela": "medicos",
+   "t": "Qué es Humana y qué responsabilidad asume",
+   "lead": "Dirección clínica del seguimiento domiciliario y coordinación con especialistas, hospital y otros equipos.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-02",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 2,
+   "n": 2,
+   "escuela": "medicos",
+   "t": "La visión 360° de la persona",
+   "lead": "Integración de enfermedades, tratamientos, función, cognición, entorno, apoyos y prioridades personales.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-03",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 3,
+   "n": 3,
+   "escuela": "medicos",
+   "t": "Primera valoración y situación basal",
+   "lead": "Reconstrucción del estado habitual, revisión del alta y priorización de problemas activos.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-04",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 4,
+   "n": 4,
+   "escuela": "medicos",
+   "t": "Estratificación y plan de seguimiento",
+   "lead": "Niveles H1–H4, objetivos, frecuencia de visitas, controles y criterios de reevaluación.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-05",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 5,
+   "n": 5,
+   "escuela": "medicos",
+   "t": "Microcambios y decisiones clínicas",
+   "lead": "Interpretación de cambios, respuesta asistencial y coordinación de la intervención.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-06",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 6,
+   "n": 6,
+   "escuela": "medicos",
+   "t": "Evolución y resultado",
+   "lead": "Registro de la respuesta, revisión de objetivos y ajuste del plan a lo largo del tiempo.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-07",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 7,
+   "n": 7,
+   "escuela": "medicos",
+   "t": "Herramientas Humana",
+   "lead": "Historia clínica en Humana Uno y seguimiento de decisiones, tareas y avisos en Humana Intelligence.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-medicos-08",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 8,
+   "n": 8,
+   "escuela": "medicos",
+   "t": "Aplicación por enfermedades",
+   "lead": "Insuficiencia cardíaca, EPOC, demencias, diabetes, fragilidad y otros síndromes geriátricos.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-01",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 1,
+   "n": 1,
+   "escuela": "enfermeria",
+   "t": "Qué es Humana y cuál es el papel de enfermería",
+   "lead": "Continuidad de cuidados desde la primera visita y entre contactos.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-02",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 2,
+   "n": 2,
+   "escuela": "enfermeria",
+   "t": "La visión 360° desde los cuidados",
+   "lead": "Autonomía, piel, movilidad, alimentación, descanso, tratamiento y apoyos disponibles.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-03",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 3,
+   "n": 3,
+   "escuela": "enfermeria",
+   "t": "Valoración enfermera y situación habitual",
+   "lead": "Capacidades conservadas, riesgos y necesidades de apoyo.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-04",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 4,
+   "n": 4,
+   "escuela": "enfermeria",
+   "t": "Plan de cuidados y visita domiciliaria",
+   "lead": "Objetivos, intervenciones, educación y organización de tareas entre visitas.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-05",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 5,
+   "n": 5,
+   "escuela": "enfermeria",
+   "t": "Microcambios, actuación y comunicación",
+   "lead": "Qué observar, qué valorar, cómo intervenir y cuándo escalar un hallazgo.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-06",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 6,
+   "n": 6,
+   "escuela": "enfermeria",
+   "t": "Evaluación de los cuidados",
+   "lead": "Qué se hizo, cómo respondió la persona y qué queda pendiente.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-07",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 7,
+   "n": 7,
+   "escuela": "enfermeria",
+   "t": "Herramientas Humana",
+   "lead": "Registro de visitas, cuidados, tareas, avisos y evolución.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-enfermeria-08",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 8,
+   "n": 8,
+   "escuela": "enfermeria",
+   "t": "Aplicación por enfermedades",
+   "lead": "Adaptación de los cuidados a cada enfermedad y a la situación habitual de la persona.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-01",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 1,
+   "n": 1,
+   "escuela": "kinesiologia",
+   "t": "Qué es Humana y cómo se integra la [[fisioterapia|kinesiología]]",
+   "lead": "Papel de la recuperación y el mantenimiento funcional en el plan domiciliario.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-02",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 2,
+   "n": 2,
+   "escuela": "kinesiologia",
+   "t": "La visión 360° desde la movilidad",
+   "lead": "Función, esfuerzo, dolor, entorno, ayudas técnicas y prioridades de la persona.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-03",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 3,
+   "n": 3,
+   "escuela": "kinesiologia",
+   "t": "Valoración funcional en casa",
+   "lead": "Marcha, equilibrio, transferencias y desempeño en actividades cotidianas.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-04",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 4,
+   "n": 4,
+   "escuela": "kinesiologia",
+   "t": "Plan de [[fisioterapia|kinesiología]]",
+   "lead": "Objetivos funcionales, sesiones, actividades entre visitas y apoyo de quienes cuidan.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-05",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 5,
+   "n": 5,
+   "escuela": "kinesiologia",
+   "t": "Cambios durante el seguimiento",
+   "lead": "Evolución de la movilidad, caídas, tolerancia al esfuerzo y comunicación al equipo.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-06",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 6,
+   "n": 6,
+   "escuela": "kinesiologia",
+   "t": "Resultados que importan en casa",
+   "lead": "Qué actividades ha recuperado la persona y para cuáles sigue necesitando ayuda.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-07",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 7,
+   "n": 7,
+   "escuela": "kinesiologia",
+   "t": "Herramientas Humana",
+   "lead": "Registro funcional, objetivos, evolución y coordinación con el equipo.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-kinesiologia-08",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 8,
+   "n": 8,
+   "escuela": "kinesiologia",
+   "t": "Aplicación a situaciones frecuentes",
+   "lead": "Recuperación tras el alta, fragilidad, caídas, ictus y limitación cardiorrespiratoria.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-01",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 1,
+   "n": 1,
+   "escuela": "cuidadores",
+   "t": "Quiénes somos y cómo trabajamos juntos",
+   "lead": "Qué hace el equipo de Humana, qué papel tiene quien cuida y con quién contactar.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-02",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 2,
+   "n": 2,
+   "escuela": "cuidadores",
+   "t": "Conocer a la persona que cuido",
+   "lead": "Sus gustos, rutinas, capacidades y momentos del día en los que necesita ayuda.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-03",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 3,
+   "n": 3,
+   "escuela": "cuidadores",
+   "t": "Cómo es un día habitual en casa",
+   "lead": "Cómo se mueve, come, descansa, se orienta y participa en sus cuidados.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-04",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 4,
+   "n": 4,
+   "escuela": "cuidadores",
+   "t": "El plan de cuidados en la práctica",
+   "lead": "Qué tareas me corresponden, cómo están organizadas y qué puedo consultar.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-05",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 5,
+   "n": 5,
+   "escuela": "cuidadores",
+   "t": "Darse cuenta de que algo ha cambiado",
+   "lead": "Reconocer pequeñas diferencias y contar qué pasó, cuándo y en qué circunstancias.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-06",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 6,
+   "n": 6,
+   "escuela": "cuidadores",
+   "t": "Pedir ayuda y entender qué pasa después",
+   "lead": "A quién avisar, por qué canal y cómo seguir las indicaciones acordadas.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-07",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 7,
+   "n": 7,
+   "escuela": "cuidadores",
+   "t": "La app y los contactos del equipo",
+   "lead": "Consultar tareas y compartir observaciones por el canal acordado.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-cuidadores-08",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 8,
+   "n": 8,
+   "escuela": "cuidadores",
+   "t": "Cuidar en situaciones frecuentes",
+   "lead": "Acompañar a personas con dificultades para respirar, problemas de memoria, diabetes o pérdida de fuerza.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-01",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 1,
+   "n": 1,
+   "escuela": "pacientes",
+   "t": "Bienvenida a Humana",
+   "lead": "Quién me acompaña, por qué empezamos el seguimiento y qué puedo esperar de las visitas.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-02",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 2,
+   "n": 2,
+   "escuela": "pacientes",
+   "t": "Mi vida y lo que me importa",
+   "lead": "Qué quiero seguir haciendo, qué me preocupa y cómo quiero participar en las decisiones.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-03",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 3,
+   "n": 3,
+   "escuela": "pacientes",
+   "t": "Conocer cómo estoy habitualmente",
+   "lead": "Qué puedo hacer por mi cuenta, cuándo necesito ayuda y qué cambios he notado.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-04",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 4,
+   "n": 4,
+   "escuela": "pacientes",
+   "t": "Mi plan en casa",
+   "lead": "Quién vendrá, qué vamos a revisar y cómo se organizan mis citas, controles y tareas.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-05",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 5,
+   "n": 5,
+   "escuela": "pacientes",
+   "t": "Cuando algo cambia",
+   "lead": "Cómo explicar lo que siento, desde cuándo me pasa y qué ha cambiado en mi día a día.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-06",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 6,
+   "n": 6,
+   "escuela": "pacientes",
+   "t": "Cómo va mi seguimiento",
+   "lead": "Qué ha mejorado, qué sigue costando y cuándo volveremos a revisar el plan.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-07",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 7,
+   "n": 7,
+   "escuela": "pacientes",
+   "t": "Mis herramientas y contactos",
+   "lead": "Dónde consultar lo acordado, compartir una duda y encontrar el contacto que necesito.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "unidad-pacientes-08",
+   "tipo": "unidad",
+   "modulo": 2,
+   "orden": 8,
+   "n": 8,
+   "escuela": "pacientes",
+   "t": "Entender mi enfermedad",
+   "lead": "Qué significa en mi vida cotidiana, qué puedo hacer y qué apoyo puedo pedir.",
+   "secciones": [],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Índice de formación (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Indice_de_formacion.md",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "programa-enfermedades",
+   "tipo": "programa",
+   "modulo": 3,
+   "orden": 0,
+   "t": "Programa por enfermedades",
+   "sub": "Complemento al programa de nueve troncos transversales y seis escuelas",
+   "lead": "Propuesta curricular para validación por Dirección Médica",
+   "secciones": [
+    {
+     "id": "arquitectura",
+     "t": "1. Arquitectura formativa",
+     "body": "<p>El programa se organiza en tres niveles: (1) modelo asistencial Humana, con nueve troncos comunes; (2) conocimiento de enfermedades y situaciones clínicas; (3) aplicación práctica mediante casos, simulaciones y registro en las herramientas Humana. Cada enfermedad parte de una ficha clínica maestra validada y genera seis versiones pedagógicas, con responsabilidades delimitadas.</p><ol><li><strong>Nivel 1</strong> · 9 troncos comunes</li><li><strong>Nivel 2</strong> · Enfermedades</li><li><strong>Nivel 3</strong> · Casos y práctica</li></ol>",
+     "grafico": true
+    },
+    {
+     "id": "indice",
+     "t": "2. Índice de enfermedades y situaciones clínicas",
+     "body": "<table><thead><tr><th>Área</th><th>Módulos</th></tr></thead><tbody><tr><td>Cardiovascular</td><td>Insuficiencia cardíaca; hipertensión arterial; fibrilación auricular; cardiopatía isquémica</td></tr><tr><td>Respiratoria</td><td>EPOC; asma; insuficiencia respiratoria; neumonía</td></tr><tr><td>Neurológica</td><td>Demencias; enfermedad de Parkinson; ictus y secuelas</td></tr><tr><td>Endocrina y metabólica</td><td>Diabetes mellitus; trastornos tiroideos; desnutrición; obesidad</td></tr><tr><td>Renal y urinaria</td><td>Enfermedad renal crónica; infección urinaria; incontinencia; retención urinaria</td></tr><tr><td>Digestiva y deglución</td><td>Estreñimiento; disfagia; reflujo; trastornos digestivos frecuentes</td></tr><tr><td>Musculoesquelética y funcional</td><td>Artrosis; osteoporosis; sarcopenia; caídas</td></tr><tr><td>Piel y heridas</td><td>Lesiones por presión; heridas crónicas; lesiones vasculares; pie diabético</td></tr><tr><td>Salud mental y cognición</td><td>Depresión; ansiedad; insomnio; delirium</td></tr><tr><td>Oncología y paliativos</td><td>Enfermedad oncológica avanzada; dolor; control de síntomas; final de vida</td></tr><tr><td>Síndromes transversales</td><td>Fragilidad; pluripatología; polifarmacia; dependencia</td></tr></tbody></table><p>Priorización de desarrollo: insuficiencia cardíaca, EPOC, demencias, diabetes y fragilidad. El catálogo es propuesto, no un listado cerrado de protocolos clínicos.</p>"
+    },
+    {
+     "id": "plantilla",
+     "t": "3. Índice único para cada enfermedad",
+     "body": "<ol><li>Definición y alcance</li><li>Causas y evolución habitual</li><li>Manifestaciones clínicas y síntomas</li><li>Valoración y diagnóstico (según competencias)</li><li>Tratamientos y cuidados habituales</li><li>Criterios de estabilidad individual</li><li>Microcambios y signos de deterioro</li><li>Actuaciones por perfil y límites competenciales</li><li>Comunicación, escalado y criterios de urgencia</li><li>Registro, evolución, resultados y reevaluación</li></ol>"
+    },
+    {
+     "id": "escuelas",
+     "t": "4. Adaptación a las seis escuelas",
+     "body": "<table><thead><tr><th>Escuela</th><th>Profundidad y responsabilidad</th></tr></thead><tbody><tr><td>Médicos</td><td>Diagnóstico diferencial, tratamiento, decisiones clínicas, seguimiento y derivación.</td></tr><tr><td>Enfermería</td><td>Valoración enfermera, monitorización, educación, intervenciones y comunicación.</td></tr><tr><td>Fisioterapia / Kinesiología</td><td>Función, ejercicio seguro, tolerancia, rehabilitación y comunicación de incidencias.</td></tr><tr><td>Cuidadores</td><td>Rutinas de cuidado, señales observables, comunicación y límites de actuación.</td></tr><tr><td>Pacientes</td><td>Comprensión de la enfermedad, autocuidado pactado, adherencia y solicitud de ayuda.</td></tr><tr><td>Coordinación asistencial</td><td>Circuitos, agendas, seguimiento de tareas, trazabilidad y escalado de alertas.</td></tr></tbody></table>"
+    },
+    {
+     "id": "piloto",
+     "t": "5. Módulo piloto: insuficiencia cardíaca",
+     "body": "<p>Caso longitudinal ficticio: Antonio, 82 años, insuficiencia cardíaca, fragilidad y dependencia parcial. Se parte de una situación basal documentada; los cambios se interpretan frente a esa línea de base y al plan individual.</p><h3>Médicos</h3><p>Reconocer congestión y otros diagnósticos posibles; revisar tratamiento y función renal cuando proceda; decidir intensidad de seguimiento y derivación.</p><h3>Enfermería</h3><p>Registrar síntomas, peso, tensión arterial, frecuencia cardíaca, edema, disnea y adherencia según plan; comunicar variaciones relevantes.</p><h3>[[Fisioterapia|Kinesiología]]</h3><p>Evaluar tolerancia al esfuerzo y movilidad; adaptar actividad dentro de indicaciones clínicas; detener intervención ante signos de alarma.</p><h3>Cuidadores</h3><p>Observar cambios en respiración, hinchazón, cansancio, peso si está pautado y capacidad habitual; avisar según instrucciones.</p><h3>Pacientes</h3><p>Entender qué síntomas vigilar, cómo seguir el tratamiento prescrito y a quién contactar ante cambios.</p><h3>Coordinación</h3><p>Verificar recepción de alertas, asignación de responsable, cumplimiento de tareas y cierre documentado.</p><h3>Ejercicio compartido</h3><p>Antonio presenta mayor disnea al caminar y aumento de edema respecto a su situación habitual. Cada alumno debe identificar qué información necesita, qué puede hacer dentro de sus competencias, a quién comunica y qué debe quedar registrado. No se presume que el cambio confirme por sí solo una descompensación cardíaca.</p>"
+    },
+    {
+     "id": "tecnologia",
+     "t": "6. Integración tecnológica",
+     "body": "<p>Humana Uno: antecedentes, valoración, plan, intervenciones, evolución y resultado. Humana Intelligence: reglas, alertas, tareas y trazabilidad, sujetas a validación clínica y configuración operativa. App de paciente/cuidador: instrucciones, observaciones y comunicación. Humana Academy: contenidos y comprobación de competencias. Los permisos se asignan por rol y la tecnología no sustituye la decisión profesional.</p>"
+    },
+    {
+     "id": "unidad",
+     "t": "7. Diseño de cada unidad docente",
+     "body": "<ul><li>Objetivos medibles y conocimientos previos</li><li>Explicación en lenguaje apropiado al perfil</li><li>Caso aplicado con línea basal y microcambios</li><li>Actividad práctica y uso de herramientas</li><li>Evaluación de competencias y criterios de superación</li><li>Bibliografía, fecha de revisión y responsable clínico</li></ul>"
+    },
+    {
+     "id": "seguridad",
+     "t": "8. Gobernanza y seguridad clínica",
+     "body": "<p>Cada ficha maestra debe identificar autor, revisor clínico, versión, fecha y referencias actualizadas. Los umbrales de alerta, los algoritmos y las recomendaciones terapéuticas se definirán en protocolos específicos, considerando situación basal, comorbilidades y objetivos de cuidado. Los cuidadores y pacientes no reciben formación para diagnosticar ni modificar medicación de forma autónoma. Los contenidos formativos no sustituyen la valoración individual ni los protocolos de emergencias.</p>"
+    },
+    {
+     "id": "fase",
+     "t": "9. Próxima fase de producción",
+     "body": "<p>Validar el catálogo y la plantilla única; elaborar la ficha maestra de insuficiencia cardíaca; producir seis versiones con recursos visuales y preguntas; probarlas con profesionales y cuidadores; ajustar y replicar en EPOC, demencias, diabetes y fragilidad.</p>"
+    }
+   ],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa por Enfermedades · Propuesta curricular para validación por Dirección Médica (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Programa_Por_Enfermedades.docx",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "patologia-insuficiencia-cardiaca",
+   "tipo": "patologia",
+   "modulo": 3,
+   "orden": 1,
+   "area": "Cardiovascular",
+   "piloto": true,
+   "t": "Insuficiencia cardíaca",
+   "sub": "Módulo 01 · Unidad docente maestra y seis adaptaciones por perfil",
+   "lead": "Finalidad: reconocer la insuficiencia cardíaca como síndrome clínico, comprender el seguimiento longitudinal y delimitar qué debe observar, comunicar, valorar y decidir cada participante. Material educativo: no sustituye protocolos clínicos, prescripciones ni planes individualizados.",
+   "secciones": [
+    {
+     "id": "objetivos",
+     "t": "1. Objetivos comunes",
+     "body": "<ul><li>Explicar qué es la insuficiencia cardíaca y su variabilidad clínica.</li><li>Reconocer situación basal, cambios significativos y señales de alarma.</li><li>Aplicar el circuito Humana: observar → registrar → valorar → decidir → comprobar.</li><li>Utilizar las herramientas digitales según permisos y responsabilidad profesional.</li></ul>"
+    },
+    {
+     "id": "ficha",
+     "t": "2. Ficha clínica maestra",
+     "body": "<h3>Qué es</h3><p>Síndrome en el que alteraciones estructurales o funcionales cardíacas provocan síntomas y/o signos, habitualmente asociados a congestión o bajo gasto. No equivale a una sola enfermedad ni se diagnostica únicamente por disnea o edemas.</p><h3>Causas y evolución</h3><p>Puede relacionarse con hipertensión, cardiopatía isquémica, valvulopatías, arritmias u otras causas. Puede alternar periodos de estabilidad y descompensación; debe conocerse el fenotipo, la función ventricular y los objetivos asistenciales.</p><h3>Síntomas y signos</h3><p>Disnea, ortopnea, fatiga, intolerancia al esfuerzo, edemas, aumento de peso por retención de líquidos y, en algunos casos, confusión o disminución de la diuresis. Ningún hallazgo aislado confirma una descompensación.</p><h3>Diagnóstico y valoración</h3><p>Historia y exploración, constantes, electrocardiograma, péptidos natriuréticos, ecocardiografía y pruebas adicionales según contexto. En domicilio se documentan situación basal, comorbilidad, función, fragilidad, tratamiento y recursos.</p><h3>Tratamiento y cuidados</h3><p>El tratamiento depende del fenotipo, situación clínica, función renal, potasio, presión arterial y tolerancia. Incluye terapias farmacológicas indicadas, control de congestión, educación, actividad adaptada y seguimiento. Los cambios de medicación requieren prescripción o instrucciones individualizadas.</p><h3>Qué es estar estable</h3><p>Síntomas y capacidad funcional próximos al basal, sin congestión progresiva, sin cambios relevantes de constantes y con un plan terapéutico tolerado. Estabilidad no significa ausencia de enfermedad.</p><h3>Microcambios</h3><p>Peso respecto al basal, disnea habitual frente a nueva disnea, ortopnea, edemas, fatiga, tolerancia al esfuerzo, somnolencia, ingesta y adherencia. Los umbrales se personalizan; no aplicar un único valor universal.</p><h3>Respuesta escalonada</h3><p>Cambios leves: registrar y comunicar por circuito establecido. Deterioro progresivo: valoración clínica pronta. Disnea intensa en reposo, dolor torácico persistente, síncope, confusión aguda grave o signos de hipoperfusión: activar emergencias ([[112 en España|107 (SAME) o 911, según la jurisdicción]]).</p><h3>Comunicación</h3><p>Describir qué cambió, desde cuándo, comparación con basal, constantes disponibles, medicación tomada, síntomas acompañantes y acción ya realizada. Evitar conclusiones diagnósticas por personas no facultadas.</p><h3>Resultados</h3><p>Registrar problema inicial, intervención, respuesta observada, pruebas, cambio de tratamiento, derivación/[[ingreso|internación]] y estado pendiente. Mejoría clínica no prueba por sí sola el diagnóstico inicial.</p>"
+    },
+    {
+     "id": "circuito",
+     "t": "3. Circuito de trabajo",
+     "body": "<ol><li>Paciente / cuidador</li><li>Observación y registro</li><li>Valoración profesional</li><li>Decisión y plan</li><li>Resultado y revisión</li></ol>",
+     "grafico": true
+    },
+    {
+     "id": "caso",
+     "t": "4. Caso docente longitudinal: Antonio",
+     "body": "<p>Antonio, 82 años, vive en casa con apoyo familiar. Tiene insuficiencia cardíaca conocida, fragilidad y dependencia parcial. Situación basal ficticia: camina dentro de casa con ayuda, duerme con una almohada y no presenta disnea en reposo. Durante tres días, su cuidadora observa mayor fatiga, aumento de peso respecto a su registro habitual y necesidad de más almohadas para dormir. No se aportan constantes ni exploración. Estos datos requieren comunicación y valoración; no bastan para confirmar la causa ni indicar por sí mismos un ajuste de diurético.</p><p>Secuencia docente: 1) comparar con basal; 2) registrar datos y contexto; 3) comunicar al equipo; 4) valoración profesional y decisión; 5) documentar evolución y resultado; 6) revisar el plan.</p>"
+    },
+    {
+     "id": "evaluacion",
+     "t": "6. Evaluación común y criterios de superación",
+     "body": "<ul><li>Identifica al menos tres cambios respecto a la situación basal.</li><li>Distingue observación, valoración profesional y decisión terapéutica.</li><li>Selecciona correctamente el circuito de comunicación y urgencias.</li><li>Registra datos verificables y diferencia evolución de diagnóstico confirmado.</li><li>Demuestra el uso de la herramienta digital correspondiente a su perfil.</li></ul><p>Propuesta de evaluación: cinco preguntas de conocimiento y una simulación del caso. La aprobación exige además no cometer errores críticos de seguridad (p. ej., omitir emergencias o recomendar ajustes de medicación sin habilitación). Umbrales y rúbricas deberán validarse antes de implantación.</p>"
+    },
+    {
+     "id": "validacion",
+     "t": "7. Gobernanza y validación",
+     "body": "<p>Documento base para revisión por Dirección Médica. Antes de publicar: actualizar según guías clínicas vigentes, validar circuitos territoriales, verificar alcance legal de competencias, definir umbrales personalizados de alerta y configurar permisos reales de las aplicaciones. La tecnología apoya, pero no sustituye el juicio clínico.</p>"
+    }
+   ],
+   "versiones": {
+    "medicos": {
+     "lead": "",
+     "titulo": "",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Interpretar el síndrome, diferenciar congestión de causas alternativas y asumir decisiones diagnósticas y terapéuticas.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Evaluar síntomas, exploración, perfusión, función renal, electrolitos, medicación y pruebas según necesidad; definir criterios de seguimiento, derivación y objetivos de atención.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>En Antonio: determinar gravedad, hipótesis diferenciales, pruebas y actuación proporcional; documentar razonamiento y respuesta.</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>Humana Uno: diagnóstico/problema, estratificación, plan, órdenes, reevaluación y resultado clínico.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Qué datos faltan antes de atribuir la disnea a congestión?",
+      "¿Qué hallazgos obligarían a derivar?"
+     ],
+     "quiz": []
+    },
+    "enfermeria": {
+     "lead": "",
+     "titulo": "",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Valorar necesidades de cuidados, detectar deterioro y ejecutar intervenciones dentro de competencias y prescripciones.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Registrar disnea, edemas, peso, constantes, adherencia, tolerancia y factores desencadenantes; educación, conciliación práctica y escalado.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>En Antonio: visita o contacto estructurado, contraste con basal, registro y aviso al médico según protocolo; no ajustar medicación autónomamente fuera de habilitación y protocolo aplicable.</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>Humana Uno: valoración, actividades, microcambios, alertas y evolución enfermera.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Qué observaciones objetivas [[transmitirías|transmitirías]]?",
+      "¿Cómo [[verificarías|verificarías]] comprensión del plan?"
+     ],
+     "quiz": []
+    },
+    "kinesiologia": {
+     "lead": "",
+     "titulo": "Fisioterapia y kinesiología",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Reconocer cómo la insuficiencia cardíaca condiciona esfuerzo, movilidad y rehabilitación segura.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Valorar marcha, fatiga, disnea de esfuerzo, equilibrio, sarcopenia y tolerancia; adaptar ejercicio al estado clínico y detenerlo ante signos de alarma.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>En Antonio: ante empeoramiento reciente, suspender incremento de carga y comunicar para valoración antes de continuar.</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>Registro de capacidad funcional, objetivos, tolerancia, incidencias y resultados.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Qué cambio funcional es relevante?",
+      "¿Cuándo suspenderías una sesión?"
+     ],
+     "quiz": []
+    },
+    "cuidadores": {
+     "lead": "",
+     "titulo": "",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Comprender la enfermedad en lenguaje cotidiano y observar sin asumir funciones sanitarias.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Identificar respiración distinta de lo habitual, más almohadas, hinchazón, cansancio, cambios de peso si se ha indicado medirlo y dificultad para actividades habituales.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>En Antonio: anotar cambios con fecha, seguir tareas asignadas, informar por la app o teléfono indicado; ante emergencia llamar al [[112|107 (SAME) o 911, según la jurisdicción]].</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>App cuidador: tareas, observaciones, mensajes y avisos según circuito.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Qué tres cambios contarías al equipo?",
+      "¿Qué NO [[debes|debés]] hacer con la medicación?"
+     ],
+     "quiz": []
+    },
+    "pacientes": {
+     "lead": "",
+     "titulo": "",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Reconocer el estado habitual, participar en autocuidado y solicitar ayuda oportunamente.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Comprender para qué sirven medicación y controles prescritos; identificar disnea nueva, hinchazón, empeoramiento del cansancio y dificultades de sueño.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>Antonio explica qué ha cambiado y desde cuándo, consulta el plan y pide ayuda; no modifica dosis sin instrucciones previas específicas.</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>App paciente: plan comprensible, recordatorios, información y contacto.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Qué síntoma comunicarías hoy?",
+      "¿A quién llamarías si [[empeoras|empeorás]] bruscamente?"
+     ],
+     "quiz": []
+    },
+    "coordinacion": {
+     "lead": "",
+     "titulo": "",
+     "secciones": [
+      {
+       "id": "competencia",
+       "t": "Competencia esperada",
+       "body": "<p>Asegurar recepción, trazabilidad, asignación y cierre de alertas, sin emitir diagnósticos ni tratamientos.</p>"
+      },
+      {
+       "id": "contenidos",
+       "t": "Contenidos",
+       "body": "<p>Verificar identificación, prioridad conforme a protocolo, profesional responsable, plazos de respuesta y continuidad; comprobar cierre y pendientes.</p>"
+      },
+      {
+       "id": "ejercicio",
+       "t": "Ejercicio con Antonio",
+       "body": "<p>En Antonio: registrar aviso, activar circuito según gravedad, confirmar recepción por clínico y seguimiento de la incidencia.</p>"
+      },
+      {
+       "id": "herramienta",
+       "t": "Herramienta tecnológica",
+       "body": "<p>Humana Intelligence: tareas, alertas, asignación, tiempos y trazabilidad.</p>"
+      }
+     ],
+     "reflexion": [
+      "¿Cómo [[evitas|evitás]] una alerta sin responsable?",
+      "¿Qué evidencia demuestra que quedó cerrada?"
+     ],
+     "quiz": []
+    }
+   },
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Módulo 01 Insuficiencia cardíaca · Unidad docente maestra y seis adaptaciones por perfil · Versión de trabajo (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Humana_Academy_Modulo_01_Insuficiencia_Cardiaca.docx",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "herramientas",
+   "tipo": "programa",
+   "modulo": 4,
+   "orden": 0,
+   "t": "Herramientas tecnológicas",
+   "sub": "Ecosistema tecnológico",
+   "lead": "La tecnología es un medio de continuidad asistencial, no un sustituto de la valoración profesional. El acceso y las acciones se delimitan por rol y autorización.",
+   "secciones": [
+    {
+     "id": "ecosistema",
+     "t": "Ecosistema tecnológico",
+     "body": "<ul><li><strong>Humana Uno</strong> · Historia clínica</li><li><strong>Humana Intelligence</strong> · Reglas, alertas y planes</li><li><strong>App paciente</strong> · Participación</li><li><strong>App cuidador</strong> · Tareas y señales</li><li><strong>Humana Academy</strong> · Formación</li></ul><p>La tecnología es un medio de continuidad asistencial, no un sustituto de la valoración profesional. El acceso y las acciones se delimitan por rol y autorización.</p>",
+     "grafico": true,
+     "fuente": "Programa Integral Visual · 4. Ecosistema tecnológico"
+    },
+    {
+     "id": "integracion",
+     "t": "Integración tecnológica",
+     "body": "<p>Humana Uno: antecedentes, valoración, plan, intervenciones, evolución y resultado. Humana Intelligence: reglas, alertas, tareas y trazabilidad, sujetas a validación clínica y configuración operativa. App de paciente/cuidador: instrucciones, observaciones y comunicación. Humana Academy: contenidos y comprobación de competencias. Los permisos se asignan por rol y la tecnología no sustituye la decisión profesional.</p>",
+     "fuente": "Programa por Enfermedades · 6. Integración tecnológica"
+    },
+    {
+     "id": "doctrina",
+     "t": "En la Doctrina Humana",
+     "body": "<p>Historia clínica (Humana Uno) · Humana Intelligence · app del paciente y del cuidador · comunicación, alertas y coordinación · Impacto Humana</p><p>Los resultados que mide Impacto Humana actualizan el Manual Maestro y los contenidos de Humana Academy y, cuando corresponde, motivan una revisión de esta doctrina. Así se construye un sistema de aprendizaje continuo.</p>",
+     "fuente": "Doctrina Humana · 08 y 09"
+    }
+   ],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Programa Integral Visual · Programa por Enfermedades · Doctrina Humana (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa Integral Visual · Programa por Enfermedades · Doctrina Humana",
+   "estado": "borrador",
+   "umbral": 60
+  },
+  {
+   "id": "practica-antonio",
+   "tipo": "practica",
+   "modulo": 5,
+   "orden": 1,
+   "t": "Caso transversal: del microcambio al resultado",
+   "sub": "Ejercicio compartido",
+   "lead": "Caso longitudinal ficticio: Antonio, 82 años, insuficiencia cardíaca, fragilidad y dependencia parcial. Se parte de una situación basal documentada; los cambios se interpretan frente a esa línea de base y al plan individual.",
+   "secciones": [
+    {
+     "id": "ejercicio",
+     "t": "Ejercicio compartido",
+     "body": "<p>Antonio presenta mayor disnea al caminar y aumento de edema respecto a su situación habitual. Cada alumno debe identificar qué información necesita, qué puede hacer dentro de sus competencias, a quién comunica y qué debe quedar registrado. No se presume que el cambio confirme por sí solo una descompensación cardíaca.</p>",
+     "fuente": "Programa por Enfermedades · 5"
+    },
+    {
+     "id": "transversal",
+     "t": "Caso transversal",
+     "body": "<p>Ejemplo docente: cambio en disnea respecto al basal. La respuesta depende de la gravedad y de los protocolos de seguridad. En emergencias se activa el circuito urgente correspondiente, sin esperar a la revisión ordinaria.</p>",
+     "fuente": "Programa Integral Visual · 5"
+    },
+    {
+     "id": "secuencia",
+     "t": "Secuencia docente",
+     "body": "<p>Secuencia docente: 1) comparar con basal; 2) registrar datos y contexto; 3) comunicar al equipo; 4) valoración profesional y decisión; 5) documentar evolución y resultado; 6) revisar el plan.</p>",
+     "fuente": "Módulo 01 IC · 4"
+    }
+   ],
+   "quiz": [],
+   "simulacion": null,
+   "reflexion": [],
+   "video": "",
+   "gobernanza": {
+    "autor": "Dirección Médica · Dra. Karina Ojanguren",
+    "revisor": "",
+    "version": "Versión de trabajo",
+    "fecha": "2026-11",
+    "referencias": "Humana Academy · Programa por Enfermedades · Propuesta curricular para validación por Dirección Médica (noviembre de 2026)",
+    "proximaRevision": ""
+   },
+   "fuente": "Programa por Enfermedades · Programa Integral Visual · Módulo 01 IC",
+   "estado": "borrador",
+   "umbral": 60
+  }
+ ]
+}
