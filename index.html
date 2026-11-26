@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Humana Academy · método Humana</title>
-<meta name="description" content="Humana Academy — formación en Medicina de Continuidad del método Humana. Humana Health & Care · Argentina.">
-<meta name="theme-color" content="#FBF9FA">
-<meta property="og:title" content="Humana Academy · método Humana">
-<meta property="og:description" content="Formación en Medicina de Continuidad · Humana Health & Care Argentina">
+<title>Humana Academy</title>
+<meta name="description" content="Humana Academy: Doctrina Humana, tronco metodológico común, seis escuelas, patologías, herramientas y aplicación práctica. Humana Health &amp; Care.">
+<meta name="theme-color" content="#D43380">
+<meta property="og:title" content="Humana Academy">
+<meta property="og:description" content="Una misma doctrina, nueve troncos comunes y seis escuelas · Humana Health &amp; Care">
 <meta property="og:image" content="og.png">
 <meta property="og:type" content="website">
 <meta name="robots" content="noindex, nofollow">
@@ -21,501 +21,595 @@
 <link rel="preload" href="fonts/arimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/bodoni-moda-latin-500-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="metodo.css?v=1">
+<link rel="stylesheet" href="metodo-pistas.css?v=2">
+<link rel="stylesheet" href="entornos.css?v=1">
 <style>
-/* ---------- estructura ---------- */
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-@media(max-width:640px){.wrap{padding:0 18px}}
-main{display:block;min-height:60vh}
-#app:focus{outline:none}
-
-/* ---------- encabezado ---------- */
-header.top{position:sticky;top:0;z-index:60;background:rgba(251,249,250,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--mh-line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
-.brand{display:flex;align-items:center;gap:14px;min-height:44px;background:none;border:0;padding:6px 0;cursor:pointer;color:var(--mh-ink)}
-.brand .mh-word{font-size:19px}
-.brand .sep{width:1px;height:22px;background:var(--mh-line-2)}
-.brand .mh-logo{font-size:15px}
-nav.desk{display:flex;align-items:center;gap:4px}
-nav.desk a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--mh-pill);color:var(--mh-ink-2);font-size:15px;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
-nav.desk a:hover{background:var(--mh-surface-2);color:var(--mh-ink)}
-nav.desk a.estudio{color:var(--mh-accent-ink);font-weight:700}
-nav.desk a.adm{color:var(--mh-ink);font-weight:700}
-.userbox{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mh-mut)}
-.userbox .hi{color:var(--mh-ink);font-weight:700;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ring{display:inline-flex;align-items:center;gap:8px}
-.ring svg{width:30px;height:30px;transform:rotate(-90deg)}
-.ring .tr{stroke:var(--mh-line)}.ring .pr{stroke:var(--mh-accent);transition:stroke-dashoffset .6s var(--mh-ease)}
-.burger{display:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--mh-line-2);background:var(--mh-surface);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.ac-card{display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:22px;cursor:pointer;font:inherit;color:inherit;min-height:150px;transition:border-color .2s,box-shadow .2s}
+.ac-card:hover{border-color:var(--mh-ink);box-shadow:var(--mh-sh-2)}
+.ac-card .n{font-family:var(--mh-serif);font-style:italic;font-size:30px;color:var(--mh-accent-ink);line-height:1}
+.ac-card .t{font-weight:700;font-size:18px;color:var(--mh-ink)}
+.ac-card .d{color:var(--mh-mut);font-size:14.5px;line-height:1.5}
+.ac-card .w{margin-top:auto;font-size:12.5px;color:var(--mh-mut);letter-spacing:.04em}
+.ac-card[aria-disabled=true]{cursor:not-allowed;background:var(--mh-surface-2)}
+.ac-card[aria-disabled=true]:hover{border-color:var(--mh-line);box-shadow:none}
+.ac-card.prox{cursor:default;background:var(--mh-surface-2);min-height:0}
+.ac-card.prox:hover{border-color:var(--mh-line);box-shadow:none}
+.ac-tag{display:inline-block;font:700 11px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;background:var(--mh-surface-3);color:var(--mh-ink-2);vertical-align:middle}
+.ac-tag.ok{background:var(--mh-ok-tint);color:var(--mh-ok)}
+.ac-tag.bor{background:var(--mh-warn-tint);color:var(--mh-warn)}
+.ac-tag.pil{background:var(--mh-accent-tint);color:var(--mh-accent-ink)}
+.ac-tag.nuc{background:var(--mh-ink);color:#fff}
+.ac-m0{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--mh-ink);color:#fff;border-radius:var(--mh-r-lg);padding:28px 30px;margin:0 0 22px}
+.ac-m0 h2{color:#fff;margin:6px 0 6px;font-size:26px}
+.ac-m0 p{color:#E4DDE8;margin:0;font-size:15.5px;line-height:1.55}
+.ac-m0 .mh-kicker{color:#F2C4DA}
+.ac-m0 .mh-btn{background:#fff;color:var(--mh-ink);border-color:#fff}
+@media(max-width:700px){.ac-m0{grid-template-columns:1fr;padding:22px}}
+.ac-area{margin:0 0 28px}
+.ac-area h3{font-size:16px;margin:0 0 12px;color:var(--mh-ink)}
+.ac-area .ac-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.ac-area .ac-card{min-height:0;padding:16px 18px;border-radius:var(--mh-r)}
+.ac-area .ac-card .t{font-size:15.5px}
+.mh .content table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:15.5px;line-height:1.5}
+.mh .content th,.mh .content td{border-bottom:1px solid var(--mh-line);padding:10px 12px 10px 0;text-align:left;vertical-align:top;color:var(--mh-ink-2)}
+.mh .content th{color:var(--mh-ink);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.ac-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ac-sec{border-top:1px solid var(--mh-line);padding-top:26px;margin-top:30px}
+.ac-sec:first-child{border-top:0;padding-top:0;margin-top:0}
+.ac-sec>h2{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.ac-filtro{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 28px}
+.ac-filtro button,.ac-tabs button{min-height:44px;border:1.5px solid var(--mh-line-2);background:#fff;border-radius:999px;padding:0 16px;font:700 14px/1 var(--mh-sans);color:var(--mh-ink-2);cursor:pointer}
+.ac-filtro button[aria-pressed=true],.ac-tabs button[aria-selected=true]{background:var(--mh-ink);border-color:var(--mh-ink);color:#fff}
+.ac-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.ac-ver{background:var(--mh-accent-tint);border-radius:var(--mh-r-lg);padding:22px 24px;margin:0 0 30px}
+.ac-ver .mh-kicker{color:var(--mh-accent-ink)}
+.ac-ver h2{margin:6px 0 10px;font-size:22px}
+.ac-gob{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r);padding:18px 20px;margin:34px 0 0;font-size:14px;color:var(--mh-mut);line-height:1.6}
+.ac-gob dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:10px 0 0}
+.ac-gob dt{font-weight:700;color:var(--mh-ink-2)}
+.ac-gob dd{margin:0}
+.ac-refl{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r);padding:20px 22px;margin:28px 0}
+.ac-refl ul{margin:10px 0 0;padding-left:22px}
+.ac-refl li{margin:0 0 8px;color:var(--mh-ink-2);font-size:16.5px;line-height:1.6}
+.ac-sim{background:var(--mh-blue-tint);border-radius:var(--mh-r);padding:18px 20px;margin:0 0 20px;color:var(--mh-ink-2);font-size:16px;line-height:1.65}
+.ac-crit{display:none;background:var(--mh-err-tint);color:var(--mh-err);border-radius:12px;padding:14px 16px;margin:14px 0 0;font-size:15px;line-height:1.55}
+.ac-crit.show{display:block}
+.ac-vacio{background:var(--mh-surface-2);border-radius:var(--mh-r);padding:18px 20px;color:var(--mh-mut);font-size:15px;line-height:1.6}
+.ac-lista{list-style:none;padding:0;margin:0}
+.ac-lista li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--mh-line)}
+.ac-lista li:last-child{border-bottom:0}
+.ac-lista .n{font-family:var(--mh-serif);font-style:italic;color:var(--mh-accent-ink);font-size:22px}
+.ac-lista b{display:block;color:var(--mh-ink)}
+.ac-lista span{color:var(--mh-mut);font-size:14.5px;line-height:1.5}
+.ac-lista button{all:unset;cursor:pointer;display:block}
+.ac-lista button:focus-visible{outline:2px solid var(--mh-accent);outline-offset:3px;border-radius:6px}
+.ac-lista button b{text-decoration:underline;text-decoration-color:var(--mh-line-2);text-underline-offset:3px}
+/* ---------- menú ---------- */
+.mh nav.desk a .ico{display:none}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--mh-line-2);background:var(--mh-surface);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;flex-shrink:0}
 .burger span{width:18px;height:1.5px;background:var(--mh-ink);border-radius:2px;transition:.25s var(--mh-ease)}
 .burger[aria-expanded=true] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .burger[aria-expanded=true] span:nth-child(2){opacity:0}
 .burger[aria-expanded=true] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .drawer{display:none;flex-direction:column;padding:8px 18px 18px;border-top:1px solid var(--mh-line);background:var(--mh-bg)}
 .drawer.open{display:flex}
-.drawer a{display:flex;align-items:center;min-height:52px;padding:0 6px;border-bottom:1px solid var(--mh-line);color:var(--mh-ink);text-decoration:none;font-size:17px;cursor:pointer}
-.drawer a.estudio{color:var(--mh-accent-ink);font-weight:700}
-.drawer a.adm{font-weight:700}
-@media(max-width:900px){nav.desk,.userbox{display:none}.burger{display:inline-flex}.brand .sep,.brand .mh-logo{display:none}}
+.drawer a{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 6px;border-bottom:1px solid var(--mh-line);color:var(--mh-ink);text-decoration:none;font-size:17px;cursor:pointer}
+.drawer a .ico{display:inline-flex;color:var(--mh-mut)}
+.drawer a .ico svg{width:20px;height:20px}
+.drawer a[aria-current=page]{font-weight:700}
+.drawer a[aria-current=page] .ico{color:#D43380}
+@media(max-width:900px){.mh nav.desk{display:none}.burger{display:inline-flex}}
 
-/* ---------- animación de entrada ---------- */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--mh-ease),transform .7s var(--mh-ease)}
-.reveal.in{opacity:1;transform:none}
+/* ---------- portada ---------- */
+.mh .phero .grid2{align-items:stretch}
+.hola-esc{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 14px 8px 8px;border-radius:999px;background:var(--mh-surface);border:1px solid var(--mh-line);font-size:14.5px;color:var(--mh-ink-2)}
+.hola-esc b{color:var(--mh-ink)}
+.hola-esc .esc-ico{width:32px;height:32px;border-radius:50%}
+.hola-esc .esc-ico svg{width:18px;height:18px}
+.mh .next{display:flex;flex-direction:column;justify-content:center}
+.mh .next .mh-kicker{color:var(--mh-accent-ink)}
+.mh .next .bar i{background:#D43380}
+.reco{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.paso{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr) 190px;gap:20px;align-items:center;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:22px 24px;transition:border-color .2s,box-shadow .2s}
+.paso:hover{border-color:var(--mh-ink);box-shadow:var(--mh-sh-2)}
+.paso .num{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:38px;line-height:1;color:#D43380;text-align:center}
+.paso.ok .num{color:var(--mh-ok)}
+.paso h3{margin:0 0 4px;font-size:19px;line-height:1.3}
+.paso h3 button{all:unset;cursor:pointer}
+.paso h3 button::after{content:'';position:absolute;inset:0;border-radius:inherit}
+.paso h3 button:focus-visible::after{outline:2px solid #D43380;outline-offset:3px}
+.paso p{margin:0;color:var(--mh-mut);font-size:15px;line-height:1.5}
+.paso .para{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;letter-spacing:.04em;color:var(--mh-mut)}
+.paso .av{display:grid;gap:8px;justify-items:end;text-align:right}
+.paso .av .pb{width:100%;height:4px;background:var(--mh-line);border-radius:4px;overflow:hidden}
+.paso .av .pb i{display:block;height:100%;background:#D43380;border-radius:4px}
+.paso.ok .av .pb i{background:var(--mh-ok)}
+.paso .av small{font-size:13px;color:var(--mh-mut)}
+.paso.lock{background:var(--mh-surface-2)}
+.paso.lock .num{color:var(--mh-mut)}
+.paso.m0{background:var(--mh-ink);border-color:var(--mh-ink);color:#fff}
+.paso.m0 h3,.paso.m0 h3 button{color:#fff}
+.paso.m0 p,.paso.m0 .para,.paso.m0 .av small{color:#E4DDE8}
+.paso.m0 .num{color:#F2C4DA}
+.paso.m0 .av .pb{background:rgba(255,255,255,.25)}
+.paso.m0 .av .pb i{background:#fff}
+.paso.m0 .mh-pillb{background:#fff;color:var(--mh-ink)}
+.paso.m0 h3 button:focus-visible::after{outline-color:#fff}
+@media(max-width:760px){.paso{grid-template-columns:44px minmax(0,1fr);padding:18px}.paso .num{font-size:30px}.paso .av{grid-column:1 / -1;justify-items:stretch;text-align:left;grid-template-columns:auto 1fr;align-items:center}.paso .av .mh-pillb{justify-self:start}.paso .av small{grid-column:1 / -1}}
+.esp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ent{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;background:var(--mh-surface);border:1px solid var(--mh-line);border-top:4px solid var(--c);border-radius:var(--mh-r-lg);padding:24px;transition:border-color .2s,box-shadow .2s}
+.ent:hover{box-shadow:var(--mh-sh-2)}
+.ent .rk{font:700 11.5px/1 var(--mh-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.ent h3{margin:8px 0 6px;font-size:21px}
+.ent h3 a{color:inherit;text-decoration:none}
+.ent h3 a::after{content:'';position:absolute;inset:0;border-radius:inherit}
+.ent h3 a:focus-visible::after{outline:2px solid var(--c);outline-offset:3px}
+.ent p{margin:0 0 14px;color:var(--mh-mut);font-size:15px;line-height:1.5}
+.ent .pb{display:block;height:4px;background:var(--mh-line);border-radius:4px;overflow:hidden}
+.ent .pb i{display:block;height:100%;background:var(--c)}
+.ent .pn{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--mh-mut)}
+.ent.nexo{--c:#170F1E}.ent.cutaquig{--c:#28449B}
+@media(max-width:760px){.esp{grid-template-columns:1fr}}
 
-/* ---------- inicio ---------- */
-.hero{padding:72px 0 40px}
-.hero .grid2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:end}
-.hero h1{font-size:clamp(40px,6vw,68px);font-weight:400;letter-spacing:-.035em;line-height:1.02;margin:14px 0 18px}
-.hero h1 .mh-serif{font-size:1.04em}
-.hero .lead{font-size:19px;line-height:1.55;color:var(--mh-ink-2);max-width:34ch;margin:0}
-.next{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:28px;box-shadow:var(--mh-sh-1)}
-.next h2{font-size:22px;font-weight:700;margin:10px 0 6px;line-height:1.25}
-.next p{margin:0 0 18px;color:var(--mh-mut);font-size:15px}
-.next .bar{height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden;margin:0 0 20px}
-.next .bar i{display:block;height:100%;background:var(--mh-accent);border-radius:3px;transition:width .6s var(--mh-ease)}
-.next .mh-btn{width:100%}
-@media(max-width:860px){.hero{padding:44px 0 24px}.hero .grid2{grid-template-columns:1fr;gap:28px}.hero .lead{font-size:17px}}
-
-/* método */
-.metodo{padding:40px 0 24px}
-.mt-card{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:64px 56px 52px;box-shadow:var(--mh-sh-1)}
-.mt-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.mt-card .mh-logo{font-size:clamp(40px,6.4vw,64px)}
-.mt-head p{margin:0;max-width:32ch;color:var(--mh-mut);font-size:15.5px}
-.mt-steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px}
-.mt-step{position:relative;padding:76px 24px 0 0}
-.mt-step:before{content:"";position:absolute;left:0;top:0;width:1px;height:60px;background:linear-gradient(var(--mh-hair),rgba(207,169,188,.12))}
-.mt-step .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:28px;line-height:1}
-.mt-step h3{font-size:21px;font-weight:400;margin:10px 0 0;letter-spacing:-.02em;color:var(--mh-ink)}
-.mt-step h3 b{font-weight:700}
-@media(max-width:420px){.mt-card .mh-logo{font-size:clamp(28px,9.5vw,40px)}}
-@media(max-width:760px){.mt-card{padding:40px 24px 32px}.mt-steps{grid-template-columns:1fr;margin-top:16px}.mt-step{padding:20px 0 20px 22px}.mt-step:before{top:22px;height:calc(100% - 22px)}.mt-step h3{font-size:19px}}
-
-/* secciones */
-section.blk{padding:64px 0}
-.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 28px}
-.sh h1,.sh h2{font-size:clamp(28px,3.6vw,40px);font-weight:400;letter-spacing:-.03em;margin:10px 0 0}
-.sh h1 b,.sh h2 b{font-weight:700}
-.sh p{margin:8px 0 0;color:var(--mh-mut);max-width:52ch;font-size:15.5px}
-@media(max-width:640px){section.blk{padding:44px 0}}
-
-/* rutas */
-.rutas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.ruta{position:relative;--rr:20px;display:flex;flex-direction:column;text-align:left;width:100%;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:20px;padding:24px;color:inherit;text-decoration:none;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s var(--mh-ease);font:inherit}
-.ruta:hover{border-color:var(--mh-line-2);box-shadow:var(--mh-sh-2);transform:translateY(-2px)}
-.ruta .rt{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 22px}
-.ruta .rk{font:700 12px/1 var(--mh-sans);letter-spacing:.14em;text-transform:uppercase}
-.ruta h3{font-size:20px;font-weight:700;margin:0 0 6px}
-.ruta p{margin:0 0 22px;color:var(--mh-mut);font-size:14.5px;line-height:1.5;flex:1}
-.ruta .pb{height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden}
-.ruta .pb i{display:block;height:100%;border-radius:3px}
-.ruta .pn{display:flex;justify-content:space-between;margin-top:10px;font-size:13.5px;color:var(--mh-mut)}
-.ruta .pn b{color:var(--mh-ink)}
-.ruta.tool{background:var(--mh-surface-2);border-style:dashed}
-
-/* módulos */
-.mods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--mh-line)}
-.mrow{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:18px;align-items:start;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--mh-line);padding:24px 4px;cursor:pointer;color:inherit;font:inherit;transition:background .2s}
-/* tarjeta entera clicable: el botón real va dentro del título y su ::after cubre la tarjeta */
-.stretch{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:inherit;letter-spacing:inherit;cursor:pointer}
-.stretch:after{content:"";position:absolute;inset:0;border-radius:var(--rr,0)}
-.stretch:focus-visible{outline:none}
-.stretch:focus-visible:after{outline:2px solid var(--mh-accent);outline-offset:3px}
-.mrow:hover{background:linear-gradient(90deg,var(--mh-accent-tint),rgba(248,236,242,0))}
-.mrow .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);font-size:34px;line-height:1;padding-top:2px}
-.mrow h3{font-size:18px;font-weight:700;margin:0 0 6px;line-height:1.3}
-.mrow p{margin:0;color:var(--mh-mut);font-size:14.5px;line-height:1.5}
-.mrow .st{padding-top:4px}
-.mrow .ck{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:var(--mh-ok-tint);color:var(--mh-ok);font-weight:700;font-size:14px}
-.mrow .go{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;border:1px solid var(--mh-line-2);color:var(--mh-ink);transition:.2s var(--mh-ease)}
-.mrow:hover .go{background:var(--mh-ink);color:#fff;border-color:var(--mh-ink)}
-.mrow .best{display:block;margin-top:8px;font-size:12.5px;color:var(--mh-ok);font-weight:700}
-@media(max-width:820px){.mods{grid-template-columns:1fr}.mrow{grid-template-columns:48px minmax(0,1fr) auto;gap:14px;padding:20px 2px}.mrow .n{font-size:28px}}
-.progline{display:flex;align-items:center;gap:14px;margin:0 0 22px;font-size:14px;color:var(--mh-mut)}
-.progline .bar{flex:1;max-width:320px;height:3px;background:var(--mh-line);border-radius:3px;overflow:hidden}
-.progline .bar i{display:block;height:100%;background:var(--mh-accent)}
-.progline b{color:var(--mh-ink)}
-
-/* caso y nexo */
-.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
-.feat{position:relative;--rr:20px;display:block;text-align:left;width:100%;border-radius:20px;padding:30px;border:1px solid var(--mh-line);background:var(--mh-surface);text-decoration:none;color:inherit;cursor:pointer;font:inherit;transition:box-shadow .2s,transform .2s var(--mh-ease)}
-.feat:hover{box-shadow:var(--mh-sh-2);transform:translateY(-2px)}
-.feat h3{font-size:24px;font-weight:400;margin:12px 0 8px;letter-spacing:-.025em}
-.feat h3 b{font-weight:700}
-.feat p{margin:0 0 18px;color:var(--mh-mut);font-size:15px;line-height:1.55}
-.feat .lk{font-weight:700;color:var(--mh-ink);font-size:14.5px}
-.feat.caso{background:var(--mh-ink);border-color:var(--mh-ink)}
-.feat.caso h3,.feat.caso .lk{color:#fff}.feat.caso p{color:#CFC6D3}.feat.caso .mh-kicker{color:#E7A9C6}
-.feat.nexo{background:var(--mh-teal-tint);border-color:#CFE5E1}
-.feat.nexo .mh-kicker{color:var(--mh-teal)}.feat.nexo .lk{color:var(--mh-teal)}
-@media(max-width:760px){.duo{grid-template-columns:1fr}}
-
-/* mapa */
-.mapwrap{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:24px}
-.mapwrap svg{width:100%;height:auto;display:block}
-.mapnode{cursor:pointer}
-.mapnode rect{transition:stroke .2s,fill .2s}
-.mapnode:hover rect,.mapnode:focus-visible rect{stroke:var(--mh-accent);fill:#FDF7FA}
-.mapnode:focus-visible rect{stroke-width:2.5}
-.mapnode:focus{outline:none}
-.maphint{font-size:13px;color:var(--mh-mut);margin:12px 0 0;text-align:center}
-.mapl{display:none;list-style:none;margin:0;padding:4px 0 0;position:relative}
-.mapl:before{content:"";position:absolute;left:21px;top:26px;bottom:26px;width:1px;background:var(--mh-hair)}
-.mapl li{position:relative}
-.mapl button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:0;padding:10px 0;cursor:pointer;font:inherit;color:inherit}
-.mapl .c{width:44px;height:44px;border-radius:50%;background:var(--mh-surface);border:1px solid var(--mh-hair);color:var(--mh-accent);font-family:var(--mh-serif);font-style:italic;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
-.mapl .ok .c{background:var(--mh-ok-tint);border-color:#BFDCCB;color:var(--mh-ok);font-family:var(--mh-sans);font-style:normal;font-weight:700}
-.mapl b{display:block;font-size:15.5px;color:var(--mh-ink);line-height:1.3}
-.mapl span{font-size:13px;color:var(--mh-mut)}
-@media(max-width:700px){.mapwrap svg,.maphint{display:none!important}.mapl{display:block}.mapwrap{padding:12px 18px}}
-
-/* logros */
-.logros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.logro{display:flex;gap:16px;align-items:flex-start;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:18px;padding:22px}
-.logro .e{width:40px;height:40px;border-radius:50%;border:1px solid var(--mh-line-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--mh-mut-2);font-family:var(--mh-serif);font-style:italic;font-size:18px}
-.logro.on .e{background:var(--mh-accent);border-color:var(--mh-accent);color:#fff}
-.logro b{display:block;color:var(--mh-ink);font-size:15.5px;margin:2px 0 4px}
-.logro span{font-size:13.5px;color:var(--mh-mut);line-height:1.45}
-@media(max-width:820px){.logros{grid-template-columns:1fr}}
-
-/* ---------- vista de módulo ---------- */
-.mhead{padding:40px 0 36px;border-bottom:1px solid var(--mh-line);background:linear-gradient(180deg,var(--mh-surface) 0%,var(--mh-bg) 100%)}
-.back{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 12px;margin:0 0 26px;border-radius:var(--mh-pill);border:1px solid var(--mh-line-2);background:var(--mh-surface);color:var(--mh-ink);font-size:14.5px;font-weight:700;text-decoration:none;cursor:pointer}
-.back:hover{border-color:var(--mh-ink)}
-.mhead .kk{display:flex;align-items:center;gap:12px}
-.mhead .kk .n{font-family:var(--mh-serif);font-style:italic;color:var(--mh-accent);font-size:22px}
-.mhead h1{font-size:clamp(32px,5vw,52px);font-weight:400;letter-spacing:-.035em;line-height:1.06;margin:14px 0 14px;max-width:20ch}
-.mhead p.lead{font-size:18.5px;color:var(--mh-ink-2);max-width:56ch;margin:0;line-height:1.55}
-.mstep{display:flex;gap:6px;margin-top:26px}
-.mstep i{flex:1;max-width:44px;height:3px;border-radius:3px;background:var(--mh-line)}
-.mstep i.on{background:var(--mh-accent)}.mstep i.ok{background:var(--mh-hair)}
-.reading{max-width:760px;margin:0 auto;padding:44px 0 20px}
-.content h2{font-size:24px;font-weight:700;margin:40px 0 12px;letter-spacing:-.02em}
-.content h2:first-child{margin-top:0}
-.content h3{font-size:19px;font-weight:700;margin:28px 0 8px}
-.content p,.content li{font-size:17.5px;line-height:1.75;color:var(--mh-ink-2)}
-.content p{margin:0 0 18px}
-.content ul,.content ol{padding-left:24px;margin:0 0 18px}
-.content li{margin:0 0 6px}
-.content strong{color:var(--mh-ink);font-weight:700}
-.content a{color:var(--mh-accent-ink)}
-.content .quote{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:clamp(21px,2.6vw,26px);line-height:1.4;color:var(--mh-ink);border-left:1px solid var(--mh-accent);padding:4px 0 4px 26px;margin:34px 0}
-.sec2{margin:48px 0 0}
-.sec2>.mh-kicker{display:block;margin:0 0 16px}
-/* recursos */
-.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.rc{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:18px;padding:20px}
-.rc.big{grid-column:1/-1}
-.rc .rh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
-.rc .rh h3,.rc .rh h4{margin:0;font-size:16px;font-weight:700;color:var(--mh-ink);letter-spacing:0;line-height:1.3}
-h2.mh-kicker{margin:0;letter-spacing:.16em;line-height:1.3;color:var(--mh-mut)}
-.rc .ico{font:700 11px/1 var(--mh-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mh-accent-ink);background:var(--mh-accent-tint);padding:6px 9px;border-radius:var(--mh-pill)}
-.rc .dl{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:var(--mh-pill);border:1.5px solid var(--mh-line-2);color:var(--mh-ink);font-weight:700;font-size:14.5px;text-decoration:none}
-.rc .dl:hover{border-color:var(--mh-ink)}
-.rc .player{width:100%;border-radius:12px;background:#000;display:block}
-.vid{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
-.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.aud{width:100%;height:90px;border:0;border-radius:12px;background:var(--mh-surface-2)}.aud.sc{height:120px}.aud.sp{height:152px}
-/* autoevaluación */
-.quiz{background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:32px}
-.quiz .qi{font-size:14.5px;color:var(--mh-mut);margin:0 0 24px}
-.q{padding:0 0 26px;margin:0 0 26px;border-bottom:1px solid var(--mh-line)}
-.q:last-of-type{border-bottom:0;margin-bottom:8px;padding-bottom:0}
-.qt{display:flex;gap:12px;font-size:17.5px;font-weight:700;color:var(--mh-ink);line-height:1.45;margin:0 0 14px;padding:0}
-.qt .n{font-family:var(--mh-serif);font-style:italic;font-weight:500;color:var(--mh-accent);flex-shrink:0}
-.opts{display:grid;gap:10px}
-.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;min-height:54px;padding:13px 16px;border:1.5px solid var(--mh-line-2);border-radius:14px;background:var(--mh-surface);color:var(--mh-ink-2);font:400 16px/1.45 var(--mh-sans);cursor:pointer;transition:border-color .15s,background .15s}
-.opt:hover{border-color:#B9A9B2}
-.opt .dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--mh-ctl);flex-shrink:0;position:relative;transition:.15s}
-.opt[aria-checked=true]{border-color:var(--mh-accent);background:var(--mh-accent-tint);color:var(--mh-ink)}
-.opt[aria-checked=true] .dot{border-color:var(--mh-accent);box-shadow:inset 0 0 0 4px var(--mh-accent-tint);background:var(--mh-accent)}
-.opt .tag{margin-left:auto;font:700 12px/1 var(--mh-sans);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-.opt.correct{border-color:var(--mh-ok);background:var(--mh-ok-tint);color:var(--mh-ink)}
-.opt.correct .dot{border-color:var(--mh-ok);background:var(--mh-ok);box-shadow:inset 0 0 0 4px var(--mh-ok-tint)}
-.opt.correct .tag{color:var(--mh-ok)}
-.opt.wrong{border-color:var(--mh-err);background:var(--mh-err-tint)}
-.opt.wrong .dot{border-color:var(--mh-err);background:var(--mh-err);box-shadow:inset 0 0 0 4px var(--mh-err-tint)}
-.opt.wrong .tag{color:var(--mh-err)}
-.opt.lock{cursor:default}
-.exp{display:none;margin-top:12px;padding:12px 16px;border-radius:12px;background:var(--mh-surface-2);font-size:15px;color:var(--mh-ink-2);line-height:1.55}
-.exp.show{display:block}
-.qa{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.score{display:none;margin-top:22px;padding:18px 20px;border-radius:14px;background:var(--mh-surface-2);font-size:16px;color:var(--mh-ink)}
-.score.show{display:block}.score.ok{background:var(--mh-ok-tint)}.score b{color:var(--mh-ink)}
-@media(max-width:640px){.quiz{padding:22px 18px}.qa .mh-btn{flex:1}.reading{padding-top:32px}}
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 80px}
-.pager button{display:flex;flex-direction:column;gap:4px;text-align:left;padding:18px 20px;border:1px solid var(--mh-line);border-radius:18px;background:var(--mh-surface);cursor:pointer;font:inherit;color:inherit;transition:border-color .2s}
-.pager button:hover{border-color:var(--mh-ink)}
-.pager button.nx{text-align:right;align-items:flex-end}
-.pager small{font-size:12.5px;color:var(--mh-mut);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
-.pager span{font-size:16px;color:var(--mh-ink);font-weight:700}
-.pager button[disabled]{visibility:hidden}
-
-/* ---------- certificado ---------- */
-.certtools{max-width:620px;margin:0 auto 28px;text-align:center}
-.certtools p{color:var(--mh-mut);margin:0 0 16px}
-.certtools .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-#cert .certcard{background:#fff;max-width:860px;margin:0 auto;border:1px solid var(--mh-line);border-radius:6px;padding:14px;box-shadow:var(--mh-sh-2)}
-#cert .cinner{border:1px solid var(--mh-hair);padding:56px 48px 44px;text-align:center}
-#cert .clabel{font:700 12px/1 var(--mh-sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mh-mut)}
-#cert h2{font-size:34px;font-weight:400;margin:16px 0 4px;letter-spacing:-.03em}
-#cert h2 b{font-weight:700}
-#cert .cname{font-family:var(--mh-serif);font-style:italic;font-weight:500;font-size:clamp(32px,5vw,46px);color:var(--mh-ink);margin:18px auto 14px;padding:0 24px 10px;border-bottom:1px solid var(--mh-hair);display:inline-block;min-width:60%}
-#cert p{font-size:15.5px;line-height:1.6;max-width:56ch;margin:8px auto;color:var(--mh-ink-2)}
-#cert .cmods{color:var(--mh-mut);font-size:12.5px;margin-top:14px;line-height:1.6}
-#cert .cseal{margin-top:30px;display:flex;justify-content:center}
-#cert .cseal .mh-logo{font-size:22px}
-@media(max-width:640px){#cert .cinner{padding:36px 18px 28px}}
-@media print{header.top,footer,.noprint,.mh-toast{display:none!important}body{background:#fff}#cert .certcard{box-shadow:none;border:0}}
-
-/* ---------- pie ---------- */
-footer{border-top:1px solid var(--mh-line);padding:44px 0 56px;margin-top:40px;color:var(--mh-mut);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-footer .mh-logo{font-size:26px}
-footer nav{display:flex;gap:6px;flex-wrap:wrap}
-footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--mh-ink-2);text-decoration:none;padding:10px 12px;border-radius:var(--mh-pill);cursor:pointer}
-footer nav a:hover{background:var(--mh-surface-2);color:var(--mh-ink)}
-footer small{display:block;margin-top:10px}
+/* ---------- escuelas, certificados y administración ---------- */
+.ac-card .cab{display:flex;align-items:center;gap:12px}
+.cards2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.tarj{display:flex;flex-direction:column;gap:10px;background:var(--mh-surface);border:1px solid var(--mh-line);border-radius:var(--mh-r-lg);padding:24px}
+.tarj h2{font-size:21px;margin:0}
+.tarj p{margin:0;color:var(--mh-mut);font-size:15px;line-height:1.55}
+.tarj .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.tarj .cab{display:flex;align-items:center;gap:12px}
+.tarj.arch{background:var(--mh-surface-2)}
+.vista-chip{background:var(--mh-warn-tint)!important;color:var(--mh-warn)!important}
 </style>
 </head>
-<body class="mh">
+<body class="mh" data-entorno="academy">
 <a class="mh-skip" href="#app">Ir al contenido</a>
 <header class="top"><div class="wrap">
 <button class="brand" onclick="home()" aria-label="Humana Academy, ir al inicio"><span class="mh-word"><b>Humana</b> <span>Academy</span></span><span class="sep" aria-hidden="true"></span><span class="mh-logo" aria-hidden="true"><i>m</i>étodo<b>Humana</b></span></button>
-<nav class="desk" id="navdesk" aria-label="Principal"><a href="#mods" onclick="event.preventDefault();scrollMods()">Módulos</a><a href="#certificado" onclick="event.preventDefault();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a></nav>
-<div class="userbox" id="userbox"></div>
+<nav class="desk" id="navdesk" aria-label="Principal"></nav>
 <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
 </div>
-<nav class="drawer" id="drawer" aria-label="Menú">
-<a href="#mods" onclick="event.preventDefault();closeMenu();scrollMods()">Módulos</a><a href="#certificado" onclick="event.preventDefault();closeMenu();openCert()">Certificado</a><a href="estratificador.html">Estratificador</a><a id="installBtn" href="#" role="button" onclick="event.preventDefault();closeMenu();installApp()" style="display:none">Instalar la app</a>
-</nav>
+<nav class="drawer" id="drawer" aria-label="Menú"></nav>
 </header>
 <main id="app" tabindex="-1"></main>
 <div class="mh-toast toast" id="toast" role="status" aria-live="polite"></div>
-<footer><div class="wrap">
-<div><span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span><small>Humana Academy · Humana Health &amp; Care · Argentina</small></div>
-<nav aria-label="Pie"><a href="Humana_Documento_Madre.pdf" download>Documento base</a><a href="#certificado" onclick="event.preventDefault();openCert()">Certificado</a><a href="estratificador.html">Estratificador comercial</a></nav>
+<footer class="pie"><div class="wrap">
+<div><span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span><small>Humana Academy · Humana Health &amp; Care · Humana, desde 2011</small></div>
+<nav aria-label="Pie"><a href="#certificados" onclick="verCertificados();return false">Certificados</a><a href="#" id="paisbtn" onclick="cambiarPais();return false">Ver versión España</a></nav>
 </div></footer>
-<script src="modulos-base.js?v=2"></script>
+
+<script src="entornos.js?v=1"></script>
+<script src="pais.js?v=1"></script>
+<script src="academia-estructura.js?v=1"></script>
 <script src="contenido.js?v=3"></script>
 <script>
+/* ===================================================================
+   Humana Academy · inicio. El recorrido es el de Karina: Módulo 0 Doctrina, tronco común,
+   tu escuela, patologías, herramientas y práctica. El programa anterior está en archivo.html.
+   El acceso, el panel de personas y el guardado del avance general los maneja firebase-auth.js.
+   =================================================================== */
 const STORE={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+/* scores = programa anterior (lo mantiene firebase-auth.js para conservar sus certificados). */
 let scores=STORE.get('ha_s',{}), uname=STORE.get('ha_name',''), uemail=STORE.get('ha_email','');
-const LOGO='<span class="mh-logo" role="img" aria-label="método Humana"><i>m</i>étodo<b>Humana</b></span>';
-
-/* ---------- Contenido: lo carga el Estudio; esto es lo que hay en el equipo mientras tanto ---------- */
-let CONT=HA_contenidoInicial();
-let MODULES=CONT.modulos, CAP=CONT.caso;
-const ids=()=>MODULES.map(m=>m.n);
-const pos=n=>MODULES.findIndex(m=>m.n===n)+1;
-const done=n=>scores[n]!=null&&scores[n]>=60;
-const allDone=()=>MODULES.length>0&&ids().every(done);
-const nCompl=()=>ids().filter(done).length;
-const dd=n=>(n<10?'0':'')+n;
 let vista='home';
-window.HA_aplicarContenido=function(c){
-  if(!c||!c.modulos||!c.modulos.length)return;
-  CONT=c; MODULES=c.modulos; CAP=c.caso;
-  renderUserbox();
-  if(vista==='home')home();
-};
-
+const A=HA_AC, P=HA_PAIS, esc=A.esc, pad=A.pad, ICO=window.HA_icono;
+const LOGO='<span class="mh-logo"><i>m</i>étodo<b>Humana</b></span>';
+const IAR='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const IBK='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M13 8H4M7.5 4.5L4 8l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const app=document.getElementById('app');
+/* Programa anterior (archivado): sus diez módulos, para mostrar el certificado si ya se obtuvo. */
+const ARCH_IDS=[1,2,3,4,5,6,7,8,9,10];
+
+/* ---------- estado ---------- */
+let curUser=null, db=null, LISTO=false, ES_ADMIN=false;
+let U={name:'', escuela:'', rol:'equipo'};     // del documento del usuario
+let PROG={ok:{}, scores:{}};                   // users/{uid}.academia
+let RAW=[], DOCS={};                           // contenido
+let EDITORA=false, VISTA_ALUMNA=false;          // las editoras ven borradores; "Ver como alumna" se elige en Administración
+let ESC_VER='';                                 // escuela que se está mirando (editoras pueden cambiarla)
+
+function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2800);}
+function L(x){ return P.L(x); }
+function visible(d){ return d && d.estado!=='archivado' && (d.estado==='publicado' || (EDITORA && !VISTA_ALUMNA)); }
+function doc(id){ const d=DOCS[id]; return visible(d)?d:null; }
+function lista(f){ return RAW.filter(d=>visible(d)&&f(d)).sort((a,b)=>(a.orden||0)-(b.orden||0)); }
+function escuelaActual(){ return ESC_VER || U.escuela || ''; }
+function m0ok(){ return !!PROG.ok['modulo-0']; }
+function previa(){ return EDITORA && !VISTA_ALUMNA; }
+function bloqueado(n){ return n>0 && !m0ok() && !previa(); }
+function estadoTag(d){ if(!d) return ''; if(d.estado==='borrador') return ' <span class="ac-tag bor">Borrador</span>'; return ''; }
+function irA(titulo){ document.title=(titulo?titulo+' · ':'')+'Humana Academy'; window.scrollTo(0,0); const h=app.querySelector('h1'); try{ if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } }catch(e){} }
+function tablas(h){ return (h||'').replace(/<table>/g,'<div class="ac-tablewrap"><table>').replace(/<\/table>/g,'</table></div>'); }
+function html(x){ return tablas(A.sanear(L(x))); }
+function escIco(id,clase){ return ICO(id,'esc-ico'+(clase?' '+clase:'')); }
+
+/* ---------- capa por país ---------- */
+function aplicarPais(){ P.fijar(curUser&&curUser.email); const pb=document.getElementById('paisbtn'); if(pb) pb.textContent=P.boton(); }
+function cambiarPais(){ P.cambiar(); aplicarPais(); rehacer(); toast(P.T('Versión España','Versión Argentina')); }
+let rehacer=home;
+
+/* ---------- menú: Inicio, Mi escuela, Certificados, Administración (solo administradores) y Salir ---------- */
 function toggleMenu(){const d=document.getElementById('drawer'),b=document.getElementById('burger');const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');}
 function closeMenu(){const d=document.getElementById('drawer'),b=document.getElementById('burger');d.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menú');}
 document.addEventListener('keydown',e=>{
-  const t=e.target;
-  if(t&&t.matches&&((e.key===' '&&t.matches('a[role="button"]'))||((e.key==='Enter'||e.key===' ')&&t.matches('a[tabindex="0"]:not([href])')))){e.preventDefault();t.click();}
   if(e.key==='Escape'){const d=document.getElementById('drawer');if(d&&d.classList.contains('open')){const vuelve=d.contains(document.activeElement);closeMenu();if(vuelve)document.getElementById('burger').focus();}}
+  const t=e.target; if(t&&t.matches&&e.key===' '&&t.matches('a[role="button"]')){e.preventDefault();t.click();}
 });
-const _menosMov=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-function observeReveal(){ if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));return;} const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>o.observe(el));}
-function esc2(x){ return (''+(x==null?'':x)).replace(/[<>&"]/g,c=>c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':'&quot;'); }
-function cap1(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
-/* Cambio de vista: título de la pestaña y foco en el h1 nuevo, para que el lector de pantalla anuncie dónde está. */
-function irA(titulo,mover){
-  document.title=(titulo?titulo+' · ':'')+'Humana Academy';
-  window.scrollTo(0,0);
-  if(mover===false)return;
-  const h=app.querySelector('h1');
-  try{ if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});} else app.focus({preventScroll:true}); }catch(e){}
+const MENU=[
+  {id:'inicio', t:'Inicio', ico:'inicio', ir:'home()', vistas:['home','modulo','doc']},
+  {id:'escuela', t:'Mi escuela', ico:'escuela', ir:'verMiEscuela()', vistas:['escuela']},
+  {id:'certificados', t:'Certificados', ico:'certificado', ir:'verCertificados()', vistas:['cert']},
+  {id:'administracion', t:'Administración', ico:'administracion', ir:'verAdministracion()', vistas:['admin'], admin:true},
+  {id:'salir', t:'Salir', ico:'salir', ir:'salir()', boton:true}
+];
+function pintarMenu(){
+  const items=MENU.filter(m=>!m.admin||ES_ADMIN);
+  const cur=MENU.find(m=>(m.vistas||[]).indexOf(vista)>=0);
+  const a=(m,donde)=>{
+    const ico=m.ico==='escuela'?ICO(U.escuela||'academy'):ICO(m.ico);
+    return `<a id="m-${m.id}-${donde}" class="lk" href="#${m.id}" ${m.boton?'role="button"':''} ${cur===m?'aria-current="page"':''} onclick="event.preventDefault();closeMenu();${m.ir}"><span class="ico" aria-hidden="true">${ico}</span>${m.t}</a>`;
+  };
+  document.getElementById('navdesk').innerHTML=items.filter(m=>!m.boton).map(m=>a(m,'d')).join('')+'<div class="userbox" id="userbox"></div>'+items.filter(m=>m.boton).map(m=>a(m,'d')).join('');
+  document.getElementById('drawer').innerHTML=items.map(m=>a(m,'m')).join('')+'<a id="installBtn" href="#" role="button" onclick="event.preventDefault();closeMenu();installApp()" style="display:none">Instalar la app</a>';
+  if(_deferredPrompt){ const b=document.getElementById('installBtn'); if(b) b.style.display=''; }
+  renderUserbox();
+}
+/* Lo llama firebase-auth.js al entrar. */
+window.HA_menu=function(user,admin){ ES_ADMIN=!!admin; pintarMenu(); };
+function salir(){ if(window.HA_salir) window.HA_salir(); }
+function marcarVista(v){ vista=v; if(LISTO) pintarMenu(); }
+
+function renderUserbox(){
+  const b=document.getElementById('userbox'); if(!b) return;
+  const e=A.escuela(U.escuela);
+  b.innerHTML=(U.name||uname?'<span class="hi">'+esc((U.name||uname).split(' ')[0])+'</span>':'')
+    +(e?'<span class="ac-tag" title="Tu escuela">'+esc(e.t)+'</span>':'')
+    +(EDITORA&&VISTA_ALUMNA?'<span class="ac-tag vista-chip">Vista de alumna</span>':'');
 }
 
-/* ---------- rutas ---------- */
-function _sc(k){ try{ return STORE.get(k,{})||{}; }catch(e){ return {}; } }
-function _hechos(sc,lista){ return lista.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
-function _rutas(){
+/* ---------- avance por módulo ---------- */
+function itemsModulo(n){
+  if(n===0) return doc('modulo-0')?['modulo-0']:[];
+  if(n===1) return A.TRONCOS.filter(t=>doc(t.id)).map(t=>t.id);
+  if(n===2){ const e=U.escuela; if(!e) return []; const u=lista(x=>x.tipo==='unidad'&&x.escuela===e).map(x=>x.id); return u.length?u:(doc('escuela-'+e)?['escuela-'+e]:[]); }
+  if(n===3) return lista(x=>x.tipo==='patologia').map(x=>x.id);
+  return lista(x=>x.modulo===n).map(x=>x.id);
+}
+function avance(n){ const it=itemsModulo(n); const ok=it.filter(id=>PROG.ok[id]).length; return {tot:it.length, ok, pct:it.length?Math.round(ok/it.length*100):0, fin:it.length>0&&ok>=it.length}; }
+function siguiente(){
+  if(!m0ok()) return {n:0, t:'Doctrina Humana', ir:"abrir('modulo-0')"};
+  for(const m of A.MODULOS){ if(m.n===0) continue; const a=avance(m.n); if(a.tot&&!a.fin) return {n:m.n, t:m.t, a, ir:'verModulo('+m.n+')'}; }
+  return null;
+}
+function _sc(k){ return STORE.get(k,{})||{}; }
+function _hechos(sc,ids){ return ids.filter(n=>sc[n]!=null&&sc[n]>=60).length; }
+function formaciones(){
   const nx=window.HA_nexo||_sc('hn_s'), cq=window.HA_cutaquig||_sc('cq_s');
   return [
-   {id:'academy', t:'Humana Academy', k:'Doctrina', d:'Cómo observamos, comprendemos y acompañamos al paciente.', col:'var(--mh-accent)', kc:'var(--mh-accent-ink)', tot:MODULES.length, hechos:nCompl(), ir:"scrollMods()"},
-   {id:'nexo', t:'Humana Nexo', k:'Programa', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.', col:'var(--mh-teal)', kc:'var(--mh-teal)', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), ir:"location.href='nexo.html'"},
-   {id:'cutaquig', t:'Cutaquig®', k:'Producto', d:'Inmunoglobulina subcutánea: técnica, seguridad y dosificación.', col:'var(--mh-blue)', kc:'var(--mh-blue)', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), ir:"location.href='cutaquig.html'"}
+    {id:'nexo', t:'Humana Nexo', k:'Programa', d:'El Programa de Asistencia al Paciente: qué es, cómo funciona y tu rol.', url:'nexo.html', tot:5, hechos:_hechos(nx,[1,2,3,4,5]), u:'lecciones'},
+    {id:'cutaquig', t:'Cutaquig®', k:'Producto', d:'Inmunoglobulina subcutánea: técnica, seguridad y dosificación.', url:'cutaquig.html', tot:9, hechos:_hechos(cq,[1,2,3,4,5,6,7,8,9]), u:'módulos'}
   ];
-}
-function _siguiente(){
-  const r=_rutas().find(x=>x.hechos<x.tot)||null;
-  if(!r) return null;
-  if(r.id==='academy'){ const m=MODULES.find(x=>!done(x.n)); return {r, n:pos(m.n), t:m.t, ir:`openM(${m.n})`}; }
-  return {r, n:r.hechos+1, t:r.t, ir:r.ir};
-}
-
-/* ---------- mapa del programa ---------- */
-function _partir(t,max){ const w=(t||'').split(' '); const l=['']; w.forEach(x=>{ const c=l[l.length-1]; if((c+' '+x).trim().length>max&&l.length<2&&c)l.push(x); else l[l.length-1]=(c+' '+x).trim(); }); if(l.length===2&&l[1].length>max+4)l[1]=l[1].slice(0,max+2)+'…'; return l; }
-function mapaHTML(){
-  const N=MODULES.length; if(!N) return '';
-  const G=N<=6?[1000,570,286,192,234,22]:N<=8?[1000,660,340,250,220,21]:[1100,800,430,320,205,20];
-  const W=G[0], H=G[1], cx=W/2, cy=H/2, rx=G[2], ry=G[3], bw=G[4], bh=70, mx=G[5];
-  let lines='', nodes='';
-  MODULES.forEach((m,i)=>{
-    const a=-Math.PI/2+i*2*Math.PI/N, x=cx+rx*Math.cos(a), y=cy+ry*Math.sin(a);
-    const bx=Math.max(8,Math.min(W-bw-8,x-bw/2)), by=y-bh/2;
-    const tl=_partir(m.t,mx), ok=done(m.n);
-    lines+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#E2C9D5" stroke-width="1"/>`;
-    nodes+=`<g class="mapnode" onclick="openM(${m.n})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openM(${m.n})}" role="link" tabindex="0" aria-label="Módulo ${i+1}: ${esc2(m.t)}${ok?', completado':''}"><rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw}" height="${bh}" rx="14" fill="#FFFFFF" stroke="${ok?'#9CCDB4':'#E2D9DE'}" stroke-width="1"/><text x="${(bx+18).toFixed(1)}" y="${(y+8).toFixed(1)}" font-family="Bodoni Moda,Georgia,serif" font-style="italic" font-weight="500" font-size="24" fill="${ok?'#1C7550':'#B8407A'}">${ok?'✓':dd(i+1)}</text>`
-      +tl.map((s,k)=>`<text x="${(bx+58).toFixed(1)}" y="${(y-(tl.length>1?9:3)+k*18).toFixed(1)}" font-size="${N>8?13.5:14}" font-weight="700" fill="#170F1E">${esc2(s)}</text>`).join('')
-      +`<text x="${(bx+58).toFixed(1)}" y="${(y+(tl.length>1?26:16)).toFixed(1)}" font-size="12" fill="#686070">${esc2((m.etiqueta||'').length>28?(m.etiqueta.slice(0,27)+'…'):(m.etiqueta||''))}</text></g>`;
-  });
-  const svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Arimo,Helvetica,Arial,sans-serif" role="group" aria-label="Mapa del programa">${lines}<circle cx="${cx}" cy="${cy}" r="92" fill="#FBF9FA" stroke="#E2C9D5" stroke-width="1"/>${nodes}<text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="18" fill="#170F1E">Medicina de</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="18" font-weight="700" fill="#170F1E">Continuidad</text></svg>`;
-  const lista=`<ul class="mapl">${MODULES.map((m,i)=>`<li class="${done(m.n)?'ok':''}"><button onclick="openM(${m.n})"><span class="c" aria-hidden="true">${done(m.n)?'✓':dd(i+1)}</span><span><span class="mh-sr">Módulo ${i+1}: </span><b>${esc2(m.t)}</b><span>${esc2(m.etiqueta||'')}${done(m.n)?'<span class="mh-sr">, completado</span>':''}</span></span></button></li>`).join('')}</ul>`;
-  return `<div class="mapwrap reveal">${svg}${lista}<p class="maphint" aria-hidden="true">Tocá un módulo para entrar.</p></div>`;
 }
 
 /* ---------- inicio ---------- */
-function home(){const _mover=vista!=='home'||(document.activeElement&&document.activeElement!==document.body&&app.contains(document.activeElement));vista='home';renderUserbox();
- const N=MODULES.length, compl=nCompl(), pct=N?Math.round(compl/N*100):0;
- const nom=(uname||'').split(' ')[0]||'';
- const rs=_rutas(), tot=rs.reduce((a,x)=>a+x.tot,0), hec=rs.reduce((a,x)=>a+x.hechos,0);
- const sig=_siguiente();
- const next = sig
-   ? `<aside class="next reveal" aria-label="Tu próximo paso"><span class="mh-kicker">${hec===0?'Empezá por acá':'Seguí donde dejaste'}</span>
-      <h2>${sig.r.id==='academy'?`Módulo ${sig.n} · ${esc2(sig.t)}`:esc2(sig.r.t)}</h2>
-      <p>${sig.r.id==='academy'?`Humana Academy · ${compl} de ${N} módulos`:`Te faltan ${sig.r.tot-sig.r.hechos} de ${sig.r.tot}`}</p>
-      <div class="bar" aria-hidden="true"><i style="width:${sig.r.tot?Math.round(sig.r.hechos/sig.r.tot*100):0}%"></i></div>
-      <button class="mh-btn pri" onclick="${sig.ir}">${hec===0?'Empezar':'Continuar'} <span class="ar" aria-hidden="true">→</span></button></aside>`
-   : `<aside class="next reveal"><span class="mh-kicker">Completaste todo</span><h2>No te queda nada pendiente</h2><p>Descargá tu certificado o repasá lo que quieras.</p><button class="mh-btn pri" onclick="openCert()">Ver certificado <span class="ar" aria-hidden="true">→</span></button></aside>`;
- const rutas = rs.map(r=>{
-    const p=r.tot?Math.round(r.hechos/r.tot*100):0, fin=r.tot>0&&r.hechos>=r.tot;
-    const pill = fin?'<span class="mh-pillb ok">Completo</span>':r.hechos>0?'<span class="mh-pillb on">En curso</span>':'<span class="mh-pillb off">Sin empezar</span>';
-    return `<div class="ruta reveal"><span class="rt"><span class="rk" style="color:${r.kc}">${r.k}</span>${pill}</span><h3><button class="stretch" onclick="${r.ir}">${r.t}</button></h3><p>${r.d}</p><span class="pb" aria-hidden="true"><i style="width:${p}%;background:${r.col}"></i></span><span class="pn"><span>${r.hechos} de ${r.tot} módulos</span><b>${p}%</b></span></div>`;
-  }).join('')+`<a class="ruta tool reveal" href="estratificador.html"><span class="rt"><span class="rk" style="color:var(--mh-ink)">Herramienta</span></span><h3>Estratificador</h3><p>Para dimensionar oportunidades con financiadores e instituciones.</p><span class="pn"><b>Abrir <span aria-hidden="true">→</span></b><span></span></span></a>`;
- const mods=MODULES.map((m,i)=>`<div class="mrow reveal"><span class="n" aria-hidden="true">${dd(i+1)}</span><div><h3><button class="stretch" onclick="openM(${m.n})"><span class="mh-sr">Módulo ${i+1}: </span>${esc2(m.t)}</button></h3><p>${esc2(m.lead)}</p>${done(m.n)?`<span class="best">Completado · mejor nota ${scores[m.n]}%</span>`:''}</div><span class="st" aria-hidden="true">${done(m.n)?'<span class="ck">✓</span>':'<span class="go">→</span>'}</span></div>`).join('');
- const caso=CAP?`<div class="feat caso reveal"><span class="mh-kicker">Caso integrador</span><h3><button class="stretch" onclick="openCap()"><b>${esc2(CAP.t)}</b></button></h3><p>${esc2(CAP.lead)}</p><span class="lk" aria-hidden="true">Abrir el caso →</span></div>`:'';
- const cert=allDone();
- app.innerHTML=`
- <section class="hero"><div class="wrap grid2">
-  <div class="reveal"><span class="mh-kicker">Humana Academy</span>
-   <h1>Hola${nom?`, <span class="mh-serif">${esc2(nom)}</span>`:''}.</h1>
-   <p class="lead">Tu formación en Medicina de Continuidad. Una idea por módulo, a tu ritmo, desde donde estés.</p></div>
-  ${next}
- </div></section>
- <section class="metodo" aria-labelledby="mt-t"><div class="wrap"><div class="mt-card reveal">
-  <div class="mt-head"><h2 id="mt-t" style="margin:0">${LOGO}</h2><p>La forma de trabajar de Humana. Todo lo que aprendés acá parte de estos tres pasos.</p></div>
-  <div class="mt-steps"><div class="mt-step"><span class="n">01</span><h3><b>Evaluamos</b> la situación</h3></div><div class="mt-step"><span class="n">02</span><h3><b>Ordenamos</b> el caso</h3></div><div class="mt-step"><span class="n">03</span><h3><b>Activamos</b> el seguimiento</h3></div></div>
- </div></div></section>
- <section class="blk"><div class="wrap">
-  <div class="sh reveal"><div><span class="mh-kicker">Tus rutas</span><h2>${rs.length} recorridos, <b>${tot} módulos</b></h2></div><p>Llevás ${hec} de ${tot}. Tu avance se guarda en la compu y en el celular.</p></div>
-  <div class="rutas">${rutas}</div>
- </div></section>
- <section class="blk" id="mods" style="padding-top:8px"><div class="wrap">
-  <div class="sh reveal"><div><span class="mh-kicker">El programa</span><h2>${cap1(HA_enLetras(N))} módulos, <b>una idea por módulo</b></h2></div><p>Cada módulo combina una lectura breve y una autoevaluación. Se completa al aprobar con 60% o más.</p></div>
-  <div class="progline reveal"><span><b>${compl}</b> de ${N} completados</span><span class="bar" aria-hidden="true"><i style="width:${pct}%"></i></span></div>
-  <div class="mods">${mods}</div>
-  <div class="duo">${caso}<a class="feat nexo reveal" href="nexo.html"><span class="mh-kicker">Programa de Asistencia al Paciente</span><h3><b>Humana Nexo</b></h3><p>Una formación aparte, con su propio recorrido y certificado: cómo acompañamos terapias especiales de principio a fin.</p><span class="lk">Entrar a Nexo <span aria-hidden="true">→</span></span></a></div>
- </div></section>
- <section class="blk" style="padding-top:8px"><div class="wrap">
-  <div class="sh reveal"><div><span class="mh-kicker">Vista general</span><h2>El mapa <b>del programa</b></h2></div><p>Toda la Medicina de Continuidad en un vistazo.</p></div>
-  ${mapaHTML()}
- </div></section>
- <section class="blk" style="padding-top:8px"><div class="wrap">
-  <div class="sh reveal"><div><span class="mh-kicker">Tus logros</span><h2>Lo que <b>ya conseguiste</b></h2></div></div>
-  <div class="logros">
-   <div class="logro reveal ${hec>0?'on':''}"><span class="e" aria-hidden="true">i</span><div><b>Arrancaste</b><span>${hec>0?'Completaste tu primer módulo.':'Se activa con tu primer módulo aprobado.'}</span></div></div>
-   <div class="logro reveal ${cert?'on':''}"><span class="e" aria-hidden="true">ii</span><div><b>Certificado de Academy</b><span>${cert?'Ya podés descargarlo.':`Se habilita al aprobar los ${N} módulos.`}</span></div></div>
-   <div class="logro reveal ${hec>=tot?'on':''}"><span class="e" aria-hidden="true">iii</span><div><b>Recorrido completo</b><span>${hec>=tot?'Terminaste las tres rutas.':`${hec} de ${tot} módulos en total.`}</span></div></div>
-  </div>
- </div></section>`;
- irA('',_mover);document.title='Humana Academy · método Humana';observeReveal();
+function home(){
+  if(!LISTO) return;
+  rehacer=home; marcarVista('home'); ESC_VER='';
+  if(_rutaInicial()) return;
+  const e=A.escuela(U.escuela), nom=((U.name||uname)||'').split(' ')[0];
+  const hayAlgo=RAW.some(visible);
+  const sig=siguiente();
+  const aside=!hayAlgo
+    ? `<aside class="next" aria-label="Tu próximo paso"><span class="mh-kicker">En preparación</span><h2>Todavía no hay contenidos publicados</h2><p>Mientras tanto, seguí con las formaciones específicas.</p></aside>`
+    : sig
+    ? `<aside class="next" aria-label="Tu próximo paso"><span class="mh-kicker">${m0ok()?'Seguí donde dejaste':'Empezá por acá'}</span>
+        <h2>Módulo ${sig.n} · ${esc(sig.t)}</h2><p>${sig.n===0?'Obligatorio. El núcleo se lee en 15 minutos y abre el resto de la Academy.':`${sig.a.ok} de ${sig.a.tot} completados`}</p>
+        ${sig.a?`<div class="bar" aria-hidden="true"><i style="width:${sig.a.pct}%"></i></div>`:''}
+        <button class="mh-btn pa" onclick="${sig.ir}">${m0ok()?'Continuar':'Empezar'} <span class="ar">${IAR}</span></button></aside>`
+    : `<aside class="next" aria-label="Tu próximo paso"><span class="mh-kicker">Al día</span><h2>Completaste lo publicado</h2><p>Cuando se sumen contenidos nuevos, aparecen acá.</p><button class="mh-btn sec" onclick="verCertificados()">Ver certificados</button></aside>`;
+  const pasos=A.MODULOS.map(m=>{
+    const lock=bloqueado(m.n), a=avance(m.n);
+    const esc2=(m.n===2&&e)?e:null;
+    const pill=lock?'<span class="mh-pillb off">Bloqueado</span>':a.fin?'<span class="mh-pillb ok">Completo</span>':a.ok?'<span class="mh-pillb on">En curso</span>':'<span class="mh-pillb off">Sin empezar</span>';
+    const det=lock?'Se abre al completar el Módulo 0'
+      :(m.n===2&&!U.escuela&&!previa())?'Sin escuela asignada'
+      :a.tot?`${a.ok} de ${a.tot} completados`:'Próximamente';
+    const ir=lock?'avisoM0()':m.n===0?"abrir('modulo-0')":m.n===2?'verMiEscuela()':'verModulo('+m.n+')';
+    const titulo=m.n===2&&esc2?`Formación por perfil · ${esc(esc2.t)}`:esc(m.t);
+    const desc=m.n===2&&esc2?esc(esc2.eje):esc(m.d);
+    return `<li class="paso${m.n===0?' m0':''}${lock?' lock':''}${a.fin?' ok':''}"><span class="num" aria-hidden="true">${m.n}</span>
+      <div><h3><button type="button" onclick="${ir}" ${lock?'aria-disabled="true"':''}><span class="mh-sr">Módulo ${m.n}: </span>${titulo}</button></h3><p>${desc}</p>
+      <span class="para">${esc2?escIco(esc2.id,'chico'):''}${m.n===0?'Obligatorio · Todos':esc(m.para)}</span></div>
+      <div class="av">${pill}${a.tot&&!lock?`<span class="pb" aria-hidden="true"><i style="width:${a.pct}%"></i></span>`:''}<small>${det}</small></div></li>`;
+  }).join('');
+  const esp=formaciones().map(f=>{
+    const p=f.tot?Math.round(f.hechos/f.tot*100):0;
+    return `<div class="ent ${f.id}">${ICO(f.id,'env-ico '+f.id)}<div><span class="rk">${f.k}</span><h3><a href="${f.url}">${f.t}</a></h3><p>${f.d}</p>
+      <span class="pb" aria-hidden="true"><i style="width:${p}%"></i></span><span class="pn"><span>${f.hechos} de ${f.tot} ${f.u}</span><b>${p}%</b></span></div></div>`;
+  }).join('');
+  app.innerHTML=`<section class="phero"><div class="wrap grid2"><div>
+    <span class="mh-kicker">Humana Academy</span><h1>Hola${nom?`, <b>${esc(nom)}</b>`:''}.</h1>
+    <p class="lead">Una misma doctrina, nueve troncos comunes y seis escuelas. Cambian el lenguaje, la profundidad y las competencias de cada perfil.</p>
+    ${e?`<span class="hola-esc">${escIco(e.id)}<span>Tu escuela: <b>${esc(e.t)}</b></span></span>`:`<span class="hola-esc">${escIco('academy')}<span>Tu escuela la asigna la administración</span></span>`}</div>
+    ${aside}
+   </div></section>
+   <section class="blk" style="padding-top:8px" aria-labelledby="reco-t"><div class="wrap">
+    <div class="sh"><div><span class="mh-kicker">Tu recorrido</span><h2 id="reco-t">Seis módulos, <b>del 0 al 5</b></h2></div><p>Empezás por la Doctrina. Después, el tronco común, tu escuela, las patologías, las herramientas y la práctica.</p></div>
+    <ol class="reco">${pasos}</ol>
+   </div></section>
+   <section class="blk" style="padding-top:8px" aria-labelledby="esp-t"><div class="wrap">
+    <div class="sh"><div><span class="mh-kicker">Formaciones específicas</span><h2 id="esp-t">Programas y <b>productos</b></h2></div><p>Cada una con su recorrido y su avance.</p></div>
+    <div class="esp">${esp}</div>
+   </div></section>`;
+  irA('');
 }
-function scrollMods(){
- const ir=()=>{const x=document.getElementById('mods');if(!x)return;x.scrollIntoView({behavior:_menosMov()?'auto':'smooth'});const h=x.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}};
- if(document.getElementById('mods'))ir();else{home();setTimeout(ir,60);}
+function avisoM0(){ toast('Primero completá el Módulo 0: Doctrina Humana'); }
+
+/* ---------- Mi escuela ---------- */
+function verMiEscuela(){
+  if(!LISTO) return;
+  const e=A.escuela(U.escuela);
+  if(e && !bloqueado(2) && doc('escuela-'+e.id)){ abrir('escuela-'+e.id); marcarVista('escuela'); return; }
+  if(!e && previa()){ verModulo(2); marcarVista('escuela'); return; }
+  rehacer=verMiEscuela; marcarVista('escuela');
+  const cuerpo=!e
+    ? '<div class="ac-vacio">Todavía no tenés escuela asignada. La asigna la administración. Mientras tanto, completá el Módulo 0 y el tronco común.</div>'
+    : bloqueado(2)
+    ? `<div class="ac-vacio">Tu escuela se abre al completar el Módulo 0: Doctrina Humana.</div><p style="margin-top:20px"><button class="mh-btn pa" onclick="abrir('modulo-0')">Ir al Módulo 0 <span class="ar">${IAR}</span></button></p>`
+    : '<div class="ac-vacio">Los contenidos de tu escuela están en preparación.</div>';
+  app.innerHTML=cabeza(e?'Tu escuela · '+esc(e.eje):'Mi escuela', e?escIco(e.id)+' '+esc(e.t):'Mi escuela','')+`<section class="blk"><div class="wrap">${cuerpo}</div></section>`;
+  irA('Mi escuela');
 }
 
-/* ---------- módulo ---------- */
-function renderModule(m,isCap){
- if(!m){home();return;}
- vista=isCap?'cap':'mod';
- const N=MODULES.length, i=isCap?-1:MODULES.indexOf(m), prev=isCap?null:MODULES[i-1], next=isCap?null:MODULES[i+1];
- const res=HA_recursosPanel(m.recursos);
- const hayQuiz=(m.quiz||[]).length>0;
- const pasos=isCap?'':`<div class="mstep" aria-hidden="true">${MODULES.map((x,k)=>`<i class="${k===i?'on':done(x.n)?'ok':''}"></i>`).join('')}</div>`;
- const pager=isCap
-  ? `<nav class="pager" aria-label="Navegación"><button onclick="home()"><small>Volver</small><span>Inicio</span></button><button disabled></button></nav>`
-  : `<nav class="pager" aria-label="Módulos"><button ${prev?`onclick="openM(${prev.n})"`:'disabled'}><small>← Anterior</small><span>${prev?esc2(prev.t):''}</span></button><button class="nx" onclick="${next?`openM(${next.n})`:(CAP?'openCap()':'home()')}"><small>Siguiente →</small><span>${next?esc2(next.t):(CAP?'Caso integrador':'Volver al inicio')}</span></button></nav>`;
- app.innerHTML=`<section class="mhead"><div class="wrap"><button class="back" onclick="home()"><span aria-hidden="true">←</span> Módulos</button>
-  <div class="kk">${isCap?'<span class="mh-kicker">Caso integrador</span>':`<span class="n" aria-hidden="true">${dd(i+1)}</span><span class="mh-kicker">Módulo ${i+1} de ${N}</span>`}</div>
-  <h1>${esc2(m.t)}</h1><p class="lead">${esc2(m.lead)}</p>${pasos}</div></section>
-  <div class="wrap"><article class="reading">
-   <div class="content">${m.body||''}</div>
-   ${res?`<section class="sec2" aria-labelledby="rs"><h2 class="mh-kicker" id="rs">Recursos del módulo</h2>${res}</section>`:''}
-   ${hayQuiz?`<section class="sec2" aria-labelledby="qz"><h2 class="mh-kicker" id="qz">Autoevaluación</h2><div class="quiz"><p class="qi">${m.quiz.length} ${m.quiz.length===1?'pregunta':'preguntas'} · se aprueba con 60% o más.</p><div id="quiz"></div>
-    <div class="qa"><button class="mh-btn pri" id="btnCorr" onclick="grade('${isCap?'cap':m.n}')">Corregir</button><button class="mh-btn sec" onclick="${isCap?'openCap()':'openM('+m.n+')'}">Reintentar</button></div>
-    <div class="score" id="score" role="status" aria-live="polite"></div></div></section>`:''}
-   ${pager}
-  </article></div>`;
- if(hayQuiz)renderQuiz(m);irA(isCap?'Caso integrador':`Módulo ${i+1}: ${m.t}`);
+/* ---------- módulos ---------- */
+function cabeza(kicker,t,lead,volver){
+  return `<section class="mhead"><div class="wrap"><button class="back" onclick="${volver||'home()'}">${IBK} ${volver?'Volver':'Inicio'}</button>
+   <div class="kk"><span class="mh-kicker">${kicker}</span></div><h1>${t}</h1>${lead?`<p class="lead">${lead}</p>`:''}</div></section>`;
 }
-function openM(n){STORE.set('ha_last',n);renderModule(MODULES.find(x=>x.n===n),false);}
-function openCap(){renderModule(CAP,true);}
-let answers={},curQuiz=null,corregido=false;
-function renderQuiz(m){answers={};curQuiz=m;corregido=false;const qz=document.getElementById('quiz');qz.innerHTML=m.quiz.map((q,qi)=>`<fieldset class="q" style="border:0;padding-left:0;padding-right:0;min-width:0"><legend class="qt" id="qt_${qi}"><span class="n">${qi+1}.</span><span>${esc2(q.q)}</span></legend><div class="opts" role="radiogroup" aria-labelledby="qt_${qi}">${q.o.map((o,oi)=>`<button type="button" class="opt" role="radio" aria-checked="false" tabindex="${oi===0?0:-1}" id="o_${qi}_${oi}" onclick="pick(${qi},${oi})"><span class="dot" aria-hidden="true"></span><span>${esc2(o)}</span><span class="tag"></span></button>`).join('')}</div><div class="exp" id="e_${qi}">${q.e?esc2(q.e):''}</div></fieldset>`).join('');
- qz.onkeydown=quizTeclas;}
-/* Flechas entre opciones, como un grupo de radios nativo: mueven el foco y eligen. */
-function quizTeclas(e){const b=e.target.closest&&e.target.closest('.opt[role=radio]');if(!b)return;const [,qi,oi]=b.id.split('_').map(Number);const n=curQuiz.quiz[qi].o.length;let j=null;
- if(e.key==='ArrowDown'||e.key==='ArrowRight')j=(oi+1)%n;else if(e.key==='ArrowUp'||e.key==='ArrowLeft')j=(oi-1+n)%n;else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;
- if(j==null)return;e.preventDefault();const d=document.getElementById('o_'+qi+'_'+j);if(!d)return;
- if(corregido){curQuiz.quiz[qi].o.forEach((_,i)=>{const x=document.getElementById('o_'+qi+'_'+i);if(x)x.tabIndex=i===j?0:-1;});}else pick(qi,j);d.focus();}
-function pick(qi,oi){if(corregido)return;answers[qi]=oi;curQuiz.quiz[qi].o.forEach((_,i)=>{const e=document.getElementById('o_'+qi+'_'+i);if(e){e.setAttribute('aria-checked',i===oi?'true':'false');e.tabIndex=i===oi?0:-1;}});}
-function grade(id){const m=curQuiz;if(corregido)return;
- const faltan=m.quiz.filter((q,qi)=>answers[qi]==null).length;
- if(faltan&&!confirm(faltan===1?'Te falta responder una pregunta. ¿Corregir igual?':'Te faltan '+faltan+' preguntas. ¿Corregir igual?'))return;
- corregido=true;let ok=0;m.quiz.forEach((q,qi)=>{q.o.forEach((_,oi)=>{const el=document.getElementById('o_'+qi+'_'+oi);el.classList.add('lock');el.setAttribute('aria-disabled','true');const tg=el.querySelector('.tag');if(oi===q.c){el.classList.add('correct');tg.textContent='Correcta';}else if(answers[qi]===oi){el.classList.add('wrong');tg.textContent='Tu respuesta';}});if(answers[qi]===q.c)ok++;const ex=document.getElementById('e_'+qi);if(ex.textContent.trim())ex.classList.add('show');});
- const b=document.getElementById('btnCorr');if(b)b.disabled=true;
- const pct=Math.round(ok/m.quiz.length*100);if(id!=='cap'){const n=+id;const prev=scores[n];if(scores[n]==null||pct>scores[n]){scores[n]=pct;STORE.set('ha_s',scores);}if(pct>=60&&(prev==null||prev<60)){if(window.motivComplete){window.motivComplete(scores);}else{toast('Módulo completado');}}renderUserbox();if(window.HA_sync)window.HA_sync(scores);}
- const s=document.getElementById('score');s.classList.add('show');if(pct>=60)s.classList.add('ok');
- const msg=pct>=60?(pct===100?'Excelente, dominás la idea.':'Aprobado. Módulo completado.'):'Todavía no llegás al 60%. Repasá y volvé a intentar.';
- s.innerHTML=`Respondiste <b>${ok} de ${m.quiz.length}</b> bien (${pct}%). ${msg}`;if(window.showQuizResult)setTimeout(function(){window.showQuizResult(id,pct);},300);}
+function verModulo(n){
+  if(bloqueado(n)){ avisoM0(); return; }
+  rehacer=()=>verModulo(n); marcarVista('modulo');
+  const m=A.MODULOS[n]; let cuerpo='';
+  if(n===1){
+    const intro=doc('programa-integral');
+    const es=escuelaActual();
+    cuerpo=(intro?`<p><button class="mh-btn sec" onclick="abrir('programa-integral')">Leer el programa integral${estadoTag(intro)}</button></p>`:'')
+     +'<div class="ac-grid" style="margin-top:22px">'+A.TRONCOS.map(t=>{
+       const d=doc(t.id); if(!d) return `<div class="ac-card prox"><span class="n" aria-hidden="true">${pad(t.n)}</span><span class="t">${esc(t.t)}</span><span class="d">${esc(t.sub)}</span><span class="w">Próximamente</span></div>`;
+       const v=es&&d.versiones&&d.versiones[es];
+       return `<button type="button" class="ac-card" onclick="abrir('${t.id}')"><span class="n" aria-hidden="true">${pad(t.n)}</span><span class="t">${esc(L(d.t))}${estadoTag(d)}</span><span class="d">${esc(L(d.sub))}</span><span class="w">${esc(L(v?v.lead:d.lead))}</span>${PROG.ok[t.id]?'<span class="ac-tag ok">Completado</span>':''}</button>`;
+     }).join('')+'</div>';
+  } else if(n===2){
+    const mias=previa()?A.ESCUELAS:A.ESCUELAS.filter(e=>e.id===U.escuela);
+    cuerpo=(!U.escuela&&!previa())?'<div class="ac-vacio">Todavía no tenés escuela asignada. La asigna la administración. Mientras tanto, completá el Módulo 0 y el tronco común.</div>':'';
+    cuerpo+='<div class="ac-grid">'+mias.map(e=>{ const d=doc('escuela-'+e.id);
+      return d?`<button type="button" class="ac-card" onclick="abrir('escuela-${e.id}')"><span class="cab">${escIco(e.id)}<span class="t">${esc(e.t)}${estadoTag(d)}</span></span><span class="d">${esc(e.eje)}</span><span class="w">${lista(x=>x.tipo==='unidad'&&x.escuela===e.id).length} unidades</span></button>`
+              :`<div class="ac-card prox"><span class="cab">${escIco(e.id)}<span class="t">${esc(e.t)}</span></span><span class="d">${esc(e.eje)}</span><span class="w">Próximamente</span></div>`; }).join('')+'</div>';
+  } else if(n===3){
+    const intro=doc('programa-enfermedades');
+    cuerpo=(intro?`<p><button class="mh-btn sec" onclick="abrir('programa-enfermedades')">Leer el programa por enfermedades${estadoTag(intro)}</button></p>`:'')
+     +'<p style="color:var(--mh-mut);margin:16px 0 26px">Orden de desarrollo: insuficiencia cardíaca, EPOC, demencias, diabetes y fragilidad. Las demás se suman cuando la Dirección Médica valide su ficha.</p>'
+     +A.AREAS.map(a=>`<div class="ac-area"><h3>${esc(a.t)}</h3><div class="ac-grid">${a.mods.map(m=>{ const d=doc(m.id);
+        return d?`<button type="button" class="ac-card" onclick="abrir('${m.id}')"><span class="t">${esc(m.t)}${estadoTag(d)}</span>${d.piloto?'<span><span class="ac-tag pil">Piloto</span></span>':''}${PROG.ok[m.id]?'<span><span class="ac-tag ok">Completado</span></span>':''}</button>`
+                :`<div class="ac-card prox"><span class="t">${esc(m.t)}</span><span class="w">Próximamente</span></div>`; }).join('')}</div></div>`).join('');
+  } else {
+    const ds=lista(d=>d.modulo===n);
+    cuerpo=ds.length?'<div class="ac-grid">'+ds.map(d=>`<button type="button" class="ac-card" onclick="abrir('${d.id}')"><span class="t">${esc(L(d.t))}${estadoTag(d)}</span><span class="d">${esc(L(d.sub||''))}</span>${PROG.ok[d.id]?'<span><span class="ac-tag ok">Completado</span></span>':''}</button>`).join('')+'</div>'
+      :'<div class="ac-vacio">Próximamente.</div>';
+    if(n===5){ const ic=doc('patologia-insuficiencia-cardiaca'); if(ic) cuerpo+=`<p style="margin-top:22px"><button class="mh-btn sec" onclick="abrir('patologia-insuficiencia-cardiaca')">Evaluación del piloto: insuficiencia cardíaca</button></p>`; }
+  }
+  app.innerHTML=cabeza('Módulo '+n+' · '+esc(m.para), esc(m.t), esc(m.d))+`<section class="blk"><div class="wrap">${cuerpo}</div></section>`;
+  irA('Módulo '+n+': '+m.t);
+}
 
-/* ---------- certificado ---------- */
-function openCert(){closeMenu();vista='cert';const N=MODULES.length, list=MODULES.map(m=>m.t).join(' · ');
- app.innerHTML=`<section class="blk"><div class="wrap">
- <div class="certtools noprint"><span class="mh-kicker">Tu certificado</span><h1 style="font-weight:400;font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;margin:12px 0 10px">Certificado de <b>Humana Academy</b></h1>
-  <p>${allDone()?'Revisá tu nombre y descargalo.':`Se habilita al completar los ${N} módulos. Llevás ${nCompl()}.`}</p>
-  <label class="mh-label" for="cname">Nombre y apellido</label><input class="mh-input" id="cname" style="max-width:380px;text-align:center" placeholder="Tu nombre y apellido" value="${esc2(uname)}" oninput="setName(this.value)">
-  <div class="row"><button class="mh-btn pri" ${allDone()?'onclick="window.print()"':'disabled aria-disabled="true"'}>Imprimir o guardar PDF</button><button class="mh-btn sec" onclick="home()">Volver</button></div>${typeof liButtonsHTML==='function'?liButtonsHTML(allDone()):''}</div>
- <div id="cert"><div class="certcard"><div class="cinner">
-  <div class="clabel">Certificado de finalización</div><h2><b>Humana</b> Academy</h2><p style="margin-top:0">Formación en Medicina de Continuidad</p>
-  <p style="margin-top:22px">Se otorga el presente certificado a</p><div class="cname" id="certname">${esc2(uname)||'Nombre y Apellido'}</div>
-  <p>por haber completado el programa, recorriendo sus ${HA_enLetras(N)} módulos y aprobando las autoevaluaciones.</p>
-  <div class="cmods">${esc2(list)}</div><div class="cmods">Humana Health &amp; Care · Argentina · <span id="certdate"></span></div>
-  <div class="cseal">${LOGO}</div>
- </div></div></div></div></section>`;
- document.getElementById('certdate').textContent=new Date().toLocaleDateString('es-AR',{year:'numeric',month:'long',day:'numeric'});irA('Certificado');}
+/* ---------- documento ---------- */
+let curDoc=null, answers={}, corregido=false, filtroDoc='todo';
+function abrir(id){
+  const d=doc(id); if(!d){ toast('Ese contenido todavía no está disponible'); return; }
+  if(d.modulo>0 && bloqueado(d.modulo)){ avisoM0(); return; }
+  curDoc=d; filtroDoc='todo'; rehacer=()=>abrir(id); marcarVista(d.tipo==='escuela'&&d.escuela===U.escuela?'escuela':'doc'); pintarDoc(); irA(L(d.t));
+}
+function cambiarEsc(id){ ESC_VER=id; pintarDoc(); const b=document.getElementById('tab_'+id); if(b) b.focus(); }
+function filtrar(f){ filtroDoc=f; pintarDoc(); const b=document.getElementById('f_'+f); if(b) b.focus(); }
 
-function renderUserbox(){var b=document.getElementById('userbox');if(!b)return;var N=MODULES.length,c=nCompl(),p=N?c/N:0,C=2*Math.PI*12;var hi=uname?('<span class="hi">'+esc2(uname.split(' ')[0])+'</span>'):'';b.innerHTML=hi+'<span class="ring" title="Tu avance en Academy" role="img" aria-label="Tu avance en Academy: '+c+' de '+N+' módulos"><svg viewBox="0 0 30 30" aria-hidden="true"><circle class="tr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5"/><circle class="pr" cx="15" cy="15" r="12" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+(C*(1-p)).toFixed(1)+'"/></svg><span>'+c+'/'+N+'</span></span>';}
-function setName(v){uname=v;STORE.set('ha_name',v);const el=document.getElementById('certname');if(el)el.textContent=v||'Nombre y Apellido';if(window.HA_saveName)window.HA_saveName(v);}
-function toast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2800);}
-function confetti(){}
-home();
+function seccionesHTML(secs,conFiltro){
+  return (secs||[]).filter(s=>!conFiltro||filtroDoc==='todo'||s.parte===filtroDoc||(filtroDoc==='nucleo'&&s.parte==='intro'))
+   .map(s=>`<section class="ac-sec" id="s_${esc(s.id)}"><h2>${esc(L(s.t))}${s.parte==='nucleo'?' <span class="ac-tag nuc">Núcleo</span>':''}</h2>${html(s.body)}</section>`).join('');
+}
+function gobHTML(g){
+  if(!g) return '';
+  const f=[['Autor',g.autor],['Revisión clínica',g.revisor||'Pendiente de validación'],['Versión',g.version],['Fecha',g.fecha],['Próxima revisión',g.proximaRevision],['Referencias',g.referencias]].filter(x=>x[1]);
+  return `<aside class="ac-gob" aria-label="Ficha de gobernanza"><span class="mh-kicker">Ficha de gobernanza</span><dl>${f.map(x=>`<dt>${x[0]}</dt><dd>${esc(L(x[1]))}</dd>`).join('')}</dl></aside>`;
+}
+function videoHTML(d){
+  if(d.video && window.HA_incrustar){ const v=HA_incrustar('video',d.video); if(v) return `<div class="vid">${v.html}</div>`; }
+  return previa()?'<div class="ac-vacio" style="margin:0 0 26px">Lugar para el video de esta unidad. Lo carga la editora desde el Estudio.</div>':'';
+}
+function pintarDoc(){
+  const d=curDoc, es=escuelaActual();
+  const tieneVers=d.versiones&&Object.keys(d.versiones).length;
+  const v=A.version(d,es);
+  const volver=d.tipo==='unidad'?`abrir('escuela-${d.escuela}')`:d.modulo===0?'home()':`verModulo(${d.modulo})`;
+  const mod=A.MODULOS[d.modulo];
+  let cuerpo='';
+  if(tieneVers && previa()){
+    cuerpo+='<div class="ac-tabs" role="tablist" aria-label="Versión por escuela">'+A.ESCUELAS.map(e=>`<button type="button" role="tab" id="tab_${e.id}" aria-selected="${es===e.id}" onclick="cambiarEsc('${e.id}')">${esc(e.t)}</button>`).join('')+'</div>';
+  }
+  if(d.tipo==='doctrina'){
+    cuerpo+='<div class="ac-filtro" role="group" aria-label="Qué leer">'+[['todo','Todo'],['nucleo','El núcleo · 15 minutos'],['consulta','De consulta']].map(f=>`<button type="button" id="f_${f[0]}" aria-pressed="${filtroDoc===f[0]}" onclick="filtrar('${f[0]}')">${f[1]}</button>`).join('')+'</div>';
+  }
+  cuerpo+=videoHTML(d);
+  if(tieneVers){
+    const e=A.escuela(es);
+    if(e && (v.lead||v.secciones.length)){
+      cuerpo+=`<div class="ac-ver"><span class="mh-kicker">Para ${esc(e.t)}</span>${(v.titulo||v.lead)?`<h2>${esc(L(v.titulo||v.lead))}</h2>`:''}${v.titulo&&v.lead?`<p>${esc(L(v.lead))}</p>`:''}<div class="content">${seccionesHTML(v.secciones)}</div></div>`;
+    } else if(!e){
+      cuerpo+='<div class="ac-vacio" style="margin:0 0 26px">Cuando la administración te asigne una escuela, acá vas a ver la versión para tu perfil.</div>';
+    }
+  }
+  if(d.tipo==='tronco'){
+    cuerpo+='<h2 style="font-size:20px;margin:0 0 12px">Cómo se adapta a cada perfil</h2><ul class="ac-lista">'+A.ESCUELAS.map(e=>{ const x=d.versiones&&d.versiones[e.id]; return x?`<li><span class="n" aria-hidden="true">·</span><div><b>${esc(e.t)}</b><span>${esc(L(x.lead))}</span></div></li>`:''; }).join('')+'</ul>';
+  }
+  cuerpo+=`<article class="content">${seccionesHTML(d.secciones,d.tipo==='doctrina')}</article>`;
+  if(d.tipo==='escuela') cuerpo+=escuelaHTML(d);
+  if(v.reflexion&&v.reflexion.length) cuerpo+=`<section class="ac-refl" aria-labelledby="rf"><span class="mh-kicker" id="rf">Preguntas para pensar</span><ul>${v.reflexion.map(q=>`<li>${esc(L(q))}</li>`).join('')}</ul></section>`;
+  cuerpo+=evaluacionHTML(d,v);
+  cuerpo+=gobHTML(d.gobernanza);
+  const ee=d.tipo==='unidad'||d.tipo==='escuela'?A.escuela(d.escuela):null;
+  const kicker=(d.tipo==='unidad'?(ee||{}).t+' · Unidad '+d.n:'Módulo '+d.modulo+' · '+mod.t);
+  const titulo=(ee&&d.tipo==='escuela'?escIco(ee.id)+' ':'')+esc(L(d.t))+estadoTag(d);
+  app.innerHTML=cabeza(esc(kicker),titulo,esc(L(d.sub?d.sub:d.lead||'')),volver)+`<div class="wrap"><div class="reading">${cuerpo}</div></div>`;
+  if(document.getElementById('quiz')) pintarQuiz(A.items(v));
+}
+function escuelaHTML(d){
+  const id=d.escuela, uns=lista(x=>x.tipo==='unidad'&&x.escuela===id);
+  let h='<section class="ac-sec" style="margin-top:34px;padding-top:26px;border-top:1px solid var(--mh-line)"><h2 style="font-size:24px">Unidades</h2>';
+  h+=uns.length?'<ul class="ac-lista">'+uns.map(u=>`<li><span class="n" aria-hidden="true">${pad(u.n)}</span><button type="button" onclick="abrir('${u.id}')"><b>${esc(L(u.t))}${estadoTag(u)}</b><span>${esc(L(u.lead))}</span>${PROG.ok[u.id]?' <span class="ac-tag ok">Completada</span>':''}</button></li>`).join('')+'</ul>'
+     :'<div class="ac-vacio">Las unidades de esta escuela están en preparación. Mientras tanto, esta es la versión del tronco común y del piloto para este perfil.</div>';
+  h+='</section>';
+  h+='<section class="ac-sec" style="margin-top:34px;padding-top:26px;border-top:1px solid var(--mh-line)"><h2 style="font-size:24px">Los nueve troncos para este perfil</h2><ul class="ac-lista">'
+    +A.TRONCOS.map(t=>{ const x=doc(t.id); const v=x&&x.versiones&&x.versiones[id]; return v?`<li><span class="n" aria-hidden="true">${pad(t.n)}</span><button type="button" onclick="abrir('${t.id}')"><b>${esc(t.t)}</b><span>${esc(L(v.lead))}</span></button></li>`:''; }).join('')+'</ul></section>';
+  const ic=doc('patologia-insuficiencia-cardiaca');
+  if(ic&&ic.versiones&&ic.versiones[id]) h+=`<p style="margin-top:22px"><button class="mh-btn sec" onclick="ESC_VER='${id}';abrir('patologia-insuficiencia-cardiaca')">Piloto: insuficiencia cardíaca para este perfil</button></p>`;
+  return h;
+}
+
+/* ---------- evaluación: preguntas, simulación y errores críticos ---------- */
+function evaluacionHTML(d,v){
+  const items=A.items(v);
+  if(d.id==='modulo-0'&&!items.length){
+    return `<section class="sec2" aria-labelledby="cmp"><h2 class="mh-kicker" id="cmp">Módulo 0</h2><div class="quiz"><p class="qi">${m0ok()?'Ya completaste el Módulo 0.':'Cuando termines de leer el núcleo, marcalo como leído. Se abre el resto de la Academy.'}</p>
+      <div class="qa"><button class="mh-btn pa" onclick="marcarLeido('modulo-0')" ${m0ok()?'disabled':''}>Leí el núcleo de la Doctrina</button></div></div></section>`;
+  }
+  if(!items.length){
+    /* Sin evaluación cargada: se completa al terminar la lectura. */
+    const hecho=!!PROG.ok[d.id];
+    return `<section class="sec2" aria-labelledby="cmp"><h2 class="mh-kicker" id="cmp">Tu avance</h2><div class="quiz"><p class="qi">${hecho?'Ya lo marcaste como leído.':'Cuando termines de leer, marcalo como leído. Suma a tu avance.'}</p>
+      <div class="qa"><button class="mh-btn pa" id="btnLeido" onclick="marcarLeido('${d.id}')" ${hecho?'disabled':''}>${hecho?'Leído':'Marcar como leído'}</button></div>
+      ${previa()?'<p class="qi" style="margin-top:14px">Evaluación pendiente: cinco preguntas de conocimiento y una simulación del caso. La escribe la Dirección Médica en el Estudio.</p>':''}</div></section>`;
+  }
+  const sim=v.simulacion&&v.simulacion.caso?`<div class="ac-sim"><b>Simulación del caso.</b> ${esc(L(v.simulacion.caso))}</div>`:'';
+  return `<section class="sec2" aria-labelledby="qz"><h2 class="mh-kicker" id="qz">Evaluación</h2><div class="quiz">
+    <p class="qi">${items.length} preguntas · se aprueba con ${d.umbral||60}% o más y sin errores críticos de seguridad.</p>${sim}<div id="quiz"></div>
+    <div class="qa"><button class="mh-btn pa" id="btnCorr" onclick="corregir()">Corregir</button><button class="mh-btn sec" onclick="abrir('${d.id}')">Reintentar</button></div>
+    <div class="score" id="score" role="status" aria-live="polite"></div><div class="ac-crit" id="crit" role="alert"></div></div></section>`;
+}
+let ITEMS=[];
+function pintarQuiz(items){
+  ITEMS=items; answers={}; corregido=false;
+  let simAbierta=false;
+  document.getElementById('quiz').innerHTML=items.map((q,qi)=>{
+    let pre=''; if(q.sim&&!simAbierta){ simAbierta=true; pre='<p class="mh-kicker" style="margin:26px 0 10px">Simulación · qué hacés en cada paso</p>'; }
+    return pre+`<fieldset class="q" style="border:0;padding-left:0;padding-right:0;min-width:0"><legend class="qt" id="qt_${qi}"><span class="n">${qi+1}.</span><span>${esc(L(q.q))}</span></legend>
+     <div class="opts" role="radiogroup" aria-labelledby="qt_${qi}">${q.o.map((o,oi)=>`<button type="button" class="opt" role="radio" aria-checked="false" id="o_${qi}_${oi}" onclick="elegir(${qi},${oi})"><span class="dot" aria-hidden="true"></span><span>${esc(L(o))}</span></button>`).join('')}</div>
+     <div class="exp" id="e_${qi}">${q.e?esc(L(q.e)):''}</div></fieldset>`;
+  }).join('');
+}
+function elegir(qi,oi){ if(corregido) return; answers[qi]=oi; ITEMS[qi].o.forEach((_,i)=>{ const e=document.getElementById('o_'+qi+'_'+i); if(e){ e.classList.toggle('sel',i===oi); e.setAttribute('aria-checked',i===oi?'true':'false'); } }); }
+function corregir(){
+  if(corregido) return;
+  if(Object.keys(answers).length<ITEMS.length){ toast('Respondé todas las preguntas'); return; }
+  corregido=true;
+  const r=A.corregir(ITEMS,answers,curDoc.umbral);
+  ITEMS.forEach((q,qi)=>{ q.o.forEach((_,oi)=>{ const el=document.getElementById('o_'+qi+'_'+oi); el.classList.remove('sel'); el.setAttribute('aria-disabled','true'); if(oi===q.c) el.classList.add('correct'); else if(answers[qi]===oi) el.classList.add('wrong'); }); const x=document.getElementById('e_'+qi); if(x) x.classList.add('show'); });
+  const s=document.getElementById('score'); s.classList.add('show'); s.classList.toggle('ok',r.aprobado);
+  s.textContent='Nota: '+r.nota+'% · '+(r.aprobado?'Aprobada.':'No aprobada.');
+  const c=document.getElementById('crit');
+  if(r.criticos.length){ c.classList.add('show'); c.innerHTML='<b>Error crítico de seguridad</b> en '+(r.criticos.length===1?'la pregunta ':'las preguntas ')+r.criticos.map(i=>i+1).join(', ')+'. Aunque la nota alcance, no se aprueba. Repasá el circuito de urgencias y los límites de tu perfil.'; }
+  guardar(curDoc.id,r.nota,r.aprobado);
+}
+function marcarLeido(id){ guardar(id,100,true); toast(id==='modulo-0'?'Módulo 0 completado. Ya podés seguir con el resto.':'Marcado como leído'); pintarDoc(); }
+function guardar(id,nota,aprobado){
+  const prev=PROG.scores[id];
+  if(prev==null||nota>prev) PROG.scores[id]=nota;
+  if(aprobado) PROG.ok[id]=true;
+  if(!curUser||!db) return;
+  db.collection('users').doc(curUser.uid).set({academia:{scores:PROG.scores, ok:PROG.ok, updatedAt:firebase.firestore.FieldValue.serverTimestamp()}},{merge:true}).catch(function(){});
+}
+
+/* ---------- Certificados ---------- */
+function verCertificados(){
+  if(!LISTO) return;
+  rehacer=verCertificados; marcarVista('cert');
+  const nx=formaciones()[0], nxOk=nx.hechos>=nx.tot;
+  const ant=_hechos(scores||{},ARCH_IDS), antOk=ant>=ARCH_IDS.length;
+  let h=`<div class="tarj"><span class="cab">${ICO('nexo','env-ico nexo')}<span><span class="mh-kicker">Programa</span><h2>Humana Nexo</h2></span></span>
+     <p>${nxOk?'Obtenido. Podés descargarlo cuando quieras.':`Se habilita al completar las ${nx.tot} lecciones. Llevás ${nx.hechos}.`}</p>
+     <div class="acts"><a class="mh-btn ${nxOk?'pa':'sec'}" href="nexo.html#cert">${nxOk?'Ver certificado':'Ir a Nexo'}</a></div></div>`;
+  if(ant>0){
+    h+=`<div class="tarj arch"><span class="cab">${ICO('academy','env-ico academy')}<span><span class="mh-kicker">Programa anterior · Archivo</span><h2>Medicina de Continuidad</h2></span></span>
+     <p>${antOk?'Obtenido. Se conserva aunque el programa esté archivado.':`Avanzaste ${ant} de ${ARCH_IDS.length} módulos. El programa está archivado: podés terminarlo desde el archivo.`}</p>
+     <div class="acts"><a class="mh-btn ${antOk?'pa':'sec'}" href="archivo.html#certificado">${antOk?'Ver certificado':'Abrir el archivo'}</a></div></div>`;
+  }
+  app.innerHTML=cabeza('Tus logros','Certificados','Los certificados que obtuviste y los que tenés en curso.')+`<section class="blk"><div class="wrap"><div class="cards2">${h}</div></div></section>`;
+  irA('Certificados');
+}
+
+/* ---------- Administración: Estudio, personas, vista previa y archivo ---------- */
+function verAdministracion(){
+  if(!LISTO) return;
+  if(!ES_ADMIN){ home(); return; }
+  rehacer=verAdministracion; marcarVista('admin');
+  const nb=RAW.filter(d=>d.estado==='borrador').length, np=RAW.filter(d=>d.estado==='publicado').length;
+  app.innerHTML=cabeza('Administración','Administración','Estudio de contenidos, personas, vista previa y archivo.')+`<section class="blk"><div class="wrap"><div class="cards2">
+    <div class="tarj"><span class="mh-kicker">Contenidos</span><h2>Estudio</h2><p>Crear, editar, publicar y archivar los contenidos de la Academy, con su ficha de gobernanza.</p>
+      <div class="acts"><a class="mh-btn pa" id="adm-estudio" href="estudio-academia.html">Abrir el Estudio</a></div></div>
+    <div class="tarj"><span class="mh-kicker">Equipo</span><h2>Personas</h2><p>Quién está aprendiendo, su avance y su escuela.</p>
+      <div class="acts"><button class="mh-btn pa" id="adm-personas" onclick="showAdmin()">Ver personas</button></div></div>
+    <div class="tarj"><span class="mh-kicker">Vista previa</span><h2>${VISTA_ALUMNA?'Viendo como alumna':'Viendo borradores'}</h2>
+      <p>${VISTA_ALUMNA?'Ves solo lo publicado, como lo ve el equipo.':`Ves ${nb} ${nb===1?'borrador':'borradores'} y ${np} ${np===1?'publicado':'publicados'}.`}</p>
+      <div class="acts"><button class="mh-btn ${VISTA_ALUMNA?'sec':'pa'}" id="adm-borradores" onclick="fijarVista(false)" aria-pressed="${!VISTA_ALUMNA}">Ver borradores</button><button class="mh-btn ${VISTA_ALUMNA?'pa':'sec'}" id="adm-alumna" onclick="fijarVista(true)" aria-pressed="${VISTA_ALUMNA}">Ver como alumna</button></div></div>
+    <div class="tarj arch"><span class="mh-kicker">Archivo</span><h2>Programa anterior</h2><p>Los diez módulos de Medicina de Continuidad, el caso Doña Elena y el mapa del programa. Se conservan con sus certificados.</p>
+      <div class="acts"><a class="mh-btn sec" href="archivo.html">Abrir el archivo</a><a class="mh-btn ghost" href="estudio.html">Su Estudio</a></div></div>
+   </div></div></section>`;
+  irA('Administración');
+}
+function fijarVista(alumna){ VISTA_ALUMNA=!!alumna; renderUserbox(); verAdministracion(); toast(alumna?'Viendo como alumna':'Viendo borradores'); const b=document.getElementById(alumna?'adm-alumna':'adm-borradores'); if(b) b.focus(); }
+
+/* ---------- rutas por enlace (#certificados, #administracion, #escuela) ---------- */
+let _hash=location.hash.replace('#','');
+function _rutaInicial(){
+  const h=_hash; _hash=''; if(!h) return false;
+  if(h==='certificados'){ verCertificados(); return true; }
+  if(h==='administracion'&&ES_ADMIN){ verAdministracion(); return true; }
+  if(h==='escuela'){ verMiEscuela(); return true; }
+  return false;
+}
+
+/* ---------- carga: la llama firebase-auth.js con la sesión iniciada ---------- */
+function cargarBase(){ return fetch('academia-contenido.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{docs:[]}).then(j=>j.docs||[]).catch(()=>[]); }
+function leerAcademia(q){ return q.get().then(function(qs){ const a=[]; qs.forEach(function(s){ const x=s.data(); x.id=s.id; a.push(x); }); return a; }).catch(function(e){ console.warn('No se pudo leer la Academy', e&&e.code); return []; }); }
+/* El material validado vive en academia-contenido.json; lo editado en el Estudio (Firestore) lo reemplaza. */
+function cargarContenido(){
+  const col=db.collection('academia');
+  const qs=EDITORA?[leerAcademia(col)]:[leerAcademia(col.where('estado','==','publicado')), leerAcademia(col.where('base','==',true))];
+  return Promise.all([cargarBase()].concat(qs)).then(function(r){ DOCS={}; r.forEach(function(a){ a.forEach(function(d){ DOCS[d.id]=d; }); }); RAW=Object.values(DOCS); });
+}
+function cargarUsuario(user){
+  return db.collection('users').doc(user.uid).get().then(function(s){
+    const d=s.exists?s.data():{};
+    U.name=d.name||''; U.escuela=d.escuela||''; U.rol=d.rol||'equipo';
+    const a=d.academia||{}; PROG={ok:a.ok||{}, scores:a.scores||{}};
+  }).catch(function(){});
+}
+window.HA_cargarContenido=function(fdb){
+  db=fdb; curUser=firebase.auth().currentUser;
+  if(!curUser) return Promise.resolve(null);
+  EDITORA=ES_ADMIN=['gustavo.insfran@infinitypharma.com.ar','k.ojanguren@humanahc.com'].indexOf((curUser.email||'').toLowerCase())>=0;
+  return Promise.all([cargarUsuario(curUser),cargarContenido()]).then(function(){ LISTO=true; aplicarPais(); return null; });
+};
+
 let _deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_deferredPrompt=e;const b=document.getElementById('installBtn');if(b)b.style.display='';});
 function installApp(){if(!_deferredPrompt){toast('La app ya está instalada o tu navegador no lo permite');return;}_deferredPrompt.prompt();_deferredPrompt.userChoice.finally(()=>{_deferredPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});}
 window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.style.display='none';});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false,_teniaSW=!!navigator.serviceWorker.controller;/* solo recarga cuando hay una versión nueva, no en la primera visita (evita un cambio de contexto inesperado) */navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf||!_teniaSW)return;_rf=true;location.reload();});}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));var _rf=false,_teniaSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rf||!_teniaSW)return;_rf=true;location.reload();});}
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="firebase-auth.js?v=21"></script>
-<script src="extras.js?v=16"></script>
+<script src="firebase-auth.js?v=22"></script>
 </body>
 </html>

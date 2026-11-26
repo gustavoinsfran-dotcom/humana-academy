@@ -73,7 +73,7 @@ service cloud.firestore {
           && (d.estado != 'publicado' || (d.gobernanza.autor.size() > 0 && d.gobernanza.revisor.size() > 0));
     }
     match /academia/{id} {
-      allow read: if isEditor() || (isEquipo() && resource.data.estado == 'publicado');
+      allow read: if isEditor() || (isEquipo() && (resource.data.estado == 'publicado' || resource.data.base == true));
       allow create, update: if isEditor() && academiaValido();
       allow delete: if false;   // nada se borra: se archiva
       match /versiones/{v} {

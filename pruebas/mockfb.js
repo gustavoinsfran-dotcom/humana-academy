@@ -55,7 +55,8 @@
   function puedeLeerDoc(u,path,data){
     var p=path.split('/');
     if(p[0]==='users') return !!u && (u.uid===p[1]||esAdmin(u));
-    if((p[0]==='modulos'||p[0]==='academia')&&p.length===2) return esAdmin(u) || (esEquipo(u)&&data&&data.estado==='publicado');
+    if(p[0]==='modulos'&&p.length===2) return esAdmin(u) || (esEquipo(u)&&data&&data.estado==='publicado');
+    if(p[0]==='academia'&&p.length===2) return esAdmin(u) || (esEquipo(u)&&data&&(data.estado==='publicado'||data.base===true));
     if(p.length===4) return esAdmin(u);
     return false;
   }
@@ -106,7 +107,8 @@
       var u=s.user, p0=self.path.split('/')[0];
       var aseguraPublicado=self._f.some(function(f){ return f[0]==='estado'&&f[1]==='=='&&f[2]==='publicado'; });
       if(p0==='users' && !esAdmin(u)) throw err();
-      if((p0==='modulos'||p0==='academia') && prof===2 && !esAdmin(u) && !(esEquipo(u)&&aseguraPublicado)) throw err();
+      var aseguraBase=p0==='academia'&&self._f.some(function(f){ return f[0]==='base'&&f[1]==='=='&&f[2]===true; });
+      if((p0==='modulos'||p0==='academia') && prof===2 && !esAdmin(u) && !(esEquipo(u)&&(aseguraPublicado||aseguraBase))) throw err();
       if(prof===4 && !esAdmin(u)) throw err();
       if(self._o){ var k=self._o[0], dir=self._o[1]==='desc'?-1:1; docs.sort(function(a,b){ var x=a[1][k], y=b[1][k]; x=x&&x.__ts||x; y=y&&y.__ts||y; return (x>y?1:x<y?-1:0)*dir; }); }
       if(self._l) docs=docs.slice(0,self._l);

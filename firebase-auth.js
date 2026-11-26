@@ -251,13 +251,15 @@
   function isAdmin(u){ return !!(u && ADMINS.indexOf((u.email||'').toLowerCase())>=0); }
 
   function salir(){ if(confirm('¿Querés cerrar sesión?')){ auth.signOut().then(function(){ location.reload(); }); } }
+  window.HA_salir=salir;
+  /* Las páginas con menú propio (el inicio) lo arman ellas: Inicio, Mi escuela, Certificados, Administración y Salir.
+     En el resto (el archivo) solo se suma Salir. */
   function addAdminUI(user){
+    if(window.HA_menu){ window.HA_menu(user, isAdmin(user)); return; }
     [['nav.desk','d'],['#drawer','m']].forEach(function(par){
       var nav=document.querySelector(par[0]); if(!nav || document.getElementById('logout'+par[1])) return;
       function link(id,txt,fn,cls,boton){ var a=document.createElement('a'); a.id=id+par[1]; a.textContent=txt; a.style.cursor='pointer'; if(cls)a.className=cls;
         if(typeof fn==='string') a.href=fn; else { a.href='#'+id; if(boton)a.setAttribute('role','button'); a.onclick=function(ev){ ev.preventDefault(); if(window.closeMenu)closeMenu(); fn(); }; } nav.appendChild(a); }
-      link('nueva','Nueva Academy','academia.html','nueva');
-      if(isAdmin(user)){ link('estudio','Estudio','estudio.html','estudio'); link('admin','Admin',showAdmin,'adm'); }
       link('logout','Salir',salir,'',true);
     });
   }
@@ -295,7 +297,8 @@
     var sc=d.scores||{}, a=_idsAcademy().filter(function(n){return sc[n]>=60;}).length;
     var ns=(d.nexo&&d.nexo.scores)||{}, x=[1,2,3,4,5].filter(function(n){return ns[n]>=60;}).length;
     var cs=(d.cutaquig&&d.cutaquig.scores)||{}, c=[1,2,3,4,5,6,7,8,9].filter(function(n){return cs[n]>=60;}).length;
-    return {a:a,x:x,c:c};
+    var ok=(d.academia&&d.academia.ok)||{}, k=Object.keys(ok).filter(function(id){return ok[id];}).length;
+    return {a:a,x:x,c:c,k:k};
   }
   function _esAdminMail(m){ return ADMINS.indexOf((m||'').toLowerCase())>=0; }
 
@@ -366,7 +369,7 @@
         _ESC[doc.id]=d.escuela||''; /* nueva Academy */
         _U.push({uid:doc.id, name:d.name||'(sin nombre)', email:d.email||'—',
           oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email),
-          a:p.a, x:p.x, c:p.c, total:p.a+p.x+p.c});
+          a:p.a, x:p.x, c:p.c, k:p.k, escuela:d.escuela||'', total:p.a+p.x+p.c+p.k});
       });
     });
   }
@@ -375,14 +378,14 @@
     var cont=document.getElementById('gadm'); if(!cont)return;
     var vis=_U.filter(function(u){ return _verOcultas || !u.oculto; });
     var TOT=_tot(), NA=_idsAcademy().length;
-    var completos=vis.filter(function(u){ return u.total>=TOT; });
+    var conEscuela=vis.filter(function(u){ return !!u.escuela; });
     var activos=vis.filter(function(u){ return u.total>0; });
     var sinEmpezar=vis.filter(function(u){ return u.total===0; });
 
     var h='<div class="gstats">'
      +'<div class="gstat"><b>'+vis.length+'</b><span>usuarios</span></div>'
      +'<div class="gstat"><b>'+activos.length+'</b><span>empezaron</span></div>'
-     +'<div class="gstat"><b>'+completos.length+'</b><span>completaron todo</span></div>'
+     +'<div class="gstat"><b>'+conEscuela.length+'</b><span>con escuela asignada</span></div>'
      +'<div class="gstat"><b>'+sinEmpezar.length+'</b><span>sin empezar</span></div>'
      +'</div>';
 
@@ -403,13 +406,12 @@
     h+='<div class="gcard">';
     lista.forEach(function(u){
       var badge = u.esAdmin ? '<span class="ubadge ub-adm">Admin</span>'
-        : (u.total>=TOT ? '<span class="ubadge ub-ok">Completó todo</span>'
-        : (u.total>0 ? '<span class="ubadge ub-pend">En curso</span>'
+        : ((u.total>0 ? '<span class="ubadge ub-pend">En curso</span>'
         : '<span class="ubadge ub-na">Sin empezar</span>'));
       h+='<div class="urow'+(u.oculto?' oculta':'')+'" style="grid-template-columns:minmax(0,2.4fr) auto auto">';
       h+='<div><div class="uname">'+esc(u.name)+(u.oculto?' <span style="color:var(--mh-mut);font-size:12px;font-weight:400">(oculta)</span>':'')+'</div>'
         +'<div class="umail">'+esc(u.email)+'</div>'
-        +'<div class="uprog">Academy '+u.a+'/'+NA+' · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9 · <b>'+u.total+' de '+TOT+'</b></div></div>';
+        +'<div class="uprog">Academy <b>'+u.k+'</b> completados · Nexo '+u.x+'/5 · Cutaquig '+u.c+'/9'+(u.a?' · Programa anterior '+u.a+'/'+NA:'')+'</div></div>';
       h+='<div>'+badge+'</div>';
       var nmq=esc(u.name).replace(/'/g,'').replace(/\\/g,'');
       h+='<div style="display:flex;gap:6px;flex-wrap:wrap">'+_selEscuela(u)+(u.esAdmin?'':'<button class="ubtn gh" onclick="__renombrar(\''+u.uid+'\',\''+nmq+'\')">Nombre</button>'+(u.total>0?'<button class="ubtn gh" onclick="__reiniciar(\''+u.uid+'\',\''+esc(u.name).replace(/'/g,'')+'\')">Reiniciar</button>':'')+'<button class="ubtn gh" onclick="__ocultar(\''+u.uid+'\','+(u.oculto?'false':'true')+')">'+(u.oculto?'Mostrar':'Ocultar')+'</button>')+'</div>';
@@ -425,8 +427,8 @@
     if(!isAdmin(curUser)) return;
     var app=document.getElementById('app'); if(!app)return;
     try{ vista='admin'; }catch(e){}
-    app.innerHTML='<section class="blk"><div class="wrap"><button class="back" onclick="home()"><span aria-hidden="true">←</span> Inicio</button>'
-      +'<div class="sh"><div><span class="mh-kicker">Administración</span><h1 tabindex="-1">Quién está <b>aprendiendo</b></h1></div><p>Todas las personas que entraron a la plataforma y cuánto avanzaron.</p></div>'
+    app.innerHTML='<section class="blk"><div class="wrap"><button class="back" onclick="'+(window.verAdministracion?'verAdministracion()':'home()')+'"><span aria-hidden="true">←</span> '+(window.verAdministracion?'Administración':'Inicio')+'</button>'
+      +'<div class="sh"><div><span class="mh-kicker">Administración · Personas</span><h1 tabindex="-1">Quién está <b>aprendiendo</b></h1></div><p>Todas las personas que entraron a la plataforma y cuánto avanzaron.</p></div>'
       +'<div id="gadm" aria-busy="true"><p class="sub">Cargando…</p></div></div></section>';
     document.title='Administración · Humana Academy'; window.scrollTo(0,0); try{ app.querySelector('h1').focus({preventScroll:true}); }catch(e){}
     _cargar().then(_pintar).then(function(){ var g=document.getElementById('gadm'); if(g)g.removeAttribute('aria-busy'); }).catch(function(e){
