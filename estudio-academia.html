@@ -126,18 +126,36 @@ function porId(id){ return S.docs.filter(function(d){ return d.id===id; })[0]; }
 
 /* ---------- importar el material de Karina ---------- */
 function importar(){
-  fetch('docs/karina/borradores.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error('No se encontró docs/karina/borradores.json'); return r.json(); }).then(function(j){
+  fetch('academia-contenido.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw new Error('No se encontró academia-contenido.json'); return r.json(); }).then(function(j){
     var nuevos=j.docs.filter(function(d){ return !porId(d.id); });
-    if(!nuevos.length){ toast('Todo el material ya está cargado'); return; }
-    if(!confirm('Se cargan '+nuevos.length+' contenidos del material de Karina, todos como borrador.\nLos que ya existen no se tocan.\n\n¿Seguimos?')) return;
+    if(!nuevos.length){ toast('Todo el material ya está en el Estudio'); return; }
+    if(!confirm('Se traen '+nuevos.length+' contenidos del material de Karina, publicados tal cual, para poder editarlos acá.\nLos que ya existen no se tocan.\n\n¿Seguimos?')) return;
     var lotes=[], b=db.batch(), n=0;
     nuevos.forEach(function(d){
-      var x=clon(d); delete x.id; x.estado='borrador'; x.creadoEn=FV.serverTimestamp(); x.creadoPor=yo.email; x.editadoEn=FV.serverTimestamp(); x.editadoPor=yo.email; x.origen='docs/karina · '+(j.version||'');
+      var x=clon(d); delete x.id; x.estado=d.estado||'publicado'; x.base=true; x.creadoEn=FV.serverTimestamp(); x.creadoPor=yo.email; x.editadoEn=FV.serverTimestamp(); x.editadoPor=yo.email; x.origen='docs/karina · '+(j.version||'');
+      if(x.estado==='publicado'){ x.publicadoEn=FV.serverTimestamp(); x.publicadoPor=yo.email; }
       b.set(col.doc(d.id),x); n++; if(n%400===0){ lotes.push(b); b=db.batch(); }
     });
     lotes.push(b);
-    return lotes.reduce(function(p,l){ return p.then(function(){ return l.commit(); }); },Promise.resolve()).then(function(){ toast(nuevos.length+' borradores cargados'); return cargar(); });
-  }).catch(function(e){ alert('No se pudo importar.\n\n'+e.message); });
+    return lotes.reduce(function(p,l){ return p.then(function(){ return l.commit(); }); },Promise.resolve()).then(function(){ toast(nuevos.length+' contenidos en el Estudio'); return cargar(); });
+  }).catch(function(e){ alert('No se pudo traer el material.\n\n'+e.message); });
+}
+
+/* ---------- publicar todos los borradores completos ---------- */
+function publicarTodo(){
+  var bor=S.docs.filter(function(d){ return d.estado==='borrador'; });
+  var listos=bor.filter(function(d){ return !problemas(d,true).length; }), faltan=bor.length-listos.length;
+  if(!listos.length){ alert(bor.length?'Ningún borrador tiene la ficha de gobernanza completa. Abrí cada uno para completarla.':'No hay borradores para publicar.'); return; }
+  if(!confirm('Se publican '+listos.length+' borradores con la ficha de gobernanza completa.'+(faltan?'\n'+faltan+' quedan en borrador porque les falta algo.':'')+'\nCada uno deja una copia de su versión anterior.\n\n¿Seguimos?')) return;
+  var lotes=[], b=db.batch(), n=0;
+  listos.forEach(function(d){
+    var ref=col.doc(d.id), copia=clon(d); delete copia.id; copia.guardadoEn=FV.serverTimestamp(); copia.reemplazadaPor=yo.email;
+    b.set(ref.collection('versiones').doc(),copia);
+    b.update(ref,{estado:'publicado',publicadoEn:FV.serverTimestamp(),publicadoPor:yo.email,editadoEn:FV.serverTimestamp(),editadoPor:yo.email});
+    n+=2; if(n>=400){ lotes.push(b); b=db.batch(); n=0; }
+  });
+  lotes.push(b);
+  return lotes.reduce(function(p,l){ return p.then(function(){ return l.commit(); }); },Promise.resolve()).then(function(){ toast(listos.length+' publicados'+(faltan?' · '+faltan+' siguen en borrador':'')); return cargar(); }).catch(function(e){ alert('No se pudo publicar.\n\n'+e.message); });
 }
 
 /* ---------- crear desde plantilla ---------- */
@@ -166,7 +184,9 @@ function nuevo(tipo){
 
 /* ---------- lista ---------- */
 function asideHTML(){
-  var h='<div class="acc"><button class="mh-btn pri" onclick="importar()">Importar material de Karina</button>'
+  var nb=S.docs.filter(function(d){ return d.estado==='borrador'; }).length;
+  var h='<div class="acc"><button class="mh-btn pri" onclick="importar()">Traer el material de Karina</button>'
+   +(nb?'<button class="mh-btn pri" onclick="publicarTodo()">Publicar todos los borradores ('+nb+')</button>':'')
    +'<button class="mh-btn sec" onclick="nuevo(\'unidad\')">Nueva unidad (plantilla de cinco pasos)</button>'
    +'<button class="mh-btn sec" onclick="nuevo(\'patologia\')">Nueva patología (plantilla de diez apartados)</button></div>'
    +'<label class="chk" style="color:var(--mh-ink-2)"><input type="checkbox" '+(S.verArch?'checked':'')+' onchange="S.verArch=this.checked;pintar()"> Ver archivados</label>';
@@ -190,8 +210,8 @@ function inicioHTML(){
   var c={borrador:0,publicado:0,archivado:0}; S.docs.forEach(function(d){ c[d.estado]=(c[d.estado]||0)+1; });
   return '<span class="k">Estudio de la nueva Academy</span><h1 style="font-size:30px;margin:8px 0 12px">Módulos 0 a 5, <b>seis escuelas</b></h1>'
    +'<p class="ayuda" style="font-size:15.5px">'+c.borrador+' borradores · '+c.publicado+' publicados · '+c.archivado+' archivados.</p>'
-   +(S.docs.length?'':'<div class="box"><h2>Empezá por importar</h2><p class="ayuda">El material de Karina (Doctrina, nueve troncos, seis escuelas, cuarenta unidades, programa por enfermedades y piloto de insuficiencia cardíaca) se carga en un paso. Todo entra como borrador.</p><button class="mh-btn pri" onclick="importar()">Importar material de Karina</button></div>')
-   +'<div class="box"><h2>Cómo funciona</h2><ul class="ayuda" style="padding-left:20px"><li>Todo se guarda como borrador. Solo lo publicado lo ve el equipo.</li><li>Publicar pide la ficha de gobernanza: autor, revisor clínico, versión y fecha.</li><li>Las preguntas marcadas como críticas: si se fallan, no se aprueba aunque la nota alcance.</li><li>Para España y Argentina, escribí <b>[[España|Argentina]]</b>. Solo léxico y datos locales.</li><li>Nada se borra: se archiva. Cada guardado deja una copia de la versión anterior.</li></ul></div>';
+   +(S.docs.length?'':'<div class="box"><h2>El material ya está publicado</h2><p class="ayuda">El material de Karina (Doctrina, nueve troncos, seis escuelas, cuarenta unidades, programa por enfermedades y piloto de insuficiencia cardíaca) ya se ve en la Academy. Para editarlo, traelo al Estudio en un paso. Entra publicado, tal cual.</p><button class="mh-btn pri" onclick="importar()">Traer el material de Karina</button></div>')
+   +'<div class="box"><h2>Cómo funciona</h2><ul class="ayuda" style="padding-left:20px"><li>Lo nuevo se guarda como borrador. Solo lo publicado lo ve el equipo. Para publicar varios juntos, usá Publicar todos los borradores.</li><li>Publicar pide la ficha de gobernanza: autor, revisor clínico, versión y fecha.</li><li>Las preguntas marcadas como críticas: si se fallan, no se aprueba aunque la nota alcance.</li><li>Para España y Argentina, escribí <b>[[España|Argentina]]</b>. Solo léxico y datos locales.</li><li>Nada se borra: se archiva. Cada guardado deja una copia de la versión anterior.</li></ul></div>';
 }
 
 /* ---------- editor ---------- */

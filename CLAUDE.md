@@ -1,9 +1,7 @@
 # Humana Academy · Guía del proyecto
 
-Guía para trabajar la Academy en Claude Code. Leela entera antes de tocar nada.
+Leela entera antes de tocar nada.
 Versión 2 · 26 de noviembre de 2026 · Responsable: Gus (Gustavo Insfran).
-
----
 
 ## 1. Qué es
 
@@ -12,8 +10,6 @@ Sitio: https://academy.humanahc.com.ar
 La pensó, la estructuró y la construyó Gus desde cero. Humana España está por replicarla.
 
 Costo cero, y la idea es mantenerla así.
-
----
 
 ## 2. Quiénes
 
@@ -27,16 +23,12 @@ Costo cero, y la idea es mantenerla así.
 
 Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinterpreta contenido clínico.
 
----
-
 ## 3. Decisiones tomadas
 
 - **Repositorio público.** Confirmado por Gus. Todo el proyecto vive acá: código, guía, material de Karina y pruebas.
 - **Material de Karina, al pie de la letra.** Se carga completo, tal cual: seis escuelas, nueve troncos, catálogo entero de patologías (incluida oncología y paliativos), evaluación y gobernanza. No se recorta nada.
 - **Las seis escuelas se construyen todas**, incluidas Cuidadores y Pacientes.
 - **Acceso de cuidadores y pacientes: más adelante.** Hoy el login es solo con correo del grupo. Más adelante se habilita una "llave" para cuidadores y pacientes (nueva ruta de usuario). La plataforma se arma preparada para eso, sin bloquear el resto.
-
----
 
 ## 4. Cómo está hecha
 
@@ -52,25 +44,7 @@ Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinte
 - Firestore, colección `modulos`: el contenido que Karina edita en el Estudio, con historial en `versiones`.
 - Reglas en `firestore.rules`. Los administradores están en `firebase-auth.js` (ADMINS) y en las reglas: tienen que coincidir. Las reglas se publican desde la consola de Firebase.
 
-**Archivos principales**
-
-| Archivo | Qué es |
-|---|---|
-| index.html | Inicio y ruta método Humana (módulos, quiz, certificado) |
-| modulos-base.js | Contenido de respaldo del método Humana, si no hay conexión a la base |
-| contenido.js | Lee los módulos de Firestore y los guarda en caché |
-| estudio.html | Estudio de contenidos: solo Karina y Gus. Crear, editar, publicar y archivar módulos |
-| firebase-auth.js | Login, registro, progreso, panel de administración |
-| extras.js | Mensajes de avance, LinkedIn y recorrido de bienvenida |
-| nexo.html | Ruta Humana Nexo (programa de asistencia al paciente) |
-| cutaquig.html · calculadora.html | Capacitación de producto Cutaquig y calculadora de dosis |
-| comercial.html | Formación comercial: 4 lecciones, con capa por país |
-| estratificador.html | Estratificador comercial de instituciones (no es H1–H4) |
-| metodo.css · metodo-pistas.css | Identidad método Humana y temas por ruta |
-| sw.js | Service worker, red primero. Subir la versión de caché (ha-vN) en cada cambio |
-| fonts/ | Arimo y Bodoni Moda, autoalojadas (licencia OFL) |
-| pruebas/ | Regresión con Playwright y Firebase simulado |
-| docs/karina/ | Material original de Karina (ver sección 8) |
+**Archivos.** index.html (inicio y ruta método Humana) · modulos-base.js (contenido de respaldo) · contenido.js (lee módulos de Firestore) · estudio.html (Estudio, solo Karina y Gus) · firebase-auth.js (login, progreso, panel admin) · extras.js (avance y bienvenida) · nexo.html · cutaquig.html y calculadora.html · comercial.html (con capa por país) · estratificador.html (comercial, no es H1–H4) · metodo.css y metodo-pistas.css (identidad) · sw.js (subir ha-vN en cada cambio) · fonts/ · pruebas/ · docs/karina/ (material de Karina).
 
 **Identidad.** Toda la Academy usa la identidad método Humana. Paleta: #170F1E, #D43380, #28449B, #CACACA, blanco. No se modifica.
 
@@ -86,8 +60,6 @@ Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinte
   - hospitalización a domicilio → internación domiciliaria
   - emergencias 112 → 107 (SAME) o 911, según la jurisdicción
 
----
-
 ## 5. Cómo se trabaja
 
 1. Los cambios del sitio van en una rama, con un pull request que Gus aprueba. Nunca directo a main.
@@ -100,8 +72,6 @@ Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinte
 
 **Revisión automática.** Una tarea programada corre la regresión todos los días a las 7:43 (hora de Argentina). Si encuentra errores, abre un pull request y avisa a Gus.
 
----
-
 ## 6. Pruebas
 
 Playwright con Firebase simulado (`pruebas/mockfb.js`).
@@ -111,10 +81,7 @@ Playwright con Firebase simulado (`pruebas/mockfb.js`).
 ```
 
 Correr desde la raíz del repo. El servidor y la prueba van en el mismo comando. Capturas en /tmp/humana-regresion.
-Cubre escritorio y celular, alumna, editora, admin, cada ruta, accesibilidad, errores de consola y el service worker.
 Cada función nueva suma sus pruebas.
-
----
 
 ## 7. Cómo escribir
 
@@ -137,8 +104,6 @@ Cada función nueva suma sus pruebas.
 **Herramientas Humana.** Humana Uno (historia clínica), Humana Intelligence (reglas, alertas, tareas y planes), app paciente, app cuidador, Impacto Humana. La Doctrina escribe "Humana Intelligen": en la interfaz se usa "Humana Intelligence", como en el resto del material.
 
 **Regulatorio Argentina.** Ley 17.132, Ley 25.326, Res. 704/2000. Sin promesas de resultado ni claims terapéuticos.
-
----
 
 ## 8. La reestructuración (material de Karina, noviembre de 2026)
 
@@ -281,8 +246,6 @@ Evaluación: cinco preguntas de conocimiento y una simulación del caso.
 | Videos | Sacados con el rebranding | Cada unidad con lugar para video. Los graba el equipo de Humana (tiene estudio de grabación) |
 
 Las rutas actuales (Nexo, Cutaquig, Formación comercial) siguen. Los módulos actuales del método Humana se archivan cuando la nueva estructura esté publicada; no se borran.
-
----
 
 ## 9. Orden de trabajo
 

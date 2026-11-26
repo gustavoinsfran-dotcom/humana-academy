@@ -1,12 +1,13 @@
-"""Arma docs/karina/borradores.json a partir del material de Karina (noviembre de 2026).
+"""Arma academia-contenido.json (raíz del sitio) a partir del material de Karina (noviembre de 2026).
 
 El texto se copia tal cual de los originales de esta carpeta. Solo se agrega:
 - marcas [[España|Argentina]] para la capa por país (léxico y datos locales, nunca contenido clínico);
 - "Humana Intelligence" donde la Doctrina escribe "Humana Intelligen" (decisión de la guía, sección 7).
 La prueba pruebas/academia.pruebas.js verifica que cada frase exista en material-karina.md.
 
-Uso: python3 docs/karina/borradores.py
-Todo sale como borrador. Se importa desde el Estudio de la nueva Academy y lo publica Karina.
+Uso: python3 docs/karina/contenido.py
+El material llega validado por la Dirección Médica (guía, 5.3 y 8.7): sale publicado.
+academia.html lo muestra directo; el Estudio lo trae a la base para editarlo.
 """
 import json, os
 
@@ -26,11 +27,12 @@ def sec(id, t, body, **kw):
 
 ESCUELAS = ['medicos', 'enfermeria', 'kinesiologia', 'cuidadores', 'pacientes', 'coordinacion']
 
-GOB_DOCTRINA = {'autor': 'Dirección Médica · Dra. Karina Ojanguren', 'revisor': '', 'version': 'Borrador v2',
+REVISOR = 'Dirección Médica · Dra. Karina Ojanguren'
+GOB_DOCTRINA = {'autor': 'Dirección Médica · Dra. Karina Ojanguren', 'revisor': REVISOR, 'version': 'v2',
                 'fecha': '2026-11', 'referencias': 'Doctrina Humana, nueva edición, borrador v2 (noviembre de 2026)',
                 'proximaRevision': '2027-05'}
-def gob(ref, version='Versión de trabajo'):
-    return {'autor': 'Dirección Médica · Dra. Karina Ojanguren', 'revisor': '', 'version': version,
+def gob(ref, version='v1'):
+    return {'autor': 'Dirección Médica · Dra. Karina Ojanguren', 'revisor': REVISOR, 'version': version,
             'fecha': '2026-11', 'referencias': ref, 'proximaRevision': ''}
 
 docs = []
@@ -332,9 +334,10 @@ docs.append({'id': 'practica-antonio', 'tipo': 'practica', 'modulo': 5, 'orden':
   'fuente': 'Programa por Enfermedades · Programa Integral Visual · Módulo 01 IC'})
 
 for d in docs:
-    d['estado'] = 'borrador'
+    d['estado'] = 'publicado'
+    d['base'] = True
     d.setdefault('umbral', 60)
 
-with open(os.path.join(AQUI, 'borradores.json'), 'w', encoding='utf-8') as f:
-    json.dump({'version': '2026-11-26', 'nota': 'Material de Karina (noviembre de 2026). Todo en borrador. Se importa desde el Estudio de la nueva Academy.', 'docs': docs}, f, ensure_ascii=False, indent=1)
+with open(os.path.join(AQUI, '..', '..', 'academia-contenido.json'), 'w', encoding='utf-8') as f:
+    json.dump({'version': '2026-11-26', 'nota': 'Material de Karina (noviembre de 2026), validado por la Dirección Médica. Publicado.', 'docs': docs}, f, ensure_ascii=False, indent=1)
 print(len(docs), 'documentos')
