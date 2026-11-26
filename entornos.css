@@ -1,0 +1,76 @@
+/* =====================================================================
+   Humana Academy — entornos. Se carga después de metodo.css y metodo-pistas.css.
+   Academy #D43380 · Nexo #170F1E · Cutaquig #28449B. Siempre dentro de la paleta
+   (#170F1E, #D43380, #28449B, #CACACA, blanco).
+   Opción A (por defecto): cabecera llena con el color del entorno.
+   Opción B (html.tema-b): cabecera blanca con franja superior y sello de color.
+   ===================================================================== */
+body.mh[data-entorno=academy]{--ent:#D43380;--ent-tint:#F8ECF2}
+body.mh[data-entorno=nexo]{--ent:#170F1E;--ent-tint:#F1EEF3}
+body.mh[data-entorno=cutaquig]{--ent:#28449B;--ent-tint:#ECEFF8}
+/* Nexo pasa a la paleta (antes usaba un verde fuera de ella). */
+body.mh.p-nexo{--pa:#170F1E;--pa-ink:#170F1E;--pa-tint:#F1EEF3;--pa-line:#DDD6E1;--mh-teal:#170F1E;--mh-teal-tint:#F1EEF3}
+
+/* ---------- marca: ícono y etiqueta ---------- */
+.mh .brand .ent-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;flex-shrink:0}
+.mh .brand .ent-ico svg{width:22px;height:22px}
+.mh .brand .ent-tag{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border-radius:999px;font:700 11.5px/1 var(--mh-sans);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:420px){.mh .brand .ent-tag{font-size:10px;padding:0 8px;min-height:20px}.mh .brand .ent-ico{width:34px;height:34px}}
+
+/* ---------- Opción A: cabecera llena ---------- */
+.mh[data-entorno] header.top{background:var(--ent);border-bottom:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+.mh[data-entorno] header.top .brand,
+.mh[data-entorno] header.top .brand .mh-word,
+.mh[data-entorno] header.top .brand .mh-word span,
+.mh[data-entorno] header.top .brand .mh-word sup,
+.mh[data-entorno] header.top .brand .mh-logo,
+.mh[data-entorno] header.top .brand .mh-logo i,
+.mh[data-entorno] header.top .brand .mh-logo b{color:#fff}
+.mh[data-entorno] header.top .brand .sep{background:rgba(255,255,255,.45)}
+.mh[data-entorno] header.top .brand .ent-ico{background:#fff;color:var(--ent)}
+.mh[data-entorno] header.top .brand .ent-tag{background:#fff;color:var(--ent)}
+.mh[data-entorno] header.top nav.desk a{color:#fff}
+.mh[data-entorno] header.top nav.desk a:hover,.mh[data-entorno] header.top nav.desk a[aria-current=page]{background:rgba(23,15,30,.24);color:#fff}
+.mh[data-entorno] header.top nav.desk a.home{border-color:rgba(255,255,255,.7);color:#fff}
+.mh[data-entorno] header.top nav.desk a.home:hover{background:rgba(23,15,30,.24);border-color:#fff}
+.mh[data-entorno] header.top .userbox,.mh[data-entorno] header.top .userbox .hi{color:#fff}
+.mh[data-entorno] header.top .userbox .ac-tag{background:rgba(23,15,30,.28);color:#fff}
+.mh[data-entorno] header.top .ring .tr{stroke:rgba(255,255,255,.35)}.mh[data-entorno] header.top .ring .pr{stroke:#fff}
+.mh[data-entorno] header.top .burger{background:transparent;border-color:rgba(255,255,255,.7)}
+.mh[data-entorno] header.top .burger span{background:#fff}
+.mh[data-entorno] header.top :focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ---------- Opción B: franja superior y sello ---------- */
+html.tema-b .mh[data-entorno] header.top{background:rgba(255,255,255,.94);border-bottom:1px solid var(--mh-line);box-shadow:inset 0 4px 0 var(--ent)}
+html.tema-b .mh[data-entorno] header.top .brand,
+html.tema-b .mh[data-entorno] header.top .brand .mh-word,
+html.tema-b .mh[data-entorno] header.top .brand .mh-logo,
+html.tema-b .mh[data-entorno] header.top .brand .mh-logo i,
+html.tema-b .mh[data-entorno] header.top .brand .mh-logo b{color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top .brand .mh-logo i{color:var(--mh-accent)}
+html.tema-b .mh[data-entorno] header.top .brand .mh-word span{color:var(--ent)}
+html.tema-b .mh[data-entorno] header.top .brand .mh-word sup{color:var(--mh-mut)}
+html.tema-b .mh[data-entorno] header.top .brand .sep{background:var(--mh-line-2)}
+html.tema-b .mh[data-entorno] header.top .brand .ent-ico{background:var(--ent);color:#fff}
+html.tema-b .mh[data-entorno] header.top .brand .ent-tag{background:#fff;color:var(--ent);box-shadow:inset 0 0 0 1.5px var(--ent)}
+html.tema-b .mh[data-entorno] header.top nav.desk a{color:var(--mh-ink-2)}
+html.tema-b .mh[data-entorno] header.top nav.desk a:hover,html.tema-b .mh[data-entorno] header.top nav.desk a[aria-current=page]{background:var(--ent-tint);color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top nav.desk a.home{border-color:var(--mh-line-2);color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top nav.desk a.home:hover{background:var(--mh-surface);border-color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top .userbox{color:var(--mh-mut)}
+html.tema-b .mh[data-entorno] header.top .userbox .hi{color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top .userbox .ac-tag{background:var(--ent-tint);color:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top .ring .tr{stroke:var(--mh-line)}html.tema-b .mh[data-entorno] header.top .ring .pr{stroke:var(--ent)}
+html.tema-b .mh[data-entorno] header.top .burger{background:var(--mh-surface);border-color:var(--mh-line-2)}
+html.tema-b .mh[data-entorno] header.top .burger span{background:var(--mh-ink)}
+html.tema-b .mh[data-entorno] header.top :focus-visible{outline:2px solid var(--ent);outline-offset:2px}
+
+/* ---------- íconos de escuela y de entorno dentro de la página ---------- */
+.mh .esc-ico,.mh .env-ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:12px}
+.mh .esc-ico{width:40px;height:40px;background:var(--mh-accent-tint);color:#D43380}
+.mh .esc-ico svg{width:22px;height:22px}
+.mh .esc-ico.chico{width:22px;height:22px;border-radius:7px;background:transparent;color:inherit}
+.mh .esc-ico.chico svg{width:16px;height:16px}
+.mh .env-ico{width:44px;height:44px;color:#fff}
+.mh .env-ico svg{width:24px;height:24px}
+.mh .env-ico.academy{background:#D43380}.mh .env-ico.nexo{background:#170F1E}.mh .env-ico.cutaquig{background:#28449B}

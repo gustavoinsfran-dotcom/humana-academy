@@ -18,7 +18,9 @@
 <link rel="stylesheet" href="metodo.css?v=1">
 <link rel="stylesheet" href="metodo-pistas.css?v=1">
 </head>
-<body class="mh p-nexo">
+<body class="mh p-nexo" data-entorno="nexo">
+<link rel="stylesheet" href="entornos.css?v=1">
+<script src="entornos.js?v=1"></script>
 <a class="mh-skip" href="#app">Ir al contenido</a>
 <header class="top"><div class="wrap">
 <button class="brand" onclick="home()" aria-label="Humana Nexo, ir al inicio"><span class="mh-word"><b>Humana</b> <span>Nexo</span></span><span class="sep" aria-hidden="true"></span><span class="mh-logo" aria-hidden="true"><i>m</i>étodo<b>Humana</b></span></button>
@@ -122,9 +124,9 @@ const app=document.getElementById('app');
 function scrollLes(){const e=document.getElementById('les');if(e)e.scrollIntoView({behavior:'smooth'});else{home();setTimeout(scrollLes,60);}}
 function nexoMap(){
  const N=[['Paciente',500,85,120],['Familia',778,160,120],['Enfermería',846,330,134],['Médicos',654,465,120],['Administración',346,465,174],['Laboratorios',154,330,154],['Financiadores',222,160,164]];
- const lines=N.map(n=>`<line x1="500" y1="285" x2="${n[1]}" y2="${n[2]}" stroke="#CFE5E1" stroke-width="1.5"/>`).join('');
+ const lines=N.map(n=>`<line x1="500" y1="285" x2="${n[1]}" y2="${n[2]}" stroke="#DDD6E1" stroke-width="1.5"/>`).join('');
  const nodes=N.map(n=>`<g><rect x="${n[1]-n[3]/2}" y="${n[2]-22}" width="${n[3]}" height="44" rx="22" fill="#FFFFFF" stroke="#D8CDD3" stroke-width="1"/><text x="${n[1]}" y="${n[2]+5}" text-anchor="middle" font-size="15" font-weight="700" fill="#170F1E">${n[0]}</text></g>`).join('');
- const svg=`<svg viewBox="0 0 1000 570" xmlns="http://www.w3.org/2000/svg" font-family="Arimo,Helvetica,Arial,sans-serif" role="img" aria-label="Mapa del modelo Nexo: paciente, familia, enfermería, médicos, administración, laboratorios y financiadores conectados por Nexo">${lines}<circle cx="500" cy="285" r="92" fill="none" stroke="#CFE5E1" stroke-width="1" stroke-dasharray="2 5"/>${nodes}<circle cx="500" cy="285" r="62" fill="#E6F2F0" stroke="#1D6B64" stroke-width="1.2"/><text x="500" y="279" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="2" fill="#16554F">HUMANA</text><text x="500" y="305" text-anchor="middle" font-size="26" font-weight="700" fill="#1D6B64">Nexo</text></svg>`;
+ const svg=`<svg viewBox="0 0 1000 570" xmlns="http://www.w3.org/2000/svg" font-family="Arimo,Helvetica,Arial,sans-serif" role="img" aria-label="Mapa del modelo Nexo: paciente, familia, enfermería, médicos, administración, laboratorios y financiadores conectados por Nexo">${lines}<circle cx="500" cy="285" r="92" fill="none" stroke="#DDD6E1" stroke-width="1" stroke-dasharray="2 5"/>${nodes}<circle cx="500" cy="285" r="62" fill="#F1EEF3" stroke="#170F1E" stroke-width="1.2"/><text x="500" y="279" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="2" fill="#170F1E">HUMANA</text><text x="500" y="305" text-anchor="middle" font-size="26" font-weight="700" fill="#170F1E">Nexo</text></svg>`;
  const list=`<ul class="mapl"><li class="core"><span class="c">Nexo</span><b>Un mismo hilo</b></li>${N.map((n,i)=>`<li><span class="c">${pad(i+1)}</span><b>${n[0]}</b></li>`).join('')}</ul>`;
  return svg+list;
 }
@@ -237,7 +239,7 @@ try{
  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
  try{auth.languageCode='es';}catch(e){}
  try{auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);}catch(e){}
- auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();if(!STORE.get("hn_onboarded",false))setTimeout(startNexoOnboarding,600);});}else{renderLogin();}});
+ auth.onAuthStateChanged(function(user){curUser=user;if(user){loadProgress(user).then(function(){hideGate();home();if(location.hash==='#cert')openCert();if(!STORE.get("hn_onboarded",false))setTimeout(startNexoOnboarding,600);});}else{renderLogin();}});
  renderLoading();
 }catch(e){ home(); }
 if("serviceWorker" in navigator){var _rf=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(_rf)return;_rf=true;location.reload();});}

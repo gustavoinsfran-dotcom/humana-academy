@@ -95,7 +95,8 @@ async function abrir(persona, url, pantalla, extra) {
 }
 
 const PAGINAS = [
-  ['index.html', '#app .mods, #app section'],
+  ['index.html', '#app .reco'],
+  ['archivo.html', '#app .mods'],
   ['nexo.html', '#app section'],
   ['cutaquig.html', '#app section'],
   ['calculadora.html', 'main, #app'],
@@ -145,8 +146,8 @@ const PAGINAS = [
   });
 
   /* ---------- Ruta método Humana (index) ---------- */
-  await prueba('index: alumna hace un módulo y se guarda el puntaje', async () => {
-    const { ctx, page } = await abrir('alumna', 'index.html');
+  await prueba('archivo: alumna hace un módulo del programa anterior y se guarda el puntaje', async () => {
+    const { ctx, page } = await abrir('alumna', 'archivo.html');
     await listo(page, '#app .mods');
     await page.waitForSelector('#mpop.on', { timeout: 3000 }).catch(() => {}); // saludo de bienvenida
     await page.keyboard.press('Escape');
@@ -164,7 +165,7 @@ const PAGINAS = [
   });
   await prueba('index: admin abre el panel de administración', async () => {
     const { ctx, page } = await abrir('admin', 'index.html');
-    await listo(page, '#app .mods');
+    await listo(page, '#app .reco');
     await page.evaluate(() => showAdmin());
     await listo(page, '#gadm .urow');
     await foto(page, 'admin-panel');
@@ -223,6 +224,10 @@ const PAGINAS = [
   /* ---------- Nueva Academy (reestructuración) ---------- */
   const extra = path.join(DIR, 'academia.pruebas.js');
   if (fs.existsSync(extra)) await require(extra)({ prueba, abrir, listo, foto, axe, sinErrores, sinDesborde, esperar, PERSONAS, browser });
+
+  /* ---------- Portada, menú y entornos (rediseño) ---------- */
+  const portada = path.join(DIR, 'portada.pruebas.js');
+  if (fs.existsSync(portada)) await require(portada)({ prueba, abrir, listo, foto, axe, sinErrores, sinDesborde, esperar, PERSONAS, browser });
 
   await browser.close();
   const mal = resultados.filter(r => !r.ok);

@@ -77,11 +77,11 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
 
   /* ---------- Publicado sin pasar por el Estudio ---------- */
   await prueba('academia: el material se ve publicado sin traerlo a la base', async () => {
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio');
-    await listo(page, '.ac-m0');
+    const { ctx, page } = await abrir('alumna', 'index.html', 'escritorio');
+    await listo(page, '.paso.m0');
     esperar(!/preparación/i.test(await page.textContent('#app')), 'Muestra "en preparación" con el material publicado');
-    esperar(!(await page.$('#pre .ac-pre')), 'Una alumna ve la barra de vista previa');
-    await page.click('.ac-m0 .mh-btn');
+    esperar(!(await page.$('#m-administracion-d')) && !/Ver como alumna|Ver borradores|Vista previa/.test(await page.innerText('body')), 'Una alumna ve Administración o la vista previa');
+    await page.click('.paso.m0 h3 button');
     await listo(page, '.ac-sec');
     esperar(/Pregunta central/.test(await page.textContent('#app')), 'No se ve la Doctrina');
     esperar(/Revisor clínico[\s\S]*Karina Ojanguren/i.test(await page.textContent('#app')), 'La ficha no muestra el revisor');
@@ -92,7 +92,7 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
   await prueba('academia: lo archivado o vuelto a borrador en el Estudio deja de verse', async () => {
     const db = base('publicado', { 'modulo-0': { estado: 'archivado' }, 'tronco-01': { estado: 'borrador' } });
     db['users/alumna'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db });
+    const { ctx, page } = await abrir('alumna', 'index.html', 'escritorio', { db });
     await listo(page, '#app h1');
     esperar(await page.evaluate(() => doc('modulo-0') === null && doc('tronco-01') === null && !!doc('tronco-02')), 'Lo archivado o en borrador sigue visible');
     await sinErrores(page);
@@ -101,8 +101,8 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
   await prueba('academia: un borrador nuevo del Estudio no le llega a una alumna', async () => {
     const db = { 'academia/patologia-epoc': { t: 'EPOC borrador de prueba', tipo: 'patologia', modulo: 3, area: 'Respiratoria', estado: 'borrador', secciones: [], gobernanza: {} } };
     db['users/alumna'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db });
-    await listo(page, '.ac-m0');
+    const { ctx, page } = await abrir('alumna', 'index.html', 'escritorio', { db });
+    await listo(page, '.paso.m0');
     await page.evaluate(() => verModulo(3));
     await listo(page, '.mhead h1');
     esperar(!/EPOC borrador de prueba/.test(await page.content()), 'Se filtró un borrador');
@@ -115,12 +115,13 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
   /* ---------- Vista previa de la editora ---------- */
   for (const pantalla of ['escritorio', 'celular']) {
     await prueba(`academia: la editora ve los borradores en vista previa (${pantalla})`, async () => {
-      const { ctx, page } = await abrir('editora', 'academia.html', pantalla, { db: base('borrador') });
-      await listo(page, '.ac-m0');
-      esperar(/Vista previa/.test(await page.textContent('#pre')), 'Sin barra de vista previa');
+      const { ctx, page } = await abrir('editora', 'index.html', pantalla, { db: base('borrador') });
+      await listo(page, '.paso.m0');
+      esperar(await page.evaluate(() => previa()), 'La editora no está en vista previa');
+      esperar(!/Ver como alumna|Ver borradores/.test(await page.textContent('#app')), 'La vista previa sigue en la vista general');
       await foto(page, 'academia-inicio-editora-' + pantalla);
       await sinDesborde(page);
-      await page.click('.ac-m0 .mh-btn');
+      await page.click('.paso.m0 h3 button');
       await listo(page, '.ac-sec');
       esperar(/Pregunta central/.test(await page.textContent('#app')), 'No se ve la Doctrina');
       await page.click('#f_nucleo');
@@ -129,15 +130,17 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
       await foto(page, 'academia-doctrina-' + pantalla);
       await sinDesborde(page);
       await axe(page, 'Doctrina');
-      await page.click('#pre button');
+      await page.evaluate(() => verAdministracion());
+      await page.click('#adm-alumna');
+      await page.evaluate(() => home());
       esperar(/preparación/i.test(await page.textContent('#app')), '"Ver como alumna" muestra borradores');
       await sinErrores(page);
       await ctx.close();
     });
   }
   await prueba('academia: la editora recorre los seis módulos sin errores', async () => {
-    const { ctx, page } = await abrir('editora', 'academia.html', 'escritorio', { db: base('borrador') });
-    await listo(page, '.ac-m0');
+    const { ctx, page } = await abrir('editora', 'index.html', 'escritorio', { db: base('borrador') });
+    await listo(page, '.paso.m0');
     for (const n of [1, 2, 3, 4, 5]) {
       await page.evaluate(n => verModulo(n), n);
       await listo(page, '.mhead h1');
@@ -163,20 +166,20 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
 
   /* ---------- Publicado: alumna, Módulo 0 obligatorio, escuela ---------- */
   await prueba('academia: el Módulo 0 se completa antes que el resto', async () => {
-    const { ctx, page } = await abrir('alumna', 'academia.html', 'celular');
-    await listo(page, '.ac-m0');
-    esperar(/Sin asignar/.test(await page.textContent('#app')), 'Sin escuela no lo indica');
-    esperar((await page.$$('.ac-card[aria-disabled=true]')).length === 5, 'Los módulos 1 a 5 no están bloqueados');
+    const { ctx, page } = await abrir('alumna', 'index.html', 'celular');
+    await listo(page, '.paso.m0');
+    esperar(/asigna la administración/.test(await page.textContent('#app')), 'Sin escuela no lo indica');
+    esperar((await page.$$('.paso h3 button[aria-disabled=true]')).length === 5, 'Los módulos 1 a 5 no están bloqueados');
     await foto(page, 'academia-inicio-alumna-celular');
     await sinDesborde(page);
-    await page.click('.ac-m0 .mh-btn');
+    await page.click('.paso.m0 h3 button');
     await listo(page, '.ac-sec');
     await page.click('text=Leí el núcleo de la Doctrina');
     await page.waitForTimeout(300);
     const db = await leerDB(page);
     esperar(db['users/alumna'].academia && db['users/alumna'].academia.ok['modulo-0'], 'No se guardó el Módulo 0');
     await page.evaluate(() => home());
-    esperar((await page.$$('.ac-card[aria-disabled=true]')).length === 0, 'Siguen bloqueados después del Módulo 0');
+    esperar((await page.$$('.paso h3 button[aria-disabled=true]')).length === 0, 'Siguen bloqueados después del Módulo 0');
     await page.evaluate(() => verModulo(2));
     esperar(/no tenés escuela/i.test(await page.textContent('#app')), 'No explica que falta la escuela');
     await axe(page, 'módulo 2 sin escuela');
@@ -186,8 +189,8 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
   await prueba('academia: un médico ve su versión del piloto de insuficiencia cardíaca', async () => {
     const db = {};
     db['users/medico'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
-    const { ctx, page } = await abrir('medico', 'academia.html', 'escritorio', { db });
-    await listo(page, '.ac-m0');
+    const { ctx, page } = await abrir('medico', 'index.html', 'escritorio', { db });
+    await listo(page, '.paso.m0');
     await page.evaluate(() => abrir('patologia-insuficiencia-cardiaca'));
     await listo(page, '.ac-ver');
     const t = await page.textContent('.ac-ver');
@@ -211,8 +214,8 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     ];
     const db = base('publicado', { 'patologia-insuficiencia-cardiaca': { quiz, umbral: 50 } });
     db['users/medico'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
-    const { ctx, page } = await abrir('medico', 'academia.html', 'escritorio', { db });
-    await listo(page, '.ac-m0');
+    const { ctx, page } = await abrir('medico', 'index.html', 'escritorio', { db });
+    await listo(page, '.paso.m0');
     await page.evaluate(() => abrir('patologia-insuficiencia-cardiaca'));
     await listo(page, '#quiz .opt');
     await page.click('#o_0_0'); await page.click('#o_1_1');
@@ -234,16 +237,16 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     const db = base('publicado');
     db['users/espana'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
     db['users/alumna'] = { academia: { ok: { 'modulo-0': true }, scores: {} } };
-    let { ctx, page } = await abrir('espana', 'academia.html', 'escritorio', { db });
-    await listo(page, '.ac-m0');
+    let { ctx, page } = await abrir('espana', 'index.html', 'escritorio', { db });
+    await listo(page, '.paso.m0');
     await page.evaluate(() => abrir('patologia-insuficiencia-cardiaca'));
     await listo(page, '.ac-sec');
     let t = await page.textContent('#app');
     esperar(/112 en España/.test(t) && !/SAME/.test(t), 'España no ve el 112');
     esperar(await page.evaluate(() => document.documentElement.lang) === 'es-ES', 'lang no es es-ES');
     await ctx.close();
-    ({ ctx, page } = await abrir('alumna', 'academia.html', 'escritorio', { db }));
-    await listo(page, '.ac-m0');
+    ({ ctx, page } = await abrir('alumna', 'index.html', 'escritorio', { db }));
+    await listo(page, '.paso.m0');
     await page.evaluate(() => abrir('patologia-insuficiencia-cardiaca'));
     await listo(page, '.ac-sec');
     t = await page.textContent('#app');
@@ -361,8 +364,8 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
   /* ---------- Escuela por usuario ---------- */
   await prueba('admin: asigna la escuela y una alumna no puede cambiársela', async () => {
     let { ctx, page } = await abrir('admin', 'index.html');
-    await listo(page, '#app .mods');
-    esperar(await page.$('#nuevad'), 'Falta el enlace a la nueva Academy para administradores');
+    await listo(page, '#app .reco');
+    esperar(await page.$('#m-administracion-d'), 'Falta Administración para administradores');
     await page.evaluate(() => showAdmin());
     await listo(page, '#esc_alumna');
     await page.selectOption('#esc_alumna', 'enfermeria');
@@ -374,9 +377,9 @@ module.exports = async function ({ prueba, abrir, listo, foto, axe, sinErrores, 
     await sinErrores(page);
     await ctx.close();
     ({ ctx, page } = await abrir('alumna', 'index.html'));
-    await listo(page, '#app .mods');
-    esperar(await page.$('#nuevad'), 'Una alumna no ve el enlace a la nueva Academy');
-    esperar(!(await page.$('#estudiod')), 'Una alumna ve el enlace al Estudio');
+    await listo(page, '#app .reco');
+    esperar(!(await page.$('#m-administracion-d')), 'Una alumna ve Administración');
+    esperar(!(await page.$('a[href="estudio-academia.html"], a[href="estudio.html"]')), 'Una alumna ve el enlace al Estudio');
     const negado = await page.evaluate(() => firebase.firestore().collection('users').doc('alumna').set({ escuela: 'medicos' }, { merge: true }).then(() => false, e => e.code === 'permission-denied'));
     esperar(negado, 'La alumna pudo asignarse una escuela');
     await sinErrores(page);

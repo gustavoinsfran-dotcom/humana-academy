@@ -44,7 +44,13 @@ Regla: el contenido clínico lo define Karina. Claude no agrega, quita ni reinte
 - Firestore, colección `modulos`: el contenido que Karina edita en el Estudio, con historial en `versiones`.
 - Reglas en `firestore.rules`. Los administradores están en `firebase-auth.js` (ADMINS) y en las reglas: tienen que coincidir. Las reglas se publican desde la consola de Firebase.
 
-**Archivos.** index.html (inicio y ruta método Humana) · modulos-base.js (contenido de respaldo) · contenido.js (lee módulos de Firestore) · estudio.html (Estudio, solo Karina y Gus) · firebase-auth.js (login, progreso, panel admin) · extras.js (avance y bienvenida) · nexo.html · cutaquig.html y calculadora.html · comercial.html (con capa por país) · estratificador.html (comercial, no es H1–H4) · metodo.css y metodo-pistas.css (identidad) · sw.js (subir ha-vN en cada cambio) · fonts/ · pruebas/ · docs/karina/ (material de Karina).
+**Archivos.** index.html (la Academy: recorrido de Karina del Módulo 0 al 5, Mi escuela, Certificados, Administración y formaciones específicas) · academia-estructura.js y academia-contenido.json (estructura y material de Karina) · estudio-academia.html (el Estudio: solo Karina y Gus) · firebase-auth.js (login, progreso, panel de personas) · entornos.css y entornos.js (color, ícono y etiqueta de cada entorno; íconos de escuela) · nexo.html · cutaquig.html y calculadora.html · comercial.html (con capa por país; todavía no está en la portada) · metodo.css y metodo-pistas.css (identidad) · sw.js (subir ha-vN en cada cambio) · fonts/ · pruebas/ · docs/karina/ (material de Karina).
+
+**Archivado (no se borra).** archivo.html (programa anterior: diez módulos de Medicina de Continuidad, caso Doña Elena y mapa; conserva sus certificados) · estudio.html, modulos-base.js, contenido.js y extras.js (su Estudio, contenido y mensajes) · academia.html (redirige al inicio) · estratificador.html (fuera del menú y de la portada).
+
+**Menú.** Para todos: Inicio, Mi escuela, Certificados, Salir. Para administradores, además, Administración: Estudio, Personas, vista previa (Ver borradores / Ver como alumna) y Archivo.
+
+**Entornos.** Academy #D43380, Nexo #170F1E, Cutaquig #28449B, cada uno con su ícono y etiqueta (Formación, Programa, Producto).
 
 **Identidad.** Toda la Academy usa la identidad método Humana. Paleta: #170F1E, #D43380, #28449B, #CACACA, blanco. No se modifica.
 
