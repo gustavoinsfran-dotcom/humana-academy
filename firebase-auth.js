@@ -262,7 +262,7 @@
   }
 
   /* ====================== PANEL DE GESTIÓN DE ACCESOS ====================== */
-  var _U=[], _filtro='', _verOcultas=false;
+  var _U=[], _filtro='', _verOcultas=false, _ESC={};
 
   var sadm=document.createElement('style');
   sadm.textContent=".gcard{background:#fff;border:1px solid var(--mh-line);border-radius:20px;padding:6px 22px}"
@@ -324,11 +324,11 @@
   window.__escuela=function(uid, v){
     if(!isAdmin(curUser)) return;
     db.collection('users').doc(uid).set({escuela:v||'', escuelaPor:(curUser.email||''), updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})
-      .then(function(){ _U.forEach(function(u){ if(u.uid===uid) u.escuela=v||''; }); }).catch(_errAdmin);
+      .then(function(){ _ESC[uid]=v||''; }).catch(_errAdmin);
   };
   function _selEscuela(u){
     return '<label class="mh-sr" for="esc_'+u.uid+'">Escuela de '+esc(u.name)+'</label><select class="ubtn" id="esc_'+u.uid+'" onchange="__escuela(\''+u.uid+'\',this.value)">'
-      +_ESCUELAS.map(function(e){ return '<option value="'+e[0]+'"'+(u.escuela===e[0]?' selected':'')+'>'+e[1]+'</option>'; }).join('')+'</select>';
+      +_ESCUELAS.map(function(e){ return '<option value="'+e[0]+'"'+((_ESC[u.uid]||'')===e[0]?' selected':'')+'>'+e[1]+'</option>'; }).join('')+'</select>';
   }
   window.__renombrar=function(uid, actual){
     if(!isAdmin(curUser)) return;
@@ -362,8 +362,9 @@
     return db.collection('users').get().then(function(qs){
       _U=[]; qs.forEach(function(doc){
         var d=doc.data()||{}; var p=_prog(d);
+        _ESC[doc.id]=d.escuela||''; /* nueva Academy */
         _U.push({uid:doc.id, name:d.name||'(sin nombre)', email:d.email||'—',
-          oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email), escuela:d.escuela||'',
+          oculto:!!d.oculto || !!d.deleted, esAdmin:_esAdminMail(d.email),
           a:p.a, x:p.x, c:p.c, total:p.a+p.x+p.c});
       });
     });
